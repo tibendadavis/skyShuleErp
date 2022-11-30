@@ -54,6 +54,7 @@ class _studentAdmissionState extends State<studentAdmission> {
             )
           : null,
       drawer: skyShuleDrawer(
+        size: 245,
         onTap: () {},
       ),
       body: SingleChildScrollView(
@@ -62,7 +63,8 @@ class _studentAdmissionState extends State<studentAdmission> {
         width: size.width,
         child: Row(children: [
           if (Responsive.isDesktop(context))
-            SizedBox(
+            AnimatedContainer(
+                duration: const Duration(milliseconds: 400),
                 width: _drawersize,
                 child: skyShuleDrawer(
                   size: _drawersize,
@@ -82,7 +84,13 @@ class _studentAdmissionState extends State<studentAdmission> {
                       top: Insets().appGap,
                       bottom: Insets().appGap),
                   decoration: BoxDecoration(color: Palette().primaryColorLight),
-                  child: header()),
+                  child: header(
+                    onTap: (val) {
+                      setState(() {
+                        _drawersize = val;
+                      });
+                    },
+                  )),
               Container(
                 alignment: Alignment.bottomLeft,
                 padding: EdgeInsets.only(

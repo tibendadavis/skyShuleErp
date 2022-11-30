@@ -45,6 +45,7 @@ class _manageStudentsState extends State<manageStudents> {
             )
           : null,
       drawer: skyShuleDrawer(
+        size: 245,
         onTap: () {},
       ),
       body: SizedBox(
@@ -54,7 +55,8 @@ class _manageStudentsState extends State<manageStudents> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             if (Responsive.isDesktop(context))
-              SizedBox(
+              AnimatedContainer(
+                  duration: const Duration(milliseconds: 400),
                   width: _drawersize,
                   child: skyShuleDrawer(
                     size: _drawersize,
@@ -73,7 +75,13 @@ class _manageStudentsState extends State<manageStudents> {
                       top: Insets().appGap,
                       bottom: Insets().appGap),
                   decoration: BoxDecoration(color: Palette().primaryColorLight),
-                  child: header()),
+                  child: header(
+                    onTap: (val) {
+                      setState(() {
+                        _drawersize = val;
+                      });
+                    },
+                  )),
               Container(
                 alignment: Alignment.bottomLeft,
                 padding: EdgeInsets.only(
@@ -284,7 +292,7 @@ class _manageStudentsState extends State<manageStudents> {
                     top: Insets().appPadding,
                     bottom: Insets().appPadding),
                 padding: EdgeInsets.only(
-                    left: Insets().appGap / 2,
+                    left: Insets().appPadding,
                     right: Insets().appGap / 2,
                     top: Insets().appGap / 3,
                     bottom: Insets().appGap / 3),
@@ -301,8 +309,8 @@ class _manageStudentsState extends State<manageStudents> {
                               //     borderSide: BorderSide(
                               //         color: Colors.grey, width: 3.0)),
                               border: InputBorder.none,
-                              labelText: " Search for Students",
-                              labelStyle: TextStyle(fontSize: 20)))),
+                              hintText: " Search for Students",
+                              hintStyle: TextStyle(fontSize: 20)))),
                   SizedBox(
                     width: 10,
                   ),

@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
+import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/pages/home/home.pg.dart';
 import 'package:skyconnect_starter/screens/user_profile.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class header extends StatefulWidget {
-  const header({super.key});
+  final Function? onTap;
+  header({
+    super.key,
+    this.onTap,
+  });
 
   @override
   State<header> createState() => _headerState();
@@ -19,18 +26,21 @@ class _headerState extends State<header> {
     return Container(
       child: Row(
         children: [
-          ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  if (_drawersize == 250) {
-                    _drawersize = 90;
-                  } else {
-                    _drawersize = 250;
-                  }
-                });
-              },
-              child: Icon(Icons.menu)),
-          const Spacer(),
+          !Responsive.isDesktop(context)
+              ? Offstage()
+              : ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      if (_drawersize == 250) {
+                        _drawersize = 90;
+                      } else {
+                        _drawersize = 250;
+                      }
+                    });
+                    widget.onTap!(_drawersize);
+                  },
+                  child: Icon(Icons.menu)),
+          !Responsive.isDesktop(context) ? Offstage() : const Spacer(),
           Expanded(
             child: SizedBox(
               height: Insets().smallInputSize + 5,

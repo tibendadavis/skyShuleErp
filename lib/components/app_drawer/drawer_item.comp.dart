@@ -11,12 +11,14 @@ class DrawerItem extends StatefulWidget {
   final double size;
   final String value;
   final IconData iconData;
+  final IconData? iconData2;
   final Function onTap;
   const DrawerItem(
       {super.key,
       required this.size,
       required this.value,
       required this.iconData,
+      this.iconData2,
       required this.onTap});
 
   @override
@@ -25,26 +27,32 @@ class DrawerItem extends StatefulWidget {
 
 class _DrawerItemState extends State<DrawerItem> {
   bool isSelected = false;
+  late bool open;
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(seconds: 3),
+    return Container(
       //padding: EdgeInsets.only(top: Insets().appPadding),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
             onTap: () {
-              widget.onTap();
+              setState(() {
+                open = true;
+              });
+              widget.onTap(open);
+            },
+            onHover: (val) {
+              widget.onTap(val);
               setState(() {
                 isSelected = !isSelected;
               });
             },
             child: SizedBox(
-              width: 235,
+              width: widget.size == 90 ? 65 : widget.size - 14,
               child: Container(
                 margin: EdgeInsets.only(
-                  left: Insets().appPadding,
+                  left: widget.size == 90 ? 23 : Insets().appPadding,
                   bottom: Insets().appPadding / 4,
                 ),
                 padding: EdgeInsets.only(
@@ -58,13 +66,23 @@ class _DrawerItemState extends State<DrawerItem> {
                     borderRadius: BorderRadius.circular(Insets().appRadiusMin)),
                 child: Row(
                   children: [
-                    Icon(
-                      widget.iconData,
-                      size: 17,
-                      color: !isSelected
-                          ? Palette().textColor
-                          : Palette().primaryColor,
-                    ),
+                    widget.size == 90
+                        ? Center(
+                            child: Icon(
+                              widget.iconData,
+                              size: 20,
+                              color: !isSelected
+                                  ? Palette().textColor
+                                  : Palette().primaryColor,
+                            ),
+                          )
+                        : Icon(
+                            widget.iconData,
+                            size: 17,
+                            color: !isSelected
+                                ? Palette().textColor
+                                : Palette().primaryColor,
+                          ),
                     widget.size == 90
                         ? const Offstage()
                         : SizedBox(
@@ -78,6 +96,18 @@ class _DrawerItemState extends State<DrawerItem> {
                                 ? Palette().textColor
                                 : Palette().primaryColor,
                           ),
+                    Spacer(),
+                    widget.size == 90
+                        ? const Offstage()
+                        : widget.iconData2 != null
+                            ? Icon(
+                                widget.iconData2,
+                                size: 20,
+                                color: !isSelected
+                                    ? Palette().textColor
+                                    : Palette().primaryColor,
+                              )
+                            : Offstage(),
                   ],
                 ),
               ),

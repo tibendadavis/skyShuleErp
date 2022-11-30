@@ -15,19 +15,25 @@ import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   double _drawersize = 250;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: Responsive.isMobile(context)
+      appBar: !Responsive.isDesktop(context)
           ? AppBar(
               centerTitle: true,
               elevation: 0,
@@ -40,6 +46,7 @@ class _HomePageState extends State<HomePage> {
             )
           : null,
       drawer: skyShuleDrawer(
+        size: 245,
         onTap: () {},
       ),
       body: SingleChildScrollView(
@@ -49,8 +56,9 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (!Responsive.isMobile(context))
-                  SizedBox(
+                if (!!Responsive.isDesktop(context))
+                  AnimatedContainer(
+                      duration: const Duration(milliseconds: 400),
                       width: _drawersize,
                       child: skyShuleDrawer(
                         size: _drawersize,
@@ -71,7 +79,13 @@ class _HomePageState extends State<HomePage> {
                               bottom: Insets().appGap),
                           decoration:
                               BoxDecoration(color: Palette().primaryColorLight),
-                          child: header()),
+                          child: header(
+                            onTap: (val) {
+                              setState(() {
+                                _drawersize = val;
+                              });
+                            },
+                          )),
                       Container(
                         alignment: Alignment.bottomLeft,
                         padding: EdgeInsets.only(
@@ -125,10 +139,12 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(
                                           width: 7,
                                         ),
-                                        Heading4(
-                                          value: "Students Summary",
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
+                                        Expanded(
+                                          child: Heading4(
+                                            value: "Students Summary",
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         )
                                       ],
                                     ),
@@ -231,10 +247,12 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(
                                           width: 7,
                                         ),
-                                        Heading4(
-                                          value: "Teaching Staff Summary",
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
+                                        Expanded(
+                                          child: Heading4(
+                                            value: "Teaching Staff Summary",
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         )
                                       ],
                                     ),
@@ -339,10 +357,12 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(
                                           width: 7,
                                         ),
-                                        Heading4(
-                                          value: "Fee Summary",
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
+                                        Expanded(
+                                          child: Heading4(
+                                            value: "Fee Summary",
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         )
                                       ],
                                     ),
@@ -452,10 +472,12 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(
                                           width: 7,
                                         ),
-                                        Heading4(
-                                          value: "Non Teaching Staff Summary",
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
+                                        Expanded(
+                                          child: Heading4(
+                                            value: "Non Teaching Staff Summary",
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         )
                                       ],
                                     ),
@@ -559,10 +581,12 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(
                                           width: 7,
                                         ),
-                                        Heading4(
-                                          value: "Institute Summary",
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
+                                        Expanded(
+                                          child: Heading4(
+                                            value: "Institute Summary",
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         )
                                       ],
                                     ),
@@ -666,10 +690,12 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(
                                           width: 7,
                                         ),
-                                        Heading4(
-                                          value: "Parents Summary",
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
+                                        Expanded(
+                                          child: Heading4(
+                                            value: "Parents Summary",
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         )
                                       ],
                                     ),

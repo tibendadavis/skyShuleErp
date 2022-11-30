@@ -37,93 +37,109 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "size": widget.size!,
         "link": HomePage(),
         "value": "Dashboard",
-        "iconData": Icons.dashboard_rounded
+        "iconData": Icons.dashboard_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": manageStudents(),
         "value": "Manage Students",
-        "iconData": Icons.manage_accounts_outlined
+        "iconData": Icons.manage_accounts_outlined,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Classes",
-        "iconData": Icons.class_outlined
+        "iconData": Icons.class_outlined,
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Streams",
-        "iconData": Icons.stream_outlined
+        "iconData": Icons.stream_outlined,
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Subjects",
-        "iconData": Icons.subject_outlined
+        "iconData": Icons.subject_outlined,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Syllabus",
-        "iconData": Icons.outbox_outlined
+        "iconData": Icons.outbox_outlined,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Grading",
-        "iconData": Icons.grading_outlined
+        "iconData": Icons.grading_outlined,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Terms",
-        "iconData": Icons.dashboard_rounded
+        "iconData": Icons.dashboard_rounded,
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Exams",
-        "iconData": Icons.dashboard_rounded
+        "iconData": Icons.dashboard_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Class Routine",
-        "iconData": Icons.route_outlined
+        "iconData": Icons.route_outlined,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Attendance",
-        "iconData": Icons.dashboard_rounded
+        "iconData": Icons.dashboard_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "News & Announcements",
-        "iconData": Icons.newspaper_outlined
+        "iconData": Icons.newspaper_outlined,
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Hostel Management",
-        "iconData": Icons.house_outlined
+        "iconData": Icons.house_outlined,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Library",
-        "iconData": Icons.library_add_check_outlined
+        "iconData": Icons.library_add_check_outlined,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "eResources",
-        "iconData": Icons.dashboard_rounded
+        "iconData": Icons.dashboard_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded
       },
-      {"size": widget.size!, "value": "Settings", "iconData": Icons.settings}
+      {
+        "size": widget.size!,
+        "link": "",
+        "value": "Settings",
+        "iconData": Icons.settings,
+      }
     ];
     var size = MediaQuery.of(context).size;
     return Drawer(
@@ -136,30 +152,36 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         child: Expanded(
           child: ListView(
             children: [
-              Padding(
-                  padding: EdgeInsets.only(right: Insets().appPadding / 3),
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Palette().textColor,
-                  )),
+              Center(
+                child: CircleAvatar(
+                  radius: 35,
+                  backgroundColor: Palette().textColor,
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
               ...List.generate(
                   items.length,
                   (index) => DrawerItem(
-                      size: items[index]["size"],
-                      value: items[index]["value"],
-                      iconData: items[index]["iconData"],
-                      onTap: () {
-                        if (items[index]["link"] != "")
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => items[index]["link"]));
-                        setState(() {
-                          _drawerSize = 250;
-                        });
-                        widget.onTap(_drawerSize);
-                      }))
+                        size: items[index]["size"],
+                        value: items[index]["value"],
+                        iconData: items[index]["iconData"],
+                        iconData2: items[index]["iconData2"],
+                        onTap: (val) {
+                          // if (items[index]["link"] != "")
+                          //   Navigator.of(context).push(MaterialPageRoute(
+                          //       builder: (context) => items[index]["link"]));
+                          setState(() {
+                            if (val) {
+                              _drawerSize = 250;
+                            } else {
+                              _drawerSize = 90;
+                            }
+                          });
+                          widget.onTap(_drawerSize);
+                        },
+                      ))
             ],
           ),
         ),
