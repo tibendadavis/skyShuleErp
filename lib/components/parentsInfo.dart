@@ -16,7 +16,11 @@ class _parentsInfoState extends State<parentsInfo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(Insets().appPadding),
+      padding: EdgeInsets.only(
+          bottom: Insets().appPadding,
+          left: Insets().appPadding,
+          right: Insets().appPadding,
+          top: Insets().appPadding / 2),
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

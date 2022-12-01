@@ -26,6 +26,7 @@ class userProfile extends StatefulWidget {
 }
 
 class _userProfileState extends State<userProfile> {
+  bool _menu = false;
   double _drawersize = 250;
   bool stdntsInfo = true;
   bool prntsInfo = false;
@@ -52,6 +53,7 @@ class _userProfileState extends State<userProfile> {
       drawer: skyShuleDrawer(
         size: 245,
         onTap: () {},
+        menu: false,
       ),
       body: SingleChildScrollView(
         child: SizedBox(
@@ -69,6 +71,7 @@ class _userProfileState extends State<userProfile> {
                         _drawersize = val;
                       });
                     },
+                    menu: _menu,
                   )),
             Expanded(
               child: Column(
@@ -84,7 +87,8 @@ class _userProfileState extends State<userProfile> {
                       child: header(
                         onTap: (val) {
                           setState(() {
-                            _drawersize = val;
+                            _drawersize = val[0];
+                            _menu = val[1];
                           });
                         },
                       )),
@@ -647,113 +651,6 @@ class _userProfileState extends State<userProfile> {
                       )
                     ],
                   ),
-                  Positioned(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                stdntsInfo = true;
-                                prntsInfo = false;
-                                paymntReport = false;
-                                exmReport = false;
-                                alloctns = false;
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4)),
-                                padding: EdgeInsets.all(Insets().appPadding)),
-                            child: Heading6(
-                              value: "Students Info",
-                              color: Colors.white,
-                            )),
-                        ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                stdntsInfo = false;
-                                prntsInfo = true;
-                                paymntReport = false;
-                                exmReport = false;
-                                alloctns = false;
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4)),
-                                padding: EdgeInsets.all(Insets().appPadding)),
-                            child: Heading6(
-                              value: "Parents Info",
-                              color: Colors.white,
-                            )),
-                        ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                stdntsInfo = false;
-                                prntsInfo = false;
-                                paymntReport = true;
-                                exmReport = false;
-                                alloctns = false;
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4)),
-                                padding: EdgeInsets.all(Insets().appPadding)),
-                            child: Heading6(
-                              value: "Payment Report",
-                              color: Colors.white,
-                            )),
-                        ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                stdntsInfo = false;
-                                prntsInfo = false;
-                                paymntReport = false;
-                                exmReport = true;
-                                alloctns = false;
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4)),
-                                padding: EdgeInsets.all(Insets().appPadding)),
-                            child: Heading6(
-                              value: "Exam Report",
-                              color: Colors.white,
-                            )),
-                        ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                stdntsInfo = false;
-                                prntsInfo = false;
-                                paymntReport = false;
-                                exmReport = false;
-                                alloctns = true;
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4)),
-                                padding: EdgeInsets.all(Insets().appPadding)),
-                            child: Heading6(
-                              value: "Allocations",
-                              color: Colors.white,
-                            )),
-                      ],
-                    ),
-                  ),
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(
@@ -772,6 +669,183 @@ class _userProfileState extends State<userProfile> {
                               BorderRadius.circular(Insets().appRadiusMin + 4)),
                       child: Column(
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      stdntsInfo = true;
+                                      prntsInfo = false;
+                                      paymntReport = false;
+                                      exmReport = false;
+                                      alloctns = false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      elevation: 0,
+                                      backgroundColor: stdntsInfo
+                                          ? Colors.white
+                                          : Palette().primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                            width: 1,
+                                            color: stdntsInfo
+                                                ? Colors.black
+                                                : Colors.transparent,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appRadiusMin + 4)),
+                                      padding:
+                                          EdgeInsets.all(Insets().appPadding)),
+                                  child: Heading6(
+                                    value: "Students Info",
+                                    color: stdntsInfo
+                                        ? Colors.black
+                                        : Colors.white,
+                                  )),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      stdntsInfo = false;
+                                      prntsInfo = true;
+                                      paymntReport = false;
+                                      exmReport = false;
+                                      alloctns = false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      elevation: 0,
+                                      backgroundColor: prntsInfo
+                                          ? Colors.white
+                                          : Palette().primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appRadiusMin + 4)),
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: prntsInfo
+                                            ? Colors.black
+                                            : Colors.transparent,
+                                      ),
+                                      padding:
+                                          EdgeInsets.all(Insets().appPadding)),
+                                  child: Heading6(
+                                    value: "Parents Info",
+                                    color:
+                                        prntsInfo ? Colors.black : Colors.white,
+                                  )),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      stdntsInfo = false;
+                                      prntsInfo = false;
+                                      paymntReport = true;
+                                      exmReport = false;
+                                      alloctns = false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      elevation: 0,
+                                      backgroundColor: paymntReport
+                                          ? Colors.white
+                                          : Palette().primaryColor,
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: paymntReport
+                                            ? Colors.black
+                                            : Colors.transparent,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appRadiusMin + 4)),
+                                      padding:
+                                          EdgeInsets.all(Insets().appPadding)),
+                                  child: Heading6(
+                                    value: "Payment Report",
+                                    color: paymntReport
+                                        ? Colors.black
+                                        : Colors.white,
+                                  )),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      stdntsInfo = false;
+                                      prntsInfo = false;
+                                      paymntReport = false;
+                                      exmReport = true;
+                                      alloctns = false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      elevation: 0,
+                                      backgroundColor: exmReport
+                                          ? Colors.white
+                                          : Palette().primaryColor,
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: exmReport
+                                            ? Colors.black
+                                            : Colors.transparent,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appRadiusMin + 4)),
+                                      padding:
+                                          EdgeInsets.all(Insets().appPadding)),
+                                  child: Heading6(
+                                    value: "Exam Report",
+                                    color:
+                                        exmReport ? Colors.black : Colors.white,
+                                  )),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      stdntsInfo = false;
+                                      prntsInfo = false;
+                                      paymntReport = false;
+                                      exmReport = false;
+                                      alloctns = true;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      elevation: 0,
+                                      backgroundColor: alloctns
+                                          ? Colors.white
+                                          : Palette().primaryColor,
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: alloctns
+                                            ? Colors.black
+                                            : Colors.transparent,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appRadiusMin + 4)),
+                                      padding:
+                                          EdgeInsets.all(Insets().appPadding)),
+                                  child: Heading6(
+                                    value: "Allocations",
+                                    color:
+                                        alloctns ? Colors.black : Colors.white,
+                                  )),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
                           Visibility(
                               visible: stdntsInfo, child: (studentsInfo())),
                           Visibility(

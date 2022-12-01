@@ -21,6 +21,7 @@ class header extends StatefulWidget {
 
 class _headerState extends State<header> {
   double _drawersize = 250;
+  bool _menu = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,11 +34,13 @@ class _headerState extends State<header> {
                     setState(() {
                       if (_drawersize == 250) {
                         _drawersize = 90;
+                        _menu = true;
                       } else {
                         _drawersize = 250;
+                        _menu = false;
                       }
                     });
-                    widget.onTap!(_drawersize);
+                    widget.onTap!([_drawersize, _menu]);
                   },
                   child: Icon(Icons.menu)),
           !Responsive.isDesktop(context) ? Offstage() : const Spacer(),

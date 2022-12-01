@@ -35,7 +35,7 @@ class _studentAdmissionState extends State<studentAdmission> {
   bool bnkDtls = false;
   bool othrFacilities = false;
   bool upldDocs = false;
-
+  bool _menu = false;
   double _drawersize = 250;
   @override
   Widget build(BuildContext context) {
@@ -56,6 +56,7 @@ class _studentAdmissionState extends State<studentAdmission> {
       drawer: skyShuleDrawer(
         size: 245,
         onTap: () {},
+        menu: false,
       ),
       body: SingleChildScrollView(
           child: SizedBox(
@@ -73,6 +74,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                       _drawersize = val;
                     });
                   },
+                  menu: _menu,
                 )),
           Expanded(
               child: Column(
@@ -87,7 +89,8 @@ class _studentAdmissionState extends State<studentAdmission> {
                   child: header(
                     onTap: (val) {
                       setState(() {
-                        _drawersize = val;
+                        _drawersize = val[0];
+                        _menu = val[1];
                       });
                     },
                   )),
@@ -234,7 +237,16 @@ class _studentAdmissionState extends State<studentAdmission> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
+                                elevation: 0,
+                                backgroundColor: offDtls
+                                    ? Colors.white
+                                    : Palette().primaryColor,
+                                side: BorderSide(
+                                  width: 1,
+                                  color: offDtls
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
@@ -245,7 +257,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Official Details",
-                              color: Colors.white,
+                              color: offDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -264,7 +276,16 @@ class _studentAdmissionState extends State<studentAdmission> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
+                                elevation: 0,
+                                backgroundColor: prsnlDtls
+                                    ? Colors.white
+                                    : Palette().primaryColor,
+                                side: BorderSide(
+                                  width: 1,
+                                  color: prsnlDtls
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
@@ -275,7 +296,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Personal Details",
-                              color: Colors.white,
+                              color: prsnlDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -294,7 +315,16 @@ class _studentAdmissionState extends State<studentAdmission> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
+                                elevation: 0,
+                                backgroundColor: conctDtls
+                                    ? Colors.white
+                                    : Palette().primaryColor,
+                                side: BorderSide(
+                                  width: 1,
+                                  color: conctDtls
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
@@ -305,7 +335,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Contact Details",
-                              color: Colors.white,
+                              color: conctDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -324,7 +354,16 @@ class _studentAdmissionState extends State<studentAdmission> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
+                                elevation: 0,
+                                backgroundColor: prntsDtls
+                                    ? Colors.white
+                                    : Palette().primaryColor,
+                                side: BorderSide(
+                                  width: 1,
+                                  color: prntsDtls
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
@@ -335,7 +374,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Parents Details",
-                              color: Colors.white,
+                              color: prntsDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -354,7 +393,16 @@ class _studentAdmissionState extends State<studentAdmission> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
+                                elevation: 0,
+                                backgroundColor: acdmcDtls
+                                    ? Colors.white
+                                    : Palette().primaryColor,
+                                side: BorderSide(
+                                  width: 1,
+                                  color: acdmcDtls
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
@@ -365,7 +413,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Academic Details",
-                              color: Colors.white,
+                              color: acdmcDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -384,7 +432,16 @@ class _studentAdmissionState extends State<studentAdmission> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
+                                elevation: 0,
+                                backgroundColor: bnkDtls
+                                    ? Colors.white
+                                    : Palette().primaryColor,
+                                side: BorderSide(
+                                  width: 1,
+                                  color: bnkDtls
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
@@ -395,7 +452,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Bank Details",
-                              color: Colors.white,
+                              color: bnkDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -414,7 +471,16 @@ class _studentAdmissionState extends State<studentAdmission> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
+                                elevation: 0,
+                                backgroundColor: othrFacilities
+                                    ? Colors.white
+                                    : Palette().primaryColor,
+                                side: BorderSide(
+                                  width: 1,
+                                  color: othrFacilities
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
@@ -425,7 +491,8 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Other Facilities",
-                              color: Colors.white,
+                              color:
+                                  othrFacilities ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -444,7 +511,16 @@ class _studentAdmissionState extends State<studentAdmission> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Palette().primaryColor,
+                                elevation: 0,
+                                backgroundColor: upldDocs
+                                    ? Colors.white
+                                    : Palette().primaryColor,
+                                side: BorderSide(
+                                  width: 1,
+                                  color: upldDocs
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
@@ -455,7 +531,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Upload Documents",
-                              color: Colors.white,
+                              color: upldDocs ? Colors.black : Colors.white,
                             )),
                       ],
                     ),

@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  bool _menu = false;
   double _drawersize = 250;
   @override
   Widget build(BuildContext context) {
@@ -46,8 +47,9 @@ class _HomePageState extends State<HomePage> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
+        menu: false,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -67,6 +69,7 @@ class _HomePageState extends State<HomePage> {
                             _drawersize = val;
                           });
                         },
+                        menu: _menu,
                       )),
                 Expanded(
                   child: Column(
@@ -82,7 +85,8 @@ class _HomePageState extends State<HomePage> {
                           child: header(
                             onTap: (val) {
                               setState(() {
-                                _drawersize = val;
+                                _drawersize = val[0];
+                                _menu = val[1];
                               });
                             },
                           )),

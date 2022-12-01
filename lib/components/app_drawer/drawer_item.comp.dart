@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
@@ -10,22 +11,33 @@ import 'package:skyconnect_starter/theme/design.theme.dart';
 class DrawerItem extends StatefulWidget {
   final double size;
   final String value;
+  bool selected;
   final IconData iconData;
   final IconData? iconData2;
   final Function onTap;
-  const DrawerItem(
-      {super.key,
-      required this.size,
-      required this.value,
-      required this.iconData,
-      this.iconData2,
-      required this.onTap});
+  final Function onHover;
+  DrawerItem({
+    super.key,
+    required this.size,
+    required this.value,
+    required this.iconData,
+    this.iconData2,
+    required this.onTap,
+    required this.onHover,
+    required this.selected,
+  });
 
   @override
   State<DrawerItem> createState() => _DrawerItemState();
 }
 
 class _DrawerItemState extends State<DrawerItem> {
+  @override
+  void initState() {
+    widget.selected = isSelected;
+    super.initState();
+  }
+
   bool isSelected = false;
   late bool open;
   @override
@@ -37,13 +49,14 @@ class _DrawerItemState extends State<DrawerItem> {
         children: [
           InkWell(
             onTap: () {
+              //  widget.onTap();
               setState(() {
-                open = true;
+                isSelected = !isSelected;
+                widget.onTap(isSelected);
               });
-              widget.onTap(open);
             },
             onHover: (val) {
-              widget.onTap(val);
+              widget.onHover(val);
               setState(() {
                 isSelected = !isSelected;
               });

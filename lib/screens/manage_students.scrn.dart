@@ -23,6 +23,7 @@ class manageStudents extends StatefulWidget {
 }
 
 class _manageStudentsState extends State<manageStudents> {
+  bool _menu = false;
   double _drawersize = 250;
   var _classlevel;
   var _academicYear;
@@ -47,6 +48,7 @@ class _manageStudentsState extends State<manageStudents> {
       drawer: skyShuleDrawer(
         size: 245,
         onTap: () {},
+        menu: false,
       ),
       body: SizedBox(
         height: size.height,
@@ -65,6 +67,7 @@ class _manageStudentsState extends State<manageStudents> {
                         _drawersize = val;
                       });
                     },
+                    menu: _menu,
                   )),
             Expanded(
                 child: Column(children: [
@@ -78,7 +81,8 @@ class _manageStudentsState extends State<manageStudents> {
                   child: header(
                     onTap: (val) {
                       setState(() {
-                        _drawersize = val;
+                        _drawersize = val[0];
+                        _menu = val[1];
                       });
                     },
                   )),

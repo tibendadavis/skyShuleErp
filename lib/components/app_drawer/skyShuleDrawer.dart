@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -14,8 +16,10 @@ import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class skyShuleDrawer extends StatefulWidget {
   final double? size;
+  final bool menu;
   final Function onTap;
-  const skyShuleDrawer({super.key, this.size, required this.onTap});
+  const skyShuleDrawer(
+      {super.key, this.size, required this.onTap, required this.menu});
 
   @override
   State<skyShuleDrawer> createState() => _skyShuleDrawerState();
@@ -23,6 +27,7 @@ class skyShuleDrawer extends StatefulWidget {
 
 class _skyShuleDrawerState extends State<skyShuleDrawer> {
   late double _drawerSize;
+  bool test = false;
 
   @override
   void initState() {
@@ -38,107 +43,123 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "link": HomePage(),
         "value": "Dashboard",
         "iconData": Icons.dashboard_rounded,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": manageStudents(),
         "value": "Manage Students",
         "iconData": Icons.manage_accounts_outlined,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Classes",
         "iconData": Icons.class_outlined,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Streams",
         "iconData": Icons.stream_outlined,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Subjects",
         "iconData": Icons.subject_outlined,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Syllabus",
         "iconData": Icons.outbox_outlined,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Grading",
         "iconData": Icons.grading_outlined,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Terms",
         "iconData": Icons.dashboard_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Exams",
         "iconData": Icons.dashboard_rounded,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Class Routine",
         "iconData": Icons.route_outlined,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Attendance",
         "iconData": Icons.dashboard_rounded,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "News & Announcements",
         "iconData": Icons.newspaper_outlined,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Hostel Management",
         "iconData": Icons.house_outlined,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Library",
         "iconData": Icons.library_add_check_outlined,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "eResources",
         "iconData": Icons.dashboard_rounded,
-        "iconData2": Icons.keyboard_arrow_down_rounded
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": false
       },
       {
         "size": widget.size!,
         "link": "",
         "value": "Settings",
         "iconData": Icons.settings,
+        "selected": false
       }
     ];
     var size = MediaQuery.of(context).size;
@@ -163,24 +184,44 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
               ),
               ...List.generate(
                   items.length,
-                  (index) => DrawerItem(
-                        size: items[index]["size"],
-                        value: items[index]["value"],
-                        iconData: items[index]["iconData"],
-                        iconData2: items[index]["iconData2"],
-                        onTap: (val) {
-                          // if (items[index]["link"] != "")
-                          //   Navigator.of(context).push(MaterialPageRoute(
-                          //       builder: (context) => items[index]["link"]));
-                          setState(() {
-                            if (val) {
-                              _drawerSize = 250;
-                            } else {
-                              _drawerSize = 90;
-                            }
-                          });
-                          widget.onTap(_drawerSize);
-                        },
+                  (index) => Container(
+                        child: DrawerItem(
+                            size: items[index]["size"],
+                            selected: items[index]["selected"],
+                            value: items[index]["value"],
+                            iconData: items[index]["iconData"],
+                            iconData2: items[index]["iconData2"],
+                            onHover: (val) {
+                              if (widget.menu)
+                                setState(() {
+                                  if (val) {
+                                    _drawerSize = 250;
+                                    items[index]
+                                        .update("selected", (value) => true);
+                                  } else {
+                                    _drawerSize = 90;
+                                    items[index]
+                                        .update("selected", (value) => false);
+                                  }
+                                });
+                              if (!widget.menu)
+                                setState(() {
+                                  items[index]
+                                      .update("selected", (value) => true);
+                                  _drawerSize = 250;
+                                });
+                              widget.onTap(_drawerSize);
+                            },
+                            onTap: (val) {
+                              setState(() {
+                                items[index].update("selected", (value) => val);
+                              });
+
+                              if (items[index]["link"] != "")
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        items[index]["link"]));
+                            }),
                       ))
             ],
           ),
