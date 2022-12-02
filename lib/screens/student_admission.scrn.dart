@@ -238,12 +238,12 @@ class _studentAdmissionState extends State<studentAdmission> {
                             },
                             style: ElevatedButton.styleFrom(
                                 elevation: 0,
-                                backgroundColor: offDtls
+                                backgroundColor: !offDtls
                                     ? Colors.white
                                     : Palette().primaryColor,
                                 side: BorderSide(
                                   width: 1,
-                                  color: offDtls
+                                  color: !offDtls
                                       ? Colors.black
                                       : Colors.transparent,
                                 ),
@@ -257,7 +257,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Official Details",
-                              color: offDtls ? Colors.black : Colors.white,
+                              color: !offDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -277,12 +277,12 @@ class _studentAdmissionState extends State<studentAdmission> {
                             },
                             style: ElevatedButton.styleFrom(
                                 elevation: 0,
-                                backgroundColor: prsnlDtls
+                                backgroundColor: !prsnlDtls
                                     ? Colors.white
                                     : Palette().primaryColor,
                                 side: BorderSide(
                                   width: 1,
-                                  color: prsnlDtls
+                                  color: !prsnlDtls
                                       ? Colors.black
                                       : Colors.transparent,
                                 ),
@@ -296,7 +296,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Personal Details",
-                              color: prsnlDtls ? Colors.black : Colors.white,
+                              color: !prsnlDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -316,12 +316,12 @@ class _studentAdmissionState extends State<studentAdmission> {
                             },
                             style: ElevatedButton.styleFrom(
                                 elevation: 0,
-                                backgroundColor: conctDtls
+                                backgroundColor: !conctDtls
                                     ? Colors.white
                                     : Palette().primaryColor,
                                 side: BorderSide(
                                   width: 1,
-                                  color: conctDtls
+                                  color: !conctDtls
                                       ? Colors.black
                                       : Colors.transparent,
                                 ),
@@ -335,7 +335,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Contact Details",
-                              color: conctDtls ? Colors.black : Colors.white,
+                              color: !conctDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -355,12 +355,12 @@ class _studentAdmissionState extends State<studentAdmission> {
                             },
                             style: ElevatedButton.styleFrom(
                                 elevation: 0,
-                                backgroundColor: prntsDtls
+                                backgroundColor: !prntsDtls
                                     ? Colors.white
                                     : Palette().primaryColor,
                                 side: BorderSide(
                                   width: 1,
-                                  color: prntsDtls
+                                  color: !prntsDtls
                                       ? Colors.black
                                       : Colors.transparent,
                                 ),
@@ -374,7 +374,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Parents Details",
-                              color: prntsDtls ? Colors.black : Colors.white,
+                              color: !prntsDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -394,12 +394,12 @@ class _studentAdmissionState extends State<studentAdmission> {
                             },
                             style: ElevatedButton.styleFrom(
                                 elevation: 0,
-                                backgroundColor: acdmcDtls
+                                backgroundColor: !acdmcDtls
                                     ? Colors.white
                                     : Palette().primaryColor,
                                 side: BorderSide(
                                   width: 1,
-                                  color: acdmcDtls
+                                  color: !acdmcDtls
                                       ? Colors.black
                                       : Colors.transparent,
                                 ),
@@ -413,7 +413,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Academic Details",
-                              color: acdmcDtls ? Colors.black : Colors.white,
+                              color: !acdmcDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -433,12 +433,12 @@ class _studentAdmissionState extends State<studentAdmission> {
                             },
                             style: ElevatedButton.styleFrom(
                                 elevation: 0,
-                                backgroundColor: bnkDtls
+                                backgroundColor: !bnkDtls
                                     ? Colors.white
                                     : Palette().primaryColor,
                                 side: BorderSide(
                                   width: 1,
-                                  color: bnkDtls
+                                  color: !bnkDtls
                                       ? Colors.black
                                       : Colors.transparent,
                                 ),
@@ -452,7 +452,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Bank Details",
-                              color: bnkDtls ? Colors.black : Colors.white,
+                              color: !bnkDtls ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -472,12 +472,12 @@ class _studentAdmissionState extends State<studentAdmission> {
                             },
                             style: ElevatedButton.styleFrom(
                                 elevation: 0,
-                                backgroundColor: othrFacilities
+                                backgroundColor: !othrFacilities
                                     ? Colors.white
                                     : Palette().primaryColor,
                                 side: BorderSide(
                                   width: 1,
-                                  color: othrFacilities
+                                  color: !othrFacilities
                                       ? Colors.black
                                       : Colors.transparent,
                                 ),
@@ -492,7 +492,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                             child: Heading6(
                               value: "Other Facilities",
                               color:
-                                  othrFacilities ? Colors.black : Colors.white,
+                                  !othrFacilities ? Colors.black : Colors.white,
                             )),
                         SizedBox(
                           width: 10,
@@ -512,12 +512,12 @@ class _studentAdmissionState extends State<studentAdmission> {
                             },
                             style: ElevatedButton.styleFrom(
                                 elevation: 0,
-                                backgroundColor: upldDocs
+                                backgroundColor: !upldDocs
                                     ? Colors.white
                                     : Palette().primaryColor,
                                 side: BorderSide(
                                   width: 1,
-                                  color: upldDocs
+                                  color: !upldDocs
                                       ? Colors.black
                                       : Colors.transparent,
                                 ),
@@ -531,7 +531,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                                     bottom: Insets().appPadding)),
                             child: Heading6(
                               value: "Upload Documents",
-                              color: upldDocs ? Colors.black : Colors.white,
+                              color: !upldDocs ? Colors.black : Colors.white,
                             )),
                       ],
                     ),

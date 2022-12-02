@@ -684,13 +684,13 @@ class _userProfileState extends State<userProfile> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                       elevation: 0,
-                                      backgroundColor: stdntsInfo
+                                      backgroundColor: !stdntsInfo
                                           ? Colors.white
                                           : Palette().primaryColor,
                                       shape: RoundedRectangleBorder(
                                           side: BorderSide(
                                             width: 1,
-                                            color: stdntsInfo
+                                            color: !stdntsInfo
                                                 ? Colors.black
                                                 : Colors.transparent,
                                           ),
@@ -700,7 +700,7 @@ class _userProfileState extends State<userProfile> {
                                           EdgeInsets.all(Insets().appPadding)),
                                   child: Heading6(
                                     value: "Students Info",
-                                    color: stdntsInfo
+                                    color: !stdntsInfo
                                         ? Colors.black
                                         : Colors.white,
                                   )),
@@ -719,7 +719,7 @@ class _userProfileState extends State<userProfile> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                       elevation: 0,
-                                      backgroundColor: prntsInfo
+                                      backgroundColor: !prntsInfo
                                           ? Colors.white
                                           : Palette().primaryColor,
                                       shape: RoundedRectangleBorder(
@@ -727,7 +727,7 @@ class _userProfileState extends State<userProfile> {
                                               Insets().appRadiusMin + 4)),
                                       side: BorderSide(
                                         width: 1,
-                                        color: prntsInfo
+                                        color: !prntsInfo
                                             ? Colors.black
                                             : Colors.transparent,
                                       ),
@@ -735,8 +735,9 @@ class _userProfileState extends State<userProfile> {
                                           EdgeInsets.all(Insets().appPadding)),
                                   child: Heading6(
                                     value: "Parents Info",
-                                    color:
-                                        prntsInfo ? Colors.black : Colors.white,
+                                    color: !prntsInfo
+                                        ? Colors.black
+                                        : Colors.white,
                                   )),
                               SizedBox(
                                 width: 15,
@@ -753,12 +754,12 @@ class _userProfileState extends State<userProfile> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                       elevation: 0,
-                                      backgroundColor: paymntReport
+                                      backgroundColor: !paymntReport
                                           ? Colors.white
                                           : Palette().primaryColor,
                                       side: BorderSide(
                                         width: 1,
-                                        color: paymntReport
+                                        color: !paymntReport
                                             ? Colors.black
                                             : Colors.transparent,
                                       ),
@@ -769,7 +770,7 @@ class _userProfileState extends State<userProfile> {
                                           EdgeInsets.all(Insets().appPadding)),
                                   child: Heading6(
                                     value: "Payment Report",
-                                    color: paymntReport
+                                    color: !paymntReport
                                         ? Colors.black
                                         : Colors.white,
                                   )),
@@ -788,12 +789,12 @@ class _userProfileState extends State<userProfile> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                       elevation: 0,
-                                      backgroundColor: exmReport
+                                      backgroundColor: !exmReport
                                           ? Colors.white
                                           : Palette().primaryColor,
                                       side: BorderSide(
                                         width: 1,
-                                        color: exmReport
+                                        color: !exmReport
                                             ? Colors.black
                                             : Colors.transparent,
                                       ),
@@ -804,8 +805,9 @@ class _userProfileState extends State<userProfile> {
                                           EdgeInsets.all(Insets().appPadding)),
                                   child: Heading6(
                                     value: "Exam Report",
-                                    color:
-                                        exmReport ? Colors.black : Colors.white,
+                                    color: !exmReport
+                                        ? Colors.black
+                                        : Colors.white,
                                   )),
                               SizedBox(
                                 width: 15,
@@ -822,12 +824,12 @@ class _userProfileState extends State<userProfile> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                       elevation: 0,
-                                      backgroundColor: alloctns
+                                      backgroundColor: !alloctns
                                           ? Colors.white
                                           : Palette().primaryColor,
                                       side: BorderSide(
                                         width: 1,
-                                        color: alloctns
+                                        color: !alloctns
                                             ? Colors.black
                                             : Colors.transparent,
                                       ),
@@ -839,7 +841,7 @@ class _userProfileState extends State<userProfile> {
                                   child: Heading6(
                                     value: "Allocations",
                                     color:
-                                        alloctns ? Colors.black : Colors.white,
+                                        !alloctns ? Colors.black : Colors.white,
                                   )),
                             ],
                           ),
