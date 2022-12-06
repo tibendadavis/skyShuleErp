@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:graphic/graphic.dart';
+import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
@@ -21,6 +23,7 @@ class header extends StatefulWidget {
 
 class _headerState extends State<header> {
   double _drawersize = 250;
+  var _userProfile;
   bool _menu = false;
   @override
   Widget build(BuildContext context) {
@@ -29,20 +32,32 @@ class _headerState extends State<header> {
         children: [
           !Responsive.isDesktop(context)
               ? Offstage()
-              : ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (_drawersize == 250) {
-                        _drawersize = 90;
-                        _menu = true;
-                      } else {
-                        _drawersize = 250;
-                        _menu = false;
-                      }
-                    });
-                    widget.onTap!([_drawersize, _menu]);
-                  },
-                  child: Icon(Icons.menu)),
+              : SizedBox(
+                  width: 35,
+                  height: 35,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Palette().primaryColor,
+                          padding: EdgeInsets.all(0),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(60))),
+                      onPressed: () {
+                        setState(() {
+                          if (_drawersize == 250) {
+                            _drawersize = 90;
+                            _menu = true;
+                          } else {
+                            _drawersize = 250;
+                            _menu = false;
+                          }
+                        });
+                        widget.onTap!([_drawersize, _menu]);
+                      },
+                      child: Icon(
+                        Icons.menu,
+                        size: 19,
+                      )),
+                ),
           !Responsive.isDesktop(context) ? Offstage() : const Spacer(),
           Expanded(
             child: SizedBox(
@@ -75,22 +90,116 @@ class _headerState extends State<header> {
           ),
           Icon(Icons.message_outlined),
           SizedBox(
-            width: Insets().appGap,
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => userProfile()));
-            },
-            child: CircleAvatar(
-              radius: Insets().appRadiusMid,
+            width: 150,
+            height: 37,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Palette().primaryColorExtraLight,
+                  borderRadius: BorderRadius.circular(Insets().appGap + 4)),
+              child: Expanded(
+                child: DropdownButton(
+                  items: [
+                    DropdownMenuItem(
+                        value: "View Profile",
+                        child: ListTile(
+                          dense: true,
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => userProfile()));
+                          },
+                          contentPadding: EdgeInsets.all(0),
+                          minVerticalPadding: 0.0,
+                          minLeadingWidth: 5,
+                          horizontalTitleGap: 10,
+                          title: Heading5(
+                            value: "View Profile",
+                          ),
+                          leading: Icon(Icons.grid_view_rounded,
+                              color: Palette().primaryColor, size: 20),
+                        )),
+                    DropdownMenuItem(
+                        child: ListTile(
+                          dense: true,
+                          onTap: () {},
+                          contentPadding: EdgeInsets.all(0),
+                          minVerticalPadding: 0.0,
+                          minLeadingWidth: 5,
+                          horizontalTitleGap: 10,
+                          title: Heading5(
+                            value: "Change Password",
+                          ),
+                          leading: Icon(Icons.lock,
+                              color: Palette().primaryColor, size: 20),
+                        ),
+                        value: "Change Password"),
+                    DropdownMenuItem(
+                        child: ListTile(
+                          dense: true,
+                          onTap: () {},
+                          contentPadding: EdgeInsets.all(0),
+                          minVerticalPadding: 0.0,
+                          minLeadingWidth: 5,
+                          horizontalTitleGap: 10,
+                          title: Heading5(
+                            value: "Training",
+                          ),
+                          leading: Icon(Icons.model_training_rounded,
+                              color: Palette().primaryColor, size: 20),
+                        ),
+                        value: "Training"),
+                    DropdownMenuItem(
+                        child: ListTile(
+                          dense: true,
+                          onTap: () {},
+                          contentPadding: EdgeInsets.all(0),
+                          minVerticalPadding: 0.0,
+                          minLeadingWidth: 5,
+                          horizontalTitleGap: 10,
+                          title: Heading5(
+                            value: "Log out",
+                          ),
+                          trailing: Icon(Icons.logout,
+                              color: Palette().primaryColor, size: 20),
+                        ),
+                        value: "Log out"),
+                  ],
+                  value: null,
+                  isExpanded: true,
+                  iconSize: 25,
+                  icon: Icon(Icons.keyboard_arrow_down_outlined),
+                  underline: SizedBox(),
+                  dropdownColor: Colors.white,
+                  borderRadius:
+                      BorderRadius.circular(Insets().appRadiusMin + 4),
+                  hint: Container(
+                    //  alignment: Alignment.centerRight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: Insets().appRadiusMid,
+                        ),
+                        SizedBox(
+                          width: Insets().appGap + 4,
+                        ),
+                        Heading5(
+                          value: "Admin",
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ],
+                    ),
+                  ),
+                  onChanged: ((value) {
+                    if (value is String) {
+                      setState(() {
+                        _userProfile = value;
+                      });
+                    }
+                  }),
+                ),
+              ),
             ),
           ),
-          SizedBox(
-            width: Insets().appGap,
-          ),
-          Heading6(value: "Admin"),
-          Icon(Icons.arrow_drop_down_rounded),
         ],
       ),
     );

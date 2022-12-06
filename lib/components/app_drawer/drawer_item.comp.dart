@@ -80,12 +80,12 @@ class DrawerItem extends StatefulWidget {
 class _DrawerItemState extends State<DrawerItem> {
   @override
   void initState() {
-    widget.selected = isSelected;
+    // isSelected = widget.selected;
     super.initState();
   }
 
   bool expanded = false;
-  bool isSelected = false;
+  var isSelected = false;
   late bool open;
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,10 @@ class _DrawerItemState extends State<DrawerItem> {
         children: [
           InkWell(
             onTap: () {
-              //  widget.onTap();
+              setState(() {
+                isSelected = !isSelected;
+              });
+              widget.onTap(widget.selected);
             },
             onHover: (val) {
               widget.onHover(val);
@@ -124,7 +127,7 @@ class _DrawerItemState extends State<DrawerItem> {
                   dense: true,
                   horizontalTitleGap: 0.0,
                   contentPadding: EdgeInsets.all(0),
-                  minVerticalPadding: 0.0,
+                  minVerticalPadding: -10,
                   minLeadingWidth: 30,
                   child: ExpansionTile(
                     childrenPadding: EdgeInsets.only(left: 25),
@@ -165,7 +168,7 @@ class _DrawerItemState extends State<DrawerItem> {
                           )
                         : Icon(
                             widget.iconData,
-                            size: 17,
+                            size: 20,
                             color: !isSelected
                                 ? Palette().textColor
                                 : Palette().primaryColor,
@@ -202,13 +205,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                 },
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
-                                horizontalTitleGap: 0.0,
+                                horizontalTitleGap: 5,
                                 leading: Icon(
-                                  Icons.circle,
+                                  widget.submenu1![2],
                                   color: !isSelected
                                       ? Palette().textColor
                                       : Palette().primaryColor,
-                                  size: 10,
+                                  size: 20,
                                 ),
                                 title: Heading6(
                                   value: widget.submenu1![0],
@@ -223,6 +226,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               widget.submenu1ex == null
                           ? const Offstage()
                           : ExpansionTile(
+                              iconColor: !isSelected
+                                  ? Colors.white
+                                  : Palette().primaryColor,
+                              collapsedIconColor: !isSelected
+                                  ? Colors.white
+                                  : Palette().primaryColor,
                               childrenPadding: EdgeInsets.only(left: 20),
                               tilePadding: EdgeInsets.all(0),
                               title: Heading6(
@@ -246,13 +255,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu11![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu11![0],
@@ -276,13 +285,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu12![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu12![0],
@@ -306,13 +315,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu13![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu13![0],
@@ -336,13 +345,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu14![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu14![0],
@@ -369,13 +378,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
-                                horizontalTitleGap: 0.0,
+                                horizontalTitleGap: 5,
                                 leading: Icon(
-                                  Icons.circle,
+                                  widget.submenu2![2],
                                   color: !isSelected
                                       ? Palette().textColor
                                       : Palette().primaryColor,
-                                  size: 10,
+                                  size: 20,
                                 ),
                                 title: Heading6(
                                   value: widget.submenu2![0],
@@ -400,13 +409,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
-                                horizontalTitleGap: 0.0,
+                                horizontalTitleGap: 5,
                                 leading: Icon(
-                                  Icons.circle,
+                                  widget.submenu3![2],
                                   color: !isSelected
                                       ? Palette().textColor
                                       : Palette().primaryColor,
-                                  size: 10,
+                                  size: 20,
                                 ),
                                 title: Heading6(
                                   value: widget.submenu3![0],
@@ -421,6 +430,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               widget.submenu3ex == null
                           ? const Offstage()
                           : ExpansionTile(
+                              iconColor: !isSelected
+                                  ? Colors.white
+                                  : Palette().primaryColor,
+                              collapsedIconColor: !isSelected
+                                  ? Colors.white
+                                  : Palette().primaryColor,
                               childrenPadding: EdgeInsets.only(left: 20),
                               tilePadding: EdgeInsets.all(0),
                               title: Heading6(
@@ -444,13 +459,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu31![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu31![0],
@@ -474,13 +489,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu32![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu32![0],
@@ -504,13 +519,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu33![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu33![0],
@@ -534,13 +549,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu34![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu34![0],
@@ -567,13 +582,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
-                                horizontalTitleGap: 0.0,
+                                horizontalTitleGap: 5,
                                 leading: Icon(
-                                  Icons.circle,
+                                  widget.submenu4![2],
                                   color: !isSelected
                                       ? Palette().textColor
                                       : Palette().primaryColor,
-                                  size: 10,
+                                  size: 20,
                                 ),
                                 title: Heading6(
                                   value: widget.submenu4![0],
@@ -588,6 +603,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               widget.submenu4ex == null
                           ? const Offstage()
                           : ExpansionTile(
+                              iconColor: !isSelected
+                                  ? Colors.white
+                                  : Palette().primaryColor,
+                              collapsedIconColor: !isSelected
+                                  ? Colors.white
+                                  : Palette().primaryColor,
                               childrenPadding: EdgeInsets.only(left: 20),
                               tilePadding: EdgeInsets.all(0),
                               title: Heading6(
@@ -611,13 +632,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu41![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu41![0],
@@ -641,13 +662,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu42![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu42![0],
@@ -671,13 +692,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu43![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu43![0],
@@ -701,13 +722,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu44![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu44![0],
@@ -731,13 +752,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
-                                          horizontalTitleGap: 0.0,
+                                          horizontalTitleGap: 5,
                                           leading: Icon(
-                                            Icons.circle,
+                                            widget.submenu45![2],
                                             color: !isSelected
                                                 ? Palette().textColor
                                                 : Palette().primaryColor,
-                                            size: 10,
+                                            size: 20,
                                           ),
                                           title: Heading6(
                                             value: widget.submenu45![0],
@@ -764,13 +785,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
-                                horizontalTitleGap: 0.0,
+                                horizontalTitleGap: 5,
                                 leading: Icon(
-                                  Icons.circle,
+                                  widget.submenu5![2],
                                   color: !isSelected
                                       ? Palette().textColor
                                       : Palette().primaryColor,
-                                  size: 10,
+                                  size: 20,
                                 ),
                                 title: Heading6(
                                   value: widget.submenu5![0],
@@ -795,13 +816,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
-                                horizontalTitleGap: 0.0,
+                                horizontalTitleGap: 5,
                                 leading: Icon(
-                                  Icons.circle,
+                                  widget.submenu6![2],
                                   color: !isSelected
                                       ? Palette().textColor
                                       : Palette().primaryColor,
-                                  size: 10,
+                                  size: 20,
                                 ),
                                 title: Heading6(
                                   value: widget.submenu6![0],
@@ -811,53 +832,6 @@ class _DrawerItemState extends State<DrawerItem> {
                                 ),
                               ),
                             ),
-
-                      //   Row(
-                      //     children: [
-                      //       widget.size == 90
-                      //           ? Center(
-                      //               child: Icon(
-                      //                 widget.iconData,
-                      //                 size: 20,
-                      //                 color: !isSelected
-                      //                     ? Palette().textColor
-                      //                     : Palette().primaryColor,
-                      //               ),
-                      //             )
-                      //           : Icon(
-                      //               widget.iconData,
-                      //               size: 17,
-                      //               color: !isSelected
-                      //                   ? Palette().textColor
-                      //                   : Palette().primaryColor,
-                      //             ),
-                      //       widget.size == 90
-                      //           ? const Offstage()
-                      //           : SizedBox(
-                      //               width: Insets().appGap,
-                      //             ),
-                      //       widget.size == 90
-                      //           ? const Offstage()
-                      //           : Heading5(
-                      //               value: widget.value,
-                      //               color: !isSelected
-                      //                   ? Palette().textColor
-                      //                   : Palette().primaryColor,
-                      //             ),
-                      //       Spacer(),
-                      //       widget.size == 90
-                      //           ? const Offstage()
-                      //           : widget.iconData2 != null
-                      //               ? Icon(
-                      //                   widget.iconData2,
-                      //                   size: 20,
-                      //                   color: !isSelected
-                      //                       ? Palette().textColor
-                      //                       : Palette().primaryColor,
-                      //                 )
-                      //               : Offstage(),
-                      //     ],
-                      //   ),
                     ],
                   ),
                 ),

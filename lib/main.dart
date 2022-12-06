@@ -7,15 +7,22 @@ import 'package:overlay_support/overlay_support.dart';
 
 import 'package:skyconnect_starter/database/boxes.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
+import 'package:skyconnect_starter/screens/classes.dart';
+import 'package:skyconnect_starter/screens/listsubjects.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
+import 'package:skyconnect_starter/screens/parents.dart';
+import 'package:skyconnect_starter/screens/streams.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/supportingStaff.dart';
+import 'package:skyconnect_starter/screens/teacher.dart';
+import 'package:skyconnect_starter/screens/terms.dart';
 import 'package:skyconnect_starter/screens/user_profile.scrn.dart';
 import 'package:skyconnect_starter/services/locale_string.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(home: HomePage()));
+  runApp(MaterialApp(home: terms()));
 }
 
 class MyApp extends StatefulWidget {

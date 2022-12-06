@@ -11,15 +11,23 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
+import 'package:skyconnect_starter/screens/classes.dart';
+import 'package:skyconnect_starter/screens/listsubjects.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
+import 'package:skyconnect_starter/screens/parents.dart';
+import 'package:skyconnect_starter/screens/streams.dart';
+import 'package:skyconnect_starter/screens/supportingStaff.dart';
+import 'package:skyconnect_starter/screens/teacher.dart';
+import 'package:skyconnect_starter/screens/terms.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class skyShuleDrawer extends StatefulWidget {
   final double? size;
-  final bool menu;
-  final Function onTap;
+  final bool? menu;
+  final bool? selected;
+  final Function? onTap;
   const skyShuleDrawer(
-      {super.key, this.size, required this.onTap, required this.menu});
+      {super.key, this.size, this.onTap, this.menu, this.selected});
 
   @override
   State<skyShuleDrawer> createState() => _skyShuleDrawerState();
@@ -27,11 +35,12 @@ class skyShuleDrawer extends StatefulWidget {
 
 class _skyShuleDrawerState extends State<skyShuleDrawer> {
   late double _drawerSize;
-  bool test = false;
+  var test = false;
 
   @override
   void initState() {
     _drawerSize = widget.size!;
+
     super.initState();
   }
 
@@ -43,156 +52,187 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "link": HomePage(),
         "value": "Dashboard",
         "iconData": Icons.dashboard_rounded,
-        "selected": false
+        "selected": [false]
       },
       {
         "size": widget.size!,
         "value": "Users",
         "iconData": Icons.manage_accounts_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
-        "submenu1": ["Students", manageStudents()],
-        "submenu2": ["Parents"],
-        "submenu3": ["Teachers"],
-        "submenu4": ["Supporting Staff"],
+        "selected": [false],
+        "submenu1": ["Students", manageStudents(), Icons.person],
+        "submenu2": ["Parents", parents(), Icons.supervisor_account_outlined],
+        "submenu3": ["Teachers", teachers(), Icons.person],
+        "submenu4": [
+          "Supporting Staff",
+          supportingStaff(),
+          Icons.groups_outlined
+        ],
       },
       {
         "size": widget.size!,
-        "value": "Classes",
+        "value": "Class",
+        "link": classes(),
         "iconData": Icons.class_outlined,
-        "selected": false
+        "selected": [false]
       },
       {
         "size": widget.size!,
         "value": "Streams",
+        "link": streams(),
         "iconData": Icons.stream_outlined,
-        "selected": false
+        "selected": [false]
       },
       {
         "size": widget.size!,
         "value": "Subjects",
         "iconData": Icons.subject_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
-        "submenu1": ["List of Students"],
-        "submenu2": ["Class Subject"],
-        "submenu3": ["Section Subject Teacher"],
+        "selected": [false],
+        "submenu1": [
+          "List of Students",
+          listSubjects(),
+          Icons.subject_outlined
+        ],
+        "submenu2": ["Class Subject", null, Icons.subject_outlined],
+        "submenu3": ["Section Subject Teacher", null, Icons.subject_outlined],
         "submenu4ex": "Teaching Tools",
-        "submenu4.1": ["Syllabus"],
-        "submenu4.2": ["Scheme of Work"],
-        "submenu4.3": ["Lesson Plan"],
-        "submenu4.4": ["Class Journal"],
-        "submenu4.5": ["Syllabus Reports"],
+        "submenu4.1": ["Syllabus", null, Icons.view_list_outlined],
+        "submenu4.2": ["Scheme of Work", null, Icons.my_library_books],
+        "submenu4.3": ["Lesson Plan", null, Icons.my_library_books],
+        "submenu4.4": ["Class Journal", null, Icons.my_library_books],
+        "submenu4.5": ["Syllabus Reports", null, Icons.my_library_books],
       },
-      {
-        "size": widget.size!,
-        "value": "Syllabus",
-        "iconData": Icons.outbox_outlined,
-        "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
-        "submenu1": ["Students"],
-        "submenu2": ["Parents"],
-        "submenu3": ["Teachers"],
-        "submenu4": ["Supporting Staff"],
-      },
+      // {
+      //   "size": widget.size!,
+      //   "value": "Syllabus",
+      //   "iconData": Icons.outbox_outlined,
+      //   "iconData2": Icons.keyboard_arrow_down_rounded,
+      //   "selected": [false],
+      //   "submenu1": ["Students", null, Icons.person],
+      //   "submenu2": ["Parents", null, Icons.supervisor_account_outlined],
+      //   "submenu3": ["Teachers", null, Icons.person],
+      //   "submenu4": ["Supporting Staff", null, Icons.groups_outlined],
+      // },
       {
         "size": widget.size!,
         "value": "Grading",
         "iconData": Icons.grading_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
-        "submenu1": ["Default Grading"],
-        "submenu2": ["Special Grade name"],
-        "submenu3": ["Special Grading"],
+        "selected": [false],
+        "submenu1": [
+          "Default Grading",
+          null,
+          Icons.grading_outlined,
+        ],
+        "submenu2": [
+          "Special Grade name",
+          null,
+          Icons.grading_outlined,
+        ],
+        "submenu3": [
+          "Special Grading",
+          null,
+          Icons.grading_outlined,
+        ],
       },
       {
         "size": widget.size!,
         "value": "Terms",
-        "iconData": Icons.dashboard_rounded,
-        "selected": false
+        "link": terms(),
+        "iconData": Icons.signal_cellular_alt_outlined,
+        "selected": [false]
       },
       {
         "size": widget.size!,
         "value": "Exams",
-        "iconData": Icons.dashboard_rounded,
+        "iconData": Icons.quiz_rounded,
         "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
+        "selected": [false],
         "submenu1ex": "Setting",
-        "submenu2": ["Exam Schedule"],
+        "submenu2": ["Exam Schedule", null, Icons.extension],
         "submenu3ex": "Reports",
-        "submenu4": ["Minor School Exams"],
-        "submenu1.1": ["Exam Groups"],
-        "submenu1.2": ["School Exams"],
-        "submenu1.3": ["Class Allocation"],
-        "submenu3.1": ["Single Reports"],
-        "submenu3.2": ["Combined Reports"],
-        "submenu3.3": ["CA Report"],
-        "submenu3.4": ["Reports Created"],
+        "submenu4": ["Minor School Exams", null, Icons.description],
+        "submenu1.1": ["Exam Groups", null, Icons.text_snippet_outlined],
+        "submenu1.2": ["School Exams", null, Icons.text_snippet_outlined],
+        "submenu1.3": ["Class Allocation", null, Icons.text_snippet_outlined],
+        "submenu3.1": ["Single Reports", null, Icons.text_snippet_outlined],
+        "submenu3.2": ["Combined Reports", null, Icons.text_snippet_outlined],
+        "submenu3.3": ["CA Report", null, Icons.text_snippet_outlined],
+        "submenu3.4": ["Reports Created", null, Icons.text_snippet_outlined],
       },
       {
         "size": widget.size!,
         "value": "Class Routine",
         "iconData": Icons.route_outlined,
-        "selected": false,
+        "selected": [false],
       },
       {
         "size": widget.size!,
         "value": "Attendance",
-        "iconData": Icons.dashboard_rounded,
+        "iconData": Icons.content_paste,
         "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
-        "submenu1": ["Student Attendance"],
-        "submenu2": ["Employee Attendance"],
-        "submenu3": ["Exam Attendance"],
-        "submenu4": ["Teacher on Duty"],
-        "submenu5": ["Attendance Report"],
+        "selected": [false],
+        "submenu1": ["Student Attendance", null, Icons.groups],
+        "submenu2": ["Employee Attendance", null, Icons.badge_outlined],
+        "submenu3": [
+          "Exam Attendance",
+          null,
+          Icons.airline_seat_recline_normal
+        ],
+        "submenu4": ["Teacher on Duty", null, Icons.notifications],
+        "submenu5": ["Attendance Report", null, Icons.group],
       },
       {
         "size": widget.size!,
         "value": "News & Announcements",
         "iconData": Icons.newspaper_outlined,
-        "selected": false
+        "selected": [false]
       },
       {
         "size": widget.size!,
         "value": "Hostel Management",
         "iconData": Icons.house_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
-        "submenu1": ["Hostel"],
-        "submenu2": ["Members"],
+        "selected": [false],
+        "submenu1": ["Hostel", null, Icons.airline_seat_individual_suite],
+        "submenu2": ["Members", null, Icons.how_to_reg],
       },
       {
         "size": widget.size!,
         "value": "Library",
         "iconData": Icons.library_add_check_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
-        "submenu1": ["Members"],
-        "submenu2": ["Books"],
-        "submenu3": ["Issue"],
+        "selected": [false],
+        "submenu1": ["Members", null, Icons.how_to_reg],
+        "submenu2": ["Books", null, Icons.book],
+        "submenu3": ["Issue", null, Icons.stroller],
         "submenu4ex": "Library Report",
-        "submenu4.1": ["General Report"],
-        "submenu4.2": ["Other Report"],
+        "submenu4.1": ["General Report", null, Icons.summarize_outlined],
+        "submenu4.2": ["Other Report", null, Icons.summarize_outlined],
       },
       {
         "size": widget.size!,
         "value": "eResources",
-        "iconData": Icons.dashboard_rounded,
+        "iconData": Icons.movie_creation_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
-        "selected": false,
-        "submenu1": ["Files"],
-        "submenu2": ["Live Studies"],
-        "submenu3": ["Class Notes"],
-        "submenu4": ["Online Exams"],
-        "submenu5": ["Home Packages"],
-        "submenu6": ["Online Discussion"],
+        "selected": [false],
+        "submenu1": ["Files", null, Icons.file_copy_sharp],
+        "submenu2": [
+          "Live Studies",
+          null,
+          Icons.videocam,
+        ],
+        "submenu3": ["Class Notes", null, Icons.note_alt_sharp],
+        "submenu4": ["Online Exams", null, Icons.book_online_outlined],
+        "submenu5": ["Home Packages", null, Icons.inventory_outlined],
+        "submenu6": ["Online Discussion", null, Icons.forum],
       },
       {
         "size": widget.size!,
         "value": "Settings",
         "iconData": Icons.settings,
-        "selected": false
+        "selected": [false]
       }
     ];
     var size = MediaQuery.of(context).size;
@@ -220,7 +260,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
                   (index) => Container(
                         child: DrawerItem(
                             size: items[index]["size"],
-                            selected: items[index]["selected"],
+                            selected: items[index]["selected"][0],
                             value: items[index]["value"],
                             iconData: items[index]["iconData"],
                             iconData2: items[index]["iconData2"],
@@ -248,29 +288,25 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
                             submenu3ex: items[index]["submenu3ex"],
                             submenu4ex: items[index]["submenu4ex"],
                             onHover: (val) {
-                              if (widget.menu)
+                              if (widget.menu!)
                                 setState(() {
                                   if (val) {
                                     _drawerSize = 250;
-                                    items[index]
-                                        .update("selected", (value) => true);
                                   } else {
                                     _drawerSize = 90;
-                                    items[index]
-                                        .update("selected", (value) => false);
                                   }
                                 });
-                              if (!widget.menu)
+                              if (!widget.menu!)
                                 setState(() {
-                                  items[index]
-                                      .update("selected", (value) => true);
                                   _drawerSize = 250;
                                 });
-                              widget.onTap(_drawerSize);
+                              widget.onTap!(_drawerSize);
+                              widget.onTap!(_drawerSize);
                             },
                             onTap: (val) {
                               setState(() {
-                                items[index].update("selected", (value) => val);
+                                items[index]["selected"][0] = val;
+                                print(items[index]["selected"][0]);
                               });
                             }),
                       ))

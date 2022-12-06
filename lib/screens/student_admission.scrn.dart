@@ -60,7 +60,7 @@ class _studentAdmissionState extends State<studentAdmission> {
       ),
       body: SingleChildScrollView(
           child: SizedBox(
-        height: size.height + 194,
+        height: size.height + 202,
         width: size.width,
         child: Row(children: [
           if (Responsive.isDesktop(context))
