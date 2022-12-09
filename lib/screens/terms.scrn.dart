@@ -12,22 +12,23 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class parents extends StatefulWidget {
-  const parents({super.key});
+class terms extends StatefulWidget {
+  const terms({super.key});
 
   @override
-  State<parents> createState() => _parentsState();
+  State<terms> createState() => _termsState();
 }
 
-class _parentsState extends State<parents> {
+class _termsState extends State<terms> {
   bool _menu = false;
   double _drawersize = 250;
   var _classlevel;
   var _academicYear;
-  var _stream;
+  var _class;
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +94,7 @@ class _parentsState extends State<parents> {
                     left: Insets().appPadding * 2,
                     right: Insets().appGap),
                 child: const Heading1(
-                  value: "PARENTS",
+                  value: "TERMS",
                   fontWeight: FontWeight.w700,
                   color: Colors.black,
                 ),
@@ -101,7 +102,7 @@ class _parentsState extends State<parents> {
               Row(
                 children: [
                   SizedBox(
-                    width: 410,
+                    width: 400,
                     child: Container(
                       margin: EdgeInsets.only(
                           left: Insets().appPadding * 2,
@@ -140,8 +141,7 @@ class _parentsState extends State<parents> {
                             ElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          studentAdmission()));
+                                      builder: (context) => addTerms()));
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
@@ -151,7 +151,7 @@ class _parentsState extends State<parents> {
                                     padding:
                                         EdgeInsets.all(Insets().appPadding)),
                                 child: Heading5(
-                                  value: "Add Parent",
+                                  value: "Add Term",
                                   color: Colors.black,
                                 ))
                           ],
@@ -160,12 +160,11 @@ class _parentsState extends State<parents> {
                     ),
                   ),
                   SizedBox(
-                    width: 410,
+                    width: 400,
                     child: Container(
                       margin: EdgeInsets.only(
                           left: Insets().appPadding * 2,
                           top: Insets().appPadding,
-                          right: Insets().appPadding * 2,
                           bottom: Insets().appPadding),
                       padding: EdgeInsets.only(
                           left: Insets().appPadding,
@@ -193,11 +192,13 @@ class _parentsState extends State<parents> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Heading1(
-                              value: "480",
+                              value: "2",
                               color: Colors.white,
                             ),
-                            Heading6(
-                                value: "Total Parents", color: Colors.white)
+                            Expanded(
+                              child: Heading6(
+                                  value: "Total Terms", color: Colors.white),
+                            )
                           ],
                         ),
                       ),
@@ -229,7 +230,7 @@ class _parentsState extends State<parents> {
                               //     borderSide: BorderSide(
                               //         color: Colors.grey, width: 3.0)),
                               border: InputBorder.none,
-                              hintText: " Search for Parents",
+                              hintText: " Search for Terms",
                               hintStyle: TextStyle(fontSize: 20)))),
                   SizedBox(
                     width: 10,
@@ -282,189 +283,6 @@ class _parentsState extends State<parents> {
                             if (value is String) {
                               setState(() {
                                 _classlevel = value;
-                              });
-                            }
-                          }),
-                        ),
-                      )),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          right: Insets().appGap,
-                        ),
-                        padding: EdgeInsets.only(
-                          left: Insets().appGap,
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey, width: 2),
-                            color: Palette().primaryColor,
-                            borderRadius:
-                                BorderRadius.circular(Insets().appGap + 4)),
-                        child: DropdownButton(
-                          items: const [
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "2019",
-                                  color: Colors.white,
-                                ),
-                                value: 2019),
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "2020",
-                                  color: Colors.white,
-                                ),
-                                value: 2020),
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "2021",
-                                  color: Colors.white,
-                                ),
-                                value: 2021),
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "2022",
-                                  color: Colors.white,
-                                ),
-                                value: 2022),
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "2023",
-                                  color: Colors.white,
-                                ),
-                                value: 2023)
-                          ],
-                          value: _academicYear,
-                          iconEnabledColor: Colors.white,
-                          iconDisabledColor: Colors.white,
-                          isExpanded: true,
-                          underline: SizedBox(),
-                          dropdownColor: Palette().primaryColor,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appRadiusMin + 4),
-                          hint: Heading6(
-                            value: "Academic Year",
-                            color: Colors.white,
-                          ),
-                          onChanged: ((value) {
-                            if (value is int) {
-                              setState(() {
-                                _academicYear = value;
-                              });
-                            }
-                          }),
-                        ),
-                      )),
-                  SizedBox(
-                    width: 7,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          right: Insets().appGap,
-                        ),
-                        padding: EdgeInsets.only(
-                          left: Insets().appGap,
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey, width: 2),
-                            color: Palette().primaryColor,
-                            borderRadius:
-                                BorderRadius.circular(Insets().appGap + 4)),
-                        child: DropdownButton(
-                          items: const [
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "Nursery",
-                                  color: Colors.white,
-                                ),
-                                value: "Nursery"),
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "Primary",
-                                  color: Colors.white,
-                                ),
-                                value: "Primary"),
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "Secondary",
-                                  color: Colors.white,
-                                ),
-                                value: "Secondary")
-                          ],
-                          value: _classlevel,
-                          iconEnabledColor: Colors.white,
-                          iconDisabledColor: Colors.white,
-                          isExpanded: true,
-                          dropdownColor: Palette().primaryColor,
-                          underline: SizedBox(),
-                          borderRadius:
-                              BorderRadius.circular(Insets().appRadiusMin + 4),
-                          hint: Heading6(
-                            value: "Select Class",
-                            color: Colors.white,
-                          ),
-                          onChanged: ((value) {
-                            if (value is String) {
-                              setState(() {
-                                _classlevel = value;
-                              });
-                            }
-                          }),
-                        ),
-                      )),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          right: Insets().appGap,
-                        ),
-                        padding: EdgeInsets.only(
-                          left: Insets().appGap,
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey, width: 2),
-                            color: Palette().primaryColor,
-                            borderRadius:
-                                BorderRadius.circular(Insets().appGap + 4)),
-                        child: DropdownButton(
-                          items: const [
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "MIKUMI",
-                                  color: Colors.white,
-                                ),
-                                value: "MIKUMI"),
-                            DropdownMenuItem(
-                                child: Heading6(
-                                  value: "RUAHA",
-                                  color: Colors.white,
-                                ),
-                                value: "RUAHA"),
-                          ],
-                          value: _stream,
-                          iconEnabledColor: Colors.white,
-                          iconDisabledColor: Colors.white,
-                          dropdownColor: Palette().primaryColor,
-                          underline: SizedBox(),
-                          borderRadius:
-                              BorderRadius.circular(Insets().appRadiusMin + 4),
-                          isExpanded: true,
-                          hint: Heading6(
-                            value: "Select Stream",
-                            color: Colors.white,
-                          ),
-                          onChanged: ((value) {
-                            if (value is String) {
-                              setState(() {
-                                _stream = value;
                               });
                             }
                           }),
@@ -700,63 +518,52 @@ class _parentsState extends State<parents> {
                               DataColumn(
                                   label: Expanded(
                                 child: HeadingText(
-                                  size: 15,
+                                  size: 14,
                                   value: "No.",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 150,
                                 child: HeadingText(
-                                  size: 15,
-                                  value: "Photo",
+                                  size: 14,
+                                  value: "Term",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 150,
                                 child: HeadingText(
-                                  size: 15,
-                                  value: "Parent Name",
+                                  size: 14,
+                                  value: "Start Date",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 200,
                                 child: HeadingText(
-                                  size: 15,
-                                  value: "Relation",
+                                  size: 14,
+                                  value: "End Date",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 200,
                                 child: HeadingText(
-                                  size: 15,
-                                  value: "Email Address",
+                                  size: 14,
+                                  value: "Study Days",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 200,
                                 child: HeadingText(
-                                  size: 15,
-                                  value: "Parents Phone",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )),
-                              DataColumn(
-                                  label: Expanded(
-                                child: HeadingText(
-                                  size: 15,
-                                  value: "Address",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )),
-                              DataColumn(
-                                  label: Expanded(
-                                child: HeadingText(
-                                  size: 15,
+                                  size: 14,
                                   value: "Action",
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -771,45 +578,47 @@ class _parentsState extends State<parents> {
                                   },
                                 )),
                                 DataCell(HeadingText(
-                                  size: 15,
+                                  size: 14,
                                   value: "1",
                                 )),
-                                DataCell(Icon(size: 20, Icons.face_rounded)),
                                 DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Juma Omary Kaponta",
+                                  size: 14,
+                                  value: "FIRST TERM",
                                 )),
                                 DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Father",
+                                  size: 14,
+                                  value: "2022 - 01 - 17",
                                 )),
                                 DataCell(HeadingText(
-                                  size: 15,
-                                  value: "parentsemail@gmail.com",
+                                  size: 14,
+                                  value: "2022 - 06 - 24",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "  ",
                                 )),
                                 DataCell(Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Edit",
+                                      ),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Delete",
+                                        color: Colors.red,
+                                      ),
+                                    ),
                                   ],
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "TABAT, BIMA",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Edit",
                                 ))
                               ]),
                               DataRow(cells: [
@@ -820,143 +629,47 @@ class _parentsState extends State<parents> {
                                   },
                                 )),
                                 DataCell(HeadingText(
-                                  size: 15,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.face_rounded)),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Juma Omary Kaponta",
+                                  size: 14,
+                                  value: "2",
                                 )),
                                 DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Father",
+                                  size: 14,
+                                  value: "SECOND TERM",
                                 )),
                                 DataCell(HeadingText(
-                                  size: 15,
-                                  value: "parentsemail@gmail.com",
+                                  size: 14,
+                                  value: "2022 - 01 - 17",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "2022 - 06 - 24",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "  ",
                                 )),
                                 DataCell(Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Edit",
+                                      ),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Delete",
+                                        color: Colors.red,
+                                      ),
+                                    ),
                                   ],
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "TABAT, BIMA",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Edit",
-                                ))
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Checkbox(
-                                  value: false,
-                                  onChanged: (value) {
-                                    setState(() {});
-                                  },
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.face_rounded)),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Juma Omary Kaponta",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Father",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "parentsemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "TABAT, BIMA",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Edit",
-                                ))
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Checkbox(
-                                  value: false,
-                                  onChanged: (value) {
-                                    setState(() {});
-                                  },
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.face_rounded)),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Juma Omary Kaponta",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Father",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "parentsemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "TABAT, BIMA",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 15,
-                                  value: "Edit",
                                 ))
                               ]),
                             ]),

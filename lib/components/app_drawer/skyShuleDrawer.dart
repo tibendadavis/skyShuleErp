@@ -11,14 +11,19 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
-import 'package:skyconnect_starter/screens/classes.dart';
-import 'package:skyconnect_starter/screens/listsubjects.dart';
+import 'package:skyconnect_starter/screens/classRoutine.scrn.dart';
+import 'package:skyconnect_starter/screens/classSubjects.scrn.dart';
+import 'package:skyconnect_starter/screens/classes.scrn.dart';
+import 'package:skyconnect_starter/screens/defaultGrading.scrn.dart';
+import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
-import 'package:skyconnect_starter/screens/parents.dart';
-import 'package:skyconnect_starter/screens/streams.dart';
-import 'package:skyconnect_starter/screens/supportingStaff.dart';
-import 'package:skyconnect_starter/screens/teacher.dart';
-import 'package:skyconnect_starter/screens/terms.dart';
+import 'package:skyconnect_starter/screens/parents.scrn.dart';
+import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
+import 'package:skyconnect_starter/screens/streamSubjectTeacher.scrn.dart';
+import 'package:skyconnect_starter/screens/streams.scrn.dart';
+import 'package:skyconnect_starter/screens/supportingStaff.scrn.dart';
+import 'package:skyconnect_starter/screens/teacher.scrn.dart';
+import 'package:skyconnect_starter/screens/terms.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class skyShuleDrawer extends StatefulWidget {
@@ -90,12 +95,16 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": [false],
         "submenu1": [
-          "List of Students",
+          "List of Subjects",
           listSubjects(),
           Icons.subject_outlined
         ],
-        "submenu2": ["Class Subject", null, Icons.subject_outlined],
-        "submenu3": ["Section Subject Teacher", null, Icons.subject_outlined],
+        "submenu2": ["Class Subject", classSubjects(), Icons.subject_outlined],
+        "submenu3": [
+          "Stream Subject Teacher",
+          streamSubjectTeacher(),
+          Icons.subject_outlined
+        ],
         "submenu4ex": "Teaching Tools",
         "submenu4.1": ["Syllabus", null, Icons.view_list_outlined],
         "submenu4.2": ["Scheme of Work", null, Icons.my_library_books],
@@ -122,17 +131,17 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "selected": [false],
         "submenu1": [
           "Default Grading",
-          null,
+          defaultGrading(),
           Icons.grading_outlined,
         ],
-        "submenu2": [
-          "Special Grade name",
-          null,
-          Icons.grading_outlined,
-        ],
+        // "submenu2": [
+        //   "Special Grade name",
+        //   null,
+        //   Icons.grading_outlined,
+        // ],
         "submenu3": [
           "Special Grading",
-          null,
+          specialGrading(),
           Icons.grading_outlined,
         ],
       },
@@ -164,6 +173,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
       {
         "size": widget.size!,
         "value": "Class Routine",
+        "link": classRoutine(),
         "iconData": Icons.route_outlined,
         "selected": [false],
       },

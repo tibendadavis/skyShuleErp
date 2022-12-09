@@ -166,11 +166,12 @@ class _headerState extends State<header> {
                   value: null,
                   isExpanded: true,
                   iconSize: 25,
+                  elevation: 1,
                   icon: Icon(Icons.keyboard_arrow_down_outlined),
                   underline: SizedBox(),
                   dropdownColor: Colors.white,
                   borderRadius:
-                      BorderRadius.circular(Insets().appRadiusMin + 4),
+                      BorderRadius.circular(Insets().appRadiusMin + 2),
                   hint: Container(
                     //  alignment: Alignment.centerRight,
                     child: Row(

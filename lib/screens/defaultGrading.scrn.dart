@@ -12,17 +12,18 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/screens/addGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class listSubjects extends StatefulWidget {
-  const listSubjects({super.key});
+class defaultGrading extends StatefulWidget {
+  const defaultGrading({super.key});
 
   @override
-  State<listSubjects> createState() => _listSubjectsState();
+  State<defaultGrading> createState() => _defaultGradingState();
 }
 
-class _listSubjectsState extends State<listSubjects> {
+class _defaultGradingState extends State<defaultGrading> {
   bool _menu = false;
   double _drawersize = 250;
   var _classlevel;
@@ -93,7 +94,7 @@ class _listSubjectsState extends State<listSubjects> {
                     left: Insets().appPadding * 2,
                     right: Insets().appGap),
                 child: const Heading1(
-                  value: "SUBJECTS",
+                  value: "GRADE",
                   fontWeight: FontWeight.w700,
                   color: Colors.black,
                 ),
@@ -140,8 +141,7 @@ class _listSubjectsState extends State<listSubjects> {
                             ElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          studentAdmission()));
+                                      builder: (context) => addGrading()));
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
@@ -151,54 +151,9 @@ class _listSubjectsState extends State<listSubjects> {
                                     padding:
                                         EdgeInsets.all(Insets().appPadding)),
                                 child: Heading5(
-                                  value: "Add Subject",
+                                  value: "Add Grade",
                                   color: Colors.black,
                                 ))
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 400,
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: Insets().appPadding * 2,
-                          top: Insets().appPadding,
-                          bottom: Insets().appPadding),
-                      padding: EdgeInsets.only(
-                          left: Insets().appPadding,
-                          right: Insets().appPadding,
-                          top: Insets().appGap + 2,
-                          bottom: Insets().appPadding),
-                      decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15.0, // soften the shadow
-                              spreadRadius: 2.0, //extend the shadow
-                              offset: Offset(
-                                1.0, // Move to right 5  horizontally
-                                2.0, // Move to bottom 5 Vertically
-                              ),
-                            )
-                          ],
-                          color: Palette().primaryColor,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appRadiusMin + 4)),
-                      child: SizedBox(
-                        height: 70,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Heading1(
-                              value: "29",
-                              color: Colors.white,
-                            ),
-                            Expanded(
-                              child: Heading6(
-                                  value: "Total Subjects", color: Colors.white),
-                            )
                           ],
                         ),
                       ),
@@ -230,7 +185,7 @@ class _listSubjectsState extends State<listSubjects> {
                               //     borderSide: BorderSide(
                               //         color: Colors.grey, width: 3.0)),
                               border: InputBorder.none,
-                              hintText: " Search for Subjects",
+                              hintText: " Search for Grade",
                               hintStyle: TextStyle(fontSize: 20)))),
                   SizedBox(
                     width: 10,
@@ -366,7 +321,7 @@ class _listSubjectsState extends State<listSubjects> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Heading5(
-                      value: "RESULTS (23)",
+                      value: "RESULTS (13)",
                       color: Palette().primaryColor,
                       fontWeight: FontWeight.w700,
                     ),
@@ -525,34 +480,70 @@ class _listSubjectsState extends State<listSubjects> {
                               )),
                               DataColumn(
                                   label: SizedBox(
-                                width: 200,
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Subject Name",
+                                  value: "Grade Name",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
                                   label: SizedBox(
-                                width: 150,
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Subject Code",
+                                  value: "Grade Point",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
                                   label: SizedBox(
-                                width: 200,
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Arrangement",
+                                  value: "Mark From",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
                                   label: SizedBox(
-                                width: 200,
+                                width: 90,
+                                child: HeadingText(
+                                  size: 14,
+                                  value: "Mark Up to",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )),
+                              DataColumn(
+                                  label: SizedBox(
+                                width: 90,
+                                child: HeadingText(
+                                  size: 14,
+                                  value: "Remark",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )),
+                              DataColumn(
+                                  label: SizedBox(
+                                width: 170,
+                                child: HeadingText(
+                                  size: 14,
+                                  value: "Overall Academic Note",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )),
+                              DataColumn(
+                                  label: SizedBox(
+                                width: 110,
+                                child: HeadingText(
+                                  size: 14,
+                                  value: "Overall Remark",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )),
+                              DataColumn(
+                                  label: SizedBox(
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
                                   value: "Action",
@@ -574,15 +565,31 @@ class _listSubjectsState extends State<listSubjects> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Physics",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "11",
+                                  value: "A",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
                                   value: "1",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "81",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "100",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Excellent",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Excellent",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Excellent",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -617,19 +624,35 @@ class _listSubjectsState extends State<listSubjects> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
+                                  value: "2",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Physics",
+                                  value: "B",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "11",
+                                  value: "2",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
+                                  value: "61",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "80",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Very Good",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Very Good",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Very Good",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -664,19 +687,35 @@ class _listSubjectsState extends State<listSubjects> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
+                                  value: "3",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Physics",
+                                  value: "C",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "11",
+                                  value: "3",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
+                                  value: "41",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "60",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Good",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Good",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Good",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -711,19 +750,35 @@ class _listSubjectsState extends State<listSubjects> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
+                                  value: "4",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Physics",
+                                  value: "D",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "11",
+                                  value: "4",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
+                                  value: "21",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "40",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Satisfactory",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Satisfactory",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Satisfactory",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -758,19 +813,35 @@ class _listSubjectsState extends State<listSubjects> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
+                                  value: "5",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Physics",
+                                  value: "F",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "11",
+                                  value: "5",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
+                                  value: "0",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "20",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Fail",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Fail",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Fail",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,

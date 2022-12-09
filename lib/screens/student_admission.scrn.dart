@@ -209,6 +209,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                     ]),
               ),
               Container(
+                width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.only(
                     top: Insets().appPadding,
                     bottom: Insets().appPadding,
@@ -219,6 +220,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                     color: Palette().primaryColorLight,
                     borderRadius: BorderRadius.circular(Insets().appRadius)),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -536,6 +538,7 @@ class _studentAdmissionState extends State<studentAdmission> {
                       ],
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Visibility(
                             visible: offDtls, child: (officialDetails())),

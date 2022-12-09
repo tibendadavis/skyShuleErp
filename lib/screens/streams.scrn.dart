@@ -12,17 +12,18 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/screens/addStream.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class terms extends StatefulWidget {
-  const terms({super.key});
+class streams extends StatefulWidget {
+  const streams({super.key});
 
   @override
-  State<terms> createState() => _termsState();
+  State<streams> createState() => _streamsState();
 }
 
-class _termsState extends State<terms> {
+class _streamsState extends State<streams> {
   bool _menu = false;
   double _drawersize = 250;
   var _classlevel;
@@ -93,7 +94,7 @@ class _termsState extends State<terms> {
                     left: Insets().appPadding * 2,
                     right: Insets().appGap),
                 child: const Heading1(
-                  value: "TERMS",
+                  value: "STREAMS",
                   fontWeight: FontWeight.w700,
                   color: Colors.black,
                 ),
@@ -140,8 +141,7 @@ class _termsState extends State<terms> {
                             ElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          studentAdmission()));
+                                      builder: (context) => addStream()));
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
@@ -151,7 +151,7 @@ class _termsState extends State<terms> {
                                     padding:
                                         EdgeInsets.all(Insets().appPadding)),
                                 child: Heading5(
-                                  value: "Add Term",
+                                  value: "Add Stream",
                                   color: Colors.black,
                                 ))
                           ],
@@ -192,12 +192,12 @@ class _termsState extends State<terms> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Heading1(
-                              value: "2",
+                              value: "140",
                               color: Colors.white,
                             ),
                             Expanded(
                               child: Heading6(
-                                  value: "Total Terms", color: Colors.white),
+                                  value: "Total Streams", color: Colors.white),
                             )
                           ],
                         ),
@@ -230,7 +230,7 @@ class _termsState extends State<terms> {
                               //     borderSide: BorderSide(
                               //         color: Colors.grey, width: 3.0)),
                               border: InputBorder.none,
-                              hintText: " Search for Terms",
+                              hintText: " Search for Streams",
                               hintStyle: TextStyle(fontSize: 20)))),
                   SizedBox(
                     width: 10,
@@ -283,6 +283,62 @@ class _termsState extends State<terms> {
                             if (value is String) {
                               setState(() {
                                 _classlevel = value;
+                              });
+                            }
+                          }),
+                        ),
+                      )),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          left: Insets().appGap,
+                          right: Insets().appGap,
+                        ),
+                        padding: EdgeInsets.only(
+                          left: Insets().appGap,
+                        ),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey, width: 2),
+                            color: Palette().primaryColor,
+                            borderRadius:
+                                BorderRadius.circular(Insets().appGap + 4)),
+                        child: DropdownButton(
+                          items: const [
+                            DropdownMenuItem(
+                                child: Heading6(
+                                  value: "Class One",
+                                  color: Colors.white,
+                                ),
+                                value: "Class One"),
+                            DropdownMenuItem(
+                                child: Heading6(
+                                    value: "Class Two", color: Colors.white),
+                                value: "Class Two"),
+                            DropdownMenuItem(
+                                child: Heading6(
+                                    value: "Class Three", color: Colors.white),
+                                value: "Class Three")
+                          ],
+                          hint: Heading6(
+                            value: "Select Class",
+                            color: Colors.white,
+                          ),
+                          value: _class,
+                          iconEnabledColor: Colors.white,
+                          iconDisabledColor: Colors.white,
+                          isExpanded: true,
+                          underline: SizedBox(),
+                          dropdownColor: Palette().primaryColor,
+                          borderRadius:
+                              BorderRadius.circular(Insets().appRadiusMin + 4),
+                          onChanged: ((value) {
+                            if (value is String) {
+                              setState(() {
+                                _class = value;
                               });
                             }
                           }),
@@ -516,7 +572,7 @@ class _termsState extends State<terms> {
                                 },
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
                                 child: HeadingText(
                                   size: 14,
                                   value: "No.",
@@ -525,19 +581,36 @@ class _termsState extends State<terms> {
                               )),
                               DataColumn(
                                   label: SizedBox(
-                                width: 150,
+                                width: 100,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Term",
+                                  value: "Stream",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
                                   label: SizedBox(
-                                width: 150,
+                                width: 100,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Start Date",
+                                  value: "Category",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )),
+                              DataColumn(
+                                  label: SizedBox(
+                                width: 130,
+                                child: HeadingText(
+                                  size: 14,
+                                  value: "Teacher Name",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )),
+                              DataColumn(
+                                  label: SizedBox(
+                                child: HeadingText(
+                                  size: 14,
+                                  value: "Student",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
@@ -546,22 +619,12 @@ class _termsState extends State<terms> {
                                 width: 200,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "End Date",
+                                  value: "Note",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
                                   label: SizedBox(
-                                width: 200,
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Study Days",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )),
-                              DataColumn(
-                                  label: SizedBox(
-                                width: 200,
                                 child: HeadingText(
                                   size: 14,
                                   value: "Action",
@@ -583,23 +646,39 @@ class _termsState extends State<terms> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "FIRST TERM",
+                                  value: "ZEBRA",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "2022 - 01 - 17",
+                                  value: "ZEBRA",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "2022 - 06 - 24",
+                                  value: "Venosa P Kigosi",
+                                )),
+                                DataCell(Center(
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "44",
+                                  ),
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
                                   value: "  ",
                                 )),
                                 DataCell(Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "View Students",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
                                     TextButton(
                                       onPressed: () {},
                                       child: HeadingText(
@@ -630,27 +709,244 @@ class _termsState extends State<terms> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "2",
+                                  value: "1",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "SECOND TERM",
+                                  value: "ZEBRA",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "2022 - 01 - 17",
+                                  value: "ZEBRA",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "2022 - 06 - 24",
+                                  value: "Venosa P Kigosi",
+                                )),
+                                DataCell(Center(
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "44",
+                                  ),
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
                                   value: "  ",
                                 )),
                                 DataCell(Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "View Students",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Edit",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Delete",
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
+                                ))
+                              ]),
+                              DataRow(cells: [
+                                DataCell(Checkbox(
+                                  value: false,
+                                  onChanged: (value) {
+                                    setState(() {});
+                                  },
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "1",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "ZEBRA",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "ZEBRA",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Venosa P Kigosi",
+                                )),
+                                DataCell(Center(
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "44",
+                                  ),
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "  ",
+                                )),
+                                DataCell(Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "View Students",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Edit",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Delete",
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
+                                ))
+                              ]),
+                              DataRow(cells: [
+                                DataCell(Checkbox(
+                                  value: false,
+                                  onChanged: (value) {
+                                    setState(() {});
+                                  },
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "1",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "ZEBRA",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "ZEBRA",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Venosa P Kigosi",
+                                )),
+                                DataCell(Center(
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "44",
+                                  ),
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "  ",
+                                )),
+                                DataCell(Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "View Students",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Edit",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "Delete",
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
+                                ))
+                              ]),
+                              DataRow(cells: [
+                                DataCell(Checkbox(
+                                  value: false,
+                                  onChanged: (value) {
+                                    setState(() {});
+                                  },
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "1",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "ZEBRA",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "ZEBRA",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Venosa P Kigosi",
+                                )),
+                                DataCell(Center(
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "44",
+                                  ),
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "  ",
+                                )),
+                                DataCell(Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "View Students",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
                                     TextButton(
                                       onPressed: () {},
                                       child: HeadingText(

@@ -12,22 +12,21 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/screens/addGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class teachers extends StatefulWidget {
-  const teachers({super.key});
+class specialGrading extends StatefulWidget {
+  const specialGrading({super.key});
 
   @override
-  State<teachers> createState() => _teachersState();
+  State<specialGrading> createState() => _specialGradingState();
 }
 
-class _teachersState extends State<teachers> {
+class _specialGradingState extends State<specialGrading> {
   bool _menu = false;
   double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
+  var _specialGrade;
 
   @override
   Widget build(BuildContext context) {
@@ -93,14 +92,15 @@ class _teachersState extends State<teachers> {
                     left: Insets().appPadding * 2,
                     right: Insets().appGap),
                 child: const Heading1(
-                  value: "TEACHERS",
+                  value: "SPECIAL GRADING",
                   fontWeight: FontWeight.w700,
                   color: Colors.black,
                 ),
               ),
               Row(
                 children: [
-                  Expanded(
+                  SizedBox(
+                    width: 400,
                     child: Container(
                       margin: EdgeInsets.only(
                           left: Insets().appPadding * 2,
@@ -139,8 +139,7 @@ class _teachersState extends State<teachers> {
                             ElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          studentAdmission()));
+                                      builder: (context) => addGrading()));
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
@@ -150,138 +149,9 @@ class _teachersState extends State<teachers> {
                                     padding:
                                         EdgeInsets.all(Insets().appPadding)),
                                 child: Heading5(
-                                  value: "Add Teacher",
+                                  value: "Add Special Grade",
                                   color: Colors.black,
                                 ))
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: Insets().appPadding * 2,
-                          top: Insets().appPadding,
-                          bottom: Insets().appPadding),
-                      padding: EdgeInsets.only(
-                          left: Insets().appPadding,
-                          right: Insets().appPadding,
-                          top: Insets().appGap + 2,
-                          bottom: Insets().appPadding),
-                      decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15.0, // soften the shadow
-                              spreadRadius: 2.0, //extend the shadow
-                              offset: Offset(
-                                1.0, // Move to right 5  horizontally
-                                2.0, // Move to bottom 5 Vertically
-                              ),
-                            )
-                          ],
-                          color: Palette().primaryColor,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appRadiusMin + 4)),
-                      child: SizedBox(
-                        height: 70,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Heading1(
-                              value: "480",
-                              color: Colors.white,
-                            ),
-                            Heading6(
-                                value: "Total Teachers", color: Colors.white)
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: Insets().appPadding * 2,
-                          top: Insets().appPadding,
-                          bottom: Insets().appPadding),
-                      padding: EdgeInsets.only(
-                          left: Insets().appPadding,
-                          right: Insets().appPadding,
-                          top: Insets().appGap + 2,
-                          bottom: Insets().appPadding),
-                      decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15.0, // soften the shadow
-                              spreadRadius: 2.0, //extend the shadow
-                              offset: Offset(
-                                1.0, // Move to right 5  horizontally
-                                2.0, // Move to bottom 5 Vertically
-                              ),
-                            )
-                          ],
-                          color: Palette().primaryColor,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appRadiusMin + 4)),
-                      child: SizedBox(
-                        height: 70,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Heading1(
-                              value: "240",
-                              color: Colors.white,
-                            ),
-                            Heading6(
-                                value: "Total Male Teachers",
-                                color: Colors.white)
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: Insets().appPadding * 2,
-                          top: Insets().appPadding,
-                          right: Insets().appPadding * 2,
-                          bottom: Insets().appPadding),
-                      padding: EdgeInsets.only(
-                          left: Insets().appPadding,
-                          right: Insets().appPadding,
-                          top: Insets().appGap + 2,
-                          bottom: Insets().appPadding),
-                      decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15.0, // soften the shadow
-                              spreadRadius: 2.0, //extend the shadow
-                              offset: Offset(
-                                1.0, // Move to right 5  horizontally
-                                2.0, // Move to bottom 5 Vertically
-                              ),
-                            )
-                          ],
-                          color: Palette().primaryColor,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appRadiusMin + 4)),
-                      child: SizedBox(
-                        height: 70,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Heading1(
-                              value: "240",
-                              color: Colors.white,
-                            ),
-                            Heading6(
-                                value: "Total Female Teachers",
-                                color: Colors.white)
                           ],
                         ),
                       ),
@@ -313,7 +183,7 @@ class _teachersState extends State<teachers> {
                               //     borderSide: BorderSide(
                               //         color: Colors.grey, width: 3.0)),
                               border: InputBorder.none,
-                              hintText: " Search for teachers",
+                              hintText: " Search for Special Grade",
                               hintStyle: TextStyle(fontSize: 20)))),
                   SizedBox(
                     width: 10,
@@ -337,24 +207,25 @@ class _teachersState extends State<teachers> {
                           items: const [
                             DropdownMenuItem(
                                 child: Heading6(
-                                  value: "Nursery",
+                                  value: "CANDIDATE GRADE",
                                   color: Colors.white,
                                 ),
-                                value: "Nursery"),
+                                value: "CANDIDATE GRADE"),
                             DropdownMenuItem(
                                 child: Heading6(
-                                    value: "Primary", color: Colors.white),
-                                value: "Primary"),
+                                    value: "JOINT GRADE", color: Colors.white),
+                                value: "JOINT GRADE"),
                             DropdownMenuItem(
                                 child: Heading6(
-                                    value: "Secondary", color: Colors.white),
-                                value: "Secondary")
+                                    value: "CANDIDATE2 GRADE",
+                                    color: Colors.white),
+                                value: "CANDIDATE2 GRADE")
                           ],
                           hint: Heading6(
-                            value: "Class Level",
+                            value: "Special Grade Name",
                             color: Colors.white,
                           ),
-                          value: _classlevel,
+                          value: _specialGrade,
                           iconEnabledColor: Colors.white,
                           iconDisabledColor: Colors.white,
                           isExpanded: true,
@@ -365,7 +236,7 @@ class _teachersState extends State<teachers> {
                           onChanged: ((value) {
                             if (value is String) {
                               setState(() {
-                                _classlevel = value;
+                                _specialGrade = value;
                               });
                             }
                           }),
@@ -449,7 +320,7 @@ class _teachersState extends State<teachers> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Heading5(
-                      value: "RESULTS (23)",
+                      value: "RESULTS (7)",
                       color: Palette().primaryColor,
                       fontWeight: FontWeight.w700,
                     ),
@@ -567,7 +438,7 @@ class _teachersState extends State<teachers> {
                         onChanged: ((value) {
                           if (true) {
                             setState(() {
-                              _classlevel = value;
+                              _specialGrade = value;
                             });
                           }
                         }),
@@ -607,77 +478,75 @@ class _teachersState extends State<teachers> {
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Photo",
+                                  value: "Grade Name",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Teacher Name",
+                                  value: "Grade Point",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Gender",
+                                  value: "Mark From",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Email Address",
+                                  value: "Mark Up to",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Phone",
+                                  value: "Remark",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 170,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Date of Birth",
+                                  value: "Overall Academic Note",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 110,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Role",
+                                  value: "Overall Remark",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 90,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Employment Type",
+                                  value: "Action",
                                   fontWeight: FontWeight.w700,
-                                ),
-                              )),
-                              DataColumn(
-                                  label: Expanded(
-                                child: Center(
-                                  child: HeadingText(
-                                    size: 14,
-                                    value: "Action",
-                                    fontWeight: FontWeight.w700,
-                                  ),
                                 ),
                               )),
                             ],
@@ -693,46 +562,33 @@ class _teachersState extends State<teachers> {
                                   size: 14,
                                   value: "1",
                                 )),
-                                DataCell(Icon(size: 20, Icons.person)),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Lucy Boniphace Gami",
+                                  value: "A",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Female",
+                                  value: "1",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "teachersemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
+                                  value: "41",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "YY - MM - DD",
+                                  value: "50",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Teacher",
+                                  value: "Excellent",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Not Defined",
+                                  value: "Excellent",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Excellent",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -745,7 +601,7 @@ class _teachersState extends State<teachers> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
                                     TextButton(
                                       onPressed: () {},
@@ -767,48 +623,35 @@ class _teachersState extends State<teachers> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.person)),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Lucy Boniphace Gami",
+                                  value: "2",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Female",
+                                  value: "B",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "teachersemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
+                                  value: "2",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "YY - MM - DD",
+                                  value: "31",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Teacher",
+                                  value: "40",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Not Defined",
+                                  value: "Very Good",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Very Good",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Very Good",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -821,7 +664,7 @@ class _teachersState extends State<teachers> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
                                     TextButton(
                                       onPressed: () {},
@@ -843,48 +686,35 @@ class _teachersState extends State<teachers> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.person)),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Lucy Boniphace Gami",
+                                  value: "3",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Female",
+                                  value: "C",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "teachersemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
+                                  value: "3",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "YY - MM - DD",
+                                  value: "21",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Teacher",
+                                  value: "30",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Not Defined",
+                                  value: "Good",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Good",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Good",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -897,7 +727,7 @@ class _teachersState extends State<teachers> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
                                     TextButton(
                                       onPressed: () {},
@@ -919,48 +749,35 @@ class _teachersState extends State<teachers> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.person)),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Lucy Boniphace Gami",
+                                  value: "4",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Female",
+                                  value: "D",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "teachersemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
+                                  value: "4",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "YY - MM - DD",
+                                  value: "11",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Teacher",
+                                  value: "20",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Not Defined",
+                                  value: "Fair",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Fair",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Fair",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -973,7 +790,7 @@ class _teachersState extends State<teachers> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
                                     TextButton(
                                       onPressed: () {},
@@ -995,48 +812,35 @@ class _teachersState extends State<teachers> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.person)),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Lucy Boniphace Gami",
+                                  value: "5",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Female",
+                                  value: "F",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "teachersemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
+                                  value: "5",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "YY - MM - DD",
+                                  value: "0",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Teacher",
+                                  value: "10",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "Not Defined",
+                                  value: "Poor",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Poor",
+                                )),
+                                DataCell(HeadingText(
+                                  size: 14,
+                                  value: "Poor",
                                 )),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -1049,159 +853,7 @@ class _teachersState extends State<teachers> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 10,
-                                    ),
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Delete",
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                  ],
-                                ))
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Checkbox(
-                                  value: false,
-                                  onChanged: (value) {
-                                    setState(() {});
-                                  },
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.person)),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Lucy Boniphace Gami",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Female",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "teachersemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "YY - MM - DD",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Teacher",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Not Defined",
-                                )),
-                                DataCell(Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Edit",
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Delete",
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                  ],
-                                ))
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Checkbox(
-                                  value: false,
-                                  onChanged: (value) {
-                                    setState(() {});
-                                  },
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "1",
-                                )),
-                                DataCell(Icon(size: 20, Icons.person)),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Lucy Boniphace Gami",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Female",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "teachersemail@gmail.com",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    HeadingText(
-                                      size: 15,
-                                      value: "+255734848894",
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Icon(
-                                      Icons.add_call,
-                                      size: 16,
-                                      color: Palette().primaryColor,
-                                    )
-                                  ],
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "YY - MM - DD",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Teacher",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Not Defined",
-                                )),
-                                DataCell(Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Edit",
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 10,
+                                      width: 5,
                                     ),
                                     TextButton(
                                       onPressed: () {},

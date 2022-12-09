@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
+import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class officialDetails extends StatefulWidget {
@@ -20,9 +21,12 @@ class _officialDetailsState extends State<officialDetails> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: !Responsive.isDesktop(context)
+          ? MediaQuery.of(context).size.width
+          : MediaQuery.of(context).size.width / 1.8,
       padding: EdgeInsets.only(
-          top: Insets().appPadding * 2,
-          right: MediaQuery.of(context).size.width / 3),
+        top: Insets().appPadding * 2,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

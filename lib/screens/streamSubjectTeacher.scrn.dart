@@ -12,17 +12,18 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class streams extends StatefulWidget {
-  const streams({super.key});
+class streamSubjectTeacher extends StatefulWidget {
+  const streamSubjectTeacher({super.key});
 
   @override
-  State<streams> createState() => _streamsState();
+  State<streamSubjectTeacher> createState() => _streamSubjectTeacherState();
 }
 
-class _streamsState extends State<streams> {
+class _streamSubjectTeacherState extends State<streamSubjectTeacher> {
   bool _menu = false;
   double _drawersize = 250;
   var _classlevel;
@@ -93,7 +94,7 @@ class _streamsState extends State<streams> {
                     left: Insets().appPadding * 2,
                     right: Insets().appGap),
                 child: const Heading1(
-                  value: "STREAMS",
+                  value: "SUBJECTS",
                   fontWeight: FontWeight.w700,
                   color: Colors.black,
                 ),
@@ -140,8 +141,7 @@ class _streamsState extends State<streams> {
                             ElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          studentAdmission()));
+                                      builder: (context) => addSubject()));
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
@@ -151,7 +151,7 @@ class _streamsState extends State<streams> {
                                     padding:
                                         EdgeInsets.all(Insets().appPadding)),
                                 child: Heading5(
-                                  value: "Add Stream",
+                                  value: "Add Subject",
                                   color: Colors.black,
                                 ))
                           ],
@@ -192,12 +192,12 @@ class _streamsState extends State<streams> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Heading1(
-                              value: "140",
+                              value: "29",
                               color: Colors.white,
                             ),
                             Expanded(
                               child: Heading6(
-                                  value: "Total Streams", color: Colors.white),
+                                  value: "Total Subjects", color: Colors.white),
                             )
                           ],
                         ),
@@ -230,7 +230,7 @@ class _streamsState extends State<streams> {
                               //     borderSide: BorderSide(
                               //         color: Colors.grey, width: 3.0)),
                               border: InputBorder.none,
-                              hintText: " Search for Streams",
+                              hintText: " Search for Subjects",
                               hintStyle: TextStyle(fontSize: 20)))),
                   SizedBox(
                     width: 10,
@@ -572,7 +572,7 @@ class _streamsState extends State<streams> {
                                 },
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
                                 child: HeadingText(
                                   size: 14,
                                   value: "No.",
@@ -580,7 +580,8 @@ class _streamsState extends State<streams> {
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 150,
                                 child: HeadingText(
                                   size: 14,
                                   value: "Stream",
@@ -588,15 +589,17 @@ class _streamsState extends State<streams> {
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 150,
                                 child: HeadingText(
                                   size: 14,
-                                  value: "Category",
+                                  value: "Subject",
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 250,
                                 child: HeadingText(
                                   size: 14,
                                   value: "Teacher Name",
@@ -604,7 +607,8 @@ class _streamsState extends State<streams> {
                                 ),
                               )),
                               DataColumn(
-                                  label: Expanded(
+                                  label: SizedBox(
+                                width: 100,
                                 child: HeadingText(
                                   size: 14,
                                   value: "Student",
@@ -613,15 +617,6 @@ class _streamsState extends State<streams> {
                               )),
                               DataColumn(
                                   label: SizedBox(
-                                width: 200,
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Note",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )),
-                              DataColumn(
-                                  label: Expanded(
                                 child: HeadingText(
                                   size: 14,
                                   value: "Action",
@@ -647,22 +642,18 @@ class _streamsState extends State<streams> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "ZEBRA",
+                                  value: "Physics",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
                                   value: "Venosa P Kigosi",
                                 )),
-                                DataCell(Center(
-                                  child: HeadingText(
+                                DataCell(
+                                  HeadingText(
                                     size: 14,
                                     value: "44",
                                   ),
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "  ",
-                                )),
+                                ),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
@@ -670,7 +661,7 @@ class _streamsState extends State<streams> {
                                       onPressed: () {},
                                       child: HeadingText(
                                         size: 14,
-                                        value: "View Students",
+                                        value: "View",
                                       ),
                                     ),
                                     SizedBox(
@@ -714,22 +705,18 @@ class _streamsState extends State<streams> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "ZEBRA",
+                                  value: "Physics",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
                                   value: "Venosa P Kigosi",
                                 )),
-                                DataCell(Center(
-                                  child: HeadingText(
+                                DataCell(
+                                  HeadingText(
                                     size: 14,
                                     value: "44",
                                   ),
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "  ",
-                                )),
+                                ),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
@@ -737,7 +724,7 @@ class _streamsState extends State<streams> {
                                       onPressed: () {},
                                       child: HeadingText(
                                         size: 14,
-                                        value: "View Students",
+                                        value: "View",
                                       ),
                                     ),
                                     SizedBox(
@@ -781,22 +768,18 @@ class _streamsState extends State<streams> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "ZEBRA",
+                                  value: "Physics",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
                                   value: "Venosa P Kigosi",
                                 )),
-                                DataCell(Center(
-                                  child: HeadingText(
+                                DataCell(
+                                  HeadingText(
                                     size: 14,
                                     value: "44",
                                   ),
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "  ",
-                                )),
+                                ),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
@@ -804,7 +787,7 @@ class _streamsState extends State<streams> {
                                       onPressed: () {},
                                       child: HeadingText(
                                         size: 14,
-                                        value: "View Students",
+                                        value: "View",
                                       ),
                                     ),
                                     SizedBox(
@@ -848,22 +831,18 @@ class _streamsState extends State<streams> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "ZEBRA",
+                                  value: "Physics",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
                                   value: "Venosa P Kigosi",
                                 )),
-                                DataCell(Center(
-                                  child: HeadingText(
+                                DataCell(
+                                  HeadingText(
                                     size: 14,
                                     value: "44",
                                   ),
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "  ",
-                                )),
+                                ),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
@@ -871,7 +850,7 @@ class _streamsState extends State<streams> {
                                       onPressed: () {},
                                       child: HeadingText(
                                         size: 14,
-                                        value: "View Students",
+                                        value: "View",
                                       ),
                                     ),
                                     SizedBox(
@@ -915,22 +894,18 @@ class _streamsState extends State<streams> {
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
-                                  value: "ZEBRA",
+                                  value: "Physics",
                                 )),
                                 DataCell(HeadingText(
                                   size: 14,
                                   value: "Venosa P Kigosi",
                                 )),
-                                DataCell(Center(
-                                  child: HeadingText(
+                                DataCell(
+                                  HeadingText(
                                     size: 14,
                                     value: "44",
                                   ),
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "  ",
-                                )),
+                                ),
                                 DataCell(Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
@@ -938,7 +913,7 @@ class _streamsState extends State<streams> {
                                       onPressed: () {},
                                       child: HeadingText(
                                         size: 14,
-                                        value: "View Students",
+                                        value: "View",
                                       ),
                                     ),
                                     SizedBox(
