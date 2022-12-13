@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
+import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -23,19 +24,27 @@ class _personalDetailsState extends State<personalDetails> {
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 1.8,
       padding: EdgeInsets.only(
-        top: Insets().appPadding * 2,
+        top: Responsive.isDesktop(context) ? Insets().appPadding * 2 : 14,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "First Name"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "First Name"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -48,25 +57,34 @@ class _personalDetailsState extends State<personalDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "First Name",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "First Name",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Middle Name"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Middle Name"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -79,25 +97,34 @@ class _personalDetailsState extends State<personalDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Middle Name",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Middle Name",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Last Name"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Last Name"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -110,25 +137,34 @@ class _personalDetailsState extends State<personalDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Last Name",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Last Name",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Date of Birth"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Date of Birth"),
               SizedBox(
                 width: 250,
-                height: 40,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
@@ -199,13 +235,21 @@ class _personalDetailsState extends State<personalDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Gender"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Gender"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -229,16 +273,24 @@ class _personalDetailsState extends State<personalDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Blood Group"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Blood Group"),
               SizedBox(
                 width: 350,
-                height: 40,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
@@ -300,16 +352,24 @@ class _personalDetailsState extends State<personalDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Birth Place"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Birth Place"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -322,25 +382,34 @@ class _personalDetailsState extends State<personalDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Birth Place",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Birth Place",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Height"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Height"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -353,25 +422,34 @@ class _personalDetailsState extends State<personalDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Height",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Height",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Weight"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Weight"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -384,10 +462,11 @@ class _personalDetailsState extends State<personalDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Weight",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Weight",
+                      )),
                 ),
               ),
             ],

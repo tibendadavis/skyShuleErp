@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
+import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -22,19 +23,27 @@ class _parentsDetailsState extends State<parentsDetails> {
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 1.8,
       padding: EdgeInsets.only(
-        top: Insets().appPadding * 2,
+        top: Responsive.isDesktop(context) ? Insets().appPadding * 2 : 14,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Parents Full Name"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Parents Full Name"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -47,25 +56,34 @@ class _parentsDetailsState extends State<parentsDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Parents Full Name",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Parents Full Name",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Parents Email"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Parents Email"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -78,25 +96,34 @@ class _parentsDetailsState extends State<parentsDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Parents Email",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Parents Email",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Parents Phone No"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Parents Phone No"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -109,25 +136,34 @@ class _parentsDetailsState extends State<parentsDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Parents Phone No.",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Parents Phone No.",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Parents Mobile No"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Parents Mobile No"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -140,25 +176,34 @@ class _parentsDetailsState extends State<parentsDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "TZ +255",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "TZ +255",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Parent's Image Upload"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Parent's Image Upload"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -171,27 +216,36 @@ class _parentsDetailsState extends State<parentsDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "No file Chosen",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "No file Chosen",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Parents Present Address"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Parents Present Address"),
               SizedBox(
                 width: 350,
-                height: 90,
+                height: Responsive.isDesktop(context) ? 90 : 70,
                 child: Container(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.topLeft,
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
                     right: Insets().appPadding / 2,
@@ -202,22 +256,31 @@ class _parentsDetailsState extends State<parentsDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.top,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Present Address",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Present Address",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Country"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Country"),
               SizedBox(
                 width: 350,
                 height: 40,
@@ -282,13 +345,21 @@ class _parentsDetailsState extends State<parentsDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "State"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "State"),
               SizedBox(
                 width: 350,
                 height: 40,
@@ -353,13 +424,20 @@ class _parentsDetailsState extends State<parentsDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "City"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14, value: "City"),
               SizedBox(
                 width: 350,
                 height: 40,

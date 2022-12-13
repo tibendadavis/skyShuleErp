@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -17,6 +18,7 @@ class uploadDocuments extends StatefulWidget {
 class _uploadDocumentsState extends State<uploadDocuments> {
   @override
   Widget build(BuildContext context) {
+    var picked;
     return Container(
       // width: !Responsive.isDesktop(context)
       //     ? MediaQuery.of(context).size.width
@@ -27,50 +29,41 @@ class _uploadDocumentsState extends State<uploadDocuments> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 300,
-            child: Expanded(
-              child: ListView(
-                children: [
-                  DataTable(horizontalMargin: 0, columnSpacing: 10, columns: [
-                    DataColumn(
-                        label: Expanded(
-                      child: HeadingText(
-                        size: 14,
-                        value: "Document Name",
-                        fontWeight: FontWeight.w700,
-                      ),
-                    )),
-                    DataColumn(
-                        label: Expanded(
-                      child: HeadingText(
-                        size: 14,
-                        value: "Upload File",
-                        fontWeight: FontWeight.w700,
-                      ),
-                    )),
-                    DataColumn(
-                        label: Expanded(
-                      child: HeadingText(
-                        size: 14,
-                        value: "File Name",
-                        fontWeight: FontWeight.w700,
-                      ),
-                    )),
-                    DataColumn(
-                        label: Expanded(
-                      child: HeadingText(
-                        size: 14,
-                        value: "",
-                        fontWeight: FontWeight.w700,
-                      ),
-                    )),
-                  ], rows: [
-                    DataRow(cells: [
-                      DataCell(
+          Container(
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+                border: Border.all(width: 1, color: Colors.grey),
+                borderRadius: BorderRadius.circular(Insets().appRadius)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Flex(
+                  direction: Responsive.isDesktop(context)
+                      ? Axis.horizontal
+                      : Axis.vertical,
+                  crossAxisAlignment: Responsive.isDesktop(context)
+                      ? CrossAxisAlignment.center
+                      : CrossAxisAlignment.start,
+                  children: [
+                    Flex(
+                      direction: Responsive.isDesktop(context)
+                          ? Axis.horizontal
+                          : Axis.vertical,
+                      mainAxisAlignment: Responsive.isDesktop(context)
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.start,
+                      crossAxisAlignment: Responsive.isDesktop(context)
+                          ? CrossAxisAlignment.center
+                          : CrossAxisAlignment.start,
+                      children: [
+                        HeadingText(
+                            size: Responsive.isDesktop(context) ? 18 : 14,
+                            value: "Document Name"),
+                        SizedBox(width: Responsive.isDesktop(context) ? 5 : 0),
                         SizedBox(
-                          width: 350,
-                          height: 45,
+                          width: 220,
+                          height: Responsive.isDesktop(context) ? 50 : 40,
                           child: Container(
                             alignment: Alignment.centerLeft,
                             padding: EdgeInsets.only(
@@ -78,59 +71,112 @@ class _uploadDocumentsState extends State<uploadDocuments> {
                               right: Insets().appPadding / 2,
                             ),
                             decoration: BoxDecoration(
+                                color: Colors.white,
                                 border:
                                     Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(
                                     Insets().appPadding / 1.5)),
                             child: TextFormField(
+                                textAlignVertical: TextAlignVertical.center,
                                 decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Write the name of the type of doc",
-                            )),
+                                  border: InputBorder.none,
+                                  hintText: "Write the name of the type of doc",
+                                )),
                           ),
                         ),
-                      ),
-                      DataCell(
+                      ],
+                    ),
+                    SizedBox(
+                      height: Responsive.isDesktop(context) ? 10 : 15,
+                      width: Responsive.isDesktop(context) ? 20 : 0,
+                    ),
+                    Flex(
+                      direction: Responsive.isDesktop(context)
+                          ? Axis.horizontal
+                          : Axis.vertical,
+                      mainAxisAlignment: Responsive.isDesktop(context)
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.start,
+                      crossAxisAlignment: Responsive.isDesktop(context)
+                          ? CrossAxisAlignment.center
+                          : CrossAxisAlignment.start,
+                      children: [
+                        HeadingText(
+                            size: Responsive.isDesktop(context) ? 18 : 14,
+                            value: "Upload File"),
+                        SizedBox(width: Responsive.isDesktop(context) ? 5 : 0),
                         SizedBox(
-                          width: 350,
-                          height: 45,
+                          width: Responsive.isDesktop(context) ? 250 : 220,
+                          height: Responsive.isDesktop(context) ? 50 : 40,
                           child: Container(
                             alignment: Alignment.centerLeft,
                             padding: EdgeInsets.only(
                               left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
+                              right: Responsive.isDesktop(context) ? 5 : 4,
                             ),
                             decoration: BoxDecoration(
+                                color: Colors.white,
                                 border:
                                     Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(
                                     Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "No file choosen",
-                            )),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                HeadingText(
+                                    size:
+                                        Responsive.isDesktop(context) ? 15 : 13,
+                                    value: picked != null
+                                        ? picked.files.first.name.toString()
+                                        : "No File Choosen"),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    setState(() async {
+                                      picked = await FilePicker.platform
+                                          .pickFiles(allowMultiple: false);
+                                    });
+                                    if (picked != null) {
+                                      print(picked.files.first.name);
+                                    }
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Palette().primaryColor,
+                                      padding: EdgeInsets.only(
+                                        bottom: Responsive.isDesktop(context)
+                                            ? 17
+                                            : 14,
+                                        left: Insets().appPadding / 2,
+                                        right: Insets().appPadding / 2,
+                                        top: Responsive.isDesktop(context)
+                                            ? 17
+                                            : 14,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10))),
+                                  child: HeadingText(
+                                      size: Responsive.isDesktop(context)
+                                          ? 15
+                                          : 13,
+                                      value: "Upload File"),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      DataCell(HeadingText(
-                        size: 14,
-                        value: " ",
-                      )),
-                      DataCell(InkWell(
-                        onTap: () {},
-                        child: Icon(Icons.clear),
-                      )),
-                    ]),
-                  ]),
-                ],
-              ),
+                      ],
+                    ),
+                  ],
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Icon(Icons.clear),
+                )
+              ],
             ),
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 30 : 20,
           ),
           SizedBox(
             width: 150,

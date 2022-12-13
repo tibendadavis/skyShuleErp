@@ -244,14 +244,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu11 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu11![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu11![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu11![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu11![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -274,14 +275,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu12 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu12![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu12![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu12![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu12![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -304,14 +306,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu13 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu13![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu13![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu13![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu13![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -334,14 +337,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu14 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu14![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu14![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu14![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu14![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -368,13 +372,14 @@ class _DrawerItemState extends State<DrawerItem> {
                               widget.submenu2 == null
                           ? const Offstage()
                           : InkWell(
-                              onTap: () {
-                                if (widget.submenu2![1] != null)
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          widget.submenu2![1]));
-                              },
                               child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu2![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu2![1]));
+                                },
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
@@ -399,13 +404,14 @@ class _DrawerItemState extends State<DrawerItem> {
                               widget.submenu3 == null
                           ? const Offstage()
                           : InkWell(
-                              onTap: () {
-                                if (widget.submenu3![1] != null)
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          widget.submenu3![1]));
-                              },
                               child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu3![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu3![1]));
+                                },
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
@@ -448,14 +454,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu31 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu31![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu31![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu31![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu31![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -478,14 +485,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu32 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu32![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu32![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu32![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu32![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -508,14 +516,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu33 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu33![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu33![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu33![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu33![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -538,14 +547,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu34 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu34![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu34![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu34![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu34![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -572,13 +582,14 @@ class _DrawerItemState extends State<DrawerItem> {
                               widget.submenu4 == null
                           ? const Offstage()
                           : InkWell(
-                              onTap: () {
-                                if (widget.submenu4![1] != null)
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          widget.submenu4![1]));
-                              },
                               child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu4![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu4![1]));
+                                },
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
@@ -621,14 +632,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu41 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu41![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu41![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu41![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu41![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -651,14 +663,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu42 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu42![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu42![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu42![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu42![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -681,14 +694,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu43 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu43![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu43![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu43![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu43![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -711,14 +725,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu44 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu44![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu44![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu44![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu44![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -741,14 +756,15 @@ class _DrawerItemState extends State<DrawerItem> {
                                 widget.size == 90 || widget.submenu45 == null
                                     ? const Offstage()
                                     : InkWell(
-                                        onTap: () {
-                                          if (widget.submenu45![1] != null)
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        widget.submenu45![1]));
-                                        },
                                         child: ListTile(
+                                          onTap: () {
+                                            if (widget.submenu45![1] != null)
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          widget
+                                                              .submenu45![1]));
+                                          },
                                           minLeadingWidth: 22,
                                           dense: true,
                                           contentPadding: EdgeInsets.all(0),
@@ -775,13 +791,14 @@ class _DrawerItemState extends State<DrawerItem> {
                               widget.submenu5 == null
                           ? const Offstage()
                           : InkWell(
-                              onTap: () {
-                                if (widget.submenu5![1] != null)
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          widget.submenu5![1]));
-                              },
                               child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu5![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu5![1]));
+                                },
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
@@ -806,13 +823,14 @@ class _DrawerItemState extends State<DrawerItem> {
                               widget.submenu6 == null
                           ? const Offstage()
                           : InkWell(
-                              onTap: () {
-                                if (widget.submenu6![1] != null)
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          widget.submenu6![1]));
-                              },
                               child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu6![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu6![1]));
+                                },
                                 minLeadingWidth: 22,
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),

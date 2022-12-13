@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
+import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -25,16 +26,24 @@ class _officialDetailsState extends State<officialDetails> {
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 1.8,
       padding: EdgeInsets.only(
-        top: Insets().appPadding * 2,
+        top: Responsive.isDesktop(context) ? Insets().appPadding * 2 : 14,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Is New Student"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Is New Student"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -42,30 +51,42 @@ class _officialDetailsState extends State<officialDetails> {
                     value: false,
                     onChanged: (value) {},
                   ),
-                  Heading5(value: "Is a new student"),
+                  HeadingText(
+                      size: Responsive.isDesktop(context) ? 18 : 13,
+                      value: "Is a new student"),
                   SizedBox(
-                    width: 10,
+                    width: Responsive.isDesktop(context) ? 10 : 5,
                   ),
                   Checkbox(
                     value: false,
                     onChanged: (value) {},
                   ),
-                  Heading5(value: "Not a new student"),
+                  HeadingText(
+                      size: Responsive.isDesktop(context) ? 18 : 13,
+                      value: "Not a new student"),
                 ],
               )
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Application No."),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Application No."),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -78,25 +99,34 @@ class _officialDetailsState extends State<officialDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Application Number",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Application Number",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Academic Year."),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Academic Year."),
               SizedBox(
                 width: 350,
-                height: 40,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
@@ -158,16 +188,24 @@ class _officialDetailsState extends State<officialDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Date of Admission."),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Date of Admission."),
               SizedBox(
                 width: 250,
-                height: 40,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
@@ -238,16 +276,24 @@ class _officialDetailsState extends State<officialDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Stream"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Stream"),
               SizedBox(
                 width: 350,
-                height: 40,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
@@ -309,16 +355,24 @@ class _officialDetailsState extends State<officialDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Shift name"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Shift name"),
               SizedBox(
                 width: 350,
-                height: 40,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
@@ -380,16 +434,24 @@ class _officialDetailsState extends State<officialDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Class"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Class"),
               SizedBox(
                 width: 350,
-                height: 40,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
@@ -451,16 +513,24 @@ class _officialDetailsState extends State<officialDetails> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Stream Name"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Stream Name"),
               SizedBox(
                 width: 350,
-                height: 40,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,

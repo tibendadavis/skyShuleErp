@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
+import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -21,19 +22,27 @@ class _academicDetailsState extends State<academicDetails> {
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 1.8,
       padding: EdgeInsets.only(
-        top: Insets().appPadding * 2,
+        top: Responsive.isDesktop(context) ? Insets().appPadding * 2 : 14,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Past School"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Past School"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -46,27 +55,36 @@ class _academicDetailsState extends State<academicDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Past School",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Past School",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "School Address"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "School Address"),
               SizedBox(
                 width: 350,
-                height: 90,
+                height: Responsive.isDesktop(context) ? 90 : 70,
                 child: Container(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.topLeft,
                   padding: EdgeInsets.only(
                     left: Insets().appPadding / 2,
                     right: Insets().appPadding / 2,
@@ -77,25 +95,34 @@ class _academicDetailsState extends State<academicDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.top,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "School Address",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "School Address",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Past Qualification (%)"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Past Qualification (%)"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -108,10 +135,11 @@ class _academicDetailsState extends State<academicDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Past Qualification",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Past Qualification",
+                      )),
                 ),
               ),
             ],

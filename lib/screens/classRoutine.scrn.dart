@@ -91,30 +91,45 @@ class _classRoutineState extends State<classRoutine> {
                     top: Insets().appPadding,
                     left: Insets().appPadding * 2,
                     right: Insets().appGap),
-                child: const Heading1(
+                child: HeadingText(
+                  size: Responsive.isDesktop(context) ? 35 : 30,
                   value: "CLASS ROUTINE",
                   fontWeight: FontWeight.w700,
                   color: Colors.black,
                 ),
               ),
-              Row(
+              Flex(
+                direction: Responsive.isDesktop(context)
+                    ? Axis.horizontal
+                    : Axis.vertical,
                 children: [
                   SizedBox(
-                    width: 400,
+                    width: Responsive.isDesktop(context)
+                        ? 410
+                        : MediaQuery.of(context).size.width,
                     child: Container(
                       margin: EdgeInsets.only(
-                          left: Insets().appPadding * 2,
-                          top: Insets().appPadding,
-                          bottom: Insets().appPadding),
+                          left: Responsive.isDesktop(context)
+                              ? Insets().appPadding * 2
+                              : Insets().appPadding,
+                          right: Responsive.isDesktop(context)
+                              ? 0
+                              : Insets().appPadding,
+                          top: Responsive.isDesktop(context)
+                              ? Insets().appPadding
+                              : 13,
+                          bottom: Responsive.isDesktop(context)
+                              ? Insets().appPadding
+                              : 10),
                       padding: EdgeInsets.only(
                           left: Insets().appPadding,
                           right: Insets().appPadding,
                           top: Insets().appGap + 2,
                           bottom: Insets().appPadding),
                       decoration: BoxDecoration(
-                          boxShadow: const [
+                          boxShadow: [
                             BoxShadow(
-                              color: Colors.grey,
+                              color: Palette().borderColor,
                               blurRadius: 15.0, // soften the shadow
                               spreadRadius: 2.0, //extend the shadow
                               offset: Offset(
@@ -161,8 +176,12 @@ class _classRoutineState extends State<classRoutine> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    left: Insets().appPadding * 2,
-                    right: Insets().appPadding * 2,
+                    left: Responsive.isDesktop(context)
+                        ? Insets().appPadding * 2
+                        : Insets().appPadding,
+                    right: Responsive.isDesktop(context)
+                        ? Insets().appPadding * 2
+                        : Insets().appPadding,
                     top: Insets().appPadding,
                     bottom: Insets().appPadding),
                 padding: EdgeInsets.only(
@@ -177,15 +196,16 @@ class _classRoutineState extends State<classRoutine> {
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                      child: Heading4(
+                      child: HeadingText(
+                    size: Responsive.isDesktop(context) ? 18 : 16,
                     value: " Class Level: ",
                     fontWeight: FontWeight.w600,
                   )),
                   SizedBox(
-                    width: 10,
+                    width: Responsive.isDesktop(context) ? 10 : 5,
                   ),
                   Container(
-                    width: 300,
+                    width: Responsive.isDesktop(context) ? 300 : 150,
                     margin: EdgeInsets.only(
                       left: Insets().appGap,
                       right: Insets().appGap,
@@ -194,7 +214,8 @@ class _classRoutineState extends State<classRoutine> {
                       left: Insets().appGap,
                     ),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey, width: 2),
+                        border:
+                            Border.all(color: Palette().borderColor, width: 1),
                         color: Palette().primaryColor,
                         borderRadius:
                             BorderRadius.circular(Insets().appGap + 4)),
@@ -302,8 +323,12 @@ class _classRoutineState extends State<classRoutine> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: Insets().appPadding * 4,
-                  right: Insets().appPadding * 4,
+                  left: Responsive.isDesktop(context)
+                      ? Insets().appPadding * 4
+                      : 13,
+                  right: Responsive.isDesktop(context)
+                      ? Insets().appPadding * 4
+                      : 13,
                 ),
                 padding: EdgeInsets.only(
                     left: Insets().appGap / 2,
@@ -313,14 +338,15 @@ class _classRoutineState extends State<classRoutine> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Heading5(
-                      value: "RESULTS (7)",
+                    HeadingText(
+                      size: Responsive.isDesktop(context) ? 14 : 13,
+                      value: "RESULTS (23)",
                       color: Palette().primaryColor,
                       fontWeight: FontWeight.w700,
                     ),
                     Container(
-                      width: 140,
-                      height: 40,
+                      width: Responsive.isDesktop(context) ? 140 : 130,
+                      height: Responsive.isDesktop(context) ? 40 : 30,
                       margin: EdgeInsets.only(
                         left: Insets().appGap,
                         right: Insets().appGap,
@@ -410,10 +436,10 @@ class _classRoutineState extends State<classRoutine> {
                             Icon(
                               Icons.cloud_download_outlined,
                               color: Palette().primaryColor,
-                              size: 25,
+                              size: Responsive.isDesktop(context) ? 25 : 20,
                             ),
                             SizedBox(
-                              width: 7,
+                              width: Responsive.isDesktop(context) ? 7 : 5,
                             ),
                             Heading6(
                               value: "Download",
@@ -422,10 +448,10 @@ class _classRoutineState extends State<classRoutine> {
                           ],
                         ),
                         value: null,
-                        elevation: 1,
                         iconEnabledColor: Palette().primaryColor,
                         iconDisabledColor: Palette().primaryColor,
                         isExpanded: true,
+                        elevation: 1,
                         underline: SizedBox(),
                         dropdownColor: Colors.white,
                         borderRadius:

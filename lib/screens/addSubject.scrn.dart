@@ -132,131 +132,135 @@ class _addSubjectState extends State<addSubject> {
                 decoration: BoxDecoration(
                     color: Palette().primaryColorLight,
                     borderRadius: BorderRadius.circular(Insets().appRadius)),
-                child: Flex(
-                  direction: Responsive.isDesktop(context)
-                      ? Axis.horizontal
-                      : Axis.vertical,
-                  mainAxisAlignment: Responsive.isDesktop(context)
-                      ? MainAxisAlignment.start
-                      : MainAxisAlignment.start,
-                  crossAxisAlignment: Responsive.isDesktop(context)
-                      ? CrossAxisAlignment.start
-                      : CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: Responsive.isDesktop(context) ? 220 : 400,
-                      height: Responsive.isDesktop(context) ? 50 : 40,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              regSubj = true;
-                              regbyExcl = false;
-                              regbyNecta = false;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor: !regSubj
-                                  ? Colors.white
-                                  : Palette().primaryColor,
-                              side: BorderSide(
-                                width: 1,
-                                color: !regSubj
-                                    ? Colors.black
-                                    : Colors.transparent,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4)),
-                              padding: EdgeInsets.only(
-                                  left: Insets().appPadding / 1.5,
-                                  right: Insets().appPadding / 1.5,
-                                  top: Insets().appPadding,
-                                  bottom: Insets().appPadding)),
-                          child: Heading6(
-                            value: "Register Subject",
-                            color: !regSubj ? Colors.black : Colors.white,
-                          )),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SizedBox(
+                    width:
+                        Responsive.isDesktop(context) ? 712 : size.width + 300,
+                    child: Flex(
+                      direction: Axis.horizontal,
+                      mainAxisAlignment: Responsive.isDesktop(context)
+                          ? MainAxisAlignment.start
+                          : MainAxisAlignment.start,
+                      crossAxisAlignment: Responsive.isDesktop(context)
+                          ? CrossAxisAlignment.start
+                          : CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: Responsive.isDesktop(context) ? 230 : 150,
+                          height: Responsive.isDesktop(context) ? 50 : 40,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  regSubj = true;
+                                  regbyExcl = false;
+                                  regbyNecta = false;
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  backgroundColor: !regSubj
+                                      ? Colors.white
+                                      : Palette().primaryColor,
+                                  side: BorderSide(
+                                    width: 1,
+                                    color: !regSubj
+                                        ? Colors.black
+                                        : Colors.transparent,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appRadiusMin + 4)),
+                                  padding: EdgeInsets.only(
+                                      left: Insets().appPadding / 1.5,
+                                      right: Insets().appPadding / 1.5,
+                                      top: Insets().appPadding,
+                                      bottom: Insets().appPadding)),
+                              child: Heading5(
+                                value: "Register Subject",
+                                color: !regSubj ? Colors.black : Colors.white,
+                              )),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        SizedBox(
+                          width: Responsive.isDesktop(context) ? 230 : 220,
+                          height: Responsive.isDesktop(context) ? 50 : 40,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  regSubj = false;
+                                  regbyExcl = true;
+                                  regbyNecta = false;
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  backgroundColor: !regbyExcl
+                                      ? Colors.white
+                                      : Palette().primaryColor,
+                                  side: BorderSide(
+                                    width: 1,
+                                    color: !regbyExcl
+                                        ? Colors.black
+                                        : Colors.transparent,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appRadiusMin + 4)),
+                                  padding: EdgeInsets.only(
+                                      left: Insets().appPadding / 1.5,
+                                      right: Insets().appPadding / 1.5,
+                                      top: Insets().appPadding,
+                                      bottom: Insets().appPadding)),
+                              child: Heading5(
+                                value: "Register Subject by Excel",
+                                color: !regbyExcl ? Colors.black : Colors.white,
+                              )),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        SizedBox(
+                          width: Responsive.isDesktop(context) ? 230 : 230,
+                          height: Responsive.isDesktop(context) ? 50 : 40,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  regSubj = false;
+                                  regbyExcl = false;
+                                  regbyNecta = true;
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  backgroundColor: !regbyNecta
+                                      ? Colors.white
+                                      : Palette().primaryColor,
+                                  side: BorderSide(
+                                    width: 1,
+                                    color: !regbyNecta
+                                        ? Colors.black
+                                        : Colors.transparent,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appRadiusMin + 4)),
+                                  padding: EdgeInsets.only(
+                                      left: Insets().appPadding / 1.5,
+                                      right: Insets().appPadding / 1.5,
+                                      top: Insets().appPadding,
+                                      bottom: Insets().appPadding)),
+                              child: Heading5(
+                                value: "Register Subjects from NECTA",
+                                color:
+                                    !regbyNecta ? Colors.black : Colors.white,
+                              )),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: Responsive.isDesktop(context) ? 10 : 0,
-                      height: Responsive.isDesktop(context) ? 0 : 10,
-                    ),
-                    SizedBox(
-                      width: Responsive.isDesktop(context) ? 220 : 400,
-                      height: Responsive.isDesktop(context) ? 50 : 40,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              regSubj = false;
-                              regbyExcl = true;
-                              regbyNecta = false;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor: !regbyExcl
-                                  ? Colors.white
-                                  : Palette().primaryColor,
-                              side: BorderSide(
-                                width: 1,
-                                color: !regbyExcl
-                                    ? Colors.black
-                                    : Colors.transparent,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4)),
-                              padding: EdgeInsets.only(
-                                  left: Insets().appPadding / 1.5,
-                                  right: Insets().appPadding / 1.5,
-                                  top: Insets().appPadding,
-                                  bottom: Insets().appPadding)),
-                          child: Heading6(
-                            value: "Register Subject by Excel",
-                            color: !regbyExcl ? Colors.black : Colors.white,
-                          )),
-                    ),
-                    SizedBox(
-                      width: Responsive.isDesktop(context) ? 10 : 0,
-                      height: Responsive.isDesktop(context) ? 0 : 10,
-                    ),
-                    SizedBox(
-                      width: Responsive.isDesktop(context) ? 220 : 400,
-                      height: Responsive.isDesktop(context) ? 50 : 40,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              regSubj = false;
-                              regbyExcl = false;
-                              regbyNecta = true;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor: !regbyNecta
-                                  ? Colors.white
-                                  : Palette().primaryColor,
-                              side: BorderSide(
-                                width: 1,
-                                color: !regbyNecta
-                                    ? Colors.black
-                                    : Colors.transparent,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4)),
-                              padding: EdgeInsets.only(
-                                  left: Insets().appPadding / 1.5,
-                                  right: Insets().appPadding / 1.5,
-                                  top: Insets().appPadding,
-                                  bottom: Insets().appPadding)),
-                          child: Heading6(
-                            value: "Register Subjects from NECTA",
-                            color: !regbyNecta ? Colors.black : Colors.white,
-                          )),
-                    ),
-                  ],
+                  ),
                 ),
               ),
               Container(

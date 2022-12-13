@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
+import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -20,19 +21,27 @@ class _bankDetailsState extends State<bankDetails> {
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 1.8,
       padding: EdgeInsets.only(
-        top: Insets().appPadding * 2,
+        top: Responsive.isDesktop(context) ? Insets().appPadding * 2 : 14,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Bank Name"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Bank Name"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -45,25 +54,34 @@ class _bankDetailsState extends State<bankDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Bank Name",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Bank Name",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Bank Branch"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Bank Branch"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -76,25 +94,34 @@ class _bankDetailsState extends State<bankDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Bank Branch",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Bank Branch",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "Account No."),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "Account No."),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -107,25 +134,34 @@ class _bankDetailsState extends State<bankDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Account No.",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "Account No.",
+                      )),
                 ),
               ),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Flex(
+            direction:
+                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+            mainAxisAlignment: Responsive.isDesktop(context)
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
+            crossAxisAlignment: Responsive.isDesktop(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
-              Heading4(value: "IFSC Code"),
-              Spacer(),
+              HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 14,
+                  value: "IFSC Code"),
               SizedBox(
                 width: 350,
-                height: 45,
+                height: Responsive.isDesktop(context) ? 50 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -138,10 +174,11 @@ class _bankDetailsState extends State<bankDetails> {
                       borderRadius:
                           BorderRadius.circular(Insets().appPadding / 1.5)),
                   child: TextFormField(
+                      textAlignVertical: TextAlignVertical.top,
                       decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "IFSC Code",
-                  )),
+                        border: InputBorder.none,
+                        hintText: "IFSC Code",
+                      )),
                 ),
               ),
             ],

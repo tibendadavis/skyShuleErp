@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -32,7 +33,7 @@ class addParent extends StatefulWidget {
 class _addParentState extends State<addParent> {
   bool regParent = true;
   bool regbyExcl = false;
-
+  var picked;
   bool _menu = false;
   var _specialGrade;
   var _classlevel;
@@ -1060,7 +1061,7 @@ class _addParentState extends State<addParent> {
                         child: Responsive.isDesktop(context)
                             ? VerticalDivider(
                                 thickness: 1.5,
-                                color: Colors.grey[400],
+                                color: Colors.grey,
                               )
                             : Offstage(),
                         width: Responsive.isDesktop(context) ? 0 : 10,
@@ -1476,46 +1477,85 @@ class _addParentState extends State<addParent> {
                                             ? 18
                                             : 14,
                                         value: "Photo"),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.person_pin_rounded,
-                                          size: 50,
-                                          color: Colors.blueGrey,
+                                    SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 300
+                                          : 400,
+                                      height: Responsive.isDesktop(context)
+                                          ? 50
+                                          : 40,
+                                      child: Container(
+                                        alignment: Alignment.centerLeft,
+                                        padding: EdgeInsets.only(
+                                          left: Insets().appPadding / 2,
+                                          right: Responsive.isDesktop(context)
+                                              ? 5
+                                              : 4,
                                         ),
-                                        SizedBox(
-                                          width: 5,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            border: Border.all(
+                                                width: 1.5, color: Colors.grey),
+                                            borderRadius: BorderRadius.circular(
+                                                Insets().appPadding / 1.5)),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            HeadingText(
+                                                size: Responsive.isDesktop(
+                                                        context)
+                                                    ? 15
+                                                    : 13,
+                                                value: picked != null
+                                                    ? picked.files.first.name
+                                                        .toString()
+                                                    : "No File Choosen"),
+                                            ElevatedButton(
+                                              onPressed: () async {
+                                                setState(() async {
+                                                  picked = await FilePicker
+                                                      .platform
+                                                      .pickFiles(
+                                                          allowMultiple: false);
+                                                });
+                                                if (picked != null) {
+                                                  print(
+                                                      picked.files.first.name);
+                                                }
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Palette().primaryColor,
+                                                  padding: EdgeInsets.only(
+                                                    bottom:
+                                                        Responsive.isDesktop(
+                                                                context)
+                                                            ? 17
+                                                            : 14,
+                                                    left:
+                                                        Insets().appPadding / 2,
+                                                    right:
+                                                        Insets().appPadding / 2,
+                                                    top: Responsive.isDesktop(
+                                                            context)
+                                                        ? 17
+                                                        : 14,
+                                                  ),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              child: HeadingText(
+                                                  size: Responsive.isDesktop(
+                                                          context)
+                                                      ? 15
+                                                      : 13,
+                                                  value: "Upload File"),
+                                            )
+                                          ],
                                         ),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 125
-                                              : 125,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 3,
-                                              right: Insets().appPadding / 3,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                color: Palette().primaryColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            2)),
-                                            child: TextButton(
-                                              onPressed: () {},
-                                              child: Heading5(
-                                                value: "Upload Photo",
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ],
                                 ),

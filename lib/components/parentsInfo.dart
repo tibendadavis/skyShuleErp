@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
+import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class parentsInfo extends StatefulWidget {
@@ -18,138 +19,145 @@ class _parentsInfoState extends State<parentsInfo> {
     return Container(
       padding: EdgeInsets.only(
           bottom: Insets().appPadding,
-          left: Insets().appPadding,
-          right: Insets().appPadding,
+          left: Responsive.isDesktop(context) ? Insets().appPadding : 0,
+          right: Responsive.isDesktop(context) ? Insets().appPadding : 0,
           top: Insets().appPadding / 2),
-      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: Flex(
+          direction:
+              Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Heading5(fontWeight: FontWeight.w600, value: "Name:"),
-                SizedBox(
-                  width: 20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Heading5(fontWeight: FontWeight.w600, value: "Name:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Heading5(fontWeight: FontWeight.w600, value: "John Doe")
+                  ],
                 ),
-                Heading5(fontWeight: FontWeight.w600, value: "John Doe")
+                SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                    width: 400,
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    )),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Heading5(fontWeight: FontWeight.w600, value: "Phone:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Heading5(
+                        fontWeight: FontWeight.w600, value: "+255719007163")
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                    width: 400,
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    )),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Heading5(
+                        fontWeight: FontWeight.w600, value: "Employer Name:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Heading5(fontWeight: FontWeight.w600, value: "GVT")
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                    width: 400,
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    )),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Heading5(fontWeight: FontWeight.w600, value: "Email:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Heading5(
+                        fontWeight: FontWeight.w600, value: "johndoe@gmail.com")
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                    width: 400,
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    )),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Heading5(fontWeight: FontWeight.w600, value: "Address:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Heading5(
+                        fontWeight: FontWeight.w600,
+                        value: "786 Dar es salaam ")
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                    width: 400,
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    )),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Heading5(fontWeight: FontWeight.w600, value: "Username:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Heading5(fontWeight: FontWeight.w600, value: "JohnDoe")
+                  ],
+                ),
               ],
             ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-                width: 400,
-                child: Divider(
-                  thickness: 1,
-                  color: Colors.grey,
-                )),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Heading5(fontWeight: FontWeight.w600, value: "Phone:"),
-                SizedBox(
-                  width: 20,
-                ),
-                Heading5(fontWeight: FontWeight.w600, value: "+255719007163")
-              ],
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-                width: 400,
-                child: Divider(
-                  thickness: 1,
-                  color: Colors.grey,
-                )),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Heading5(fontWeight: FontWeight.w600, value: "Employer Name:"),
-                SizedBox(
-                  width: 20,
-                ),
-                Heading5(fontWeight: FontWeight.w600, value: "GVT")
-              ],
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-                width: 400,
-                child: Divider(
-                  thickness: 1,
-                  color: Colors.grey,
-                )),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Heading5(fontWeight: FontWeight.w600, value: "Email:"),
-                SizedBox(
-                  width: 20,
-                ),
-                Heading5(
-                    fontWeight: FontWeight.w600, value: "johndoe@gmail.com")
-              ],
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-                width: 400,
-                child: Divider(
-                  thickness: 1,
-                  color: Colors.grey,
-                )),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Heading5(fontWeight: FontWeight.w600, value: "Address:"),
-                SizedBox(
-                  width: 20,
-                ),
-                Heading5(
-                    fontWeight: FontWeight.w600, value: "786 Dar es salaam ")
-              ],
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-                width: 400,
-                child: Divider(
-                  thickness: 1,
-                  color: Colors.grey,
-                )),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Heading5(fontWeight: FontWeight.w600, value: "Username:"),
-                SizedBox(
-                  width: 20,
-                ),
-                Heading5(fontWeight: FontWeight.w600, value: "JohnDoe")
-              ],
-            ),
-          ],
-        ),
-      ]),
+          ]),
     );
   }
 }

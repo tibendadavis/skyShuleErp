@@ -34,5 +34,5 @@ class Palette {
   var appSucc2 = const Color.fromRGBO(196, 242, 199, 1.0);
   var appError2 = const Color.fromRGBO(249, 225, 220, 1.0);
   var appWarn2 = const Color.fromRGBO(239, 224, 207, 1.0);
-  var borderColor = const Color.fromRGBO(214, 220, 225, 1.0);
+  var borderColor = Color.fromARGB(255, 112, 112, 112);
 }
