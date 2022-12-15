@@ -11,18 +11,26 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
+import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
+import 'package:skyconnect_starter/screens/classAllocation.scrn.dart';
 import 'package:skyconnect_starter/screens/classRoutine.scrn.dart';
 import 'package:skyconnect_starter/screens/classSubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/classes.scrn.dart';
 import 'package:skyconnect_starter/screens/defaultGrading.scrn.dart';
+import 'package:skyconnect_starter/screens/employeeAttendance.scrn.dart';
+import 'package:skyconnect_starter/screens/examAttendance.scrn.dart';
+import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
 import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
+import 'package:skyconnect_starter/screens/minorSchoolExams.scrn.dart';
 import 'package:skyconnect_starter/screens/parents.scrn.dart';
+import 'package:skyconnect_starter/screens/schoolExam.scrn.dart';
 import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/streamSubjectTeacher.scrn.dart';
 import 'package:skyconnect_starter/screens/streams.scrn.dart';
 import 'package:skyconnect_starter/screens/supportingStaff.scrn.dart';
 import 'package:skyconnect_starter/screens/teacher.scrn.dart';
+import 'package:skyconnect_starter/screens/teacherOnDuty.scrn.dart';
 import 'package:skyconnect_starter/screens/terms.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -161,10 +169,22 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "submenu1ex": "Setting",
         "submenu2": ["Exam Schedule", null, Icons.extension],
         "submenu3ex": "Reports",
-        "submenu4": ["Minor School Exams", null, Icons.description],
-        "submenu1.1": ["Exam Groups", null, Icons.text_snippet_outlined],
-        "submenu1.2": ["School Exams", null, Icons.text_snippet_outlined],
-        "submenu1.3": ["Class Allocation", null, Icons.text_snippet_outlined],
+        "submenu4": [
+          "Minor School Exams",
+          minorSchoolExams(),
+          Icons.description
+        ],
+        "submenu1.1": ["Exam Groups", examGroup(), Icons.text_snippet_outlined],
+        "submenu1.2": [
+          "School Exams",
+          schoolExams(),
+          Icons.text_snippet_outlined
+        ],
+        "submenu1.3": [
+          "Class Allocation",
+          classAllocations(),
+          Icons.text_snippet_outlined
+        ],
         "submenu3.1": ["Single Reports", null, Icons.text_snippet_outlined],
         "submenu3.2": ["Combined Reports", null, Icons.text_snippet_outlined],
         "submenu3.3": ["CA Report", null, Icons.text_snippet_outlined],
@@ -184,14 +204,18 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": [false],
         "submenu1": ["Student Attendance", null, Icons.groups],
-        "submenu2": ["Employee Attendance", null, Icons.badge_outlined],
+        "submenu2": [
+          "Employee Attendance",
+          employeeAttendance(),
+          Icons.badge_outlined
+        ],
         "submenu3": [
           "Exam Attendance",
-          null,
+          examAttendance(),
           Icons.airline_seat_recline_normal
         ],
-        "submenu4": ["Teacher on Duty", null, Icons.notifications],
-        "submenu5": ["Attendance Report", null, Icons.group],
+        "submenu4": ["Teacher on Duty", teacherOnDuty(), Icons.notifications],
+        "submenu5": ["Attendance Report", attendanceReport(), Icons.group],
       },
       {
         "size": widget.size!,

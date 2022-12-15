@@ -12,19 +12,19 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
+import 'package:skyconnect_starter/screens/addTeacherOnDuty.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class specialGrading extends StatefulWidget {
-  const specialGrading({super.key});
+class teacherOnDuty extends StatefulWidget {
+  const teacherOnDuty({super.key});
 
   @override
-  State<specialGrading> createState() => _specialGradingState();
+  State<teacherOnDuty> createState() => _teacherOnDutyState();
 }
 
-class _specialGradingState extends State<specialGrading> {
+class _teacherOnDutyState extends State<teacherOnDuty> {
   bool _menu = false;
   double _drawersize = 250;
   var _classlevel;
@@ -100,8 +100,8 @@ class _specialGradingState extends State<specialGrading> {
                           : Insets().appPadding,
                       right: Insets().appGap),
                   child: HeadingText(
-                    size: Responsive.isDesktop(context) ? 35 : 30,
-                    value: "GRADE",
+                    size: Responsive.isDesktop(context) ? 35 : 25,
+                    value: "TEACHER ON DUTY",
                     fontWeight: FontWeight.w700,
                     color: Colors.black,
                   ),
@@ -128,7 +128,7 @@ class _specialGradingState extends State<specialGrading> {
                                 : 12,
                             bottom: Responsive.isDesktop(context)
                                 ? Insets().appPadding
-                                : 10),
+                                : 0),
                         padding: EdgeInsets.only(
                             left: Insets().appPadding,
                             right: Insets().appPadding,
@@ -164,7 +164,7 @@ class _specialGradingState extends State<specialGrading> {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                addGrading()));
+                                                addTeacherOnDuty()));
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -174,7 +174,7 @@ class _specialGradingState extends State<specialGrading> {
                                       padding:
                                           EdgeInsets.all(Insets().appPadding)),
                                   child: Heading5(
-                                    value: "Add Special Grade",
+                                    value: "Add Teacher on Duty",
                                     color: Colors.black,
                                   ))
                             ],
@@ -194,7 +194,7 @@ class _specialGradingState extends State<specialGrading> {
                           : Insets().appPadding,
                       top: Responsive.isDesktop(context)
                           ? Insets().appPadding
-                          : 12,
+                          : Insets().appPadding,
                       bottom: Responsive.isDesktop(context)
                           ? Insets().appPadding
                           : 12),
@@ -233,67 +233,8 @@ class _specialGradingState extends State<specialGrading> {
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Special Grade",
+                                      hintText: " Search for Teacher",
                                       hintStyle: TextStyle(fontSize: 20)))),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(
-                              flex: 1,
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  left: Insets().appGap,
-                                  right: Insets().appGap,
-                                ),
-                                padding: EdgeInsets.only(
-                                  left: Insets().appGap,
-                                ),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.grey, width: 2),
-                                    color: Palette().primaryColor,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appGap + 4)),
-                                child: DropdownButton(
-                                  items: const [
-                                    DropdownMenuItem(
-                                        child: Heading6(
-                                          value: "CANDIDATE GRADE",
-                                          color: Colors.white,
-                                        ),
-                                        value: "CANDIDATE GRADE"),
-                                    DropdownMenuItem(
-                                        child: Heading6(
-                                            value: "JOINT GRADE",
-                                            color: Colors.white),
-                                        value: "JOINT GRADE"),
-                                    DropdownMenuItem(
-                                        child: Heading6(
-                                            value: "CANDIDATE GRADE 2",
-                                            color: Colors.white),
-                                        value: "CANDIDATE GRADE 2")
-                                  ],
-                                  hint: Heading6(
-                                    value: "Special Grade Name",
-                                    color: Colors.white,
-                                  ),
-                                  value: _classlevel,
-                                  iconEnabledColor: Colors.white,
-                                  iconDisabledColor: Colors.white,
-                                  isExpanded: true,
-                                  underline: SizedBox(),
-                                  dropdownColor: Palette().primaryColor,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4),
-                                  onChanged: ((value) {
-                                    if (value is String) {
-                                      setState(() {
-                                        _classlevel = value;
-                                      });
-                                    }
-                                  }),
-                                ),
-                              )),
                           SizedBox(
                             width: 10,
                           ),
@@ -365,7 +306,7 @@ class _specialGradingState extends State<specialGrading> {
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Special Grade",
+                                      hintText: " Search for Teacher",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: Responsive.isDesktop(context) ? 10 : 0,
@@ -377,62 +318,7 @@ class _specialGradingState extends State<specialGrading> {
                                 width: MediaQuery.of(context).size.width + 100,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 150,
-                                      margin: EdgeInsets.only(
-                                        right: Insets().appGap,
-                                      ),
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appGap,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 2),
-                                          color: Palette().primaryColor,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading6(
-                                                value: "CANDIDATE GRADE",
-                                                color: Colors.white,
-                                              ),
-                                              value: "CANDIDATE GRADE"),
-                                          DropdownMenuItem(
-                                              child: Heading6(
-                                                  value: "JOINT GRADE",
-                                                  color: Colors.white),
-                                              value: "JOINT GRADE"),
-                                          DropdownMenuItem(
-                                              child: Heading6(
-                                                  value: "CANDIDATE GRADE 2",
-                                                  color: Colors.white),
-                                              value: "CANDIDATE GRADE 2")
-                                        ],
-                                        hint: Heading6(
-                                          value: "Special Grade Name",
-                                          color: Colors.white,
-                                        ),
-                                        value: _classlevel,
-                                        iconEnabledColor: Colors.white,
-                                        iconDisabledColor: Colors.white,
-                                        isExpanded: true,
-                                        underline: SizedBox(),
-                                        dropdownColor: Palette().primaryColor,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        onChanged: ((value) {
-                                          if (value is String) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    )
-                                  ],
+                                  children: [],
                                 )),
                           ),
                           SizedBox(
@@ -535,7 +421,7 @@ class _specialGradingState extends State<specialGrading> {
                     children: [
                       HeadingText(
                         size: Responsive.isDesktop(context) ? 14 : 13,
-                        value: "RESULTS (7)",
+                        value: "RESULTS (23)",
                         color: Palette().primaryColor,
                         fontWeight: FontWeight.w700,
                       ),
@@ -702,70 +588,58 @@ class _specialGradingState extends State<specialGrading> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 90,
+                                  width:
+                                      Responsive.isDesktop(context) ? 100 : 100,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Grade Name",
+                                    value: "Week",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 90,
+                                  width:
+                                      Responsive.isDesktop(context) ? 160 : 130,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Grade Point",
+                                    value: "Start Date",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 90,
+                                  width:
+                                      Responsive.isDesktop(context) ? 160 : 130,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Mark From",
+                                    value: "End Date",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 90,
+                                  width:
+                                      Responsive.isDesktop(context) ? 170 : 150,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Mark Up to",
+                                    value: "Teacher(s) on Duty",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 90,
+                                  width:
+                                      Responsive.isDesktop(context) ? 170 : 150,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Remark",
+                                    value: "Student(s) on Duty",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 170,
-                                  child: HeadingText(
-                                    size: 14,
-                                    value: "Overall Academic Note",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                )),
-                                DataColumn(
-                                    label: SizedBox(
-                                  width: 110,
-                                  child: HeadingText(
-                                    size: 14,
-                                    value: "Overall Remark",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                )),
-                                DataColumn(
-                                    label: SizedBox(
-                                  width: 90,
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 150,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Action",
@@ -773,323 +647,7 @@ class _specialGradingState extends State<specialGrading> {
                                   ),
                                 )),
                               ],
-                              rows: [
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "A",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "41",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "50",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Excellent",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Excellent",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Excellent",
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "B",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "31",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "40",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Very Good",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Very Good",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Very Good",
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "C",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "21",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "30",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Good",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Good",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Good",
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "4",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "D",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "4",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "11",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "20",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Fair",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Fair",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Fair",
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "5",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "F",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "5",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "0",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "10",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Poor",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Poor",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Poor",
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                              ]),
+                              rows: []),
                         ),
                       ),
                     ),

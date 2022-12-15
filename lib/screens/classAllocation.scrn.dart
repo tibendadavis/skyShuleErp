@@ -12,23 +12,24 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addStream.scrn.dart';
+import 'package:skyconnect_starter/screens/addStaff.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class streams extends StatefulWidget {
-  const streams({super.key});
+class classAllocations extends StatefulWidget {
+  const classAllocations({super.key});
 
   @override
-  State<streams> createState() => _streamsState();
+  State<classAllocations> createState() => _supportingStaffState();
 }
 
-class _streamsState extends State<streams> {
+class _supportingStaffState extends State<classAllocations> {
   bool _menu = false;
   double _drawersize = 250;
   var _classlevel;
   var _academicYear;
   var _stream;
+  var _class;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class _streamsState extends State<streams> {
       body: SingleChildScrollView(
         child: SizedBox(
           height:
-              Responsive.isDesktop(context) ? size.height : size.height + 100,
+              Responsive.isDesktop(context) ? size.height : size.height + 300,
           width: size.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,7 +101,7 @@ class _streamsState extends State<streams> {
                       right: Insets().appGap),
                   child: HeadingText(
                     size: Responsive.isDesktop(context) ? 35 : 30,
-                    value: "STREAMS",
+                    value: "CLASS ALLOCATIONS",
                     fontWeight: FontWeight.w700,
                     color: Colors.black,
                   ),
@@ -162,7 +163,7 @@ class _streamsState extends State<streams> {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) => addStream()));
+                                            builder: (context) => addStaff()));
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -172,7 +173,7 @@ class _streamsState extends State<streams> {
                                       padding:
                                           EdgeInsets.all(Insets().appPadding)),
                                   child: Heading5(
-                                    value: "Add Stream",
+                                    value: "Define Exam",
                                     color: Colors.black,
                                   ))
                             ],
@@ -220,12 +221,12 @@ class _streamsState extends State<streams> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Heading1(
-                                value: "140",
+                                value: "7",
                                 color: Colors.white,
                               ),
                               Expanded(
                                 child: Heading6(
-                                    value: "Total Streams",
+                                    value: "Total Class Allocations",
                                     color: Colors.white),
                               )
                             ],
@@ -279,12 +280,11 @@ class _streamsState extends State<streams> {
                               flex: 3,
                               child: TextFormField(
                                   decoration: const InputDecoration(
-
                                       // enabledBorder: OutlineInputBorder(
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Streams",
+                                      hintText: " Search for Exams",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: 10,
@@ -352,6 +352,7 @@ class _streamsState extends State<streams> {
                               flex: 1,
                               child: Container(
                                 margin: EdgeInsets.only(
+                                  left: Insets().appGap,
                                   right: Insets().appGap,
                                 ),
                                 padding: EdgeInsets.only(
@@ -367,39 +368,37 @@ class _streamsState extends State<streams> {
                                   items: const [
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Nursery",
+                                          value: "Class One",
                                           color: Colors.white,
                                         ),
-                                        value: "Nursery"),
+                                        value: "Class One"),
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Primary",
-                                          color: Colors.white,
-                                        ),
-                                        value: "Primary"),
+                                            value: "Class Two",
+                                            color: Colors.white),
+                                        value: "Class Two"),
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Secondary",
-                                          color: Colors.white,
-                                        ),
-                                        value: "Secondary")
+                                            value: "Class Three",
+                                            color: Colors.white),
+                                        value: "Class Three")
                                   ],
-                                  value: _classlevel,
-                                  iconEnabledColor: Colors.white,
-                                  iconDisabledColor: Colors.white,
-                                  isExpanded: true,
-                                  dropdownColor: Palette().primaryColor,
-                                  underline: SizedBox(),
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4),
                                   hint: Heading6(
                                     value: "Select Class",
                                     color: Colors.white,
                                   ),
+                                  value: _class,
+                                  iconEnabledColor: Colors.white,
+                                  iconDisabledColor: Colors.white,
+                                  isExpanded: true,
+                                  underline: SizedBox(),
+                                  dropdownColor: Palette().primaryColor,
+                                  borderRadius: BorderRadius.circular(
+                                      Insets().appRadiusMin + 4),
                                   onChanged: ((value) {
                                     if (value is String) {
                                       setState(() {
-                                        _classlevel = value;
+                                        _class = value;
                                       });
                                     }
                                   }),
@@ -476,7 +475,7 @@ class _streamsState extends State<streams> {
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Streams",
+                                      hintText: " Search for Exams",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: Responsive.isDesktop(context) ? 10 : 0,
@@ -545,8 +544,7 @@ class _streamsState extends State<streams> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width:
-                                          Responsive.isDesktop(context) ? 7 : 0,
+                                      width: 5,
                                     ),
                                     Container(
                                       width: 100,
@@ -567,39 +565,37 @@ class _streamsState extends State<streams> {
                                         items: const [
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Nursery",
+                                                value: "Class One",
                                                 color: Colors.white,
                                               ),
-                                              value: "Nursery"),
+                                              value: "Class One"),
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Primary",
-                                                color: Colors.white,
-                                              ),
-                                              value: "Primary"),
+                                                  value: "Class Two",
+                                                  color: Colors.white),
+                                              value: "Class Two"),
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Secondary",
-                                                color: Colors.white,
-                                              ),
-                                              value: "Secondary")
+                                                  value: "Class Three",
+                                                  color: Colors.white),
+                                              value: "Class Three")
                                         ],
-                                        value: _classlevel,
-                                        iconEnabledColor: Colors.white,
-                                        iconDisabledColor: Colors.white,
-                                        isExpanded: true,
-                                        dropdownColor: Palette().primaryColor,
-                                        underline: SizedBox(),
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
                                         hint: Heading6(
                                           value: "Select Class",
                                           color: Colors.white,
                                         ),
+                                        value: _class,
+                                        iconEnabledColor: Colors.white,
+                                        iconDisabledColor: Colors.white,
+                                        isExpanded: true,
+                                        underline: SizedBox(),
+                                        dropdownColor: Palette().primaryColor,
+                                        borderRadius: BorderRadius.circular(
+                                            Insets().appRadiusMin + 4),
                                         onChanged: ((value) {
                                           if (value is String) {
                                             setState(() {
-                                              _classlevel = value;
+                                              _class = value;
                                             });
                                           }
                                         }),
@@ -650,6 +646,7 @@ class _streamsState extends State<streams> {
                                       ))),
                               SizedBox(
                                 width: Responsive.isDesktop(context) ? 10 : 0,
+                                // height: Responsive.isDesktop(context) ? 0 : 5,
                               ),
                               Container(
                                   width:
@@ -867,6 +864,8 @@ class _streamsState extends State<streams> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 20 : null,
                                   child: HeadingText(
                                     size: 14,
                                     value: "No.",
@@ -875,46 +874,53 @@ class _streamsState extends State<streams> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 100 : 50,
+                                  width: Responsive.isDesktop(context)
+                                      ? 100
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Stream",
+                                    value: "Exam Name",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 100 : 65,
+                                  width: Responsive.isDesktop(context)
+                                      ? 100
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Category",
+                                    value: "Semester",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 130 : 100,
+                                  width: Responsive.isDesktop(context)
+                                      ? 100
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Teacher Name",
+                                    value: "Date",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? 100
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Student",
+                                    value: "Abbreviation",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 200 : 100,
+                                  width: Responsive.isDesktop(context)
+                                      ? 100
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Note",
@@ -922,11 +928,13 @@ class _streamsState extends State<streams> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: SizedBox(
-                                  child: HeadingText(
-                                    size: 14,
-                                    value: "Action",
-                                    fontWeight: FontWeight.w700,
+                                    label: Expanded(
+                                  child: Center(
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Action",
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 )),
                               ],
@@ -944,39 +952,31 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "WEEKLY EXAMINATION",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "FIRST TERM",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "14 Jan 2022",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "WE",
                                   )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: " ",
+                                      ))),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
@@ -985,7 +985,7 @@ class _streamsState extends State<streams> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 5,
+                                        width: 10,
                                       ),
                                       TextButton(
                                         onPressed: () {},
@@ -1007,43 +1007,35 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "2",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "FEBRUARY MID QUARTER",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "FIRST TERM",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "18 Feb 2022",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "FMQ",
                                   )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: " ",
+                                      ))),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
@@ -1052,7 +1044,7 @@ class _streamsState extends State<streams> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 5,
+                                        width: 10,
                                       ),
                                       TextButton(
                                         onPressed: () {},
@@ -1074,43 +1066,35 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "3",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "TOP MARK VI MARCH 2022",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "SECOND TERM",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "09 Mar 2022",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "TM6",
                                   )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: " ",
+                                      ))),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
@@ -1119,7 +1103,7 @@ class _streamsState extends State<streams> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 5,
+                                        width: 10,
                                       ),
                                       TextButton(
                                         onPressed: () {},
@@ -1141,43 +1125,35 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "4",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "MID TERM 1",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "FIRST TERM",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "04 Apr 2022",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "MT1",
                                   )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: " ",
+                                      ))),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
@@ -1186,7 +1162,7 @@ class _streamsState extends State<streams> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 5,
+                                        width: 10,
                                       ),
                                       TextButton(
                                         onPressed: () {},
@@ -1208,43 +1184,35 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "5",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "TOP MARK 9",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "FIRST TERM",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "27 May 2022",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "TM9",
                                   )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: "'ALWAYS AIM AT THE TOP'",
+                                      ))),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
@@ -1253,7 +1221,243 @@ class _streamsState extends State<streams> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 5,
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "6",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TOP MARK 10",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "FIRST TERM",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "03 Jun 2022",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TM10",
+                                  )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: " ",
+                                      ))),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "7",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TOP MARK 11",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "FIRST TERM",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "10 Jun 2022",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TM11",
+                                  )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: " ",
+                                      ))),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "8",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TOP MARK 12",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "FIRST TERM",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "16 Jun 2022",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TM12",
+                                  )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: " ",
+                                      ))),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "9",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "END OF JUNE EXAMINATION",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "FIRST TERM",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "20 Jun 2022",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "EJE",
+                                  )),
+                                  DataCell(SizedBox(
+                                      width: Responsive.isDesktop(context)
+                                          ? 400
+                                          : 300,
+                                      child: HeadingText(
+                                        size: 14,
+                                        value: " ",
+                                      ))),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
                                       ),
                                       TextButton(
                                         onPressed: () {},

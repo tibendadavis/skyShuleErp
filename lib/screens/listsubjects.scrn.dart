@@ -94,7 +94,9 @@ class _listSubjectsState extends State<listSubjects> {
                   alignment: Alignment.bottomLeft,
                   padding: EdgeInsets.only(
                       top: Insets().appPadding,
-                      left: Insets().appPadding * 2,
+                      left: Responsive.isDesktop(context)
+                          ? Insets().appPadding * 2
+                          : Insets().appPadding,
                       right: Insets().appGap),
                   child: HeadingText(
                     size: Responsive.isDesktop(context) ? 35 : 30,

@@ -12,23 +12,24 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addStream.scrn.dart';
+import 'package:skyconnect_starter/screens/addClass.scrn.dart';
+import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class streams extends StatefulWidget {
-  const streams({super.key});
+class examAttendance extends StatefulWidget {
+  const examAttendance({super.key});
 
   @override
-  State<streams> createState() => _streamsState();
+  State<examAttendance> createState() => _classesState();
 }
 
-class _streamsState extends State<streams> {
+class _classesState extends State<examAttendance> {
   bool _menu = false;
   double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
+  var _exam;
+  var _class;
+  var _subject;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class _streamsState extends State<streams> {
       body: SingleChildScrollView(
         child: SizedBox(
           height:
-              Responsive.isDesktop(context) ? size.height : size.height + 100,
+              Responsive.isDesktop(context) ? size.height : size.height + 300,
           width: size.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,8 +100,8 @@ class _streamsState extends State<streams> {
                           : Insets().appPadding,
                       right: Insets().appGap),
                   child: HeadingText(
-                    size: Responsive.isDesktop(context) ? 35 : 30,
-                    value: "STREAMS",
+                    size: Responsive.isDesktop(context) ? 35 : 25,
+                    value: "EXAM ATTENDANCE",
                     fontWeight: FontWeight.w700,
                     color: Colors.black,
                   ),
@@ -162,7 +163,8 @@ class _streamsState extends State<streams> {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) => addStream()));
+                                            builder: (context) =>
+                                                addClasses()));
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -172,7 +174,7 @@ class _streamsState extends State<streams> {
                                       padding:
                                           EdgeInsets.all(Insets().appPadding)),
                                   child: Heading5(
-                                    value: "Add Stream",
+                                    value: "Add Exam Attendance",
                                     color: Colors.black,
                                   ))
                             ],
@@ -216,18 +218,41 @@ class _streamsState extends State<streams> {
                                 Insets().appRadiusMin + 4)),
                         child: SizedBox(
                           height: 70,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Heading1(
-                                value: "140",
-                                color: Colors.white,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Heading1(
+                                    value: "17",
+                                    color: Colors.white,
+                                  ),
+                                  Expanded(
+                                    child: Heading6(
+                                        value: "Total Exams",
+                                        color: Colors.white),
+                                  )
+                                ],
                               ),
-                              Expanded(
-                                child: Heading6(
-                                    value: "Total Streams",
-                                    color: Colors.white),
-                              )
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                attendanceReport()));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appRadiusMin + 4)),
+                                      padding:
+                                          EdgeInsets.all(Insets().appPadding)),
+                                  child: Heading5(
+                                    value: "View Reports",
+                                    color: Colors.black,
+                                  ))
                             ],
                           ),
                         ),
@@ -284,7 +309,7 @@ class _streamsState extends State<streams> {
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Streams",
+                                      hintText: " Search for Student",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: 10,
@@ -308,27 +333,69 @@ class _streamsState extends State<streams> {
                                 child: DropdownButton(
                                   items: const [
                                     DropdownMenuItem(
-                                        child: Heading6(
-                                          value: "Nursery",
+                                        child: Heading5(
                                           color: Colors.white,
+                                          value: "Top Mark 2 June",
                                         ),
-                                        value: "Nursery"),
+                                        value: "Top Mark 2 June"),
                                     DropdownMenuItem(
-                                        child: Heading6(
-                                            value: "Primary",
-                                            color: Colors.white),
-                                        value: "Primary"),
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "End of Term One",
+                                        ),
+                                        value: "End of Term One"),
                                     DropdownMenuItem(
-                                        child: Heading6(
-                                            value: "Secondary",
-                                            color: Colors.white),
-                                        value: "Secondary")
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "END OF QUARTER THREE EXAMS",
+                                        ),
+                                        value: "END OF QUARTER THREE EXAMS"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "END OF OCTOBER EXAMS",
+                                        ),
+                                        value: "END OF OCTOBER EXAMS"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "END OF YEAR EXAM",
+                                        ),
+                                        value: "END OF YEAR EXAM"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "JANUARY END OF MONTH",
+                                        ),
+                                        value: "JANUARY END OF MONTH"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value:
+                                              "FEBRUARY END OF MONTH EXAMINATION",
+                                        ),
+                                        value:
+                                            "FEBRUARY END OF MONTH EXAMINATION"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "TOP MARK VI MARCH 2022",
+                                        ),
+                                        value: "TOP MARK VI MARCH 2022"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value:
+                                              "Class END OF QUARTER THREE EXAMS",
+                                        ),
+                                        value:
+                                            "Class END OF QUARTER THREE EXAMS"),
                                   ],
                                   hint: Heading6(
-                                    value: "Class Level",
+                                    value: "Select Exam",
                                     color: Colors.white,
                                   ),
-                                  value: _classlevel,
+                                  value: _exam,
                                   iconEnabledColor: Colors.white,
                                   iconDisabledColor: Colors.white,
                                   isExpanded: true,
@@ -339,7 +406,7 @@ class _streamsState extends State<streams> {
                                   onChanged: ((value) {
                                     if (value is String) {
                                       setState(() {
-                                        _classlevel = value;
+                                        _exam = value;
                                       });
                                     }
                                   }),
@@ -352,6 +419,7 @@ class _streamsState extends State<streams> {
                               flex: 1,
                               child: Container(
                                 margin: EdgeInsets.only(
+                                  left: Insets().appGap,
                                   right: Insets().appGap,
                                 ),
                                 padding: EdgeInsets.only(
@@ -367,39 +435,96 @@ class _streamsState extends State<streams> {
                                   items: const [
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Nursery",
+                                          value: "Class One",
                                           color: Colors.white,
                                         ),
-                                        value: "Nursery"),
+                                        value: "Class One"),
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Primary",
-                                          color: Colors.white,
-                                        ),
-                                        value: "Primary"),
+                                            value: "Class Two",
+                                            color: Colors.white),
+                                        value: "Class Two"),
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Secondary",
-                                          color: Colors.white,
-                                        ),
-                                        value: "Secondary")
+                                            value: "Class Three",
+                                            color: Colors.white),
+                                        value: "Class Three")
                                   ],
-                                  value: _classlevel,
-                                  iconEnabledColor: Colors.white,
-                                  iconDisabledColor: Colors.white,
-                                  isExpanded: true,
-                                  dropdownColor: Palette().primaryColor,
-                                  underline: SizedBox(),
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4),
                                   hint: Heading6(
                                     value: "Select Class",
                                     color: Colors.white,
                                   ),
+                                  value: _class,
+                                  iconEnabledColor: Colors.white,
+                                  iconDisabledColor: Colors.white,
+                                  isExpanded: true,
+                                  underline: SizedBox(),
+                                  dropdownColor: Palette().primaryColor,
+                                  borderRadius: BorderRadius.circular(
+                                      Insets().appRadiusMin + 4),
                                   onChanged: ((value) {
                                     if (value is String) {
                                       setState(() {
-                                        _classlevel = value;
+                                        _class = value;
+                                      });
+                                    }
+                                  }),
+                                ),
+                              )),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                              flex: 1,
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                  left: Insets().appGap,
+                                  right: Insets().appGap,
+                                ),
+                                padding: EdgeInsets.only(
+                                  left: Insets().appGap,
+                                ),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Palette().borderColor, width: 1),
+                                    color: Palette().primaryColor,
+                                    borderRadius: BorderRadius.circular(
+                                        Insets().appGap + 4)),
+                                child: DropdownButton(
+                                  items: const [
+                                    DropdownMenuItem(
+                                        child: Heading6(
+                                          value: "Physics",
+                                          color: Colors.white,
+                                        ),
+                                        value: "Physics"),
+                                    DropdownMenuItem(
+                                        child: Heading6(
+                                            value: "Mathematics",
+                                            color: Colors.white),
+                                        value: "Mathematics"),
+                                    DropdownMenuItem(
+                                        child: Heading6(
+                                            value: "Geography",
+                                            color: Colors.white),
+                                        value: "Geography")
+                                  ],
+                                  hint: Heading6(
+                                    value: "Select Subject",
+                                    color: Colors.white,
+                                  ),
+                                  value: _subject,
+                                  iconEnabledColor: Colors.white,
+                                  iconDisabledColor: Colors.white,
+                                  isExpanded: true,
+                                  underline: SizedBox(),
+                                  dropdownColor: Palette().primaryColor,
+                                  borderRadius: BorderRadius.circular(
+                                      Insets().appRadiusMin + 4),
+                                  onChanged: ((value) {
+                                    if (value is String) {
+                                      setState(() {
+                                        _subject = value;
                                       });
                                     }
                                   }),
@@ -476,7 +601,7 @@ class _streamsState extends State<streams> {
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Streams",
+                                      hintText: " Search for Student",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: Responsive.isDesktop(context) ? 10 : 0,
@@ -490,7 +615,7 @@ class _streamsState extends State<streams> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: 100,
+                                      width: 160,
                                       margin: EdgeInsets.only(
                                         right: Insets().appGap,
                                       ),
@@ -507,27 +632,77 @@ class _streamsState extends State<streams> {
                                       child: DropdownButton(
                                         items: const [
                                           DropdownMenuItem(
-                                              child: Heading6(
-                                                value: "Nursery",
+                                              child: Heading5(
                                                 color: Colors.white,
+                                                value: "Top Mark 2 June",
                                               ),
-                                              value: "Nursery"),
+                                              value: "Top Mark 2 June"),
                                           DropdownMenuItem(
-                                              child: Heading6(
-                                                  value: "Primary",
-                                                  color: Colors.white),
-                                              value: "Primary"),
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "End of July Exams",
+                                              ),
+                                              value: "End of July Exams"),
                                           DropdownMenuItem(
-                                              child: Heading6(
-                                                  value: "Secondary",
-                                                  color: Colors.white),
-                                              value: "Secondary")
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "End of Term One",
+                                              ),
+                                              value: "End of Term One"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value:
+                                                    "END OF QUARTER THREE EXAMS",
+                                              ),
+                                              value:
+                                                  "END OF QUARTER THREE EXAMS"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "END OF OCTOBER EXAMS",
+                                              ),
+                                              value: "END OF OCTOBER EXAMS"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "END OF YEAR EXAM",
+                                              ),
+                                              value: "END OF YEAR EXAM"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "JANUARY END OF MONTH",
+                                              ),
+                                              value: "JANUARY END OF MONTH"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value:
+                                                    "FEBRUARY END OF MONTH EXAMINATION",
+                                              ),
+                                              value:
+                                                  "FEBRUARY END OF MONTH EXAMINATION"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "TOP MARK VI MARCH 2022",
+                                              ),
+                                              value: "TOP MARK VI MARCH 2022"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value:
+                                                    "Class END OF QUARTER THREE EXAMS",
+                                              ),
+                                              value:
+                                                  "Class END OF QUARTER THREE EXAMS"),
                                         ],
                                         hint: Heading6(
-                                          value: "Class Level",
+                                          value: "Select Exam",
                                           color: Colors.white,
                                         ),
-                                        value: _classlevel,
+                                        value: _exam,
                                         iconEnabledColor: Colors.white,
                                         iconDisabledColor: Colors.white,
                                         isExpanded: true,
@@ -538,15 +713,11 @@ class _streamsState extends State<streams> {
                                         onChanged: ((value) {
                                           if (value is String) {
                                             setState(() {
-                                              _classlevel = value;
+                                              _exam = value;
                                             });
                                           }
                                         }),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width:
-                                          Responsive.isDesktop(context) ? 7 : 0,
                                     ),
                                     Container(
                                       width: 100,
@@ -567,39 +738,92 @@ class _streamsState extends State<streams> {
                                         items: const [
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Nursery",
+                                                value: "Class One",
                                                 color: Colors.white,
                                               ),
-                                              value: "Nursery"),
+                                              value: "Class One"),
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Primary",
-                                                color: Colors.white,
-                                              ),
-                                              value: "Primary"),
+                                                  value: "Class Two",
+                                                  color: Colors.white),
+                                              value: "Class Two"),
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Secondary",
-                                                color: Colors.white,
-                                              ),
-                                              value: "Secondary")
+                                                  value: "Class Three",
+                                                  color: Colors.white),
+                                              value: "Class Three")
                                         ],
-                                        value: _classlevel,
-                                        iconEnabledColor: Colors.white,
-                                        iconDisabledColor: Colors.white,
-                                        isExpanded: true,
-                                        dropdownColor: Palette().primaryColor,
-                                        underline: SizedBox(),
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
                                         hint: Heading6(
                                           value: "Select Class",
                                           color: Colors.white,
                                         ),
+                                        value: _class,
+                                        iconEnabledColor: Colors.white,
+                                        iconDisabledColor: Colors.white,
+                                        isExpanded: true,
+                                        underline: SizedBox(),
+                                        dropdownColor: Palette().primaryColor,
+                                        borderRadius: BorderRadius.circular(
+                                            Insets().appRadiusMin + 4),
                                         onChanged: ((value) {
                                           if (value is String) {
                                             setState(() {
-                                              _classlevel = value;
+                                              _class = value;
+                                            });
+                                          }
+                                        }),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 100,
+                                      margin: EdgeInsets.only(
+                                        right: Insets().appGap,
+                                      ),
+                                      padding: EdgeInsets.only(
+                                        left: Insets().appGap,
+                                      ),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Palette().borderColor,
+                                              width: 1),
+                                          color: Palette().primaryColor,
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appGap + 4)),
+                                      child: DropdownButton(
+                                        items: const [
+                                          DropdownMenuItem(
+                                              child: Heading6(
+                                                value: "Physics",
+                                                color: Colors.white,
+                                              ),
+                                              value: "Physics"),
+                                          DropdownMenuItem(
+                                              child: Heading6(
+                                                  value: "Mathematics",
+                                                  color: Colors.white),
+                                              value: "Mathematics"),
+                                          DropdownMenuItem(
+                                              child: Heading6(
+                                                  value: "Geography",
+                                                  color: Colors.white),
+                                              value: "Geography")
+                                        ],
+                                        hint: Heading6(
+                                          value: "Select Subject",
+                                          color: Colors.white,
+                                        ),
+                                        value: _subject,
+                                        iconEnabledColor: Colors.white,
+                                        iconDisabledColor: Colors.white,
+                                        isExpanded: true,
+                                        underline: SizedBox(),
+                                        dropdownColor: Palette().primaryColor,
+                                        borderRadius: BorderRadius.circular(
+                                            Insets().appRadiusMin + 4),
+                                        onChanged: ((value) {
+                                          if (value is String) {
+                                            setState(() {
+                                              _subject = value;
                                             });
                                           }
                                         }),
@@ -827,7 +1051,7 @@ class _streamsState extends State<streams> {
                           onChanged: ((value) {
                             if (true) {
                               setState(() {
-                                _classlevel = value;
+                                _exam = value;
                               });
                             }
                           }),
@@ -867,6 +1091,8 @@ class _streamsState extends State<streams> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 30 : null,
                                   child: HeadingText(
                                     size: 14,
                                     value: "No.",
@@ -876,53 +1102,62 @@ class _streamsState extends State<streams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 100 : 50,
+                                      Responsive.isDesktop(context) ? 50 : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Stream",
+                                    value: "Photo",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 100 : 65,
+                                  width: Responsive.isDesktop(context)
+                                      ? 200
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Category",
+                                    value: "Name",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 130 : 100,
+                                  width: Responsive.isDesktop(context)
+                                      ? 150
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Teacher Name",
+                                    value: "Roll/Reg No.",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? 200
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Student",
+                                    value: "Email Address",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 200 : 100,
+                                  width: Responsive.isDesktop(context)
+                                      ? 200
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Note",
+                                    value: "Phone",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? 150
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Action",
@@ -942,57 +1177,46 @@ class _streamsState extends State<streams> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "ZEBRA",
+                                  DataCell(Icon(
+                                    Icons.person,
+                                    size: 30,
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "SH 129-39-01 ",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "supporting@gmail.com",
                                   )),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
                                           size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
+                                          value: "View",
                                         ),
                                       ),
                                     ],
@@ -1009,57 +1233,46 @@ class _streamsState extends State<streams> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "ZEBRA",
+                                  DataCell(Icon(
+                                    Icons.person,
+                                    size: 30,
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "SH 129-39-01 ",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "supporting@gmail.com",
                                   )),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
                                           size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
+                                          value: "View",
                                         ),
                                       ),
                                     ],
@@ -1076,57 +1289,46 @@ class _streamsState extends State<streams> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "ZEBRA",
+                                  DataCell(Icon(
+                                    Icons.person,
+                                    size: 30,
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "SH 129-39-01 ",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "supporting@gmail.com",
                                   )),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
                                           size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
+                                          value: "View",
                                         ),
                                       ),
                                     ],
@@ -1143,57 +1345,46 @@ class _streamsState extends State<streams> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "ZEBRA",
+                                  DataCell(Icon(
+                                    Icons.person,
+                                    size: 30,
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "SH 129-39-01 ",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "supporting@gmail.com",
                                   )),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
                                           size: 14,
-                                          value: "View Students",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
+                                          value: "View",
                                         ),
                                       ),
                                     ],
@@ -1210,57 +1401,102 @@ class _streamsState extends State<streams> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "ZEBRA",
+                                  DataCell(Icon(
+                                    Icons.person,
+                                    size: 30,
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "ZEBRA",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Venosa P Kigosi",
-                                  )),
-                                  DataCell(Center(
-                                    child: HeadingText(
-                                      size: 14,
-                                      value: "44",
-                                    ),
+                                    value: "SH 129-39-01 ",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "  ",
+                                    value: "supporting@gmail.com",
                                   )),
                                   DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
                                           size: 14,
-                                          value: "View Students",
+                                          value: "View",
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 5,
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(
+                                    Icons.person,
+                                    size: 30,
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "SH 129-39-01 ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
                                       ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
                                       TextButton(
                                         onPressed: () {},
                                         child: HeadingText(
                                           size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
+                                          value: "View",
                                         ),
                                       ),
                                     ],
