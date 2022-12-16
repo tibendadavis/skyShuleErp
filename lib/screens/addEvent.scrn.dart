@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -22,25 +23,19 @@ import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/components/academicDetails.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class addStream extends StatefulWidget {
-  const addStream({super.key});
+class addEvent extends StatefulWidget {
+  const addEvent({super.key});
 
   @override
-  State<addStream> createState() => _addStreamState();
+  State<addEvent> createState() => _addEventState();
 }
 
-class _addStreamState extends State<addStream> {
-  bool offDtls = true;
-  bool prsnlDtls = false;
-  bool conctDtls = false;
-  bool prntsDtls = false;
-  bool acdmcDtls = false;
-  bool bnkDtls = false;
-  bool othrFacilities = false;
-  bool upldDocs = false;
+class _addEventState extends State<addEvent> {
+  var picked;
   bool _menu = false;
   var _specialGrade;
-  var _classlevel;
+  var _date;
+  var _madefor;
   double _drawersize = 250;
   @override
   Widget build(BuildContext context) {
@@ -65,7 +60,7 @@ class _addStreamState extends State<addStream> {
       ),
       body: SingleChildScrollView(
           child: SizedBox(
-        height: size.height,
+        height: size.height + 285,
         width: size.width,
         child: Row(children: [
           if (Responsive.isDesktop(context))
@@ -103,13 +98,16 @@ class _addStreamState extends State<addStream> {
                 alignment: Alignment.bottomLeft,
                 padding: EdgeInsets.only(
                     top: Insets().appPadding,
-                    left: Insets().appPadding * 2,
-                    right: Insets().appGap),
+                    left: Responsive.isDesktop(context)
+                        ? Insets().appPadding * 2
+                        : Insets().appPadding,
+                    right: Insets().appPadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Heading2(
-                      value: "STREAM",
+                    HeadingText(
+                      size: Responsive.isDesktop(context) ? 35 : 20,
+                      value: "NEWS & ANNOUNCEMENTS",
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
@@ -117,7 +115,7 @@ class _addStreamState extends State<addStream> {
                       height: 10,
                     ),
                     const Heading3(
-                      value: "Stream Information",
+                      value: "News Board",
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
                     ),
@@ -162,9 +160,9 @@ class _addStreamState extends State<addStream> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Stream "),
+                                  value: "Title"),
                               SizedBox(
-                                width: 400,
+                                width: 600,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
                                 child: Container(
                                   alignment: Alignment.centerLeft,
@@ -183,7 +181,7 @@ class _addStreamState extends State<addStream> {
                                           TextAlignVertical.center,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: "Stream name eg. ZEBRA",
+                                        hintText: "Title of the News",
                                       )),
                                 ),
                               ),
@@ -205,9 +203,9 @@ class _addStreamState extends State<addStream> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Class Level"),
+                                  value: "Date"),
                               SizedBox(
-                                width: 400,
+                                width: 600,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
                                 child: Container(
                                   padding: EdgeInsets.only(
@@ -224,21 +222,11 @@ class _addStreamState extends State<addStream> {
                                     items: const [
                                       DropdownMenuItem(
                                           child: Heading5(
-                                            value: "Nursery",
+                                            value: "",
                                           ),
-                                          value: "Nursery"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Primary",
-                                          ),
-                                          value: "Primary"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Secondary",
-                                          ),
-                                          value: "Secondary"),
+                                          value: ""),
                                     ],
-                                    value: _classlevel,
+                                    value: _date,
                                     isExpanded: true,
                                     iconSize: 35,
                                     icon: Icon(
@@ -248,12 +236,12 @@ class _addStreamState extends State<addStream> {
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4),
                                     hint: Heading5(
-                                      value: "Select Class Level",
+                                      value: "Select Date",
                                     ),
                                     onChanged: ((value) {
                                       if (value is int) {
                                         setState(() {
-                                          _classlevel = value;
+                                          _date = value;
                                         });
                                       }
                                     }),
@@ -278,9 +266,9 @@ class _addStreamState extends State<addStream> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Class"),
+                                  value: "News For"),
                               SizedBox(
-                                width: 400,
+                                width: 600,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
                                 child: Container(
                                   padding: EdgeInsets.only(
@@ -297,21 +285,26 @@ class _addStreamState extends State<addStream> {
                                     items: const [
                                       DropdownMenuItem(
                                           child: Heading5(
-                                            value: "Class One",
+                                            value: "All",
                                           ),
-                                          value: "Class One"),
+                                          value: "All"),
                                       DropdownMenuItem(
                                           child: Heading5(
-                                            value: "Class Two",
+                                            value: "Students",
                                           ),
-                                          value: "Class Two"),
+                                          value: "Students"),
                                       DropdownMenuItem(
                                           child: Heading5(
-                                            value: "Class Three",
+                                            value: "Teachers",
                                           ),
-                                          value: "Class Three"),
+                                          value: "Teachers"),
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Supporting Staff",
+                                          ),
+                                          value: "Supporting Staff"),
                                     ],
-                                    value: _classlevel,
+                                    value: _madefor,
                                     isExpanded: true,
                                     iconSize: 35,
                                     icon: Icon(
@@ -321,12 +314,12 @@ class _addStreamState extends State<addStream> {
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4),
                                     hint: Heading5(
-                                      value: "Select Class",
+                                      value: "Made For",
                                     ),
                                     onChanged: ((value) {
-                                      if (value is int) {
+                                      if (value is String) {
                                         setState(() {
-                                          _classlevel = value;
+                                          _madefor = value;
                                         });
                                       }
                                     }),
@@ -351,9 +344,9 @@ class _addStreamState extends State<addStream> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Teacher Name "),
+                                  value: "Attachment"),
                               SizedBox(
-                                width: 400,
+                                width: 600,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
                                 child: Container(
                                   alignment: Alignment.centerLeft,
@@ -367,19 +360,60 @@ class _addStreamState extends State<addStream> {
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(
                                           Insets().appPadding / 1.5)),
-                                  child: TextFormField(
-                                      textAlignVertical:
-                                          TextAlignVertical.center,
-                                      decoration: const InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Stream Teacher name",
-                                      )),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      HeadingText(
+                                          size: Responsive.isDesktop(context)
+                                              ? 15
+                                              : 13,
+                                          value: picked != null
+                                              ? picked.files.first.name
+                                                  .toString()
+                                              : "No File Choosen"),
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          setState(() async {
+                                            picked = await FilePicker.platform
+                                                .pickFiles(
+                                                    allowMultiple: false);
+                                          });
+                                          if (picked != null) {
+                                            print(picked.files.first.name);
+                                          }
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Palette().primaryColor,
+                                            padding: EdgeInsets.only(
+                                              bottom:
+                                                  Responsive.isDesktop(context)
+                                                      ? 17
+                                                      : 14,
+                                              left: Insets().appPadding / 2,
+                                              right: Insets().appPadding / 2,
+                                              top: Responsive.isDesktop(context)
+                                                  ? 17
+                                                  : 14,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10))),
+                                        child: HeadingText(
+                                            size: Responsive.isDesktop(context)
+                                                ? 15
+                                                : 13,
+                                            value: "Upload File"),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                           SizedBox(
-                            height: Responsive.isDesktop(context) ? 10 : 15,
+                            height: Responsive.isDesktop(context) ? 15 : 15,
                           ),
                           Flex(
                             direction: Responsive.isDesktop(context)
@@ -389,17 +423,17 @@ class _addStreamState extends State<addStream> {
                                 ? MainAxisAlignment.spaceBetween
                                 : MainAxisAlignment.start,
                             crossAxisAlignment: Responsive.isDesktop(context)
-                                ? CrossAxisAlignment.center
+                                ? CrossAxisAlignment.start
                                 : CrossAxisAlignment.start,
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Note "),
+                                  value: "News Description"),
                               SizedBox(
-                                width: 400,
-                                height: Responsive.isDesktop(context) ? 80 : 70,
+                                width: 600,
+                                height:
+                                    Responsive.isDesktop(context) ? 300 : 200,
                                 child: Container(
-                                  alignment: Alignment.topLeft,
                                   padding: EdgeInsets.only(
                                     left: Insets().appPadding / 2,
                                     right: Insets().appPadding / 2,
@@ -410,13 +444,17 @@ class _addStreamState extends State<addStream> {
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(
                                           Insets().appPadding / 1.5)),
-                                  child: TextFormField(
-                                      maxLines: double.maxFinite.floor(),
-                                      keyboardType: TextInputType.multiline,
-                                      textAlignVertical: TextAlignVertical.top,
-                                      decoration: const InputDecoration(
-                                        border: InputBorder.none,
-                                      )),
+                                  child: Expanded(
+                                    child: TextFormField(
+                                        textAlignVertical:
+                                            TextAlignVertical.top,
+                                        maxLines: double.maxFinite.floor(),
+                                        keyboardType: TextInputType.multiline,
+                                        decoration: const InputDecoration(
+                                          border: InputBorder.none,
+                                          hintText: "News Description",
+                                        )),
+                                  ),
                                 ),
                               ),
                             ],
@@ -436,7 +474,7 @@ class _addStreamState extends State<addStream> {
                                 : CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                width: 400,
+                                width: 600,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(

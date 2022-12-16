@@ -22,22 +22,14 @@ import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/components/academicDetails.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class addStream extends StatefulWidget {
-  const addStream({super.key});
+class addHostel extends StatefulWidget {
+  const addHostel({super.key});
 
   @override
-  State<addStream> createState() => _addStreamState();
+  State<addHostel> createState() => _addHostelState();
 }
 
-class _addStreamState extends State<addStream> {
-  bool offDtls = true;
-  bool prsnlDtls = false;
-  bool conctDtls = false;
-  bool prntsDtls = false;
-  bool acdmcDtls = false;
-  bool bnkDtls = false;
-  bool othrFacilities = false;
-  bool upldDocs = false;
+class _addHostelState extends State<addHostel> {
   bool _menu = false;
   var _specialGrade;
   var _classlevel;
@@ -109,7 +101,7 @@ class _addStreamState extends State<addStream> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Heading2(
-                      value: "STREAM",
+                      value: "HOSTEL",
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
@@ -117,7 +109,7 @@ class _addStreamState extends State<addStream> {
                       height: 10,
                     ),
                     const Heading3(
-                      value: "Stream Information",
+                      value: "Hostel Information",
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
                     ),
@@ -162,7 +154,7 @@ class _addStreamState extends State<addStream> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Stream "),
+                                  value: "Hostel Name"),
                               SizedBox(
                                 width: 400,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
@@ -183,7 +175,7 @@ class _addStreamState extends State<addStream> {
                                           TextAlignVertical.center,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: "Stream name eg. ZEBRA",
+                                        hintText: "Hostel Name ",
                                       )),
                                 ),
                               ),
@@ -205,156 +197,10 @@ class _addStreamState extends State<addStream> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Class Level"),
+                                  value: "Address"),
                               SizedBox(
                                 width: 400,
-                                height: Responsive.isDesktop(context) ? 50 : 40,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                    left: Insets().appPadding / 2,
-                                    right: Insets().appPadding / 2,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.grey, width: 1.5),
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appGap + 4)),
-                                  child: DropdownButton(
-                                    items: const [
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Nursery",
-                                          ),
-                                          value: "Nursery"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Primary",
-                                          ),
-                                          value: "Primary"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Secondary",
-                                          ),
-                                          value: "Secondary"),
-                                    ],
-                                    value: _classlevel,
-                                    isExpanded: true,
-                                    iconSize: 35,
-                                    icon: Icon(
-                                        Icons.keyboard_arrow_down_outlined),
-                                    underline: SizedBox(),
-                                    dropdownColor: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4),
-                                    hint: Heading5(
-                                      value: "Select Class Level",
-                                    ),
-                                    onChanged: ((value) {
-                                      if (value is int) {
-                                        setState(() {
-                                          _classlevel = value;
-                                        });
-                                      }
-                                    }),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Responsive.isDesktop(context) ? 10 : 15,
-                          ),
-                          Flex(
-                            direction: Responsive.isDesktop(context)
-                                ? Axis.horizontal
-                                : Axis.vertical,
-                            mainAxisAlignment: Responsive.isDesktop(context)
-                                ? MainAxisAlignment.spaceBetween
-                                : MainAxisAlignment.start,
-                            crossAxisAlignment: Responsive.isDesktop(context)
-                                ? CrossAxisAlignment.center
-                                : CrossAxisAlignment.start,
-                            children: [
-                              HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Class"),
-                              SizedBox(
-                                width: 400,
-                                height: Responsive.isDesktop(context) ? 50 : 40,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                    left: Insets().appPadding / 2,
-                                    right: Insets().appPadding / 2,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.grey, width: 1.5),
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appGap + 4)),
-                                  child: DropdownButton(
-                                    items: const [
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Class One",
-                                          ),
-                                          value: "Class One"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Class Two",
-                                          ),
-                                          value: "Class Two"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Class Three",
-                                          ),
-                                          value: "Class Three"),
-                                    ],
-                                    value: _classlevel,
-                                    isExpanded: true,
-                                    iconSize: 35,
-                                    icon: Icon(
-                                        Icons.keyboard_arrow_down_outlined),
-                                    underline: SizedBox(),
-                                    dropdownColor: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4),
-                                    hint: Heading5(
-                                      value: "Select Class",
-                                    ),
-                                    onChanged: ((value) {
-                                      if (value is int) {
-                                        setState(() {
-                                          _classlevel = value;
-                                        });
-                                      }
-                                    }),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Responsive.isDesktop(context) ? 10 : 15,
-                          ),
-                          Flex(
-                            direction: Responsive.isDesktop(context)
-                                ? Axis.horizontal
-                                : Axis.vertical,
-                            mainAxisAlignment: Responsive.isDesktop(context)
-                                ? MainAxisAlignment.spaceBetween
-                                : MainAxisAlignment.start,
-                            crossAxisAlignment: Responsive.isDesktop(context)
-                                ? CrossAxisAlignment.center
-                                : CrossAxisAlignment.start,
-                            children: [
-                              HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Teacher Name "),
-                              SizedBox(
-                                width: 400,
-                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                height: Responsive.isDesktop(context) ? 80 : 60,
                                 child: Container(
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(
@@ -368,12 +214,76 @@ class _addStreamState extends State<addStream> {
                                       borderRadius: BorderRadius.circular(
                                           Insets().appPadding / 1.5)),
                                   child: TextFormField(
-                                      textAlignVertical:
-                                          TextAlignVertical.center,
+                                      maxLines: double.maxFinite.floor(),
+                                      keyboardType: TextInputType.multiline,
+                                      textAlignVertical: TextAlignVertical.top,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: "Stream Teacher name",
+                                        hintText: "Address",
                                       )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Matron / Patron"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.grey, width: 1.5),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appGap + 4)),
+                                  child: DropdownButton(
+                                    items: const [
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "",
+                                          ),
+                                          value: ""),
+                                    ],
+                                    value: _classlevel,
+                                    isExpanded: true,
+                                    iconSize: 35,
+                                    icon: Icon(
+                                        Icons.keyboard_arrow_down_outlined),
+                                    underline: SizedBox(),
+                                    dropdownColor: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        Insets().appRadiusMin + 4),
+                                    hint: Heading5(
+                                      value: "Select Matron/Patron",
+                                    ),
+                                    onChanged: ((value) {
+                                      if (value is String) {
+                                        setState(() {
+                                          _classlevel = value;
+                                        });
+                                      }
+                                    }),
+                                  ),
                                 ),
                               ),
                             ],

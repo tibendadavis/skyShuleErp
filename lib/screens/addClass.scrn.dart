@@ -30,14 +30,6 @@ class addClasses extends StatefulWidget {
 }
 
 class _addClassesState extends State<addClasses> {
-  bool offDtls = true;
-  bool prsnlDtls = false;
-  bool conctDtls = false;
-  bool prntsDtls = false;
-  bool acdmcDtls = false;
-  bool bnkDtls = false;
-  bool othrFacilities = false;
-  bool upldDocs = false;
   bool _menu = false;
   var _specialGrade;
   var _classlevel;
@@ -381,6 +373,8 @@ class _addClassesState extends State<addClasses> {
                                       borderRadius: BorderRadius.circular(
                                           Insets().appPadding / 1.5)),
                                   child: TextFormField(
+                                      maxLines: double.maxFinite.floor(),
+                                      keyboardType: TextInputType.multiline,
                                       textAlignVertical: TextAlignVertical.top,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,

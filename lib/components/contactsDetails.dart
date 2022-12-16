@@ -95,6 +95,8 @@ class _contactsDetailsState extends State<contactsDetails> {
                                 borderRadius: BorderRadius.circular(
                                     Insets().appPadding / 1.5)),
                             child: TextFormField(
+                                maxLines: double.maxFinite.floor(),
+                                keyboardType: TextInputType.multiline,
                                 textAlignVertical: TextAlignVertical.top,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -556,6 +558,8 @@ class _contactsDetailsState extends State<contactsDetails> {
                                 borderRadius: BorderRadius.circular(
                                     Insets().appPadding / 1.5)),
                             child: TextFormField(
+                                maxLines: double.maxFinite.floor(),
+                                keyboardType: TextInputType.multiline,
                                 textAlignVertical: TextAlignVertical.top,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,

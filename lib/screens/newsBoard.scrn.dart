@@ -12,21 +12,23 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addParents.scrn.dart';
+import 'package:skyconnect_starter/screens/addEvent.scrn.dart';
+import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
+import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class parents extends StatefulWidget {
-  const parents({super.key});
+class newsBoard extends StatefulWidget {
+  const newsBoard({super.key});
 
   @override
-  State<parents> createState() => _parentsState();
+  State<newsBoard> createState() => _newsBoardState();
 }
 
-class _parentsState extends State<parents> {
+class _newsBoardState extends State<newsBoard> {
   bool _menu = false;
   double _drawersize = 250;
-  var _classlevel;
+  var _madefor;
   var _academicYear;
   var _stream;
 
@@ -100,7 +102,7 @@ class _parentsState extends State<parents> {
                       right: Insets().appGap),
                   child: HeadingText(
                     size: Responsive.isDesktop(context) ? 35 : 30,
-                    value: "PARENTS",
+                    value: "NEWS & ANNOUNCEMENTS",
                     fontWeight: FontWeight.w700,
                     color: Colors.black,
                   ),
@@ -126,8 +128,8 @@ class _parentsState extends State<parents> {
                                 ? Insets().appPadding
                                 : 12,
                             bottom: Responsive.isDesktop(context)
-                                ? Insets().appPadding
-                                : 0),
+                                ? Insets().appPadding / 2
+                                : 10),
                         padding: EdgeInsets.only(
                             left: Insets().appPadding,
                             right: Insets().appPadding,
@@ -162,7 +164,7 @@ class _parentsState extends State<parents> {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) => addParent()));
+                                            builder: (context) => addEvent()));
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -172,59 +174,9 @@ class _parentsState extends State<parents> {
                                       padding:
                                           EdgeInsets.all(Insets().appPadding)),
                                   child: Heading5(
-                                    value: "Add Parent",
+                                    value: "Add Event",
                                     color: Colors.black,
                                   ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: Responsive.isDesktop(context)
-                          ? 410
-                          : MediaQuery.of(context).size.width,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            left: Responsive.isDesktop(context)
-                                ? Insets().appPadding * 2
-                                : Insets().appPadding,
-                            top: Insets().appPadding / 2,
-                            right: Responsive.isDesktop(context)
-                                ? Insets().appPadding * 2
-                                : Insets().appPadding,
-                            bottom: Insets().appPadding / 2),
-                        padding: EdgeInsets.only(
-                            left: Insets().appPadding,
-                            right: Insets().appPadding,
-                            top: Insets().appGap + 2,
-                            bottom: Insets().appPadding),
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Palette().borderColor,
-                                blurRadius: 15.0, // soften the shadow
-                                spreadRadius: 2.0, //extend the shadow
-                                offset: Offset(
-                                  1.0, // Move to right 5  horizontally
-                                  2.0, // Move to bottom 5 Vertically
-                                ),
-                              )
-                            ],
-                            color: Palette().primaryColor,
-                            borderRadius: BorderRadius.circular(
-                                Insets().appRadiusMin + 4)),
-                        child: SizedBox(
-                          height: 70,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Heading1(
-                                value: "480",
-                                color: Colors.white,
-                              ),
-                              Heading6(
-                                  value: "Total Parents", color: Colors.white)
                             ],
                           ),
                         ),
@@ -241,7 +193,7 @@ class _parentsState extends State<parents> {
                           ? Insets().appPadding * 2
                           : Insets().appPadding,
                       top: Responsive.isDesktop(context)
-                          ? Insets().appPadding
+                          ? Insets().appPadding / 2
                           : 12,
                       bottom: Responsive.isDesktop(context)
                           ? Insets().appPadding
@@ -281,7 +233,7 @@ class _parentsState extends State<parents> {
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Parents",
+                                      hintText: " Search for News",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: 10,
@@ -290,6 +242,7 @@ class _parentsState extends State<parents> {
                               flex: 1,
                               child: Container(
                                 margin: EdgeInsets.only(
+                                  left: Insets().appGap,
                                   right: Insets().appGap,
                                 ),
                                 padding: EdgeInsets.only(
@@ -297,7 +250,7 @@ class _parentsState extends State<parents> {
                                 ),
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                        color: Palette().borderColor, width: 1),
+                                        color: Colors.grey, width: 2),
                                     color: Palette().primaryColor,
                                     borderRadius: BorderRadius.circular(
                                         Insets().appGap + 4)),
@@ -305,39 +258,43 @@ class _parentsState extends State<parents> {
                                   items: const [
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Nursery",
+                                          value: "All",
                                           color: Colors.white,
                                         ),
-                                        value: "Nursery"),
+                                        value: "All"),
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Primary",
+                                          value: "Students",
                                           color: Colors.white,
                                         ),
-                                        value: "Primary"),
+                                        value: "Students"),
                                     DropdownMenuItem(
                                         child: Heading6(
-                                          value: "Secondary",
-                                          color: Colors.white,
-                                        ),
-                                        value: "Secondary")
+                                            value: "Teachers",
+                                            color: Colors.white),
+                                        value: "Teachers"),
+                                    DropdownMenuItem(
+                                        child: Heading6(
+                                            value: "Supporting Staff",
+                                            color: Colors.white),
+                                        value: "Supporting Staff")
                                   ],
-                                  value: _classlevel,
+                                  hint: Heading6(
+                                    value: "Made For",
+                                    color: Colors.white,
+                                  ),
+                                  value: _madefor,
                                   iconEnabledColor: Colors.white,
                                   iconDisabledColor: Colors.white,
                                   isExpanded: true,
-                                  dropdownColor: Palette().primaryColor,
                                   underline: SizedBox(),
+                                  dropdownColor: Palette().primaryColor,
                                   borderRadius: BorderRadius.circular(
                                       Insets().appRadiusMin + 4),
-                                  hint: Heading6(
-                                    value: "Select Class",
-                                    color: Colors.white,
-                                  ),
                                   onChanged: ((value) {
                                     if (value is String) {
                                       setState(() {
-                                        _classlevel = value;
+                                        _madefor = value;
                                       });
                                     }
                                   }),
@@ -414,7 +371,7 @@ class _parentsState extends State<parents> {
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Parents",
+                                      hintText: " Search for News",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: Responsive.isDesktop(context) ? 10 : 0,
@@ -428,7 +385,7 @@ class _parentsState extends State<parents> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: 100,
+                                      width: 105,
                                       margin: EdgeInsets.only(
                                         right: Insets().appGap,
                                       ),
@@ -437,8 +394,7 @@ class _parentsState extends State<parents> {
                                       ),
                                       decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: Palette().borderColor,
-                                              width: 1),
+                                              color: Colors.grey, width: 2),
                                           color: Palette().primaryColor,
                                           borderRadius: BorderRadius.circular(
                                               Insets().appGap + 4)),
@@ -446,44 +402,48 @@ class _parentsState extends State<parents> {
                                         items: const [
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Nursery",
+                                                value: "All",
                                                 color: Colors.white,
                                               ),
-                                              value: "Nursery"),
+                                              value: "All"),
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Primary",
+                                                value: "Students",
                                                 color: Colors.white,
                                               ),
-                                              value: "Primary"),
+                                              value: "Students"),
                                           DropdownMenuItem(
                                               child: Heading6(
-                                                value: "Secondary",
-                                                color: Colors.white,
-                                              ),
-                                              value: "Secondary")
+                                                  value: "Teachers",
+                                                  color: Colors.white),
+                                              value: "Teachers"),
+                                          DropdownMenuItem(
+                                              child: Heading6(
+                                                  value: "Supporting Staff",
+                                                  color: Colors.white),
+                                              value: "Supporting Staff")
                                         ],
-                                        value: _classlevel,
+                                        hint: Heading6(
+                                          value: "Made For",
+                                          color: Colors.white,
+                                        ),
+                                        value: _madefor,
                                         iconEnabledColor: Colors.white,
                                         iconDisabledColor: Colors.white,
                                         isExpanded: true,
-                                        dropdownColor: Palette().primaryColor,
                                         underline: SizedBox(),
+                                        dropdownColor: Palette().primaryColor,
                                         borderRadius: BorderRadius.circular(
                                             Insets().appRadiusMin + 4),
-                                        hint: Heading6(
-                                          value: "Select Class",
-                                          color: Colors.white,
-                                        ),
                                         onChanged: ((value) {
                                           if (value is String) {
                                             setState(() {
-                                              _classlevel = value;
+                                              _madefor = value;
                                             });
                                           }
                                         }),
                                       ),
-                                    ),
+                                    )
                                   ],
                                 )),
                           ),
@@ -569,148 +529,27 @@ class _parentsState extends State<parents> {
                       ]),
                 ),
                 Container(
-                  margin: EdgeInsets.only(
-                    left: Responsive.isDesktop(context)
-                        ? Insets().appPadding * 4
-                        : 12,
-                    right: Responsive.isDesktop(context)
-                        ? Insets().appPadding * 4
-                        : 12,
-                  ),
+                  alignment: Alignment.bottomLeft,
                   padding: EdgeInsets.only(
-                      left: Insets().appGap / 2,
-                      right: Insets().appGap / 2,
-                      top: Insets().appGap / 3,
-                      bottom: Insets().appGap / 3),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      left: Responsive.isDesktop(context)
+                          ? Insets().appPadding * 2
+                          : Insets().appPadding,
+                      right: Insets().appGap),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       HeadingText(
-                        size: Responsive.isDesktop(context) ? 14 : 13,
-                        value: "RESULTS (23)",
+                        size: Responsive.isDesktop(context) ? 25 : 20,
+                        value: "Welcome to the School Board",
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black,
+                      ),
+                      HeadingText(
+                        size: Responsive.isDesktop(context) ? 13 : 12,
+                        value: "RESULTS (All)",
                         color: Palette().primaryColor,
                         fontWeight: FontWeight.w700,
-                      ),
-                      Container(
-                        width: Responsive.isDesktop(context) ? 140 : 130,
-                        height: Responsive.isDesktop(context) ? 40 : 30,
-                        margin: EdgeInsets.only(
-                          left: Insets().appGap,
-                          right: Insets().appGap,
-                        ),
-                        padding: EdgeInsets.only(
-                          left: Insets().appGap,
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Palette().primaryColor, width: 1.5),
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.circular(Insets().appGap + 6)),
-                        child: DropdownButton(
-                          items: [
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
-                                    Icons.picture_as_pdf,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                    value: "PDF",
-                                    color: Palette().primaryColor,
-                                  ),
-                                ),
-                                value: "PDF"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
-                                    Icons.format_align_justify,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Excel",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Excel"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                    dense: true,
-                                    minVerticalPadding: 0,
-                                    minLeadingWidth: 10,
-                                    contentPadding: EdgeInsets.only(left: 10),
-                                    onTap: () {},
-                                    leading: Icon(
-                                      Icons.description,
-                                      color: Palette().primaryColor,
-                                      size: 20,
-                                    ),
-                                    title: Heading6(
-                                        value: "CSV",
-                                        color: Palette().primaryColor)),
-                                value: "CSV")
-                          ],
-                          hint: Row(
-                            children: [
-                              Icon(
-                                Icons.cloud_download_outlined,
-                                color: Palette().primaryColor,
-                                size: Responsive.isDesktop(context) ? 25 : 20,
-                              ),
-                              SizedBox(
-                                width: Responsive.isDesktop(context) ? 7 : 5,
-                              ),
-                              Heading6(
-                                value: "Download",
-                                color: Palette().primaryColor,
-                              ),
-                            ],
-                          ),
-                          value: null,
-                          iconEnabledColor: Palette().primaryColor,
-                          iconDisabledColor: Palette().primaryColor,
-                          isExpanded: true,
-                          elevation: 1,
-                          underline: SizedBox(),
-                          dropdownColor: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appRadiusMin + 4),
-                          onChanged: ((value) {
-                            if (true) {
-                              setState(() {
-                                _classlevel = value;
-                              });
-                            }
-                          }),
-                        ),
                       ),
                     ],
                   ),
@@ -745,71 +584,59 @@ class _parentsState extends State<parents> {
                                   },
                                 )),
                                 DataColumn(
-                                    label: SizedBox(
+                                    label: Expanded(
                                   child: HeadingText(
-                                    size: 15,
+                                    size: 14,
                                     value: "No.",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 250 : 100,
                                   child: HeadingText(
-                                    size: 15,
-                                    value: "Photo",
+                                    size: 14,
+                                    value: "Title",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 150,
+                                  width:
+                                      Responsive.isDesktop(context) ? 350 : 200,
                                   child: HeadingText(
-                                    size: 15,
-                                    value: "Parent Name",
+                                    size: 14,
+                                    value: "News Description",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 100,
+                                  width:
+                                      Responsive.isDesktop(context) ? 200 : 100,
                                   child: HeadingText(
-                                    size: 15,
-                                    value: "Relation",
+                                    size: 14,
+                                    value: "Made For",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 150,
+                                  width:
+                                      Responsive.isDesktop(context) ? 100 : 100,
                                   child: HeadingText(
-                                    size: 15,
-                                    value: "Email Address",
+                                    size: 14,
+                                    value: "Date",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 150,
+                                  width:
+                                      Responsive.isDesktop(context) ? 100 : 100,
                                   child: HeadingText(
-                                    size: 15,
-                                    value: "Parents Phone",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                )),
-                                DataColumn(
-                                    label: SizedBox(
-                                  width: 150,
-                                  child: HeadingText(
-                                    size: 15,
-                                    value: "Address",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                )),
-                                DataColumn(
-                                    label: SizedBox(
-                                  width: 150,
-                                  child: HeadingText(
-                                    size: 15,
+                                    size: 14,
                                     value: "Action",
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -824,201 +651,48 @@ class _parentsState extends State<parents> {
                                     },
                                   )),
                                   DataCell(HeadingText(
-                                    size: 15,
+                                    size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(Icon(size: 20, Icons.face_rounded)),
                                   DataCell(HeadingText(
-                                    size: 15,
-                                    value: "Juma Omary Kaponta",
+                                    size: 14,
+                                    value: " ",
                                   )),
                                   DataCell(HeadingText(
-                                    size: 15,
-                                    value: "Father",
+                                    size: 14,
+                                    value: " ",
                                   )),
                                   DataCell(HeadingText(
-                                    size: 15,
-                                    value: "parentsemail@gmail.com",
+                                    size: 14,
+                                    value: "",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "2022 - 06 - 24 ",
                                   )),
                                   DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "View",
+                                        ),
                                       ),
                                       SizedBox(
-                                        width: 10,
+                                        width: 5,
                                       ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
                                     ],
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Edit",
-                                      )))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(size: 20, Icons.face_rounded)),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "Juma Omary Kaponta",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "Father",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "parentsemail@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Edit",
-                                      )))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(size: 20, Icons.face_rounded)),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "Juma Omary Kaponta",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "Father",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "parentsemail@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Edit",
-                                      )))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(size: 20, Icons.face_rounded)),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "Juma Omary Kaponta",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "Father",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "parentsemail@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 15,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Edit",
-                                      )))
+                                  ))
                                 ]),
                               ]),
                         ),

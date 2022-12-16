@@ -27,14 +27,18 @@ import 'package:skyconnect_starter/screens/defaultGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/employeeAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
+import 'package:skyconnect_starter/screens/hostels.scrn.dart';
 import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
+import 'package:skyconnect_starter/screens/membersHostel.scrn.dart';
 import 'package:skyconnect_starter/screens/minorSchoolExams.scrn.dart';
+import 'package:skyconnect_starter/screens/newsBoard.scrn.dart';
 import 'package:skyconnect_starter/screens/parents.scrn.dart';
 import 'package:skyconnect_starter/screens/schoolExam.scrn.dart';
 import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/streamSubjectTeacher.scrn.dart';
 import 'package:skyconnect_starter/screens/streams.scrn.dart';
+import 'package:skyconnect_starter/screens/studentAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/screens/supportingStaff.scrn.dart';
 import 'package:skyconnect_starter/screens/teacher.scrn.dart';
@@ -47,7 +51,7 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(home: userAttendanceView()));
+  runApp(MaterialApp(home: HomePage()));
 }
 
 class MyApp extends StatefulWidget {

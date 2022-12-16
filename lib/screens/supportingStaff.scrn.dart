@@ -26,8 +26,8 @@ class supportingStaff extends StatefulWidget {
 class _supportingStaffState extends State<supportingStaff> {
   bool _menu = false;
   double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
+  var _role;
+  var _download;
   var _stream;
 
   @override
@@ -550,201 +550,188 @@ class _supportingStaffState extends State<supportingStaff> {
                                       border: InputBorder.none,
                                       hintText: " Search for Supporting Staff",
                                       hintStyle: TextStyle(fontSize: 20)))),
-                          // SizedBox(
-                          //   width: 10,
-                          // ),
-                          // Expanded(
-                          //     flex: 1,
-                          //     child: Container(
-                          //       margin: EdgeInsets.only(
-                          //         left: Insets().appGap,
-                          //         right: Insets().appGap,
-                          //       ),
-                          //       padding: EdgeInsets.only(
-                          //         left: Insets().appGap,
-                          //       ),
-                          //       decoration: BoxDecoration(
-                          //           border: Border.all(
-                          //               color: Palette().borderColor, width: 1),
-                          //           color: Palette().primaryColor,
-                          //           borderRadius: BorderRadius.circular(
-                          //               Insets().appGap + 4)),
-                          //       child: DropdownButton(
-                          //         items: const [
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "Nursery",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: "Nursery"),
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                   value: "Primary",
-                          //                   color: Colors.white),
-                          //               value: "Primary"),
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                   value: "Secondary",
-                          //                   color: Colors.white),
-                          //               value: "Secondary")
-                          //         ],
-                          //         hint: Heading6(
-                          //           value: "Class Level",
-                          //           color: Colors.white,
-                          //         ),
-                          //         value: _classlevel,
-                          //         iconEnabledColor: Colors.white,
-                          //         iconDisabledColor: Colors.white,
-                          //         isExpanded: true,
-                          //         underline: SizedBox(),
-                          //         dropdownColor: Palette().primaryColor,
-                          //         borderRadius: BorderRadius.circular(
-                          //             Insets().appRadiusMin + 4),
-                          //         onChanged: ((value) {
-                          //           if (value is String) {
-                          //             setState(() {
-                          //               _classlevel = value;
-                          //             });
-                          //           }
-                          //         }),
-                          //       ),
-                          //     )),
-                          // SizedBox(
-                          //   width: 10,
-                          // ),
-                          // Expanded(
-                          //     flex: 1,
-                          //     child: Container(
-                          //       margin: EdgeInsets.only(
-                          //         right: Insets().appGap,
-                          //       ),
-                          //       padding: EdgeInsets.only(
-                          //         left: Insets().appGap,
-                          //       ),
-                          //       decoration: BoxDecoration(
-                          //           border: Border.all(
-                          //               color: Palette().borderColor, width: 1),
-                          //           color: Palette().primaryColor,
-                          //           borderRadius: BorderRadius.circular(
-                          //               Insets().appGap + 4)),
-                          //       child: DropdownButton(
-                          //         items: const [
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "2019",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: 2019),
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "2020",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: 2020),
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "2021",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: 2021),
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "2022",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: 2022),
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "2023",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: 2023)
-                          //         ],
-                          //         value: _academicYear,
-                          //         iconEnabledColor: Colors.white,
-                          //         iconDisabledColor: Colors.white,
-                          //         isExpanded: true,
-                          //         underline: SizedBox(),
-                          //         dropdownColor: Palette().primaryColor,
-                          //         borderRadius: BorderRadius.circular(
-                          //             Insets().appRadiusMin + 4),
-                          //         hint: Heading6(
-                          //           value: "Academic Year",
-                          //           color: Colors.white,
-                          //         ),
-                          //         onChanged: ((value) {
-                          //           if (value is int) {
-                          //             setState(() {
-                          //               _academicYear = value;
-                          //             });
-                          //           }
-                          //         }),
-                          //       ),
-                          //     )),
-                          // SizedBox(
-                          //   width: 7,
-                          // ),
-                          // Expanded(
-                          //     flex: 1,
-                          //     child: Container(
-                          //       margin: EdgeInsets.only(
-                          //         right: Insets().appGap,
-                          //       ),
-                          //       padding: EdgeInsets.only(
-                          //         left: Insets().appGap,
-                          //       ),
-                          //       decoration: BoxDecoration(
-                          //           border: Border.all(
-                          //               color: Palette().borderColor, width: 1),
-                          //           color: Palette().primaryColor,
-                          //           borderRadius: BorderRadius.circular(
-                          //               Insets().appGap + 4)),
-                          //       child: DropdownButton(
-                          //         items: const [
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "Nursery",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: "Nursery"),
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "Primary",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: "Primary"),
-                          //           DropdownMenuItem(
-                          //               child: Heading6(
-                          //                 value: "Secondary",
-                          //                 color: Colors.white,
-                          //               ),
-                          //               value: "Secondary")
-                          //         ],
-                          //         value: _classlevel,
-                          //         iconEnabledColor: Colors.white,
-                          //         iconDisabledColor: Colors.white,
-                          //         isExpanded: true,
-                          //         dropdownColor: Palette().primaryColor,
-                          //         underline: SizedBox(),
-                          //         borderRadius: BorderRadius.circular(
-                          //             Insets().appRadiusMin + 4),
-                          //         hint: Heading6(
-                          //           value: "Select Class",
-                          //           color: Colors.white,
-                          //         ),
-                          //         onChanged: ((value) {
-                          //           if (value is String) {
-                          //             setState(() {
-                          //               _classlevel = value;
-                          //             });
-                          //           }
-                          //         }),
-                          //       ),
-                          //     )),
-                          // SizedBox(
-                          //   width: 10,
-                          // ),
-                          // Expanded(
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                              flex: 1,
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                  left: Insets().appGap,
+                                  right: Insets().appGap,
+                                ),
+                                padding: EdgeInsets.only(
+                                  left: Insets().appGap,
+                                ),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Palette().borderColor, width: 1),
+                                    color: Palette().primaryColor,
+                                    borderRadius: BorderRadius.circular(
+                                        Insets().appGap + 4)),
+                                child: DropdownButton(
+                                  items: const [
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Admin",
+                                        ),
+                                        value: "Admin"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Accountant",
+                                        ),
+                                        value: "Accountant"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Teacher",
+                                        ),
+                                        value: "Teacher"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Assistant Head teacher",
+                                        ),
+                                        value: "Assistant Head teacher"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Head Teacher",
+                                        ),
+                                        value: "Head Teacher"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Assistant of academic master",
+                                        ),
+                                        value: "Assistant of academic master"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Burser",
+                                        ),
+                                        value: "Burser"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Cleaner",
+                                        ),
+                                        value: "Cleaner"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Cook",
+                                        ),
+                                        value: "Cook"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Driver",
+                                        ),
+                                        value: "Driver"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Transport Officer",
+                                        ),
+                                        value: "Transport Officer"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Matron",
+                                        ),
+                                        value: "Matron"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Nurse",
+                                        ),
+                                        value: "Nurse"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Quality Assurance Officer",
+                                        ),
+                                        value: "Quality Assurance Officer"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Secretary",
+                                        ),
+                                        value: "Secretary"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Store-Keeper",
+                                        ),
+                                        value: "Store-Keeper"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Tailor",
+                                        ),
+                                        value: "Tailor"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Patron",
+                                        ),
+                                        value: "Patron"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "HR & Admin Manager",
+                                        ),
+                                        value: "HR & Admin Manager"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Academic Master",
+                                        ),
+                                        value: "Academic Master"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Discipline Master",
+                                        ),
+                                        value: "Discipline Master"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Normal",
+                                        ),
+                                        value: "Normal"),
+                                    DropdownMenuItem(
+                                        child: Heading5(
+                                          color: Colors.white,
+                                          value: "Class Teacher",
+                                        ),
+                                        value: "Class Teacher"),
+                                  ],
+                                  hint: Heading6(
+                                    value: "Role",
+                                    color: Colors.white,
+                                  ),
+                                  value: _role,
+                                  iconEnabledColor: Colors.white,
+                                  iconDisabledColor: Colors.white,
+                                  isExpanded: true,
+                                  underline: SizedBox(),
+                                  dropdownColor: Palette().primaryColor,
+                                  borderRadius: BorderRadius.circular(
+                                      Insets().appRadiusMin + 4),
+                                  onChanged: ((value) {
+                                    if (value is String) {
+                                      setState(() {
+                                        _role = value;
+                                      });
+                                    }
+                                  }),
+                                ),
+                              )),
+
                           //     flex: 1,
                           //     child: Container(
                           //       margin: EdgeInsets.only(
@@ -880,258 +867,193 @@ class _supportingStaffState extends State<supportingStaff> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    // Container(
-                                    //   width: 100,
-                                    //   margin: EdgeInsets.only(
-                                    //     right: Insets().appGap,
-                                    //   ),
-                                    //   padding: EdgeInsets.only(
-                                    //     left: Insets().appGap,
-                                    //   ),
-                                    //   decoration: BoxDecoration(
-                                    //       border: Border.all(
-                                    //           color: Palette().borderColor,
-                                    //           width: 1),
-                                    //       color: Palette().primaryColor,
-                                    //       borderRadius: BorderRadius.circular(
-                                    //           Insets().appGap + 4)),
-                                    //   child: DropdownButton(
-                                    //     items: const [
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "Nursery",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: "Nursery"),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //               value: "Primary",
-                                    //               color: Colors.white),
-                                    //           value: "Primary"),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //               value: "Secondary",
-                                    //               color: Colors.white),
-                                    //           value: "Secondary")
-                                    //     ],
-                                    //     hint: Heading6(
-                                    //       value: "Class Level",
-                                    //       color: Colors.white,
-                                    //     ),
-                                    //     value: _classlevel,
-                                    //     iconEnabledColor: Colors.white,
-                                    //     iconDisabledColor: Colors.white,
-                                    //     isExpanded: true,
-                                    //     underline: SizedBox(),
-                                    //     dropdownColor: Palette().primaryColor,
-                                    //     borderRadius: BorderRadius.circular(
-                                    //         Insets().appRadiusMin + 4),
-                                    //     onChanged: ((value) {
-                                    //       if (value is String) {
-                                    //         setState(() {
-                                    //           _classlevel = value;
-                                    //         });
-                                    //       }
-                                    //     }),
-                                    //   ),
-                                    // ),
-                                    // SizedBox(
-                                    //   width: Responsive.isDesktop(context)
-                                    //       ? 10
-                                    //       : 0,
-                                    //   // height:
-                                    //   //     Responsive.isDesktop(context) ? 0 : 5,
-                                    // ),
-                                    // Container(
-                                    //   width: 100,
-                                    //   margin: EdgeInsets.only(
-                                    //     right: Insets().appGap,
-                                    //   ),
-                                    //   padding: EdgeInsets.only(
-                                    //     left: Insets().appGap,
-                                    //   ),
-                                    //   decoration: BoxDecoration(
-                                    //       border: Border.all(
-                                    //           color: Palette().borderColor,
-                                    //           width: 1),
-                                    //       color: Palette().primaryColor,
-                                    //       borderRadius: BorderRadius.circular(
-                                    //           Insets().appGap + 4)),
-                                    //   child: DropdownButton(
-                                    //     items: const [
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "2019",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: 2019),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "2020",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: 2020),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "2021",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: 2021),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "2022",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: 2022),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "2023",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: 2023)
-                                    //     ],
-                                    //     value: _academicYear,
-                                    //     iconEnabledColor: Colors.white,
-                                    //     iconDisabledColor: Colors.white,
-                                    //     isExpanded: true,
-                                    //     underline: SizedBox(),
-                                    //     dropdownColor: Palette().primaryColor,
-                                    //     borderRadius: BorderRadius.circular(
-                                    //         Insets().appRadiusMin + 4),
-                                    //     hint: Heading6(
-                                    //       value: "Academic Year",
-                                    //       color: Colors.white,
-                                    //     ),
-                                    //     onChanged: ((value) {
-                                    //       if (value is int) {
-                                    //         setState(() {
-                                    //           _academicYear = value;
-                                    //         });
-                                    //       }
-                                    //     }),
-                                    //   ),
-                                    // ),
-                                    // SizedBox(
-                                    //   width:
-                                    //       Responsive.isDesktop(context) ? 7 : 0,
-                                    //   // height:
-                                    //   //     Responsive.isDesktop(context) ? 0 : 5,
-                                    // ),
-                                    // Container(
-                                    //   width: 100,
-                                    //   margin: EdgeInsets.only(
-                                    //     right: Insets().appGap,
-                                    //   ),
-                                    //   padding: EdgeInsets.only(
-                                    //     left: Insets().appGap,
-                                    //   ),
-                                    //   decoration: BoxDecoration(
-                                    //       border: Border.all(
-                                    //           color: Palette().borderColor,
-                                    //           width: 1),
-                                    //       color: Palette().primaryColor,
-                                    //       borderRadius: BorderRadius.circular(
-                                    //           Insets().appGap + 4)),
-                                    //   child: DropdownButton(
-                                    //     items: const [
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "Nursery",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: "Nursery"),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "Primary",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: "Primary"),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "Secondary",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: "Secondary")
-                                    //     ],
-                                    //     value: _classlevel,
-                                    //     iconEnabledColor: Colors.white,
-                                    //     iconDisabledColor: Colors.white,
-                                    //     isExpanded: true,
-                                    //     dropdownColor: Palette().primaryColor,
-                                    //     underline: SizedBox(),
-                                    //     borderRadius: BorderRadius.circular(
-                                    //         Insets().appRadiusMin + 4),
-                                    //     hint: Heading6(
-                                    //       value: "Select Class",
-                                    //       color: Colors.white,
-                                    //     ),
-                                    //     onChanged: ((value) {
-                                    //       if (value is String) {
-                                    //         setState(() {
-                                    //           _classlevel = value;
-                                    //         });
-                                    //       }
-                                    //     }),
-                                    //   ),
-                                    // ),
-                                    // SizedBox(
-                                    //   width: Responsive.isDesktop(context)
-                                    //       ? 10
-                                    //       : 0,
-                                    //   // height:
-                                    //   //     Responsive.isDesktop(context) ? 0 : 5,
-                                    // ),
-                                    // Container(
-                                    //   width: 100,
-                                    //   margin: EdgeInsets.only(
-                                    //     right: Insets().appGap,
-                                    //   ),
-                                    //   padding: EdgeInsets.only(
-                                    //     left: Insets().appGap,
-                                    //   ),
-                                    //   decoration: BoxDecoration(
-                                    //       border: Border.all(
-                                    //           color: Palette().borderColor,
-                                    //           width: 1),
-                                    //       color: Palette().primaryColor,
-                                    //       borderRadius: BorderRadius.circular(
-                                    //           Insets().appGap + 4)),
-                                    //   child: DropdownButton(
-                                    //     items: const [
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "MIKUMI",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: "MIKUMI"),
-                                    //       DropdownMenuItem(
-                                    //           child: Heading6(
-                                    //             value: "RUAHA",
-                                    //             color: Colors.white,
-                                    //           ),
-                                    //           value: "RUAHA"),
-                                    //     ],
-                                    //     value: _stream,
-                                    //     iconEnabledColor: Colors.white,
-                                    //     iconDisabledColor: Colors.white,
-                                    //     dropdownColor: Palette().primaryColor,
-                                    //     underline: SizedBox(),
-                                    //     borderRadius: BorderRadius.circular(
-                                    //         Insets().appRadiusMin + 4),
-                                    //     isExpanded: true,
-                                    //     hint: Heading6(
-                                    //       value: "Select Stream",
-                                    //       color: Colors.white,
-                                    //     ),
-                                    //     onChanged: ((value) {
-                                    //       if (value is String) {
-                                    //         setState(() {
-                                    //           _stream = value;
-                                    //         });
-                                    //       }
-                                    //     }),
-                                    //   ),
-                                    // ),
+                                    Container(
+                                      width: 150,
+                                      margin: EdgeInsets.only(
+                                        right: Insets().appGap,
+                                      ),
+                                      padding: EdgeInsets.only(
+                                        left: Insets().appGap,
+                                      ),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Palette().borderColor,
+                                              width: 1),
+                                          color: Palette().primaryColor,
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appGap + 4)),
+                                      child: DropdownButton(
+                                        items: const [
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Admin",
+                                              ),
+                                              value: "Admin"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Parent",
+                                              ),
+                                              value: "Parent"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Accountant",
+                                              ),
+                                              value: "Accountant"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Teacher",
+                                              ),
+                                              value: "Teacher"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Assistant Head teacher",
+                                              ),
+                                              value: "Assistant Head teacher"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Head Teacher",
+                                              ),
+                                              value: "Head Teacher"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value:
+                                                    "Assistant of academic master",
+                                              ),
+                                              value:
+                                                  "Assistant of academic master"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Burser",
+                                              ),
+                                              value: "Burser"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Cleaner",
+                                              ),
+                                              value: "Cleaner"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Cook",
+                                              ),
+                                              value: "Cook"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Driver",
+                                              ),
+                                              value: "Driver"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Transport Officer",
+                                              ),
+                                              value: "Transport Officer"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Matron",
+                                              ),
+                                              value: "Matron"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Nurse",
+                                              ),
+                                              value: "Nurse"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value:
+                                                    "Quality Assurance Officer",
+                                              ),
+                                              value:
+                                                  "Quality Assurance Officer"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Secretary",
+                                              ),
+                                              value: "Secretary"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Store-Keeper",
+                                              ),
+                                              value: "Store-Keeper"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Tailor",
+                                              ),
+                                              value: "Tailor"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Patron",
+                                              ),
+                                              value: "Patron"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "HR & Admin Manager",
+                                              ),
+                                              value: "HR & Admin Manager"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Academic Master",
+                                              ),
+                                              value: "Academic Master"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Discipline Master",
+                                              ),
+                                              value: "Discipline Master"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Normal",
+                                              ),
+                                              value: "Normal"),
+                                          DropdownMenuItem(
+                                              child: Heading5(
+                                                color: Colors.white,
+                                                value: "Class Teacher",
+                                              ),
+                                              value: "Class Teacher"),
+                                        ],
+                                        hint: Heading6(
+                                          value: "Role",
+                                          color: Colors.white,
+                                        ),
+                                        value: _role,
+                                        iconEnabledColor: Colors.white,
+                                        iconDisabledColor: Colors.white,
+                                        isExpanded: true,
+                                        underline: SizedBox(),
+                                        dropdownColor: Palette().primaryColor,
+                                        borderRadius: BorderRadius.circular(
+                                            Insets().appRadiusMin + 4),
+                                        onChanged: ((value) {
+                                          if (value is String) {
+                                            setState(() {
+                                              _role = value;
+                                            });
+                                          }
+                                        }),
+                                      ),
+                                    ),
                                   ],
                                 )),
                           ),
@@ -1355,7 +1277,7 @@ class _supportingStaffState extends State<supportingStaff> {
                           onChanged: ((value) {
                             if (true) {
                               setState(() {
-                                _classlevel = value;
+                                _download = value;
                               });
                             }
                           }),

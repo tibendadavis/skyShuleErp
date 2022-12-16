@@ -1358,10 +1358,9 @@ class _addParentState extends State<addParent> {
                                           ? 300
                                           : 400,
                                       height: Responsive.isDesktop(context)
-                                          ? 50
-                                          : 40,
+                                          ? 70
+                                          : 60,
                                       child: Container(
-                                        alignment: Alignment.centerLeft,
                                         padding: EdgeInsets.only(
                                           left: Insets().appPadding / 2,
                                           right: Insets().appPadding / 2,
@@ -1373,8 +1372,11 @@ class _addParentState extends State<addParent> {
                                             borderRadius: BorderRadius.circular(
                                                 Insets().appPadding / 1.5)),
                                         child: TextFormField(
+                                            maxLines: double.maxFinite.floor(),
+                                            keyboardType:
+                                                TextInputType.multiline,
                                             textAlignVertical:
-                                                TextAlignVertical.center,
+                                                TextAlignVertical.top,
                                             decoration: const InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "Town",

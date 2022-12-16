@@ -20,14 +20,18 @@ import 'package:skyconnect_starter/screens/defaultGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/employeeAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
+import 'package:skyconnect_starter/screens/hostels.scrn.dart';
 import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
+import 'package:skyconnect_starter/screens/membersHostel.scrn.dart';
 import 'package:skyconnect_starter/screens/minorSchoolExams.scrn.dart';
+import 'package:skyconnect_starter/screens/newsBoard.scrn.dart';
 import 'package:skyconnect_starter/screens/parents.scrn.dart';
 import 'package:skyconnect_starter/screens/schoolExam.scrn.dart';
 import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/streamSubjectTeacher.scrn.dart';
 import 'package:skyconnect_starter/screens/streams.scrn.dart';
+import 'package:skyconnect_starter/screens/studentAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/supportingStaff.scrn.dart';
 import 'package:skyconnect_starter/screens/teacher.scrn.dart';
 import 'package:skyconnect_starter/screens/teacherOnDuty.scrn.dart';
@@ -203,7 +207,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "iconData": Icons.content_paste,
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": [false],
-        "submenu1": ["Student Attendance", null, Icons.groups],
+        "submenu1": ["Student Attendance", studentAttendance(), Icons.groups],
         "submenu2": [
           "Employee Attendance",
           employeeAttendance(),
@@ -220,6 +224,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
       {
         "size": widget.size!,
         "value": "News & Announcements",
+        "link": newsBoard(),
         "iconData": Icons.newspaper_outlined,
         "selected": [false]
       },
@@ -229,8 +234,8 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "iconData": Icons.house_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": [false],
-        "submenu1": ["Hostel", null, Icons.airline_seat_individual_suite],
-        "submenu2": ["Members", null, Icons.how_to_reg],
+        "submenu1": ["Hostel", hostels(), Icons.airline_seat_individual_suite],
+        "submenu2": ["Members", membersHostel(), Icons.how_to_reg],
       },
       {
         "size": widget.size!,
