@@ -840,7 +840,9 @@ class _viewAddMarkState extends State<viewAddMark> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: 150,
+                                  width: Responsive.isDesktop(context)
+                                      ? 150
+                                      : null,
                                   child: Center(
                                     child: HeadingText(
                                       size: 14,
@@ -851,9 +853,8 @@ class _viewAddMarkState extends State<viewAddMark> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: Responsive.isDesktop(context)
-                                      ? 150
-                                      : null,
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 100,
                                   child: Center(
                                     child: HeadingText(
                                       size: 14,
@@ -864,9 +865,8 @@ class _viewAddMarkState extends State<viewAddMark> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: Responsive.isDesktop(context)
-                                      ? 150
-                                      : null,
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 100,
                                   child: Center(
                                     child: HeadingText(
                                       size: 14,
@@ -877,9 +877,8 @@ class _viewAddMarkState extends State<viewAddMark> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: Responsive.isDesktop(context)
-                                      ? 150
-                                      : null,
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 100,
                                   child: Center(
                                     child: HeadingText(
                                       size: 14,
@@ -890,9 +889,8 @@ class _viewAddMarkState extends State<viewAddMark> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: Responsive.isDesktop(context)
-                                      ? 150
-                                      : null,
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 100,
                                   child: Center(
                                     child: HeadingText(
                                       size: 14,
