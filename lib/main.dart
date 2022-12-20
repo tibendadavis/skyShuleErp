@@ -49,6 +49,7 @@ import 'package:skyconnect_starter/screens/teacherOnDuty.scrn.dart';
 import 'package:skyconnect_starter/screens/terms.scrn.dart';
 import 'package:skyconnect_starter/screens/userAttendanceView.scrn.dart';
 import 'package:skyconnect_starter/screens/user_profile.scrn.dart';
+import 'package:skyconnect_starter/screens/viewAddMark.scrn.dart';
 import 'package:skyconnect_starter/services/locale_string.dart';
 import 'package:provider/provider.dart';
 

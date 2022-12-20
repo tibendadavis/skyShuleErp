@@ -14,6 +14,7 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/viewAddMark.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class mark extends StatefulWidget {
@@ -109,72 +110,6 @@ class _markState extends State<mark> {
                       ? Axis.horizontal
                       : Axis.vertical,
                   children: [
-                    SizedBox(
-                      width: Responsive.isDesktop(context)
-                          ? 410
-                          : MediaQuery.of(context).size.width,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            left: Responsive.isDesktop(context)
-                                ? Insets().appPadding * 2
-                                : Insets().appPadding,
-                            right: Responsive.isDesktop(context)
-                                ? 0
-                                : Insets().appPadding,
-                            top: Responsive.isDesktop(context)
-                                ? Insets().appPadding
-                                : 12,
-                            bottom: Responsive.isDesktop(context)
-                                ? Insets().appPadding
-                                : 0),
-                        padding: EdgeInsets.only(
-                            left: Insets().appPadding,
-                            right: Insets().appPadding,
-                            top: Insets().appGap + 2,
-                            bottom: Insets().appPadding),
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Palette().borderColor,
-                                blurRadius: 15.0, // soften the shadow
-                                spreadRadius: 2.0, //extend the shadow
-                                offset: Offset(
-                                  1.0, // Move to right 5  horizontally
-                                  2.0, // Move to bottom 5 Vertically
-                                ),
-                              )
-                            ],
-                            color: Palette().primaryColor,
-                            borderRadius: BorderRadius.circular(
-                                Insets().appRadiusMin + 4)),
-                        child: SizedBox(
-                          height: 70,
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.star,
-                                size: 50,
-                                color: Colors.white,
-                              ),
-                              Spacer(),
-                              ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appRadiusMin + 4)),
-                                      padding:
-                                          EdgeInsets.all(Insets().appPadding)),
-                                  child: Heading5(
-                                    value: "Add Mark(s)",
-                                    color: Colors.black,
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
                     SizedBox(
                       width: Responsive.isDesktop(context)
                           ? 410
@@ -984,7 +919,12 @@ class _markState extends State<mark> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      viewAddMark()));
+                                        },
                                         child: HeadingText(
                                           size: 14,
                                           value: "(View|Add) Marks",
@@ -1063,7 +1003,12 @@ class _markState extends State<mark> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      viewAddMark()));
+                                        },
                                         child: HeadingText(
                                           size: 14,
                                           value: "(View|Add) Marks",
@@ -1142,7 +1087,12 @@ class _markState extends State<mark> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      viewAddMark()));
+                                        },
                                         child: HeadingText(
                                           size: 14,
                                           value: "(View|Add) Marks",
@@ -1221,7 +1171,12 @@ class _markState extends State<mark> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      viewAddMark()));
+                                        },
                                         child: HeadingText(
                                           size: 14,
                                           value: "(View|Add) Marks",
@@ -1300,7 +1255,12 @@ class _markState extends State<mark> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      viewAddMark()));
+                                        },
                                         child: HeadingText(
                                           size: 14,
                                           value: "(View|Add) Marks",
@@ -1379,7 +1339,12 @@ class _markState extends State<mark> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      viewAddMark()));
+                                        },
                                         child: HeadingText(
                                           size: 14,
                                           value: "(View|Add) Marks",
