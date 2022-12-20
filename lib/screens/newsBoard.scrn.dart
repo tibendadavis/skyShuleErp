@@ -349,7 +349,7 @@ class _newsBoardState extends State<newsBoard> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
-                                        Icons.clear,
+                                        Icons.restart_alt_rounded,
                                         color: Colors.white,
                                         size: 30,
                                       ),
@@ -510,7 +510,7 @@ class _newsBoardState extends State<newsBoard> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Icon(
-                                            Icons.clear,
+                                            Icons.restart_alt_rounded,
                                             color: Colors.white,
                                             size: 30,
                                           ),

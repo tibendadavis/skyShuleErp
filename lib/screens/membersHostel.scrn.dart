@@ -563,7 +563,7 @@ class _membersHostelState extends State<membersHostel> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
-                                        Icons.clear,
+                                        Icons.restart_alt_rounded,
                                         color: Colors.white,
                                         size: 30,
                                       ),

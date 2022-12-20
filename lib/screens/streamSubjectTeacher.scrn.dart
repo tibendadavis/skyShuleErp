@@ -453,7 +453,7 @@ class _streamSubjectTeacherState extends State<streamSubjectTeacher> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
-                                        Icons.clear,
+                                        Icons.restart_alt_rounded,
                                         color: Colors.white,
                                         size: 30,
                                       ),
@@ -662,7 +662,7 @@ class _streamSubjectTeacherState extends State<streamSubjectTeacher> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Icon(
-                                            Icons.clear,
+                                            Icons.restart_alt_rounded,
                                             color: Colors.white,
                                             size: 30,
                                           ),

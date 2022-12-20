@@ -646,7 +646,7 @@ class _teachersState extends State<teachers> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
-                                        Icons.clear,
+                                        Icons.restart_alt_rounded,
                                         color: Colors.white,
                                         size: 30,
                                       ),
@@ -810,7 +810,7 @@ class _teachersState extends State<teachers> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Icon(
-                                            Icons.clear,
+                                            Icons.restart_alt_rounded,
                                             color: Colors.white,
                                             size: 30,
                                           ),

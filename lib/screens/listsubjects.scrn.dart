@@ -336,7 +336,7 @@ class _listSubjectsState extends State<listSubjects> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
-                                        Icons.clear,
+                                        Icons.restart_alt_rounded,
                                         color: Colors.white,
                                         size: 30,
                                       ),
@@ -436,7 +436,7 @@ class _listSubjectsState extends State<listSubjects> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Icon(
-                                            Icons.clear,
+                                            Icons.restart_alt_rounded,
                                             color: Colors.white,
                                             size: 30,
                                           ),

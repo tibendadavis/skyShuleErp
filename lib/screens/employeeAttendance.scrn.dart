@@ -539,7 +539,7 @@ class _classesState extends State<employeeAttendance> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
-                                        Icons.clear,
+                                        Icons.restart_alt_rounded,
                                         color: Colors.white,
                                         size: 30,
                                       ),
@@ -827,7 +827,7 @@ class _classesState extends State<employeeAttendance> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Icon(
-                                            Icons.clear,
+                                            Icons.restart_alt_rounded,
                                             color: Colors.white,
                                             size: 30,
                                           ),

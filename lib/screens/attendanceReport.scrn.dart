@@ -315,7 +315,7 @@ class _attendaceReportState extends State<attendanceReport> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
-                                        Icons.clear,
+                                        Icons.restart_alt_rounded,
                                         color: Colors.white,
                                         size: 30,
                                       ),
@@ -520,7 +520,7 @@ class _attendaceReportState extends State<attendanceReport> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Icon(
-                                            Icons.clear,
+                                            Icons.restart_alt_rounded,
                                             color: Colors.white,
                                             size: 25,
                                           ),
@@ -1763,8 +1763,6 @@ class _attendaceReportState extends State<attendanceReport> {
                     ),
                   ]),
                 )
-             
-             
               ]))
             ],
           ),

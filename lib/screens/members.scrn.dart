@@ -12,19 +12,23 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/screens/addClass.scrn.dart';
+import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/userAttendanceView.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class manageStudents extends StatefulWidget {
-  const manageStudents({super.key});
+class members extends StatefulWidget {
+  const members({super.key});
 
   @override
-  State<manageStudents> createState() => _manageStudentsState();
+  State<members> createState() => _membersState();
 }
 
-class _manageStudentsState extends State<manageStudents> {
+class _membersState extends State<members> {
   bool _menu = false;
   double _drawersize = 250;
+  var _role;
   var _classlevel;
   var _academicYear;
   var _stream;
@@ -53,7 +57,7 @@ class _manageStudentsState extends State<manageStudents> {
       body: SingleChildScrollView(
         child: SizedBox(
           height:
-              Responsive.isDesktop(context) ? size.height : size.height + 400,
+              Responsive.isDesktop(context) ? size.height : size.height + 300,
           width: size.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,8 +102,8 @@ class _manageStudentsState extends State<manageStudents> {
                           : Insets().appPadding,
                       right: Insets().appGap),
                   child: HeadingText(
-                    size: Responsive.isDesktop(context) ? 35 : 30,
-                    value: "MANAGE STUDENTS",
+                    size: Responsive.isDesktop(context) ? 35 : 25,
+                    value: "MEMBERS",
                     fontWeight: FontWeight.w700,
                     color: Colors.black,
                   ),
@@ -109,204 +113,24 @@ class _manageStudentsState extends State<manageStudents> {
                       ? Axis.horizontal
                       : Axis.vertical,
                   children: [
-                    if (Responsive.isDesktop(context)) ...[
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: Insets().appPadding * 2,
-                              top: Insets().appPadding,
-                              bottom: Insets().appPadding),
-                          padding: EdgeInsets.only(
-                              left: Insets().appPadding,
-                              right: Insets().appPadding,
-                              top: Insets().appGap + 2,
-                              bottom: Insets().appPadding),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Palette().borderColor,
-                                  blurRadius: 15.0, // soften the shadow
-                                  spreadRadius: 2.0, //extend the shadow
-                                  offset: Offset(
-                                    1.0, // Move to right 5  horizontally
-                                    2.0, // Move to bottom 5 Vertically
-                                  ),
-                                )
-                              ],
-                              color: Palette().primaryColor,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4)),
-                          child: SizedBox(
-                            height: 70,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  size: 50,
-                                  color: Colors.white,
-                                ),
-                                Spacer(),
-                                ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  studentAdmission()));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                                Insets().appRadiusMin + 4)),
-                                        padding: EdgeInsets.all(
-                                            Insets().appPadding)),
-                                    child: Heading5(
-                                      value: "Enroll Students",
-                                      color: Colors.black,
-                                    ))
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: Insets().appPadding * 2,
-                              top: Insets().appPadding,
-                              bottom: Insets().appPadding),
-                          padding: EdgeInsets.only(
-                              left: Insets().appPadding,
-                              right: Insets().appPadding,
-                              top: Insets().appGap + 2,
-                              bottom: Insets().appPadding),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Palette().borderColor,
-                                  blurRadius: 15.0, // soften the shadow
-                                  spreadRadius: 2.0, //extend the shadow
-                                  offset: Offset(
-                                    1.0, // Move to right 5  horizontally
-                                    2.0, // Move to bottom 5 Vertically
-                                  ),
-                                )
-                              ],
-                              color: Palette().primaryColor,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4)),
-                          child: SizedBox(
-                            height: 70,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Heading1(
-                                  value: "640",
-                                  color: Colors.white,
-                                ),
-                                Heading6(
-                                    value: "Total Students",
-                                    color: Colors.white)
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: Insets().appPadding * 2,
-                              top: Insets().appPadding,
-                              bottom: Insets().appPadding),
-                          padding: EdgeInsets.only(
-                              left: Insets().appPadding,
-                              right: Insets().appPadding,
-                              top: Insets().appGap + 2,
-                              bottom: Insets().appPadding),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Palette().borderColor,
-                                  blurRadius: 15.0, // soften the shadow
-                                  spreadRadius: 2.0, //extend the shadow
-                                  offset: Offset(
-                                    1.0, // Move to right 5  horizontally
-                                    2.0, // Move to bottom 5 Vertically
-                                  ),
-                                )
-                              ],
-                              color: Palette().primaryColor,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4)),
-                          child: SizedBox(
-                            height: 70,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Heading1(
-                                  value: "410",
-                                  color: Colors.white,
-                                ),
-                                Heading6(
-                                    value: "Total Male Students",
-                                    color: Colors.white)
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: Insets().appPadding * 2,
-                              top: Insets().appPadding,
-                              right: Insets().appPadding * 2,
-                              bottom: Insets().appPadding),
-                          padding: EdgeInsets.only(
-                              left: Insets().appPadding,
-                              right: Insets().appPadding,
-                              top: Insets().appGap + 2,
-                              bottom: Insets().appPadding),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Palette().borderColor,
-                                  blurRadius: 15.0, // soften the shadow
-                                  spreadRadius: 2.0, //extend the shadow
-                                  offset: Offset(
-                                    1.0, // Move to right 5  horizontally
-                                    2.0, // Move to bottom 5 Vertically
-                                  ),
-                                )
-                              ],
-                              color: Palette().primaryColor,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4)),
-                          child: SizedBox(
-                            height: 70,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Heading1(
-                                  value: "230",
-                                  color: Colors.white,
-                                ),
-                                Heading6(
-                                    value: "Total Female Students",
-                                    color: Colors.white)
-                              ],
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                    if (!Responsive.isDesktop(context)) ...[
-                      Container(
+                    SizedBox(
+                      width: Responsive.isDesktop(context)
+                          ? 410
+                          : MediaQuery.of(context).size.width,
+                      child: Container(
                         margin: EdgeInsets.only(
-                            left: Insets().appPadding,
-                            right: Insets().appPadding,
-                            top: Insets().appPadding / 2,
-                            bottom: Insets().appPadding / 2),
+                            left: Responsive.isDesktop(context)
+                                ? Insets().appPadding * 2
+                                : Insets().appPadding,
+                            right: Responsive.isDesktop(context)
+                                ? 0
+                                : Insets().appPadding,
+                            top: Responsive.isDesktop(context)
+                                ? Insets().appPadding
+                                : 12,
+                            bottom: Responsive.isDesktop(context)
+                                ? Insets().appPadding
+                                : 0),
                         padding: EdgeInsets.only(
                             left: Insets().appPadding,
                             right: Insets().appPadding,
@@ -342,7 +166,7 @@ class _manageStudentsState extends State<manageStudents> {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                studentAdmission()));
+                                                addClasses()));
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -351,60 +175,30 @@ class _manageStudentsState extends State<manageStudents> {
                                               Insets().appRadiusMin + 4)),
                                       padding:
                                           EdgeInsets.all(Insets().appPadding)),
-                                  child: Heading5(
-                                    value: "Enroll Students",
+                                  child: HeadingText(
+                                    size:
+                                        Responsive.isDesktop(context) ? 14 : 12,
+                                    value: "Upload Members From Excel",
                                     color: Colors.black,
                                   ))
                             ],
                           ),
                         ),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
+                    ),
+                    SizedBox(
+                      width: Responsive.isDesktop(context)
+                          ? 410
+                          : MediaQuery.of(context).size.width,
+                      child: Container(
                         margin: EdgeInsets.only(
-                            left: Insets().appPadding,
-                            right: Insets().appPadding,
-                            bottom: Insets().appPadding / 2),
-                        padding: EdgeInsets.only(
-                            left: Insets().appPadding,
-                            right: Insets().appPadding,
-                            top: Insets().appGap + 2,
-                            bottom: Insets().appPadding / 2),
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Palette().borderColor,
-                                blurRadius: 15.0, // soften the shadow
-                                spreadRadius: 2.0, //extend the shadow
-                                offset: Offset(
-                                  1.0, // Move to right 5  horizontally
-                                  2.0, // Move to bottom 5 Vertically
-                                ),
-                              )
-                            ],
-                            color: Palette().primaryColor,
-                            borderRadius: BorderRadius.circular(
-                                Insets().appRadiusMin + 4)),
-                        child: SizedBox(
-                          height: 70,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Heading1(
-                                value: "640",
-                                color: Colors.white,
-                              ),
-                              Heading6(
-                                  value: "Total Students", color: Colors.white)
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.only(
-                            left: Insets().appPadding,
-                            right: Insets().appPadding,
+                            left: Responsive.isDesktop(context)
+                                ? Insets().appPadding * 2
+                                : Insets().appPadding,
+                            top: Insets().appPadding / 2,
+                            right: Responsive.isDesktop(context)
+                                ? Insets().appPadding * 2
+                                : Insets().appPadding,
                             bottom: Insets().appPadding / 2),
                         padding: EdgeInsets.only(
                             left: Insets().appPadding,
@@ -428,63 +222,28 @@ class _manageStudentsState extends State<manageStudents> {
                                 Insets().appRadiusMin + 4)),
                         child: SizedBox(
                           height: 70,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Heading1(
-                                value: "410",
-                                color: Colors.white,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Heading1(
+                                    value: "100",
+                                    color: Colors.white,
+                                  ),
+                                  Expanded(
+                                    child: Heading6(
+                                        value: "Total Members",
+                                        color: Colors.white),
+                                  )
+                                ],
                               ),
-                              Heading6(
-                                  value: "Total Male Students",
-                                  color: Colors.white)
                             ],
                           ),
                         ),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.only(
-                            left: Insets().appPadding,
-                            right: Insets().appPadding,
-                            bottom: 7),
-                        padding: EdgeInsets.only(
-                            left: Insets().appPadding,
-                            right: Insets().appPadding,
-                            top: Insets().appGap + 2,
-                            bottom: Insets().appPadding),
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Palette().borderColor,
-                                blurRadius: 15.0, // soften the shadow
-                                spreadRadius: 2.0, //extend the shadow
-                                offset: Offset(
-                                  1.0, // Move to right 5  horizontally
-                                  2.0, // Move to bottom 5 Vertically
-                                ),
-                              )
-                            ],
-                            color: Palette().primaryColor,
-                            borderRadius: BorderRadius.circular(
-                                Insets().appRadiusMin + 4)),
-                        child: SizedBox(
-                          height: 70,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Heading1(
-                                value: "230",
-                                color: Colors.white,
-                              ),
-                              Heading6(
-                                  value: "Total Female Students",
-                                  color: Colors.white)
-                            ],
-                          ),
-                        ),
-                      )
-                    ]
+                    ),
                   ],
                 ),
                 Container(
@@ -530,12 +289,14 @@ class _manageStudentsState extends State<manageStudents> {
                           Expanded(
                               flex: 3,
                               child: TextFormField(
+                                  textAlignVertical: TextAlignVertical.center,
                                   decoration: const InputDecoration(
+
                                       // enabledBorder: OutlineInputBorder(
                                       //     borderSide: BorderSide(
                                       //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Students",
+                                      hintText: " Search for Members",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: 10,
@@ -848,12 +609,10 @@ class _manageStudentsState extends State<manageStudents> {
                         if (!Responsive.isDesktop(context)) ...[
                           Container(
                               child: TextFormField(
+                                  textAlignVertical: TextAlignVertical.center,
                                   decoration: const InputDecoration(
-                                      // enabledBorder: OutlineInputBorder(
-                                      //     borderSide: BorderSide(
-                                      //         color: Palette().borderColor, width: 3.0)),
                                       border: InputBorder.none,
-                                      hintText: " Search for Students",
+                                      hintText: " Search for Members",
                                       hintStyle: TextStyle(fontSize: 20)))),
                           SizedBox(
                             width: Responsive.isDesktop(context) ? 10 : 0,
@@ -1163,7 +922,6 @@ class _manageStudentsState extends State<manageStudents> {
                                       ))),
                               SizedBox(
                                 width: Responsive.isDesktop(context) ? 10 : 0,
-                                // height: Responsive.isDesktop(context) ? 0 : 5,
                               ),
                               Container(
                                   width:
@@ -1341,7 +1099,7 @@ class _manageStudentsState extends State<manageStudents> {
                           onChanged: ((value) {
                             if (true) {
                               setState(() {
-                                _classlevel = value;
+                                _role = value;
                               });
                             }
                           }),
@@ -1380,82 +1138,68 @@ class _manageStudentsState extends State<manageStudents> {
                                   },
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "No.",
-                                  fontWeight: FontWeight.w700,
-                                )),
-                                DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Photo",
-                                  fontWeight: FontWeight.w700,
-                                )),
-                                DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Name",
-                                  fontWeight: FontWeight.w700,
-                                )),
-                                DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Gender",
-                                  fontWeight: FontWeight.w700,
-                                )),
-                                DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 30 : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Date of Birth",
+                                    value: "No.",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? 200
+                                      : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Reg No.",
+                                    value: "Name",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Stream",
-                                  fontWeight: FontWeight.w700,
-                                )),
-                                DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Address",
-                                  fontWeight: FontWeight.w700,
-                                )),
-                                DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Religion",
-                                  fontWeight: FontWeight.w700,
-                                )),
-                                DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Year",
-                                  fontWeight: FontWeight.w700,
-                                )),
-                                DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 70 : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Parents Phone",
+                                    value: "Gender",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Action",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? 200
+                                      : null,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Email Address",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                                DataColumn(
+                                    label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? 200
+                                      : null,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Phone",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                                DataColumn(
+                                    label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? 150
+                                      : null,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Action",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                               ],
                               rows: [
@@ -1470,10 +1214,9 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(Icon(Icons.person)),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Juma Ibra",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1481,35 +1224,40 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "3 May 2010",
+                                    value: "supporting@gmail.com",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      userAttendanceView()));
+                                        },
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "View",
+                                        ),
+                                      ),
+                                    ],
                                   ))
                                 ]),
                                 DataRow(cells: [
@@ -1523,10 +1271,9 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(Icon(Icons.person)),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Juma Ibra",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1534,36 +1281,41 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "3 May 2010",
+                                    value: "supporting@gmail.com",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      userAttendanceView()));
+                                        },
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "View",
+                                        ),
+                                      ),
+                                    ],
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1576,10 +1328,9 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(Icon(Icons.person)),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Juma Ibra",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1587,36 +1338,41 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "3 May 2010",
+                                    value: "supporting@gmail.com",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      userAttendanceView()));
+                                        },
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "View",
+                                        ),
+                                      ),
+                                    ],
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1629,10 +1385,9 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(Icon(Icons.person)),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Juma Ibra",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1640,36 +1395,41 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "3 May 2010",
+                                    value: "supporting@gmail.com",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      userAttendanceView()));
+                                        },
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "View",
+                                        ),
+                                      ),
+                                    ],
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1682,10 +1442,9 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(Icon(Icons.person)),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Juma Ibra",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1693,36 +1452,41 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "3 May 2010",
+                                    value: "supporting@gmail.com",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      userAttendanceView()));
+                                        },
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "View",
+                                        ),
+                                      ),
+                                    ],
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1735,10 +1499,9 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "1",
                                   )),
-                                  DataCell(Icon(Icons.person)),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Juma Ibra",
+                                    value: "Doe Lucas John",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1746,461 +1509,42 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "3 May 2010",
+                                    value: "supporting@gmail.com",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      userAttendanceView()));
+                                        },
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "View",
+                                        ),
+                                      ),
+                                    ],
+                                  ))
                                 ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(Icons.person)),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Juma Ibra",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3 May 2010",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(Icons.person)),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Juma Ibra",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3 May 2010",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(Icons.person)),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Juma Ibra",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3 May 2010",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(Icons.person)),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Juma Ibra",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3 May 2010",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(Icons.person)),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Juma Ibra",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3 May 2010",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(Icons.person)),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Juma Ibra",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3 May 2010",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(Icons.person)),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Juma Ibra",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3 May 2010",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Icon(Icons.person)),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Juma Ibra",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "3 May 2010",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "MIKUMI",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "TABAT, BIMA",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Christian",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "2022",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "+255734848894",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ])
                               ]),
                         ),
                       ),

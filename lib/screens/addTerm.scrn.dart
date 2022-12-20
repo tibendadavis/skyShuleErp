@@ -30,14 +30,6 @@ class addTerms extends StatefulWidget {
 }
 
 class _addTermsState extends State<addTerms> {
-  bool offDtls = true;
-  bool prsnlDtls = false;
-  bool conctDtls = false;
-  bool prntsDtls = false;
-  bool acdmcDtls = false;
-  bool bnkDtls = false;
-  bool othrFacilities = false;
-  bool upldDocs = false;
   bool _menu = false;
   var _specialGrade;
   var _classlevel;

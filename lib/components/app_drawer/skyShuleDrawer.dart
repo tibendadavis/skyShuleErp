@@ -12,6 +12,7 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
 import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
+import 'package:skyconnect_starter/screens/books.scrn.dart';
 import 'package:skyconnect_starter/screens/classAllocation.scrn.dart';
 import 'package:skyconnect_starter/screens/classRoutine.scrn.dart';
 import 'package:skyconnect_starter/screens/classSubjects.scrn.dart';
@@ -23,6 +24,8 @@ import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
 import 'package:skyconnect_starter/screens/hostels.scrn.dart';
 import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
+import 'package:skyconnect_starter/screens/mark.scrn.dart';
+import 'package:skyconnect_starter/screens/members.scrn.dart';
 import 'package:skyconnect_starter/screens/membersHostel.scrn.dart';
 import 'package:skyconnect_starter/screens/minorSchoolExams.scrn.dart';
 import 'package:skyconnect_starter/screens/newsBoard.scrn.dart';
@@ -196,6 +199,13 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
       },
       {
         "size": widget.size!,
+        "value": "Mark",
+        "link": mark(),
+        "iconData": Icons.mark_email_read_outlined,
+        "selected": [false]
+      },
+      {
+        "size": widget.size!,
         "value": "Class Routine",
         "link": classRoutine(),
         "iconData": Icons.route_outlined,
@@ -243,8 +253,8 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "iconData": Icons.library_add_check_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": [false],
-        "submenu1": ["Members", null, Icons.how_to_reg],
-        "submenu2": ["Books", null, Icons.book],
+        "submenu1": ["Members", members(), Icons.how_to_reg],
+        "submenu2": ["Books", books(), Icons.book],
         "submenu3": ["Issue", null, Icons.stroller],
         "submenu4ex": "Library Report",
         "submenu4.1": ["General Report", null, Icons.summarize_outlined],
