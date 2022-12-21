@@ -51,7 +51,7 @@ class _addTermsState extends State<addTerms> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

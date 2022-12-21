@@ -51,7 +51,7 @@ class _addHostelState extends State<addHostel> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

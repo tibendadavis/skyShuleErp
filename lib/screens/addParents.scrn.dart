@@ -56,7 +56,7 @@ class _addParentState extends State<addParent> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

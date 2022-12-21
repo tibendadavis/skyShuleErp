@@ -48,7 +48,7 @@ class _viewAddMarkState extends State<viewAddMark> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),
@@ -257,7 +257,7 @@ class _viewAddMarkState extends State<viewAddMark> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Heading1(
-                                value: "610 remains",
+                                value: "610 Remains",
                                 color: Colors.white,
                               ),
                               Expanded(

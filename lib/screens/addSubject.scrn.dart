@@ -56,7 +56,7 @@ class _addSubjectState extends State<addSubject> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

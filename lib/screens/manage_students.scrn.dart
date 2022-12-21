@@ -46,7 +46,7 @@ class _manageStudentsState extends State<manageStudents> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

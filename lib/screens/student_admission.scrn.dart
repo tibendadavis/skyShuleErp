@@ -56,7 +56,7 @@ class _studentAdmissionState extends State<studentAdmission> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

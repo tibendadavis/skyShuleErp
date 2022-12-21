@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -22,30 +23,22 @@ import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/components/academicDetails.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class addClassRoutine extends StatefulWidget {
-  const addClassRoutine({super.key});
+class addLiveSetting extends StatefulWidget {
+  const addLiveSetting({super.key});
 
   @override
-  State<addClassRoutine> createState() => _addClassRoutineState();
+  State<addLiveSetting> createState() => _addLiveSettingState();
 }
 
-class _addClassRoutineState extends State<addClassRoutine> {
-  bool offDtls = true;
-  bool prsnlDtls = false;
-  bool conctDtls = false;
-  bool prntsDtls = false;
-  bool acdmcDtls = false;
-  bool bnkDtls = false;
-  bool othrFacilities = false;
-  bool upldDocs = false;
+class _addLiveSettingState extends State<addLiveSetting> {
   bool _menu = false;
   var _specialGrade;
   var _classlevel;
-  var _stream;
   var _subject;
-  var _time1;
-  var _time2;
-  var _day;
+  var _status;
+  var _class;
+  var picked;
+
   double _drawersize = 250;
   @override
   Widget build(BuildContext context) {
@@ -70,7 +63,9 @@ class _addClassRoutineState extends State<addClassRoutine> {
       ),
       body: SingleChildScrollView(
           child: SizedBox(
-        height: size.height + 285,
+        height: Responsive.isDesktop(context)
+            ? size.height + 280
+            : size.height + 520,
         width: size.width,
         child: Row(children: [
           if (Responsive.isDesktop(context))
@@ -114,7 +109,7 @@ class _addClassRoutineState extends State<addClassRoutine> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Heading2(
-                      value: "CLASS ROUTINE",
+                      value: "LIVE STUDY SETTINGS",
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
@@ -122,7 +117,7 @@ class _addClassRoutineState extends State<addClassRoutine> {
                       height: 10,
                     ),
                     const Heading3(
-                      value: "Add Class Routine",
+                      value: "Live Study Information",
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
                     ),
@@ -154,6 +149,79 @@ class _addClassRoutineState extends State<addClassRoutine> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Class Level"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.grey, width: 1.5),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appGap + 4)),
+                                  child: DropdownButton(
+                                    items: const [
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Nursery",
+                                          ),
+                                          value: "Nursery"),
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Primary",
+                                          ),
+                                          value: "Primary"),
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Secondary",
+                                          ),
+                                          value: "Secondary"),
+                                    ],
+                                    value: _classlevel,
+                                    isExpanded: true,
+                                    iconSize: 35,
+                                    icon: Icon(
+                                        Icons.keyboard_arrow_down_outlined),
+                                    underline: SizedBox(),
+                                    dropdownColor: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        Insets().appRadiusMin + 4),
+                                    hint: Heading5(
+                                      value: "Select Class Level",
+                                    ),
+                                    onChanged: ((value) {
+                                      if (value is int) {
+                                        setState(() {
+                                          _classlevel = value;
+                                        });
+                                      }
+                                    }),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
                           Flex(
                             direction: Responsive.isDesktop(context)
                                 ? Axis.horizontal
@@ -200,7 +268,7 @@ class _addClassRoutineState extends State<addClassRoutine> {
                                           ),
                                           value: "Class Three"),
                                     ],
-                                    value: _classlevel,
+                                    value: _class,
                                     isExpanded: true,
                                     iconSize: 35,
                                     icon: Icon(
@@ -215,80 +283,7 @@ class _addClassRoutineState extends State<addClassRoutine> {
                                     onChanged: ((value) {
                                       if (value is String) {
                                         setState(() {
-                                          _classlevel = value;
-                                        });
-                                      }
-                                    }),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Responsive.isDesktop(context) ? 10 : 15,
-                          ),
-                          Flex(
-                            direction: Responsive.isDesktop(context)
-                                ? Axis.horizontal
-                                : Axis.vertical,
-                            mainAxisAlignment: Responsive.isDesktop(context)
-                                ? MainAxisAlignment.spaceBetween
-                                : MainAxisAlignment.start,
-                            crossAxisAlignment: Responsive.isDesktop(context)
-                                ? CrossAxisAlignment.center
-                                : CrossAxisAlignment.start,
-                            children: [
-                              HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Stream"),
-                              SizedBox(
-                                width: 400,
-                                height: Responsive.isDesktop(context) ? 50 : 40,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                    left: Insets().appPadding / 2,
-                                    right: Insets().appPadding / 2,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.grey, width: 1.5),
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appGap + 4)),
-                                  child: DropdownButton(
-                                    items: const [
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "ZEBRA",
-                                          ),
-                                          value: "ZEBRA"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "GIRAFFE",
-                                          ),
-                                          value: "GIRAFFE"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "GAZELLE",
-                                          ),
-                                          value: "GAZELLE"),
-                                    ],
-                                    value: _stream,
-                                    isExpanded: true,
-                                    iconSize: 35,
-                                    icon: Icon(
-                                        Icons.keyboard_arrow_down_outlined),
-                                    underline: SizedBox(),
-                                    dropdownColor: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4),
-                                    hint: Heading5(
-                                      value: "Select Start Date",
-                                    ),
-                                    onChanged: ((value) {
-                                      if (value is String) {
-                                        setState(() {
-                                          _stream = value;
+                                          _class = value;
                                         });
                                       }
                                     }),
@@ -332,19 +327,19 @@ class _addClassRoutineState extends State<addClassRoutine> {
                                     items: const [
                                       DropdownMenuItem(
                                           child: Heading5(
-                                            value: "Physics",
-                                          ),
-                                          value: "Physics"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
                                             value: "Mathematics",
                                           ),
                                           value: "Mathematics"),
                                       DropdownMenuItem(
                                           child: Heading5(
-                                            value: "English",
+                                            value: "Physics",
                                           ),
-                                          value: "English"),
+                                          value: "Physics"),
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Geography",
+                                          ),
+                                          value: "Geography"),
                                     ],
                                     value: _subject,
                                     isExpanded: true,
@@ -356,7 +351,7 @@ class _addClassRoutineState extends State<addClassRoutine> {
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4),
                                     hint: Heading5(
-                                      value: "Subject",
+                                      value: "Select Subject",
                                     ),
                                     onChanged: ((value) {
                                       if (value is String) {
@@ -386,226 +381,7 @@ class _addClassRoutineState extends State<addClassRoutine> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Day"),
-                              SizedBox(
-                                width: 400,
-                                height: Responsive.isDesktop(context) ? 50 : 40,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                    left: Insets().appPadding / 2,
-                                    right: Insets().appPadding / 2,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.grey, width: 1.5),
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appGap + 4)),
-                                  child: DropdownButton(
-                                    items: const [
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "SUNDAY",
-                                          ),
-                                          value: "SUNDAY"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "MONDAY",
-                                          ),
-                                          value: "MONDAY"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "TUESDAY",
-                                          ),
-                                          value: "TUESDAY"),
-                                    ],
-                                    value: _day,
-                                    isExpanded: true,
-                                    iconSize: 35,
-                                    icon: Icon(
-                                        Icons.keyboard_arrow_down_outlined),
-                                    underline: SizedBox(),
-                                    dropdownColor: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4),
-                                    hint: Heading5(
-                                      value: "DAY",
-                                    ),
-                                    onChanged: ((value) {
-                                      if (value is String) {
-                                        setState(() {
-                                          _day = value;
-                                        });
-                                      }
-                                    }),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Responsive.isDesktop(context) ? 10 : 15,
-                          ),
-                          Flex(
-                            direction: Responsive.isDesktop(context)
-                                ? Axis.horizontal
-                                : Axis.vertical,
-                            mainAxisAlignment: Responsive.isDesktop(context)
-                                ? MainAxisAlignment.spaceBetween
-                                : MainAxisAlignment.start,
-                            crossAxisAlignment: Responsive.isDesktop(context)
-                                ? CrossAxisAlignment.center
-                                : CrossAxisAlignment.start,
-                            children: [
-                              HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Starting Time"),
-                              SizedBox(
-                                width: 400,
-                                height: Responsive.isDesktop(context) ? 50 : 40,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                    left: Insets().appPadding / 2,
-                                    right: Insets().appPadding / 2,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.grey, width: 1.5),
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appGap + 4)),
-                                  child: DropdownButton(
-                                    items: const [
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Physics",
-                                          ),
-                                          value: "Physics"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Mathematics",
-                                          ),
-                                          value: "Mathematics"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "English",
-                                          ),
-                                          value: "English"),
-                                    ],
-                                    value: _time1,
-                                    isExpanded: true,
-                                    iconSize: 35,
-                                    icon: Icon(
-                                        Icons.keyboard_arrow_down_outlined),
-                                    underline: SizedBox(),
-                                    dropdownColor: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4),
-                                    hint: Heading5(
-                                      value: "Starting Time",
-                                    ),
-                                    onChanged: ((value) {
-                                      if (value is String) {
-                                        setState(() {
-                                          _time1 = value;
-                                        });
-                                      }
-                                    }),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Responsive.isDesktop(context) ? 10 : 15,
-                          ),
-                          Flex(
-                            direction: Responsive.isDesktop(context)
-                                ? Axis.horizontal
-                                : Axis.vertical,
-                            mainAxisAlignment: Responsive.isDesktop(context)
-                                ? MainAxisAlignment.spaceBetween
-                                : MainAxisAlignment.start,
-                            crossAxisAlignment: Responsive.isDesktop(context)
-                                ? CrossAxisAlignment.center
-                                : CrossAxisAlignment.start,
-                            children: [
-                              HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Finishing Time"),
-                              SizedBox(
-                                width: 400,
-                                height: Responsive.isDesktop(context) ? 50 : 40,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                    left: Insets().appPadding / 2,
-                                    right: Insets().appPadding / 2,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.grey, width: 1.5),
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appGap + 4)),
-                                  child: DropdownButton(
-                                    items: const [
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Physics",
-                                          ),
-                                          value: "Physics"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "Mathematics",
-                                          ),
-                                          value: "Mathematics"),
-                                      DropdownMenuItem(
-                                          child: Heading5(
-                                            value: "English",
-                                          ),
-                                          value: "English"),
-                                    ],
-                                    value: _time2,
-                                    isExpanded: true,
-                                    iconSize: 35,
-                                    icon: Icon(
-                                        Icons.keyboard_arrow_down_outlined),
-                                    underline: SizedBox(),
-                                    dropdownColor: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appRadiusMin + 4),
-                                    hint: Heading5(
-                                      value: "Finishing Time",
-                                    ),
-                                    onChanged: ((value) {
-                                      if (value is String) {
-                                        setState(() {
-                                          _time2 = value;
-                                        });
-                                      }
-                                    }),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: Responsive.isDesktop(context) ? 10 : 15,
-                          ),
-                          Flex(
-                            direction: Responsive.isDesktop(context)
-                                ? Axis.horizontal
-                                : Axis.vertical,
-                            mainAxisAlignment: Responsive.isDesktop(context)
-                                ? MainAxisAlignment.spaceBetween
-                                : MainAxisAlignment.start,
-                            crossAxisAlignment: Responsive.isDesktop(context)
-                                ? CrossAxisAlignment.center
-                                : CrossAxisAlignment.start,
-                            children: [
-                              HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Room / Comment"),
+                                  value: "Main Topic"),
                               SizedBox(
                                 width: 400,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
@@ -626,7 +402,372 @@ class _addClassRoutineState extends State<addClassRoutine> {
                                           TextAlignVertical.center,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,
+                                        hintText: "Main Topic",
                                       )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Video Title (Sub Topic)"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Video Title",
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Sub Topic Description"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 80 : 70,
+                                child: Container(
+                                  alignment: Alignment.topLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      maxLines: double.maxFinite.floor(),
+                                      keyboardType: TextInputType.multiline,
+                                      textAlignVertical: TextAlignVertical.top,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Lesson Date"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Lesson Date",
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Start Time"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Start Time",
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "End Time"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "End Time",
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "YouTube URL"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Video URL",
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Teacher Name "),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Teacher",
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Video Status"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.grey, width: 1.5),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appGap + 4)),
+                                  child: DropdownButton(
+                                    items: const [
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Live",
+                                          ),
+                                          value: "Live"),
+                                    ],
+                                    value: _status,
+                                    isExpanded: true,
+                                    iconSize: 35,
+                                    icon: Icon(
+                                        Icons.keyboard_arrow_down_outlined),
+                                    underline: SizedBox(),
+                                    dropdownColor: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        Insets().appRadiusMin + 4),
+                                    hint: Heading5(
+                                      value: "Status",
+                                    ),
+                                    onChanged: ((value) {
+                                      if (value is String) {
+                                        setState(() {
+                                          _status = value;
+                                        });
+                                      }
+                                    }),
+                                  ),
                                 ),
                               ),
                             ],
@@ -664,7 +805,7 @@ class _addClassRoutineState extends State<addClassRoutine> {
                                       child: HeadingText(
                                     size:
                                         Responsive.isDesktop(context) ? 18 : 14,
-                                    value: "Save",
+                                    value: "Save & Continue",
                                   )),
                                 ),
                               ),

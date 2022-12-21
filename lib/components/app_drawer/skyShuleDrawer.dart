@@ -14,6 +14,7 @@ import 'package:skyconnect_starter/pages/home/home.pg.dart';
 import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
 import 'package:skyconnect_starter/screens/books.scrn.dart';
 import 'package:skyconnect_starter/screens/classAllocation.scrn.dart';
+import 'package:skyconnect_starter/screens/classNotes.scrn.dart';
 import 'package:skyconnect_starter/screens/classRoutine.scrn.dart';
 import 'package:skyconnect_starter/screens/classSubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/classes.scrn.dart';
@@ -23,12 +24,14 @@ import 'package:skyconnect_starter/screens/examAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
 import 'package:skyconnect_starter/screens/hostels.scrn.dart';
 import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
+import 'package:skyconnect_starter/screens/liveStudies.scrn.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
 import 'package:skyconnect_starter/screens/mark.scrn.dart';
 import 'package:skyconnect_starter/screens/members.scrn.dart';
 import 'package:skyconnect_starter/screens/membersHostel.scrn.dart';
 import 'package:skyconnect_starter/screens/minorSchoolExams.scrn.dart';
 import 'package:skyconnect_starter/screens/newsBoard.scrn.dart';
+import 'package:skyconnect_starter/screens/onlineDiscussion.scrn.dart';
 import 'package:skyconnect_starter/screens/parents.scrn.dart';
 import 'package:skyconnect_starter/screens/schoolExam.scrn.dart';
 import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
@@ -269,13 +272,13 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "submenu1": ["Files", null, Icons.file_copy_sharp],
         "submenu2": [
           "Live Studies",
-          null,
+          liveStudies(),
           Icons.videocam,
         ],
-        "submenu3": ["Class Notes", null, Icons.note_alt_sharp],
+        "submenu3": ["Class Notes", classNotes(), Icons.note_alt_sharp],
         "submenu4": ["Online Exams", null, Icons.book_online_outlined],
         "submenu5": ["Home Packages", null, Icons.inventory_outlined],
-        "submenu6": ["Online Discussion", null, Icons.forum],
+        "submenu6": ["Online Discussion", onlineDiscussion(), Icons.forum],
       },
       {
         "size": widget.size!,

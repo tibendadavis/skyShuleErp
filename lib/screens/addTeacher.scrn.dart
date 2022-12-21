@@ -56,7 +56,7 @@ class _addTeachersState extends State<addTeachers> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

@@ -48,7 +48,7 @@ class _specialGradingState extends State<specialGrading> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

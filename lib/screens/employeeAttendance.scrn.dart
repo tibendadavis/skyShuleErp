@@ -49,7 +49,7 @@ class _classesState extends State<employeeAttendance> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

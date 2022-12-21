@@ -51,7 +51,7 @@ class _addBookState extends State<addBooks> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

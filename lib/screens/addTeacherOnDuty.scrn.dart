@@ -59,7 +59,7 @@ class _addTeacherOnDutyState extends State<addTeacherOnDuty> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 245,
+        size: 305,
         onTap: () {},
         menu: false,
       ),

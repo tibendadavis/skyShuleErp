@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -22,17 +23,22 @@ import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/components/academicDetails.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
-class addClasses extends StatefulWidget {
-  const addClasses({super.key});
+class addClassNotes extends StatefulWidget {
+  const addClassNotes({super.key});
 
   @override
-  State<addClasses> createState() => _addClassesState();
+  State<addClassNotes> createState() => _addClassNotesState();
 }
 
-class _addClassesState extends State<addClasses> {
+class _addClassNotesState extends State<addClassNotes> {
   bool _menu = false;
   var _specialGrade;
   var _classlevel;
+  var _subject;
+  var _status;
+  var _class;
+  var picked;
+
   double _drawersize = 250;
   @override
   Widget build(BuildContext context) {
@@ -57,7 +63,9 @@ class _addClassesState extends State<addClasses> {
       ),
       body: SingleChildScrollView(
           child: SizedBox(
-        height: size.height,
+        height: Responsive.isDesktop(context)
+            ? size.height + 160
+            : size.height + 400,
         width: size.width,
         child: Row(children: [
           if (Responsive.isDesktop(context))
@@ -101,7 +109,7 @@ class _addClassesState extends State<addClasses> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Heading2(
-                      value: "CLASS",
+                      value: "CLASS NOTES",
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
@@ -109,7 +117,7 @@ class _addClassesState extends State<addClasses> {
                       height: 10,
                     ),
                     const Heading3(
-                      value: "Class Information",
+                      value: "Class Notes Information",
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
                     ),
@@ -227,7 +235,153 @@ class _addClassesState extends State<addClasses> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Class Name "),
+                                  value: "Class"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.grey, width: 1.5),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appGap + 4)),
+                                  child: DropdownButton(
+                                    items: const [
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Class One",
+                                          ),
+                                          value: "Class One"),
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Class Two",
+                                          ),
+                                          value: "Class Two"),
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Class Three",
+                                          ),
+                                          value: "Class Three"),
+                                    ],
+                                    value: _class,
+                                    isExpanded: true,
+                                    iconSize: 35,
+                                    icon: Icon(
+                                        Icons.keyboard_arrow_down_outlined),
+                                    underline: SizedBox(),
+                                    dropdownColor: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        Insets().appRadiusMin + 4),
+                                    hint: Heading5(
+                                      value: "Select Class",
+                                    ),
+                                    onChanged: ((value) {
+                                      if (value is String) {
+                                        setState(() {
+                                          _class = value;
+                                        });
+                                      }
+                                    }),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Subject"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.grey, width: 1.5),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appGap + 4)),
+                                  child: DropdownButton(
+                                    items: const [
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Mathematics",
+                                          ),
+                                          value: "Mathematics"),
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Physics",
+                                          ),
+                                          value: "Physics"),
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Geography",
+                                          ),
+                                          value: "Geography"),
+                                    ],
+                                    value: _subject,
+                                    isExpanded: true,
+                                    iconSize: 35,
+                                    icon: Icon(
+                                        Icons.keyboard_arrow_down_outlined),
+                                    underline: SizedBox(),
+                                    dropdownColor: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        Insets().appRadiusMin + 4),
+                                    hint: Heading5(
+                                      value: "Select Subject",
+                                    ),
+                                    onChanged: ((value) {
+                                      if (value is String) {
+                                        setState(() {
+                                          _subject = value;
+                                        });
+                                      }
+                                    }),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Main Topic"),
                               SizedBox(
                                 width: 400,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
@@ -248,7 +402,7 @@ class _addClassesState extends State<addClasses> {
                                           TextAlignVertical.center,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: "Class name eg. Class One",
+                                        hintText: "Main Topic",
                                       )),
                                 ),
                               ),
@@ -270,7 +424,7 @@ class _addClassesState extends State<addClasses> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Class Numeric "),
+                                  value: "Notes Title (Sub Topic)"),
                               SizedBox(
                                 width: 400,
                                 height: Responsive.isDesktop(context) ? 50 : 40,
@@ -291,7 +445,179 @@ class _addClassesState extends State<addClasses> {
                                           TextAlignVertical.center,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: "Class Numeric",
+                                        hintText: "Sub Topic",
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Sub Topic Description"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 80 : 70,
+                                child: Container(
+                                  alignment: Alignment.topLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      maxLines: double.maxFinite.floor(),
+                                      keyboardType: TextInputType.multiline,
+                                      textAlignVertical: TextAlignVertical.top,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "Upload File"),
+                              SizedBox(
+                                width:
+                                    Responsive.isDesktop(context) ? 300 : 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right:
+                                        Responsive.isDesktop(context) ? 5 : 4,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      HeadingText(
+                                          size: Responsive.isDesktop(context)
+                                              ? 15
+                                              : 13,
+                                          value: picked != null
+                                              ? picked.files.first.name
+                                                  .toString()
+                                              : "No File Choosen"),
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          setState(() async {
+                                            picked = await FilePicker.platform
+                                                .pickFiles(
+                                                    allowMultiple: false);
+                                          });
+                                          if (picked != null) {
+                                            print(picked.files.first.name);
+                                          }
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Palette().primaryColor,
+                                            padding: EdgeInsets.only(
+                                              bottom:
+                                                  Responsive.isDesktop(context)
+                                                      ? 17
+                                                      : 14,
+                                              left: Insets().appPadding / 2,
+                                              right: Insets().appPadding / 2,
+                                              top: Responsive.isDesktop(context)
+                                                  ? 17
+                                                  : 14,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10))),
+                                        child: HeadingText(
+                                            size: Responsive.isDesktop(context)
+                                                ? 15
+                                                : 13,
+                                            value: "Choose File"),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 10 : 15,
+                          ),
+                          Flex(
+                            direction: Responsive.isDesktop(context)
+                                ? Axis.horizontal
+                                : Axis.vertical,
+                            mainAxisAlignment: Responsive.isDesktop(context)
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            crossAxisAlignment: Responsive.isDesktop(context)
+                                ? CrossAxisAlignment.center
+                                : CrossAxisAlignment.start,
+                            children: [
+                              HeadingText(
+                                  size: Responsive.isDesktop(context) ? 18 : 14,
+                                  value: "File Source Link"),
+                              SizedBox(
+                                width: 400,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(
+                                    left: Insets().appPadding / 2,
+                                    right: Insets().appPadding / 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.5, color: Colors.grey),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                          Insets().appPadding / 1.5)),
+                                  child: TextFormField(
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Enter File Source Link",
                                       )),
                                 ),
                               ),
@@ -334,7 +660,7 @@ class _addClassesState extends State<addClasses> {
                                           TextAlignVertical.center,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: "Class Teacher name",
+                                        hintText: "Teacher",
                                       )),
                                 ),
                               ),
@@ -356,29 +682,49 @@ class _addClassesState extends State<addClasses> {
                             children: [
                               HeadingText(
                                   size: Responsive.isDesktop(context) ? 18 : 14,
-                                  value: "Note "),
+                                  value: "File Status"),
                               SizedBox(
                                 width: 400,
-                                height: Responsive.isDesktop(context) ? 80 : 70,
+                                height: Responsive.isDesktop(context) ? 50 : 40,
                                 child: Container(
-                                  alignment: Alignment.topLeft,
                                   padding: EdgeInsets.only(
                                     left: Insets().appPadding / 2,
                                     right: Insets().appPadding / 2,
                                   ),
                                   decoration: BoxDecoration(
                                       border: Border.all(
-                                          width: 1.5, color: Colors.grey),
+                                          color: Colors.grey, width: 1.5),
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(
-                                          Insets().appPadding / 1.5)),
-                                  child: TextFormField(
-                                      maxLines: double.maxFinite.floor(),
-                                      keyboardType: TextInputType.multiline,
-                                      textAlignVertical: TextAlignVertical.top,
-                                      decoration: const InputDecoration(
-                                        border: InputBorder.none,
-                                      )),
+                                          Insets().appGap + 4)),
+                                  child: DropdownButton(
+                                    items: const [
+                                      DropdownMenuItem(
+                                          child: Heading5(
+                                            value: "Up to Date",
+                                          ),
+                                          value: "Up to Date"),
+                                    ],
+                                    value: _status,
+                                    isExpanded: true,
+                                    iconSize: 35,
+                                    icon: Icon(
+                                        Icons.keyboard_arrow_down_outlined),
+                                    underline: SizedBox(),
+                                    dropdownColor: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        Insets().appRadiusMin + 4),
+                                    hint: Heading5(
+                                      value: "Status",
+                                    ),
+                                    onChanged: ((value) {
+                                      if (value is String) {
+                                        setState(() {
+                                          _status = value;
+                                        });
+                                      }
+                                    }),
+                                  ),
                                 ),
                               ),
                             ],
