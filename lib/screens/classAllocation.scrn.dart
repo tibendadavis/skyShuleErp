@@ -160,11 +160,7 @@ class _supportingStaffState extends State<classAllocations> {
                               ),
                               Spacer(),
                               ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => addStaff()));
-                                  },
+                                  onPressed: () {},
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       shape: RoundedRectangleBorder(

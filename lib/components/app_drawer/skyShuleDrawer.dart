@@ -18,11 +18,14 @@ import 'package:skyconnect_starter/screens/classNotes.scrn.dart';
 import 'package:skyconnect_starter/screens/classRoutine.scrn.dart';
 import 'package:skyconnect_starter/screens/classSubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/classes.scrn.dart';
+import 'package:skyconnect_starter/screens/compose.scrn.dart';
 import 'package:skyconnect_starter/screens/defaultGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/employeeAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
+import 'package:skyconnect_starter/screens/favorite.scrn.dart';
 import 'package:skyconnect_starter/screens/hostels.scrn.dart';
+import 'package:skyconnect_starter/screens/inbox.scrn.dart';
 import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/liveStudies.scrn.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
@@ -33,7 +36,10 @@ import 'package:skyconnect_starter/screens/minorSchoolExams.scrn.dart';
 import 'package:skyconnect_starter/screens/newsBoard.scrn.dart';
 import 'package:skyconnect_starter/screens/onlineDiscussion.scrn.dart';
 import 'package:skyconnect_starter/screens/parents.scrn.dart';
+import 'package:skyconnect_starter/screens/promotion.scrn.dart';
 import 'package:skyconnect_starter/screens/schoolExam.scrn.dart';
+import 'package:skyconnect_starter/screens/sent.scrn.dart';
+import 'package:skyconnect_starter/screens/signature.scrn.dart';
 import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/streamSubjectTeacher.scrn.dart';
 import 'package:skyconnect_starter/screens/streams.scrn.dart';
@@ -42,6 +48,7 @@ import 'package:skyconnect_starter/screens/supportingStaff.scrn.dart';
 import 'package:skyconnect_starter/screens/teacher.scrn.dart';
 import 'package:skyconnect_starter/screens/teacherOnDuty.scrn.dart';
 import 'package:skyconnect_starter/screens/terms.scrn.dart';
+import 'package:skyconnect_starter/screens/trash.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class skyShuleDrawer extends StatefulWidget {
@@ -130,17 +137,6 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "submenu4.4": ["Class Journal", null, Icons.my_library_books],
         "submenu4.5": ["Syllabus Reports", null, Icons.my_library_books],
       },
-      // {
-      //   "size": widget.size!,
-      //   "value": "Syllabus",
-      //   "iconData": Icons.outbox_outlined,
-      //   "iconData2": Icons.keyboard_arrow_down_rounded,
-      //   "selected": [false],
-      //   "submenu1": ["Students", null, Icons.person],
-      //   "submenu2": ["Parents", null, Icons.supervisor_account_outlined],
-      //   "submenu3": ["Teachers", null, Icons.person],
-      //   "submenu4": ["Supporting Staff", null, Icons.groups_outlined],
-      // },
       {
         "size": widget.size!,
         "value": "Grading",
@@ -265,6 +261,13 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
       },
       {
         "size": widget.size!,
+        "value": "Promotion",
+        "link": promotion(),
+        "iconData": Icons.hiking,
+        "selected": [false]
+      },
+      {
+        "size": widget.size!,
         "value": "eResources",
         "iconData": Icons.movie_creation_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
@@ -279,6 +282,33 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "submenu4": ["Online Exams", null, Icons.book_online_outlined],
         "submenu5": ["Home Packages", null, Icons.inventory_outlined],
         "submenu6": ["Online Discussion", onlineDiscussion(), Icons.forum],
+      },
+      {
+        "size": widget.size!,
+        "value": "Messages",
+        "iconData": Icons.message_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": ["Compose", compose(), Icons.create],
+        "submenu2": [
+          "Inbox",
+          inbox(),
+          Icons.inbox_rounded,
+        ],
+        "submenu3": ["Sent", sent(), Icons.email_outlined],
+        "submenu4": [
+          "Favorite",
+          favorite(),
+          Icons.star_border_purple500_rounded
+        ],
+        "submenu5": ["Trash", trash(), Icons.delete],
+      },
+      {
+        "size": widget.size!,
+        "value": "Signature",
+        "link": signature(),
+        "iconData": Icons.draw_rounded,
+        "selected": [false]
       },
       {
         "size": widget.size!,
