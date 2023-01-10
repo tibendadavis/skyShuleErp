@@ -29,6 +29,7 @@ class _headerState extends State<header> {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           !Responsive.isDesktop(context)
               ? Offstage()
@@ -90,117 +91,96 @@ class _headerState extends State<header> {
           ),
           Icon(Icons.message_outlined),
           SizedBox(
-            width: 150,
-            height: 37,
+            width: Insets().appGap,
+          ),
+          CircleAvatar(
+            radius: Insets().appRadiusMid,
+          ),
+          SizedBox(
+            width: Insets().appGap,
+          ),
+          Heading5(
+            value: "Admin",
+            fontWeight: FontWeight.bold,
+          ),
+          PopupMenuButton(
             child: Container(
-              decoration: BoxDecoration(
-                  color: Palette().primaryColorExtraLight,
-                  borderRadius: BorderRadius.circular(Insets().appGap + 4)),
-              child: Expanded(
-                child: DropdownButton(
-                  items: [
-                    DropdownMenuItem(
-                        value: "View Profile",
-                        child: ListTile(
-                          dense: true,
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => userProfile()));
-                          },
-                          contentPadding: EdgeInsets.all(0),
-                          minVerticalPadding: 0.0,
-                          minLeadingWidth: 5,
-                          horizontalTitleGap: 10,
-                          title: Heading5(
-                            value: "View Profile",
-                          ),
-                          leading: Icon(Icons.grid_view_rounded,
-                              color: Palette().primaryColor, size: 20),
-                        )),
-                    DropdownMenuItem(
-                        child: ListTile(
-                          dense: true,
-                          onTap: () {},
-                          contentPadding: EdgeInsets.all(0),
-                          minVerticalPadding: 0.0,
-                          minLeadingWidth: 5,
-                          horizontalTitleGap: 10,
-                          title: Heading5(
-                            value: "Change Password",
-                          ),
-                          leading: Icon(Icons.lock,
-                              color: Palette().primaryColor, size: 20),
-                        ),
-                        value: "Change Password"),
-                    DropdownMenuItem(
-                        child: ListTile(
-                          dense: true,
-                          onTap: () {},
-                          contentPadding: EdgeInsets.all(0),
-                          minVerticalPadding: 0.0,
-                          minLeadingWidth: 5,
-                          horizontalTitleGap: 10,
-                          title: Heading5(
-                            value: "Training",
-                          ),
-                          leading: Icon(Icons.model_training_rounded,
-                              color: Palette().primaryColor, size: 20),
-                        ),
-                        value: "Training"),
-                    DropdownMenuItem(
-                        child: ListTile(
-                          dense: true,
-                          onTap: () {},
-                          contentPadding: EdgeInsets.all(0),
-                          minVerticalPadding: 0.0,
-                          minLeadingWidth: 5,
-                          horizontalTitleGap: 10,
-                          title: Heading5(
-                            value: "Log out",
-                          ),
-                          trailing: Icon(Icons.logout,
-                              color: Palette().primaryColor, size: 20),
-                        ),
-                        value: "Log out"),
-                  ],
-                  value: null,
-                  isExpanded: true,
-                  iconSize: 25,
-                  elevation: 1,
-                  icon: Icon(Icons.keyboard_arrow_down_outlined),
-                  underline: SizedBox(),
-                  dropdownColor: Colors.white,
-                  borderRadius:
-                      BorderRadius.circular(Insets().appRadiusMin + 2),
-                  hint: Container(
-                    //  alignment: Alignment.centerRight,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: Insets().appRadiusMid,
-                        ),
-                        SizedBox(
-                          width: Insets().appGap + 4,
-                        ),
-                        Heading5(
-                          value: "Admin",
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ],
-                    ),
-                  ),
-                  onChanged: ((value) {
-                    if (value is String) {
-                      setState(() {
-                        _userProfile = value;
-                      });
-                    }
-                  }),
-                ),
+              width: 20,
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.keyboard_arrow_down,
               ),
             ),
-          ),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  value: 1,
+                  child: Row(
+                    children: [
+                      Icon(Icons.grid_view_rounded,
+                          color: Palette().primaryColor, size: 20),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Heading5(
+                        value: "View Profile",
+                      ),
+                    ],
+                  )),
+              PopupMenuItem(
+                  value: 2,
+                  child: Row(
+                    children: [
+                      Icon(Icons.lock, color: Palette().primaryColor, size: 20),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Heading5(
+                        value: "Change Password",
+                      ),
+                    ],
+                  )),
+              PopupMenuItem(
+                  value: 3,
+                  child: Row(
+                    children: [
+                      Icon(Icons.model_training_rounded,
+                          color: Palette().primaryColor, size: 20),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Heading5(
+                        value: "Training",
+                      ),
+                    ],
+                  )),
+              PopupMenuItem(
+                  value: 4,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Heading5(
+                        value: "Log out",
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(Icons.logout_rounded,
+                          color: Palette().primaryColor, size: 20),
+                    ],
+                  ))
+            ],
+            offset: Offset(0, 35),
+            color: Colors.white,
+            elevation: 1.5,
+            onSelected: (value) {
+              if (value == 1) {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => userProfile()));
+              } else if (value == 2) {
+              } else if (value == 3) {
+              } else if (value == 4) {}
+            },
+          )
         ],
       ),
     );

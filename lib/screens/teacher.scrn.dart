@@ -76,8 +76,8 @@ class _teachersState extends State<teachers> {
                   child: Column(children: [
                 Container(
                     padding: EdgeInsets.only(
-                        left: Insets().appPadding,
-                        right: Insets().appPadding,
+                        left: Insets().appPadding / 2,
+                        right: Insets().appPadding / 2,
                         top: Insets().appGap,
                         bottom: Insets().appGap),
                     decoration:
