@@ -162,9 +162,10 @@ class _newsBoardState extends State<newsBoard> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => addEvent()));
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => addEvent(),
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,

@@ -160,10 +160,10 @@ class _classesState extends State<classes> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                addClasses()));
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => addClasses(),
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -226,7 +226,8 @@ class _classesState extends State<classes> {
                               ),
                               Expanded(
                                 child: Heading6(
-                                    value: "Total Class", color: Colors.white),
+                                    value: "Total Classes",
+                                    color: Colors.white),
                               )
                             ],
                           ),
@@ -635,23 +636,6 @@ class _classesState extends State<classes> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -753,7 +737,9 @@ class _classesState extends State<classes> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Class",
@@ -761,7 +747,10 @@ class _classesState extends State<classes> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? null
+                                      : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Class Numeric",
@@ -769,7 +758,9 @@ class _classesState extends State<classes> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Teacher Name",
@@ -777,7 +768,10 @@ class _classesState extends State<classes> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? null
+                                      : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Student",
@@ -787,7 +781,7 @@ class _classesState extends State<classes> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 200 : 100,
+                                      Responsive.isDesktop(context) ? 250 : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Note",
@@ -795,7 +789,9 @@ class _classesState extends State<classes> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 200 : 100,
                                   child: Center(
                                     child: HeadingText(
                                       size: 14,
@@ -884,7 +880,7 @@ class _classesState extends State<classes> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "2",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -893,7 +889,7 @@ class _classesState extends State<classes> {
                                   DataCell(Center(
                                     child: HeadingText(
                                       size: 14,
-                                      value: "1",
+                                      value: "2",
                                     ),
                                   )),
                                   DataCell(HeadingText(
@@ -953,7 +949,7 @@ class _classesState extends State<classes> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "3",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -962,7 +958,7 @@ class _classesState extends State<classes> {
                                   DataCell(Center(
                                     child: HeadingText(
                                       size: 14,
-                                      value: "1",
+                                      value: "3",
                                     ),
                                   )),
                                   DataCell(HeadingText(
@@ -1022,7 +1018,7 @@ class _classesState extends State<classes> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "4",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1031,7 +1027,7 @@ class _classesState extends State<classes> {
                                   DataCell(Center(
                                     child: HeadingText(
                                       size: 14,
-                                      value: "1",
+                                      value: "4",
                                     ),
                                   )),
                                   DataCell(HeadingText(
@@ -1091,7 +1087,7 @@ class _classesState extends State<classes> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "5",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1100,7 +1096,7 @@ class _classesState extends State<classes> {
                                   DataCell(Center(
                                     child: HeadingText(
                                       size: 14,
-                                      value: "1",
+                                      value: "5",
                                     ),
                                   )),
                                   DataCell(HeadingText(

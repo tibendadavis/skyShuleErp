@@ -23,11 +23,25 @@ class userAttendanceView extends StatefulWidget {
   State<userAttendanceView> createState() => _userAttendanceViewState();
 }
 
-class _userAttendanceViewState extends State<userAttendanceView> {
+class _userAttendanceViewState extends State<userAttendanceView>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> scaleAnimation;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
+    controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
+    scaleAnimation =
+        CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    controller.forward();
   }
 
   bool _menu = false;
@@ -35,65 +49,31 @@ class _userAttendanceViewState extends State<userAttendanceView> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: !Responsive.isDesktop(context)
-          ? AppBar(
-              centerTitle: true,
-              elevation: 0,
-              title: Title(
-                  color: Palette().textColor,
-                  child: const Heading2(
-                    value: "SkyShule",
-                  )),
-              backgroundColor: Palette().primaryColor,
-            )
-          : null,
-      drawer: skyShuleDrawer(
-        size: 305,
-        onTap: () {},
-        menu: false,
-      ),
-      body: SingleChildScrollView(
+    return Material(
+      color: Colors.transparent,
+      child: ScaleTransition(
+        scale: scaleAnimation,
         child: Container(
-            width: size.width,
-            height: Responsive.isDesktop(context)
-                ? size.height + 200
-                : size.height + 500,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (!!Responsive.isDesktop(context))
-                  AnimatedContainer(
-                      duration: const Duration(milliseconds: 400),
-                      width: _drawersize,
-                      child: skyShuleDrawer(
-                        size: _drawersize,
-                        onTap: (val) {
-                          setState(() {
-                            _drawersize = val;
-                          });
-                        },
-                        menu: _menu,
-                      )),
-                Expanded(
+          margin: EdgeInsets.only(
+              top: Responsive.isDesktop(context) ? 20 : 50,
+              bottom: Responsive.isDesktop(context) ? 20 : 50,
+              left: Responsive.isDesktop(context) ? 30 : 10,
+              right: Responsive.isDesktop(context) ? 30 : 10),
+          decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0))),
+          child: SingleChildScrollView(
+            child: SizedBox(
+                width: Responsive.isDesktop(context)
+                    ? size.width
+                    : size.width - 20,
+                height: Responsive.isDesktop(context)
+                    ? size.height + 200
+                    : size.height + 300,
+                child: Expanded(
                   child: Column(
                     children: [
-                      Container(
-                          padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                              top: Insets().appGap,
-                              bottom: Insets().appGap),
-                          decoration:
-                              BoxDecoration(color: Palette().primaryColorLight),
-                          child: header(
-                            onTap: (val) {
-                              setState(() {
-                                _drawersize = val[0];
-                                _menu = val[1];
-                              });
-                            },
-                          )),
                       Container(
                         alignment: Alignment.bottomLeft,
                         padding: EdgeInsets.only(
@@ -7215,9 +7195,9 @@ class _userAttendanceViewState extends State<userAttendanceView> {
                       )
                     ],
                   ),
-                ),
-              ],
-            )),
+                )),
+          ),
+        ),
       ),
     );
   }

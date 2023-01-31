@@ -1,10 +1,13 @@
-import 'dart:ui';
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:skyconnect_starter/components/certificate.comp.dart';
+import 'package:skyconnect_starter/components/idCard.comp.dart';
+import 'package:skyconnect_starter/components/receipt.comp.dart';
+import 'package:skyconnect_starter/components/studentPerfomanceReport.comp.dart';
 import 'package:skyconnect_starter/database/boxes.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
 import 'package:skyconnect_starter/screens/addClassNotes.scrn.dart';
@@ -20,6 +23,7 @@ import 'package:skyconnect_starter/screens/addTeacher.scrn.dart';
 import 'package:skyconnect_starter/screens/addTeacherOnDuty.scrn.dart';
 import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
 import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
+import 'package:skyconnect_starter/screens/billing.scrn.dart';
 import 'package:skyconnect_starter/screens/books.scrn.dart';
 import 'package:skyconnect_starter/screens/classAllocation.scrn.dart';
 import 'package:skyconnect_starter/screens/classNotes.scrn.dart';
@@ -31,7 +35,9 @@ import 'package:skyconnect_starter/screens/defaultGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/employeeAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
+import 'package:skyconnect_starter/screens/generateCertficate.scrn.dart';
 import 'package:skyconnect_starter/screens/hostels.scrn.dart';
+import 'package:skyconnect_starter/screens/idCards.scrn.dart';
 import 'package:skyconnect_starter/screens/inbox.scrn.dart';
 import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/liveStudies.scrn.dart';
@@ -44,14 +50,22 @@ import 'package:skyconnect_starter/screens/newsBoard.scrn.dart';
 import 'package:skyconnect_starter/screens/onlineDiscussion.scrn.dart';
 import 'package:skyconnect_starter/screens/parents.scrn.dart';
 import 'package:skyconnect_starter/screens/promotion.scrn.dart';
+import 'package:skyconnect_starter/screens/purchaseOrder.scrn.dart';
+import 'package:skyconnect_starter/screens/requestOrder.scrn.dart';
 import 'package:skyconnect_starter/screens/schoolExam.scrn.dart';
 import 'package:skyconnect_starter/screens/sent.scrn.dart';
 import 'package:skyconnect_starter/screens/signature.scrn.dart';
+import 'package:skyconnect_starter/screens/singleReports.scrn.dart';
 import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
+import 'package:skyconnect_starter/screens/storeCategory.scrn.dart';
+import 'package:skyconnect_starter/screens/storeItem.scrn.dart';
+import 'package:skyconnect_starter/screens/storeType.scrn.dart';
 import 'package:skyconnect_starter/screens/streamSubjectTeacher.scrn.dart';
 import 'package:skyconnect_starter/screens/streams.scrn.dart';
 import 'package:skyconnect_starter/screens/studentAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/supplier.scrn.dart';
+import 'package:skyconnect_starter/screens/supplierType.scrn.dart';
 import 'package:skyconnect_starter/screens/supportingStaff.scrn.dart';
 import 'package:skyconnect_starter/screens/teacher.scrn.dart';
 import 'package:skyconnect_starter/screens/teacherOnDuty.scrn.dart';
@@ -65,78 +79,5 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(home: HomePage()));
-}
-
-class MyApp extends StatefulWidget {
-  final List<CameraDescription> cameras;
-  MyApp({
-    Key? key,
-    required this.cameras,
-  }) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  // DarkThemeProvider themeChangeProvider = DarkThemeProvider();
-
-  void getCurrentAppTheme() async {
-    // themeChangeProvider.darkTheme =
-    //     await themeChangeProvider.darkThemePreference.getTheme();
-  }
-
-  @override
-  void initState() {
-    getCurrentAppTheme();
-    super.initState();
-  }
-
-  Widget build(BuildContext context) {
-    final mySetting =
-        !Hive.isBoxOpen("mySettings") || Boxes.getMySettings().isEmpty
-            ? null
-            : Boxes.getMySettings().values.firstWhere((element) => true);
-
-    return OverlaySupport.global(
-      child: ChangeNotifierProvider(
-        create: (BuildContext context) {},
-        child: Consumer(
-          builder: (BuildContext context, value, Widget? child) {
-            return GetMaterialApp(
-                translations: LocaleString(),
-                locale: mySetting == null
-                    ? const Locale("en", "US")
-                    : mySetting.language == "English"
-                        ? const Locale("en", "US")
-                        : mySetting.language == "Swahili"
-                            ? const Locale("sw", "TZ")
-                            : const Locale("en", "US"),
-                scrollBehavior: const MaterialScrollBehavior().copyWith(
-                  dragDevices: {
-                    PointerDeviceKind.mouse,
-                    PointerDeviceKind.touch,
-                    PointerDeviceKind.stylus,
-                    PointerDeviceKind.unknown
-                  },
-                ),
-                // theme: ThemeData.light(),
-                // darkTheme: ThemeData.dark(),
-                debugShowCheckedModeBanner: false,
-                defaultTransition: Transition.fade,
-                home: Center(
-                  child: Text(
-                    "Open sans testing",
-                    style: TextStyle(
-                        //fontFamily: 'google_fonts/static',
-                        fontSize: 60,
-                        color: Colors.black),
-                  ),
-                ));
-          },
-        ),
-      ),
-    );
-  }
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
 }

@@ -158,6 +158,9 @@ class _userProfileState extends State<userProfile> {
                                           children: [
                                             CircleAvatar(
                                               radius: Insets().appRadius,
+                                              child: ClipOval(
+                                                  child: Image.asset(
+                                                      "assets/img/avatar.jpg")),
                                             ),
                                             SizedBox(
                                               height: 7,
@@ -735,6 +738,9 @@ class _userProfileState extends State<userProfile> {
                                         children: [
                                           CircleAvatar(
                                             radius: Insets().appRadius,
+                                            child: ClipOval(
+                                                child: Image.asset(
+                                                    "assets/img/avatar.jpg")),
                                           ),
                                           SizedBox(
                                             height: 7,

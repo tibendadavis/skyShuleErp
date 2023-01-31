@@ -149,10 +149,10 @@ class _teachersState extends State<teachers> {
                                 Spacer(),
                                 ElevatedButton(
                                     onPressed: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  addTeachers()));
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addTeachers(),
+                                      );
                                     },
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white,
@@ -887,23 +887,6 @@ class _teachersState extends State<teachers> {
                                   ),
                                 ),
                                 value: "PDF"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
                             DropdownMenuItem(
                                 child: ListTile(
                                   dense: true,

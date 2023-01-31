@@ -13,6 +13,7 @@ import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/addGrading.scrn.dart';
+import 'package:skyconnect_starter/screens/addSpecialGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
@@ -101,7 +102,7 @@ class _specialGradingState extends State<specialGrading> {
                       right: Insets().appGap),
                   child: HeadingText(
                     size: Responsive.isDesktop(context) ? 35 : 30,
-                    value: "GRADE",
+                    value: "SPECIAL GRADE",
                     fontWeight: FontWeight.w700,
                     color: Colors.black,
                   ),
@@ -161,10 +162,10 @@ class _specialGradingState extends State<specialGrading> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                addGrading()));
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => addSpecialGrading(),
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -274,7 +275,7 @@ class _specialGradingState extends State<specialGrading> {
                                         value: "CANDIDATE GRADE 2")
                                   ],
                                   hint: Heading6(
-                                    value: "Special Grade Name",
+                                    value: "Special Grade Category",
                                     color: Colors.white,
                                   ),
                                   value: _classlevel,
@@ -412,7 +413,7 @@ class _specialGradingState extends State<specialGrading> {
                                               value: "CANDIDATE GRADE 2")
                                         ],
                                         hint: Heading6(
-                                          value: "Special Grade Name",
+                                          value: "Special Grade Category",
                                           color: Colors.white,
                                         ),
                                         value: _classlevel,
@@ -575,23 +576,6 @@ class _specialGradingState extends State<specialGrading> {
                                   ),
                                 ),
                                 value: "PDF"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
                             DropdownMenuItem(
                                 child: ListTile(
                                   dense: true,

@@ -160,9 +160,10 @@ class _streamsState extends State<streams> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => addStream()));
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => addStream(),
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -220,7 +221,7 @@ class _streamsState extends State<streams> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Heading1(
-                                value: "140",
+                                value: "6",
                                 color: Colors.white,
                               ),
                               Expanded(
@@ -756,23 +757,6 @@ class _streamsState extends State<streams> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -876,7 +860,7 @@ class _streamsState extends State<streams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 100 : 50,
+                                      Responsive.isDesktop(context) ? 120 : 50,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Stream",
@@ -886,7 +870,7 @@ class _streamsState extends State<streams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 100 : 65,
+                                      Responsive.isDesktop(context) ? 120 : 65,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Category",
@@ -896,7 +880,7 @@ class _streamsState extends State<streams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 130 : 100,
+                                      Responsive.isDesktop(context) ? 150 : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Teacher Name",
@@ -914,7 +898,7 @@ class _streamsState extends State<streams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 200 : 100,
+                                      Responsive.isDesktop(context) ? 250 : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Note",
@@ -1007,7 +991,7 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "2",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1074,7 +1058,7 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "3",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1141,7 +1125,7 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "4",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1208,7 +1192,74 @@ class _streamsState extends State<streams> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "5",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "ZEBRA",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "ZEBRA",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Venosa P Kigosi",
+                                  )),
+                                  DataCell(Center(
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "44",
+                                    ),
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "  ",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "View Students",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "6",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,

@@ -149,10 +149,10 @@ class _supportingStaffState extends State<supportingStaff> {
                                 Spacer(),
                                 ElevatedButton(
                                     onPressed: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  addStaff()));
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addStaff(),
+                                      );
                                     },
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white,
@@ -1206,23 +1206,6 @@ class _supportingStaffState extends State<supportingStaff> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -1407,6 +1390,942 @@ class _supportingStaffState extends State<supportingStaff> {
                                 )),
                               ],
                               rows: [
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "1",
+                                  )),
+                                  DataCell(Icon(size: 20, Icons.person)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Doe Lucas John",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Male",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "supporting@gmail.com",
+                                  )),
+                                  DataCell(Row(
+                                    children: [
+                                      HeadingText(
+                                        size: 15,
+                                        value: "+255734848894",
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Icon(
+                                        Icons.add_call,
+                                        size: 16,
+                                        color: Palette().primaryColor,
+                                      )
+                                    ],
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "YY - MM - DD",
+                                  )),
+                                  DataCell(HeadingText(
+                                      value: "Christian", size: 14)),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "TZ",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Not Defined",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
                                     value: false,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/header.dart';
@@ -11,6 +12,7 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
 import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
@@ -27,8 +29,9 @@ class attendanceReport extends StatefulWidget {
 class _attendaceReportState extends State<attendanceReport> {
   bool _menu = false;
   double _drawersize = 250;
-  var _startDate;
-  var _endDate;
+  var _download;
+  TextEditingController _startDate = TextEditingController();
+  TextEditingController _endDate = TextEditingController();
   var _stream;
 
   @override
@@ -148,124 +151,82 @@ class _attendaceReportState extends State<attendanceReport> {
                       children: [
                         if (Responsive.isDesktop(context)) ...[
                           Expanded(
-                              flex: 1,
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  right: Insets().appGap,
-                                ),
-                                padding: EdgeInsets.only(
-                                  left: Insets().appGap,
-                                ),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.grey, width: 1),
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appGap + 4)),
-                                child: DropdownButton(
-                                  items: const [
-                                    DropdownMenuItem(
-                                        child: Heading5(
-                                          value: "Nursery",
-                                        ),
-                                        value: "Nursery"),
-                                    DropdownMenuItem(
-                                        child: Heading5(
-                                          value: "Primary",
-                                        ),
-                                        value: "Primary"),
-                                    DropdownMenuItem(
-                                        child: Heading5(
-                                          value: "Secondary",
-                                        ),
-                                        value: "Secondary")
-                                  ],
-                                  hint: Heading5(
-                                    value: "Start Date",
-                                  ),
-                                  value: _startDate,
-                                  iconSize: 30,
-                                  icon: Container(
-                                      padding: EdgeInsets.only(right: 5),
-                                      child: Icon(
-                                        Icons.calendar_month_outlined,
-                                        color: Palette().primaryColor,
-                                      )),
-                                  isExpanded: true,
-                                  underline: SizedBox(),
-                                  dropdownColor: Colors.white,
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.only(
+                                left: Insets().appPadding / 2,
+                                right: Insets().appPadding / 2,
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1.5, color: Colors.grey),
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4),
-                                  onChanged: ((value) {
-                                    if (value is String) {
-                                      setState(() {
-                                        _startDate = value;
-                                      });
-                                    }
-                                  }),
-                                ),
-                              )),
+                                      Insets().appPadding / 1.5)),
+                              child: TextFormField(
+                                  controller: _startDate,
+                                  readOnly: true,
+                                  onTap: () async {
+                                    final date = await Funcs()
+                                        .selectDate(context: context);
+                                    final formattedDate =
+                                        DateFormat('yyyy-MM-dd').format(date!);
+                                    setState(() {
+                                      _startDate.text = formattedDate;
+                                    });
+                                  },
+                                  textAlignVertical: TextAlignVertical.center,
+                                  decoration: InputDecoration(
+                                    suffixIcon: Icon(
+                                      Icons.calendar_month_rounded,
+                                      color: Palette().primaryColor,
+                                    ),
+                                    border: InputBorder.none,
+                                    hintText: "Start Date",
+                                  )),
+                            ),
+                          ),
                           SizedBox(
                             width: 10,
                           ),
                           Expanded(
-                              flex: 1,
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  right: Insets().appGap,
-                                ),
-                                padding: EdgeInsets.only(
-                                  left: Insets().appGap,
-                                ),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.grey, width: 1),
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appGap + 4)),
-                                child: DropdownButton(
-                                  items: const [
-                                    DropdownMenuItem(
-                                        child: Heading5(
-                                          value: "Nursery",
-                                        ),
-                                        value: "Nursery"),
-                                    DropdownMenuItem(
-                                        child: Heading5(
-                                          value: "Primary",
-                                        ),
-                                        value: "Primary"),
-                                    DropdownMenuItem(
-                                        child: Heading5(
-                                          value: "Secondary",
-                                        ),
-                                        value: "Secondary")
-                                  ],
-                                  hint: Heading5(
-                                    value: "End Date",
-                                  ),
-                                  value: _startDate,
-                                  iconSize: 30,
-                                  icon: Container(
-                                      padding: EdgeInsets.only(right: 5),
-                                      child: Icon(
-                                        Icons.calendar_month_outlined,
-                                        color: Palette().primaryColor,
-                                      )),
-                                  isExpanded: true,
-                                  underline: SizedBox(),
-                                  dropdownColor: Colors.white,
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.only(
+                                left: Insets().appPadding / 2,
+                                right: Insets().appPadding / 2,
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1.5, color: Colors.grey),
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4),
-                                  onChanged: ((value) {
-                                    if (value is String) {
-                                      setState(() {
-                                        _startDate = value;
-                                      });
-                                    }
-                                  }),
-                                ),
-                              )),
+                                      Insets().appPadding / 1.5)),
+                              child: TextFormField(
+                                  controller: _endDate,
+                                  readOnly: true,
+                                  onTap: () async {
+                                    final date = await Funcs()
+                                        .selectDate(context: context);
+                                    final formattedDate =
+                                        DateFormat('yyyy-MM-dd').format(date!);
+                                    setState(() {
+                                      _endDate.text = formattedDate;
+                                    });
+                                  },
+                                  textAlignVertical: TextAlignVertical.center,
+                                  decoration: InputDecoration(
+                                    suffixIcon: Icon(
+                                      Icons.calendar_month_rounded,
+                                      color: Palette().primaryColor,
+                                    ),
+                                    border: InputBorder.none,
+                                    hintText: "End Date",
+                                  )),
+                            ),
+                          ),
                           SizedBox(
                             width: 10,
                           ),
@@ -352,47 +313,29 @@ class _attendaceReportState extends State<attendanceReport> {
                                           color: Colors.white,
                                           borderRadius: BorderRadius.circular(
                                               Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Nursery",
-                                              ),
-                                              value: "Nursery"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Primary",
-                                              ),
-                                              value: "Primary"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Secondary",
-                                              ),
-                                              value: "Secondary")
-                                        ],
-                                        hint: Heading5(
-                                          value: "Start Date",
-                                        ),
-                                        value: _startDate,
-                                        iconSize: 30,
-                                        icon: Container(
-                                            padding: EdgeInsets.only(right: 5),
-                                            child: Icon(
-                                                Icons.calendar_month_outlined,
-                                                color: Palette().primaryColor)),
-                                        isExpanded: true,
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        onChanged: ((value) {
-                                          if (value is String) {
+                                      child: TextFormField(
+                                          controller: _startDate,
+                                          readOnly: true,
+                                          onTap: () async {
+                                            final date = await Funcs()
+                                                .selectDate(context: context);
+                                            final formattedDate =
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(date!);
                                             setState(() {
-                                              _startDate = value;
+                                              _startDate.text = formattedDate;
                                             });
-                                          }
-                                        }),
-                                      ),
+                                          },
+                                          textAlignVertical:
+                                              TextAlignVertical.center,
+                                          decoration: InputDecoration(
+                                            suffixIcon: Icon(
+                                              Icons.calendar_month_rounded,
+                                              color: Palette().primaryColor,
+                                            ),
+                                            border: InputBorder.none,
+                                            hintText: "Start Date",
+                                          )),
                                     ),
                                     Spacer(),
                                     Container(
@@ -410,49 +353,30 @@ class _attendaceReportState extends State<attendanceReport> {
                                           color: Colors.white,
                                           borderRadius: BorderRadius.circular(
                                               Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Nursery",
-                                              ),
-                                              value: "Nursery"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Primary",
-                                              ),
-                                              value: "Primary"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Secondary",
-                                              ),
-                                              value: "Secondary")
-                                        ],
-                                        hint: Heading5(
-                                          value: "End Date",
-                                        ),
-                                        value: _startDate,
-                                        iconSize: 30,
-                                        icon: Container(
-                                            padding: EdgeInsets.only(right: 5),
-                                            child: Icon(
-                                              Icons.calendar_month_outlined,
-                                              color: Palette().primaryColor,
-                                            )),
-                                        isExpanded: true,
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        onChanged: ((value) {
-                                          if (value is String) {
+                                      child: TextFormField(
+                                          controller: _endDate,
+                                          readOnly: true,
+                                          onTap: () async {
+                                            final date = await Funcs()
+                                                .selectDate(context: context);
+                                            final formattedDate =
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(date!);
                                             setState(() {
-                                              _startDate = value;
+                                              _endDate.text = formattedDate;
                                             });
-                                          }
-                                        }),
-                                      ),
-                                    )
+                                          },
+                                          textAlignVertical:
+                                              TextAlignVertical.center,
+                                          decoration: InputDecoration(
+                                            suffixIcon: Icon(
+                                              Icons.calendar_month_rounded,
+                                              color: Palette().primaryColor,
+                                            ),
+                                            border: InputBorder.none,
+                                            hintText: "End Date",
+                                          )),
+                                    ),
                                   ],
                                 )),
                           ),
@@ -767,23 +691,6 @@ class _attendaceReportState extends State<attendanceReport> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -838,7 +745,7 @@ class _attendaceReportState extends State<attendanceReport> {
                           onChanged: ((value) {
                             if (true) {
                               setState(() {
-                                _startDate = value;
+                                _download = value;
                               });
                             }
                           }),

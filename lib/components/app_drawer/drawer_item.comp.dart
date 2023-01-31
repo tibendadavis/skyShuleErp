@@ -22,6 +22,12 @@ class DrawerItem extends StatefulWidget {
   final List? submenu4;
   final List? submenu5;
   final List? submenu6;
+  final List? submenu7;
+  final List? submenu8;
+  final List? submenu9;
+  final List? submenu10;
+  final List? submenu011;
+  final List? submenu012;
   final List? submenu11;
   final List? submenu12;
   final List? submenu13;
@@ -54,6 +60,12 @@ class DrawerItem extends StatefulWidget {
     this.submenu4,
     this.submenu5,
     this.submenu6,
+    this.submenu7,
+    this.submenu8,
+    this.submenu9,
+    this.submenu10,
+    this.submenu011,
+    this.submenu012,
     this.submenu11,
     this.submenu12,
     this.submenu13,
@@ -844,6 +856,166 @@ class _DrawerItemState extends State<DrawerItem> {
                                 ),
                                 title: Heading6(
                                   value: widget.submenu6![0],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                ),
+                              ),
+                            ),
+                      widget.iconData2 == null ||
+                              widget.size == 90 ||
+                              widget.submenu7 == null
+                          ? const Offstage()
+                          : InkWell(
+                              child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu7![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu7![1]));
+                                },
+                                minLeadingWidth: 22,
+                                dense: true,
+                                contentPadding: EdgeInsets.all(0),
+                                horizontalTitleGap: 5,
+                                leading: Icon(
+                                  widget.submenu7![2],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                  size: 20,
+                                ),
+                                title: Heading6(
+                                  value: widget.submenu7![0],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                ),
+                              ),
+                            ),
+                      widget.iconData2 == null ||
+                              widget.size == 90 ||
+                              widget.submenu8 == null
+                          ? const Offstage()
+                          : InkWell(
+                              child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu8![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu8![1]));
+                                },
+                                minLeadingWidth: 22,
+                                dense: true,
+                                contentPadding: EdgeInsets.all(0),
+                                horizontalTitleGap: 5,
+                                leading: Icon(
+                                  widget.submenu8![2],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                  size: 20,
+                                ),
+                                title: Heading6(
+                                  value: widget.submenu8![0],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                ),
+                              ),
+                            ),
+                      widget.iconData2 == null ||
+                              widget.size == 90 ||
+                              widget.submenu9 == null
+                          ? const Offstage()
+                          : InkWell(
+                              child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu9![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu9![1]));
+                                },
+                                minLeadingWidth: 22,
+                                dense: true,
+                                contentPadding: EdgeInsets.all(0),
+                                horizontalTitleGap: 5,
+                                leading: Icon(
+                                  widget.submenu9![2],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                  size: 20,
+                                ),
+                                title: Heading6(
+                                  value: widget.submenu9![0],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                ),
+                              ),
+                            ),
+                      widget.iconData2 == null ||
+                              widget.size == 90 ||
+                              widget.submenu10 == null
+                          ? const Offstage()
+                          : InkWell(
+                              child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu10![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu10![1]));
+                                },
+                                minLeadingWidth: 22,
+                                dense: true,
+                                contentPadding: EdgeInsets.all(0),
+                                horizontalTitleGap: 5,
+                                leading: Icon(
+                                  widget.submenu10![2],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                  size: 20,
+                                ),
+                                title: Heading6(
+                                  value: widget.submenu10![0],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                ),
+                              ),
+                            ),
+                      widget.iconData2 == null ||
+                              widget.size == 90 ||
+                              widget.submenu011 == null
+                          ? const Offstage()
+                          : InkWell(
+                              child: ListTile(
+                                onTap: () {
+                                  if (widget.submenu011![1] != null)
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                widget.submenu011![1]));
+                                },
+                                minLeadingWidth: 22,
+                                dense: true,
+                                contentPadding: EdgeInsets.all(0),
+                                horizontalTitleGap: 5,
+                                leading: Icon(
+                                  widget.submenu7![2],
+                                  color: !isSelected
+                                      ? Palette().textColor
+                                      : Palette().primaryColor,
+                                  size: 20,
+                                ),
+                                title: Heading6(
+                                  value: widget.submenu011![0],
                                   color: !isSelected
                                       ? Palette().textColor
                                       : Palette().primaryColor,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/header.dart';
@@ -11,8 +12,10 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/addClass.scrn.dart';
+import 'package:skyconnect_starter/screens/addEmployeeAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
 import 'package:skyconnect_starter/screens/userAttendanceView.scrn.dart';
@@ -31,6 +34,8 @@ class _classesState extends State<employeeAttendance> {
   var _role;
   var _academicYear;
   var _stream;
+  TextEditingController _From = TextEditingController();
+  TextEditingController _To = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -162,10 +167,10 @@ class _classesState extends State<employeeAttendance> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                addClasses()));
+                                    showDialog(
+                                        context: (context),
+                                        builder: (_) =>
+                                            addEmployeeAttendance());
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -493,6 +498,93 @@ class _classesState extends State<employeeAttendance> {
                                   }),
                                 ),
                               )),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.only(
+                                left: Insets().appPadding / 2,
+                                right: Insets().appPadding / 2,
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1.5, color: Colors.grey),
+                                  color: Palette().primaryColor,
+                                  borderRadius: BorderRadius.circular(
+                                      Insets().appPadding / 1.5)),
+                              child: TextFormField(
+                                  style: TextStyle(color: Colors.white),
+                                  controller: _From,
+                                  readOnly: true,
+                                  onTap: () async {
+                                    final date = await Funcs()
+                                        .selectDate(context: context);
+                                    final formattedDate =
+                                        DateFormat('yyyy-MM-dd').format(date!);
+                                    setState(() {
+                                      _From.text = formattedDate;
+                                    });
+                                  },
+                                  textAlignVertical: TextAlignVertical.center,
+                                  decoration: InputDecoration(
+                                      suffixIcon: Icon(
+                                        Icons.calendar_month_rounded,
+                                        color: Colors.white,
+                                      ),
+                                      border: InputBorder.none,
+                                      hintText: "From",
+                                      hintStyle:
+                                          TextStyle(color: Colors.white))),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.only(
+                                left: Insets().appPadding / 2,
+                                right: Insets().appPadding / 2,
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1.5, color: Colors.grey),
+                                  color: Palette().primaryColor,
+                                  borderRadius: BorderRadius.circular(
+                                      Insets().appPadding / 1.5)),
+                              child: TextFormField(
+                                  style: TextStyle(color: Colors.white),
+                                  controller: _To,
+                                  readOnly: true,
+                                  onTap: () async {
+                                    final date = await Funcs()
+                                        .selectDate(context: context);
+                                    final formattedDate =
+                                        DateFormat('yyyy-MM-dd').format(date!);
+                                    setState(() {
+                                      _To.text = formattedDate;
+                                    });
+                                  },
+                                  textAlignVertical: TextAlignVertical.center,
+                                  decoration: InputDecoration(
+                                      suffixIcon: Icon(
+                                        Icons.calendar_month_rounded,
+                                        color: Colors.white,
+                                      ),
+                                      border: InputBorder.none,
+                                      hintText: "To",
+                                      hintStyle:
+                                          TextStyle(color: Colors.white))),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
                           Expanded(
                               flex: 1,
                               child: ElevatedButton(
@@ -761,6 +853,86 @@ class _classesState extends State<employeeAttendance> {
                                         }),
                                       ),
                                     ),
+                                    Container(
+                                      width: 105,
+                                      margin: EdgeInsets.only(
+                                        right: Insets().appGap,
+                                      ),
+                                      padding: EdgeInsets.only(
+                                        left: Insets().appGap,
+                                      ),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Colors.grey, width: 2),
+                                          color: Palette().primaryColor,
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appGap + 4)),
+                                      child: TextFormField(
+                                          style: TextStyle(color: Colors.white),
+                                          controller: _From,
+                                          readOnly: true,
+                                          onTap: () async {
+                                            final date = await Funcs()
+                                                .selectDate(context: context);
+                                            final formattedDate =
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(date!);
+                                            setState(() {
+                                              _From.text = formattedDate;
+                                            });
+                                          },
+                                          textAlignVertical:
+                                              TextAlignVertical.center,
+                                          decoration: InputDecoration(
+                                              suffixIcon: Icon(
+                                                Icons.calendar_month_rounded,
+                                                color: Colors.white,
+                                              ),
+                                              border: InputBorder.none,
+                                              hintText: "From",
+                                              hintStyle: TextStyle(
+                                                  color: Colors.white))),
+                                    ),
+                                    Container(
+                                      width: 105,
+                                      margin: EdgeInsets.only(
+                                        right: Insets().appGap,
+                                      ),
+                                      padding: EdgeInsets.only(
+                                        left: Insets().appGap,
+                                      ),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Colors.grey, width: 2),
+                                          color: Palette().primaryColor,
+                                          borderRadius: BorderRadius.circular(
+                                              Insets().appGap + 4)),
+                                      child: TextFormField(
+                                          style: TextStyle(color: Colors.white),
+                                          controller: _To,
+                                          readOnly: true,
+                                          onTap: () async {
+                                            final date = await Funcs()
+                                                .selectDate(context: context);
+                                            final formattedDate =
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(date!);
+                                            setState(() {
+                                              _To.text = formattedDate;
+                                            });
+                                          },
+                                          textAlignVertical:
+                                              TextAlignVertical.center,
+                                          decoration: InputDecoration(
+                                              suffixIcon: Icon(
+                                                Icons.calendar_month_rounded,
+                                                color: Colors.white,
+                                              ),
+                                              border: InputBorder.none,
+                                              hintText: "To",
+                                              hintStyle: TextStyle(
+                                                  color: Colors.white))),
+                                    ),
                                   ],
                                 )),
                           ),
@@ -912,23 +1084,6 @@ class _classesState extends State<employeeAttendance> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -1033,61 +1188,79 @@ class _classesState extends State<employeeAttendance> {
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: Responsive.isDesktop(context)
-                                      ? 200
-                                      : null,
+                                  width:
+                                      Responsive.isDesktop(context) ? 50 : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Name",
+                                    value: "Photo",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 70 : null,
+                                      Responsive.isDesktop(context) ? 130 : 130,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Gender",
+                                    value: "Date",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 70 : null,
+                                      Responsive.isDesktop(context) ? 160 : 160,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Role",
+                                    value: "Employee Name",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                                DataColumn(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 120 : 120,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Department",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                                DataColumn(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 150,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Designation",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
                                   width: Responsive.isDesktop(context)
-                                      ? 200
+                                      ? null
                                       : null,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Email Address",
+                                    value: "Attendance\nStatus",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
-                                  width: Responsive.isDesktop(context)
-                                      ? 200
-                                      : null,
+                                  width:
+                                      Responsive.isDesktop(context) ? 150 : 150,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Phone",
+                                    value: "Phone\nNumber",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
                                 DataColumn(
                                     label: SizedBox(
                                   width: Responsive.isDesktop(context)
-                                      ? 150
+                                      ? 120
                                       : null,
                                   child: HeadingText(
                                     size: 14,
@@ -1096,374 +1269,7 @@ class _classesState extends State<employeeAttendance> {
                                   ),
                                 )),
                               ],
-                              rows: [
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Doe Lucas John",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Cook",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "supporting@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      userAttendanceView()));
-                                        },
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View",
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Doe Lucas John",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Cook",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "supporting@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      userAttendanceView()));
-                                        },
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View",
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Doe Lucas John",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Cook",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "supporting@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      userAttendanceView()));
-                                        },
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View",
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Doe Lucas John",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Cook",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "supporting@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      userAttendanceView()));
-                                        },
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View",
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Doe Lucas John",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Cook",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "supporting@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      userAttendanceView()));
-                                        },
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View",
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Doe Lucas John",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Male",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Cook",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "supporting@gmail.com",
-                                  )),
-                                  DataCell(Row(
-                                    children: [
-                                      HeadingText(
-                                        size: 15,
-                                        value: "+255734848894",
-                                      ),
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Icon(
-                                        Icons.add_call,
-                                        size: 16,
-                                        color: Palette().primaryColor,
-                                      )
-                                    ],
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      userAttendanceView()));
-                                        },
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "View",
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                              ]),
+                              rows: []),
                         ),
                       ),
                     ),

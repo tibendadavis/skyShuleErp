@@ -62,6 +62,7 @@ class _termsState extends State<terms> {
             children: [
               if (Responsive.isDesktop(context))
                 AnimatedContainer(
+                    color: Palette().primaryColorLight,
                     duration: const Duration(milliseconds: 400),
                     width: _drawersize,
                     child: skyShuleDrawer(
@@ -81,8 +82,11 @@ class _termsState extends State<terms> {
                         right: Insets().appPadding / 2,
                         top: Insets().appGap,
                         bottom: Insets().appGap),
-                    decoration:
-                        BoxDecoration(color: Palette().primaryColorLight),
+                    decoration: BoxDecoration(
+                        color: Palette().primaryColorLight,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                        )),
                     child: header(
                       onTap: (val) {
                         setState(() {
@@ -161,9 +165,10 @@ class _termsState extends State<terms> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => addTerms()));
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => addTerms(),
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -626,23 +631,6 @@ class _termsState extends State<terms> {
                                   ),
                                 ),
                                 value: "PDF"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
                             DropdownMenuItem(
                                 child: ListTile(
                                   dense: true,

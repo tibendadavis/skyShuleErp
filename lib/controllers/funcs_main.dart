@@ -298,7 +298,7 @@ class Funcs {
         return Theme(
           data: ThemeData.light().copyWith(
             colorScheme: ColorScheme.fromSwatch(
-              primarySwatch: Colors.teal,
+              primarySwatch: Colors.blue,
               primaryColorDark: Palette().primaryColor,
               accentColor: Palette().primaryColor,
             ),
@@ -309,6 +309,32 @@ class Funcs {
       },
     );
     if (picked != null && picked != initialDate) {
+      return picked;
+    } else {
+      return picked;
+    }
+  }
+
+  Future<TimeOfDay?> selectTime(
+      {required BuildContext context, TimeOfDay? initialTime}) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: initialTime ?? TimeOfDay.now(),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.fromSwatch(
+              primarySwatch: Colors.blue,
+              primaryColorDark: Palette().primaryColor,
+              accentColor: Palette().primaryColor,
+            ),
+            dialogBackgroundColor: Colors.white,
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (picked != null && picked != initialTime) {
       return picked;
     } else {
       return picked;

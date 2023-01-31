@@ -12,7 +12,9 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/screens/addEnrollment.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/user_profile.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class manageStudents extends StatefulWidget {
@@ -925,8 +927,6 @@ class _manageStudentsState extends State<manageStudents> {
                                       width: Responsive.isDesktop(context)
                                           ? 10
                                           : 0,
-                                      // height:
-                                      //     Responsive.isDesktop(context) ? 0 : 5,
                                     ),
                                     Container(
                                       width: 100,
@@ -1270,23 +1270,6 @@ class _manageStudentsState extends State<manageStudents> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -1386,25 +1369,33 @@ class _manageStudentsState extends State<manageStudents> {
                                   fontWeight: FontWeight.w700,
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Photo",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Photo",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Name",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  width: 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Name",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Gender",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Gender",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width: 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Date of Birth",
@@ -1412,7 +1403,8 @@ class _manageStudentsState extends State<manageStudents> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width: 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Reg No.",
@@ -1420,31 +1412,43 @@ class _manageStudentsState extends State<manageStudents> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Stream",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  width: 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Stream",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Address",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  width: 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Address",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Religion",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  width: 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Religion",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Year",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Year",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width: 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Parents Phone",
@@ -1452,10 +1456,13 @@ class _manageStudentsState extends State<manageStudents> {
                                   ),
                                 )),
                                 DataColumn(
-                                    label: HeadingText(
-                                  size: 14,
-                                  value: "Action",
-                                  fontWeight: FontWeight.w700,
+                                    label: SizedBox(
+                                  width: 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Action",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 )),
                               ],
                               rows: [
@@ -1485,11 +1492,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1503,13 +1514,17 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
                                   ))
                                 ]),
                                 DataRow(cells: [
@@ -1538,11 +1553,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1556,14 +1575,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1591,11 +1614,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1609,14 +1636,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1644,11 +1675,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1662,14 +1697,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1697,11 +1736,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1715,14 +1758,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1750,11 +1797,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1768,14 +1819,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1803,11 +1858,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1821,14 +1880,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1856,11 +1919,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1874,14 +1941,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1909,11 +1980,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1927,14 +2002,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -1962,11 +2041,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -1980,14 +2063,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -2015,11 +2102,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -2033,14 +2124,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -2068,11 +2163,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -2086,14 +2185,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -2121,11 +2224,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -2139,14 +2246,18 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
                                 ]),
                                 DataRow(cells: [
                                   DataCell(Checkbox(
@@ -2174,11 +2285,15 @@ class _manageStudentsState extends State<manageStudents> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
+                                    value: "SH-07-01",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
                                     value: "MIKUMI",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "TABAT, BIMA",
+                                    value: "TABATA, BIMA",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -2192,15 +2307,19 @@ class _manageStudentsState extends State<manageStudents> {
                                     size: 14,
                                     value: "+255734848894",
                                   )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "View",
-                                  )),
-                                ])
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => addEnrollment(),
+                                      );
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Enroll",
+                                    ),
+                                  ))
+                                ]),
                               ]),
                         ),
                       ),

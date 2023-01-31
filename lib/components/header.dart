@@ -3,10 +3,12 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:graphic/graphic.dart';
+import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
+import 'package:skyconnect_starter/screens/inbox.scrn.dart';
 import 'package:skyconnect_starter/screens/user_profile.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -89,12 +91,18 @@ class _headerState extends State<header> {
           SizedBox(
             width: Insets().appGap,
           ),
-          Icon(Icons.message_outlined),
+          InkWell(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (Context) => inbox()));
+              },
+              child: Icon(Icons.message_outlined)),
           SizedBox(
             width: Insets().appGap,
           ),
           CircleAvatar(
             radius: Insets().appRadiusMid,
+            child: ClipOval(child: Image.asset("assets/img/avatar.jpg")),
           ),
           SizedBox(
             width: Insets().appGap,

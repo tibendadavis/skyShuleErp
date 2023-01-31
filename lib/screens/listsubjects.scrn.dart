@@ -160,10 +160,10 @@ class _listSubjectsState extends State<listSubjects> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                addSubject()));
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => addSubject(),
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -221,7 +221,7 @@ class _listSubjectsState extends State<listSubjects> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Heading1(
-                                value: "29",
+                                value: "12",
                                 color: Colors.white,
                               ),
                               Expanded(
@@ -521,23 +521,6 @@ class _listSubjectsState extends State<listSubjects> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -641,7 +624,7 @@ class _listSubjectsState extends State<listSubjects> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 250 : 100,
+                                      Responsive.isDesktop(context) ? 270 : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Subject Name",
@@ -651,7 +634,7 @@ class _listSubjectsState extends State<listSubjects> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 150 : 100,
+                                      Responsive.isDesktop(context) ? 170 : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Subject Code",
@@ -661,7 +644,7 @@ class _listSubjectsState extends State<listSubjects> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 250 : 100,
+                                      Responsive.isDesktop(context) ? 270 : 100,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Arrangement",
@@ -671,7 +654,7 @@ class _listSubjectsState extends State<listSubjects> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 250 : 150,
+                                      Responsive.isDesktop(context) ? 270 : 150,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Action",
@@ -693,7 +676,7 @@ class _listSubjectsState extends State<listSubjects> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Physics",
+                                    value: "Mathematics",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -736,11 +719,340 @@ class _listSubjectsState extends State<listSubjects> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "2",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Physics",
+                                    value: "Geography",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "12",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "2",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "3",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Kiswahili",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "13",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "3",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "4",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "Social Studies",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "14",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "4",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "5",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "English",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "14",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "4",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "5",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "English",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "15",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "5",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "5",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "English",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "16",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "6",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "5",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "English",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "17",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "7",
+                                  )),
+                                  DataCell(Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Edit",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "Delete",
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ],
+                                  ))
+                                ]),
+                                DataRow(cells: [
+                                  DataCell(Checkbox(
+                                    value: false,
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "5",
+                                  )),
+                                  DataCell(HeadingText(
+                                    size: 14,
+                                    value: "English",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
@@ -783,105 +1095,11 @@ class _listSubjectsState extends State<listSubjects> {
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "1",
+                                    value: "5",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,
-                                    value: "Physics",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "11",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Physics",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "11",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Edit",
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: HeadingText(
-                                          size: 14,
-                                          value: "Delete",
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                                ]),
-                                DataRow(cells: [
-                                  DataCell(Checkbox(
-                                    value: false,
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "1",
-                                  )),
-                                  DataCell(HeadingText(
-                                    size: 14,
-                                    value: "Physics",
+                                    value: "English",
                                   )),
                                   DataCell(HeadingText(
                                     size: 14,

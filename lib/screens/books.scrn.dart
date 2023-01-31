@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/header.dart';
@@ -11,6 +12,7 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/addBook.scrn.dart';
 import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
@@ -30,8 +32,8 @@ class _booksState extends State<books> {
   double _drawersize = 250;
   var _class;
   var _category;
-  var _From;
-  var _To;
+  TextEditingController _From = TextEditingController();
+  TextEditingController _To = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -163,9 +165,9 @@ class _booksState extends State<books> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => addBooks()));
+                                    showDialog(
+                                        context: context,
+                                        builder: (_) => addBooks());
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -420,108 +422,86 @@ class _booksState extends State<books> {
                             width: 10,
                           ),
                           Expanded(
-                              flex: 1,
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  left: Insets().appGap,
-                                  right: Insets().appGap,
-                                ),
-                                padding: EdgeInsets.only(
-                                  left: Insets().appGap,
-                                ),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.grey, width: 2),
-                                    color: Palette().primaryColor,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appGap + 4)),
-                                child: DropdownButton(
-                                  items: const [
-                                    DropdownMenuItem(
-                                        child: Heading6(
-                                          value: "Class One",
-                                          color: Colors.white,
-                                        ),
-                                        value: "Class One"),
-                                  ],
-                                  hint: Heading6(
-                                    value: "From",
-                                    color: Colors.white,
-                                  ),
-                                  value: _From,
-                                  icon: Container(
-                                      padding: EdgeInsets.only(right: 10),
-                                      child:
-                                          Icon(Icons.calendar_month_rounded)),
-                                  iconEnabledColor: Colors.white,
-                                  iconDisabledColor: Colors.white,
-                                  isExpanded: true,
-                                  underline: SizedBox(),
-                                  dropdownColor: Palette().primaryColor,
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.only(
+                                left: Insets().appPadding / 2,
+                                right: Insets().appPadding / 2,
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1.5, color: Colors.grey),
+                                  color: Palette().primaryColor,
                                   borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4),
-                                  onChanged: ((value) {
-                                    if (value is String) {
-                                      setState(() {
-                                        _From = value;
-                                      });
-                                    }
-                                  }),
-                                ),
-                              )),
+                                      Insets().appPadding / 1.5)),
+                              child: TextFormField(
+                                  style: TextStyle(color: Colors.white),
+                                  controller: _From,
+                                  readOnly: true,
+                                  onTap: () async {
+                                    final date = await Funcs()
+                                        .selectDate(context: context);
+                                    final formattedDate =
+                                        DateFormat('yyyy-MM-dd').format(date!);
+                                    setState(() {
+                                      _From.text = formattedDate;
+                                    });
+                                  },
+                                  textAlignVertical: TextAlignVertical.center,
+                                  decoration: InputDecoration(
+                                      suffixIcon: Icon(
+                                        Icons.calendar_month_rounded,
+                                        color: Colors.white,
+                                      ),
+                                      border: InputBorder.none,
+                                      hintText: "From",
+                                      hintStyle:
+                                          TextStyle(color: Colors.white))),
+                            ),
+                          ),
                           SizedBox(
                             width: 10,
                           ),
                           Expanded(
-                              flex: 1,
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  left: Insets().appGap,
-                                  right: Insets().appGap,
-                                ),
-                                padding: EdgeInsets.only(
-                                  left: Insets().appGap,
-                                ),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.grey, width: 2),
-                                    color: Palette().primaryColor,
-                                    borderRadius: BorderRadius.circular(
-                                        Insets().appGap + 4)),
-                                child: DropdownButton(
-                                  items: const [
-                                    DropdownMenuItem(
-                                        child: Heading6(
-                                          value: "Class One",
-                                          color: Colors.white,
-                                        ),
-                                        value: "Class One"),
-                                  ],
-                                  hint: Heading6(
-                                    value: "To",
-                                    color: Colors.white,
-                                  ),
-                                  value: _To,
-                                  icon: Container(
-                                      padding: EdgeInsets.only(right: 10),
-                                      child:
-                                          Icon(Icons.calendar_month_rounded)),
-                                  iconEnabledColor: Colors.white,
-                                  iconDisabledColor: Colors.white,
-                                  isExpanded: true,
-                                  underline: SizedBox(),
-                                  dropdownColor: Palette().primaryColor,
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.only(
+                                left: Insets().appPadding / 2,
+                                right: Insets().appPadding / 2,
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1.5, color: Colors.grey),
+                                  color: Palette().primaryColor,
                                   borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4),
-                                  onChanged: ((value) {
-                                    if (value is String) {
-                                      setState(() {
-                                        _To = value;
-                                      });
-                                    }
-                                  }),
-                                ),
-                              )),
+                                      Insets().appPadding / 1.5)),
+                              child: TextFormField(
+                                  style: TextStyle(color: Colors.white),
+                                  controller: _To,
+                                  readOnly: true,
+                                  onTap: () async {
+                                    final date = await Funcs()
+                                        .selectDate(context: context);
+                                    final formattedDate =
+                                        DateFormat('yyyy-MM-dd').format(date!);
+                                    setState(() {
+                                      _To.text = formattedDate;
+                                    });
+                                  },
+                                  textAlignVertical: TextAlignVertical.center,
+                                  decoration: InputDecoration(
+                                      suffixIcon: Icon(
+                                        Icons.calendar_month_rounded,
+                                        color: Colors.white,
+                                      ),
+                                      border: InputBorder.none,
+                                      hintText: "To",
+                                      hintStyle:
+                                          TextStyle(color: Colors.white))),
+                            ),
+                          ),
                           SizedBox(
                             width: 10,
                           ),
@@ -738,39 +718,31 @@ class _booksState extends State<books> {
                                           color: Palette().primaryColor,
                                           borderRadius: BorderRadius.circular(
                                               Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading6(
-                                                value: "Class One",
+                                      child: TextFormField(
+                                          style: TextStyle(color: Colors.white),
+                                          controller: _From,
+                                          readOnly: true,
+                                          onTap: () async {
+                                            final date = await Funcs()
+                                                .selectDate(context: context);
+                                            final formattedDate =
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(date!);
+                                            setState(() {
+                                              _From.text = formattedDate;
+                                            });
+                                          },
+                                          textAlignVertical:
+                                              TextAlignVertical.center,
+                                          decoration: InputDecoration(
+                                              suffixIcon: Icon(
+                                                Icons.calendar_month_rounded,
                                                 color: Colors.white,
                                               ),
-                                              value: "Class One"),
-                                        ],
-                                        hint: Heading6(
-                                          value: "From",
-                                          color: Colors.white,
-                                        ),
-                                        value: _From,
-                                        icon: Container(
-                                            padding: EdgeInsets.only(right: 10),
-                                            child: Icon(
-                                                Icons.calendar_month_rounded)),
-                                        iconEnabledColor: Colors.white,
-                                        iconDisabledColor: Colors.white,
-                                        isExpanded: true,
-                                        underline: SizedBox(),
-                                        dropdownColor: Palette().primaryColor,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        onChanged: ((value) {
-                                          if (value is String) {
-                                            setState(() {
-                                              _From = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
+                                              border: InputBorder.none,
+                                              hintText: "From",
+                                              hintStyle: TextStyle(
+                                                  color: Colors.white))),
                                     ),
                                     Container(
                                       width: 105,
@@ -786,39 +758,31 @@ class _booksState extends State<books> {
                                           color: Palette().primaryColor,
                                           borderRadius: BorderRadius.circular(
                                               Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading6(
-                                                value: "Class One",
+                                      child: TextFormField(
+                                          style: TextStyle(color: Colors.white),
+                                          controller: _To,
+                                          readOnly: true,
+                                          onTap: () async {
+                                            final date = await Funcs()
+                                                .selectDate(context: context);
+                                            final formattedDate =
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(date!);
+                                            setState(() {
+                                              _To.text = formattedDate;
+                                            });
+                                          },
+                                          textAlignVertical:
+                                              TextAlignVertical.center,
+                                          decoration: InputDecoration(
+                                              suffixIcon: Icon(
+                                                Icons.calendar_month_rounded,
                                                 color: Colors.white,
                                               ),
-                                              value: "Class One"),
-                                        ],
-                                        hint: Heading6(
-                                          value: "To",
-                                          color: Colors.white,
-                                        ),
-                                        value: _To,
-                                        icon: Container(
-                                            padding: EdgeInsets.only(right: 10),
-                                            child: Icon(
-                                                Icons.calendar_month_rounded)),
-                                        iconEnabledColor: Colors.white,
-                                        iconDisabledColor: Colors.white,
-                                        isExpanded: true,
-                                        underline: SizedBox(),
-                                        dropdownColor: Palette().primaryColor,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        onChanged: ((value) {
-                                          if (value is String) {
-                                            setState(() {
-                                              _To = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
+                                              border: InputBorder.none,
+                                              hintText: "To",
+                                              hintStyle: TextStyle(
+                                                  color: Colors.white))),
                                     ),
                                   ],
                                 )),
@@ -971,23 +935,6 @@ class _booksState extends State<books> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -1081,10 +1028,13 @@ class _booksState extends State<books> {
                                   },
                                 )),
                                 DataColumn(
-                                    label: Expanded(
+                                    label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? null
+                                      : 100,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "No.",
+                                    value: "Book Category",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
@@ -1094,7 +1044,7 @@ class _booksState extends State<books> {
                                       Responsive.isDesktop(context) ? 150 : 100,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Name",
+                                    value: "Title",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
@@ -1104,7 +1054,7 @@ class _booksState extends State<books> {
                                       Responsive.isDesktop(context) ? 150 : 100,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Book Status",
+                                    value: "Book Author",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
@@ -1112,27 +1062,7 @@ class _booksState extends State<books> {
                                     label: SizedBox(
                                   width: Responsive.isDesktop(context)
                                       ? null
-                                      : null,
-                                  child: HeadingText(
-                                    size: 14,
-                                    value: "Book Classification",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                )),
-                                DataColumn(
-                                    label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 150 : 100,
-                                  child: HeadingText(
-                                    size: 14,
-                                    value: "Author",
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                )),
-                                DataColumn(
-                                    label: SizedBox(
-                                  width:
-                                      Responsive.isDesktop(context) ? 150 : 130,
+                                      : 130,
                                   child: HeadingText(
                                     size: 14,
                                     value: "Book Quantity",
@@ -1142,10 +1072,51 @@ class _booksState extends State<books> {
                                 DataColumn(
                                     label: SizedBox(
                                   width:
-                                      Responsive.isDesktop(context) ? 150 : 100,
+                                      Responsive.isDesktop(context) ? 80 : 100,
                                   child: HeadingText(
                                     size: 14,
-                                    value: "Subject",
+                                    value: "Available",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                                DataColumn(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 80 : 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Issued",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                                DataColumn(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 60 : 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Lost",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                                DataColumn(
+                                    label: SizedBox(
+                                  width:
+                                      Responsive.isDesktop(context) ? 80 : 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Binding",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                                DataColumn(
+                                    label: SizedBox(
+                                  width: Responsive.isDesktop(context)
+                                      ? null
+                                      : 100,
+                                  child: HeadingText(
+                                    size: 14,
+                                    value: "Reserved",
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),

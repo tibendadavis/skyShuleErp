@@ -161,10 +161,10 @@ class _supportingStaffState extends State<minorSchoolExams> {
                               Spacer(),
                               ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                addMinorSchoolExam()));
+                                    showDialog(
+                                      context: context,
+                                      builder: (_) => addMinorSchoolExam(),
+                                    );
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
@@ -658,23 +658,6 @@ class _supportingStaffState extends State<minorSchoolExams> {
                                   contentPadding: EdgeInsets.only(left: 10),
                                   onTap: () {},
                                   leading: Icon(
-                                    Icons.copy,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "Copy",
-                                      color: Palette().primaryColor),
-                                ),
-                                value: "Copy"),
-                            DropdownMenuItem(
-                                child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
                                     Icons.format_align_justify,
                                     color: Palette().primaryColor,
                                     size: 20,
@@ -780,7 +763,7 @@ class _supportingStaffState extends State<minorSchoolExams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width: Responsive.isDesktop(context)
-                                      ? 100
+                                      ? 150
                                       : null,
                                   child: HeadingText(
                                     size: 14,
@@ -791,7 +774,7 @@ class _supportingStaffState extends State<minorSchoolExams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width: Responsive.isDesktop(context)
-                                      ? 100
+                                      ? 150
                                       : null,
                                   child: HeadingText(
                                     size: 14,
@@ -802,7 +785,7 @@ class _supportingStaffState extends State<minorSchoolExams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width: Responsive.isDesktop(context)
-                                      ? 100
+                                      ? 150
                                       : null,
                                   child: HeadingText(
                                     size: 14,
@@ -813,7 +796,7 @@ class _supportingStaffState extends State<minorSchoolExams> {
                                 DataColumn(
                                     label: SizedBox(
                                   width: Responsive.isDesktop(context)
-                                      ? 100
+                                      ? 150
                                       : null,
                                   child: HeadingText(
                                     size: 14,

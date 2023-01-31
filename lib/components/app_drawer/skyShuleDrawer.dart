@@ -10,22 +10,62 @@ import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
+import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
+import 'package:skyconnect_starter/screens/academicYearDetails.scrn.dart';
+import 'package:skyconnect_starter/screens/accountManagement.scrn.dart';
+import 'package:skyconnect_starter/screens/assignment.scrn.dart';
 import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
+import 'package:skyconnect_starter/screens/billing.scrn.dart';
+import 'package:skyconnect_starter/screens/bookBinding.scrn.dart';
+import 'package:skyconnect_starter/screens/bookCategory.scrn.dart';
+import 'package:skyconnect_starter/screens/bookIssue.scrn.dart';
+import 'package:skyconnect_starter/screens/bookLost.scrn.dart';
+import 'package:skyconnect_starter/screens/bookReturn.scrn.dart';
+import 'package:skyconnect_starter/screens/bookReturnSetting.scrn.dart';
 import 'package:skyconnect_starter/screens/books.scrn.dart';
+import 'package:skyconnect_starter/screens/certificateType.scrn.dart';
 import 'package:skyconnect_starter/screens/classAllocation.scrn.dart';
+import 'package:skyconnect_starter/screens/classLevels.scrn.dart';
 import 'package:skyconnect_starter/screens/classNotes.scrn.dart';
 import 'package:skyconnect_starter/screens/classRoutine.scrn.dart';
 import 'package:skyconnect_starter/screens/classSubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/classes.scrn.dart';
+import 'package:skyconnect_starter/screens/combinedReports.scrn.dart';
 import 'package:skyconnect_starter/screens/compose.scrn.dart';
+import 'package:skyconnect_starter/screens/customCertificate.scrn.dart';
 import 'package:skyconnect_starter/screens/defaultGrading.scrn.dart';
+import 'package:skyconnect_starter/screens/department.scrn.dart';
+import 'package:skyconnect_starter/screens/designation.scrn.dart';
 import 'package:skyconnect_starter/screens/employeeAttendance.scrn.dart';
+import 'package:skyconnect_starter/screens/employeeBonus.scrn.dart';
+import 'package:skyconnect_starter/screens/employeeLeave.scrn.dart';
+import 'package:skyconnect_starter/screens/employeeSalary.scrn.dart';
+import 'package:skyconnect_starter/screens/enrollment.scrn.dart';
+import 'package:skyconnect_starter/screens/exFaculty.scrn.dart';
 import 'package:skyconnect_starter/screens/examAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
+import 'package:skyconnect_starter/screens/examschedule.scrn.dart';
+import 'package:skyconnect_starter/screens/faculty.scrn.dart';
 import 'package:skyconnect_starter/screens/favorite.scrn.dart';
+import 'package:skyconnect_starter/screens/feeCategory.scrn.dart';
+import 'package:skyconnect_starter/screens/feePayment.scrn.dart';
+import 'package:skyconnect_starter/screens/feeReceipts.scrn.dart';
+import 'package:skyconnect_starter/screens/fileManagement.scrn.dart';
+import 'package:skyconnect_starter/screens/financialYearDetails.scrn.dart';
+import 'package:skyconnect_starter/screens/generateCertficate.scrn.dart';
 import 'package:skyconnect_starter/screens/hostels.scrn.dart';
+import 'package:skyconnect_starter/screens/humanResource.scrn.dart';
+import 'package:skyconnect_starter/screens/idCards.scrn.dart';
 import 'package:skyconnect_starter/screens/inbox.scrn.dart';
+import 'package:skyconnect_starter/screens/institutionAdmin.scrn.dart';
+import 'package:skyconnect_starter/screens/institutionDetails.scrn.dart';
+import 'package:skyconnect_starter/screens/institutionSettings.scrn.dart';
+import 'package:skyconnect_starter/screens/invoiceReport.scrn.dart';
+import 'package:skyconnect_starter/screens/itemCategory.scrn.dart';
+import 'package:skyconnect_starter/screens/itemReport.scrn.dart';
+import 'package:skyconnect_starter/screens/leaveCategory.scrn.dart';
+import 'package:skyconnect_starter/screens/lessonPlan.scrn.dart';
 import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/liveStudies.scrn.dart';
 import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
@@ -36,15 +76,28 @@ import 'package:skyconnect_starter/screens/minorSchoolExams.scrn.dart';
 import 'package:skyconnect_starter/screens/newsBoard.scrn.dart';
 import 'package:skyconnect_starter/screens/onlineDiscussion.scrn.dart';
 import 'package:skyconnect_starter/screens/parents.scrn.dart';
+import 'package:skyconnect_starter/screens/payroll.scrn.dart';
 import 'package:skyconnect_starter/screens/promotion.scrn.dart';
+import 'package:skyconnect_starter/screens/purchaseOrder.scrn.dart';
+import 'package:skyconnect_starter/screens/requestOrder.scrn.dart';
 import 'package:skyconnect_starter/screens/schoolExam.scrn.dart';
 import 'package:skyconnect_starter/screens/sent.scrn.dart';
 import 'package:skyconnect_starter/screens/signature.scrn.dart';
+import 'package:skyconnect_starter/screens/singleReports.scrn.dart';
+import 'package:skyconnect_starter/screens/specialGradeCategory.scrn.dart';
 import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
+import 'package:skyconnect_starter/screens/store.scrn.dart';
+import 'package:skyconnect_starter/screens/storeCategory.scrn.dart';
+import 'package:skyconnect_starter/screens/storeItem.scrn.dart';
+import 'package:skyconnect_starter/screens/storeType.scrn.dart';
 import 'package:skyconnect_starter/screens/streamSubjectTeacher.scrn.dart';
 import 'package:skyconnect_starter/screens/streams.scrn.dart';
 import 'package:skyconnect_starter/screens/studentAttendance.scrn.dart';
+import 'package:skyconnect_starter/screens/studentLeave.scrn.dart';
+import 'package:skyconnect_starter/screens/supplier.scrn.dart';
+import 'package:skyconnect_starter/screens/supplierType.scrn.dart';
 import 'package:skyconnect_starter/screens/supportingStaff.scrn.dart';
+import 'package:skyconnect_starter/screens/syllabus.scrn.dart';
 import 'package:skyconnect_starter/screens/teacher.scrn.dart';
 import 'package:skyconnect_starter/screens/teacherOnDuty.scrn.dart';
 import 'package:skyconnect_starter/screens/terms.scrn.dart';
@@ -83,6 +136,49 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "value": "Dashboard",
         "iconData": Icons.dashboard_rounded,
         "selected": [false]
+      },
+      {
+        "size": widget.size!,
+        "value": "Data Management",
+        "iconData": Icons.dataset_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": ["Department", department(), Icons.group],
+        "submenu2": [
+          "Designation",
+          designation(),
+          Icons.supervisor_account_outlined
+        ],
+        "submenu3": ["Class Level", classLevels(), Icons.class_rounded],
+        "submenu4": [
+          "Academic Year Details",
+          academicYearDetails(),
+          Icons.date_range_rounded
+        ],
+        "submenu5": [
+          "Financial Year",
+          financialYearDetails(),
+          Icons.money_rounded
+        ],
+      },
+      {
+        "size": widget.size!,
+        "value": "Faculty Management",
+        "iconData": Icons.pie_chart_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": ["Faculty", faculty(), Icons.group],
+        "submenu2": [
+          "Enrollment",
+          enrollment(),
+          Icons.add_circle_outline_rounded
+        ],
+        "submenu3": [
+          "Human Resource",
+          humanResource(),
+          Icons.handshake_rounded
+        ],
+        "submenu4": ["Ex-Faculty", exFaculty(), Icons.delete_sweep_outlined],
       },
       {
         "size": widget.size!,
@@ -131,11 +227,9 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
           Icons.subject_outlined
         ],
         "submenu4ex": "Teaching Tools",
-        "submenu4.1": ["Syllabus", null, Icons.view_list_outlined],
-        "submenu4.2": ["Scheme of Work", null, Icons.my_library_books],
-        "submenu4.3": ["Lesson Plan", null, Icons.my_library_books],
-        "submenu4.4": ["Class Journal", null, Icons.my_library_books],
-        "submenu4.5": ["Syllabus Reports", null, Icons.my_library_books],
+        "submenu4.1": ["Syllabus", syllabus(), Icons.view_list_outlined],
+        "submenu4.2": ["Assignments", assignment(), Icons.my_library_books],
+        "submenu4.3": ["Lesson Plan", lessonPlan(), Icons.my_library_books],
       },
       {
         "size": widget.size!,
@@ -148,11 +242,11 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
           defaultGrading(),
           Icons.grading_outlined,
         ],
-        // "submenu2": [
-        //   "Special Grade name",
-        //   null,
-        //   Icons.grading_outlined,
-        // ],
+        "submenu2": [
+          "Special Grade Category",
+          specialGradeCategory(),
+          Icons.grading_outlined,
+        ],
         "submenu3": [
           "Special Grading",
           specialGrading(),
@@ -173,7 +267,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": [false],
         "submenu1ex": "Setting",
-        "submenu2": ["Exam Schedule", null, Icons.extension],
+        "submenu2": ["Exam Schedule", examSchedule(), Icons.extension],
         "submenu3ex": "Reports",
         "submenu4": [
           "Minor School Exams",
@@ -191,10 +285,16 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
           classAllocations(),
           Icons.text_snippet_outlined
         ],
-        "submenu3.1": ["Single Reports", null, Icons.text_snippet_outlined],
-        "submenu3.2": ["Combined Reports", null, Icons.text_snippet_outlined],
-        "submenu3.3": ["CA Report", null, Icons.text_snippet_outlined],
-        "submenu3.4": ["Reports Created", null, Icons.text_snippet_outlined],
+        "submenu3.1": [
+          "Single Reports",
+          singleReports(),
+          Icons.text_snippet_outlined
+        ],
+        "submenu3.2": [
+          "Combined Reports",
+          combinedReports(),
+          Icons.text_snippet_outlined
+        ],
       },
       {
         "size": widget.size!,
@@ -202,6 +302,35 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "link": mark(),
         "iconData": Icons.mark_email_read_outlined,
         "selected": [false]
+      },
+      {
+        "size": widget.size!,
+        "value": "Certificate",
+        "iconData": Icons.document_scanner_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": [
+          "Certificate Type",
+          certificateType(),
+          Icons.document_scanner_rounded
+        ],
+        "submenu2": [
+          "View Template",
+          customCertificate(),
+          Icons.document_scanner_rounded
+        ],
+        "submenu3": [
+          "Generate Certificate",
+          generateCertificate(),
+          Icons.document_scanner_rounded
+        ],
+      },
+      {
+        "size": widget.size!,
+        "value": "ID Cards",
+        "link": idCards(),
+        "iconData": Icons.perm_identity_rounded,
+        "selected": [false],
       },
       {
         "size": widget.size!,
@@ -252,12 +381,13 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "iconData": Icons.library_add_check_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": [false],
-        "submenu1": ["Members", members(), Icons.how_to_reg],
-        "submenu2": ["Books", books(), Icons.book],
-        "submenu3": ["Issue", null, Icons.stroller],
-        "submenu4ex": "Library Report",
-        "submenu4.1": ["General Report", null, Icons.summarize_outlined],
-        "submenu4.2": ["Other Report", null, Icons.summarize_outlined],
+        "submenu1": ["Book Category", bookCategory(), Icons.book],
+        "submenu2": ["Search Books", books(), Icons.book],
+        "submenu3": ["Book Issue", bookIssue(), Icons.book],
+        "submenu4": ["Book Return Settings", bookReturnSetting(), Icons.book],
+        "submenu5": ["Book Return", bookReturn(), Icons.book],
+        "submenu6": ["Book Lost", bookLost(), Icons.book],
+        "submenu7": ["Book Binding", bookBinding(), Icons.book],
       },
       {
         "size": widget.size!,
@@ -272,16 +402,105 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "iconData": Icons.movie_creation_outlined,
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": [false],
-        "submenu1": ["Files", null, Icons.file_copy_sharp],
+        "submenu1": ["Files", fileManagement(), Icons.file_copy_sharp],
         "submenu2": [
           "Live Studies",
           liveStudies(),
           Icons.videocam,
         ],
         "submenu3": ["Class Notes", classNotes(), Icons.note_alt_sharp],
-        "submenu4": ["Online Exams", null, Icons.book_online_outlined],
-        "submenu5": ["Home Packages", null, Icons.inventory_outlined],
-        "submenu6": ["Online Discussion", onlineDiscussion(), Icons.forum],
+        "submenu4": ["Online Discussion", onlineDiscussion(), Icons.forum],
+      },
+      {
+        "size": widget.size!,
+        "value": "Finance Management",
+        "iconData": Icons.balance_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": [
+          "Account Management",
+          accountManagement(),
+          Icons.balance_rounded
+        ],
+        "submenu2": ["Fee Category", feeCategory(), Icons.balance_rounded],
+        "submenu3": ["Fee Payment", feePayment(), Icons.balance_rounded],
+        "submenu4": ["Fee Receipts", feeReceipts(), Icons.balance_rounded],
+      },
+      {
+        "size": widget.size!,
+        "value": "Payroll Management",
+        "iconData": Icons.payment_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": [
+          "Employee Salary",
+          employeeSalary(),
+          Icons.payment_rounded
+        ],
+        "submenu2": ["Employee Bonus", employeeBonus(), Icons.payment_rounded],
+        "submenu3": ["Payroll", payroll(), Icons.payment_rounded],
+      },
+      {
+        "size": widget.size!,
+        "value": "Leave Management",
+        "iconData": Icons.leave_bags_at_home_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": [
+          "Leave category",
+          leaveCategory(),
+          Icons.leave_bags_at_home_rounded
+        ],
+        "submenu2": [
+          "Employee Leave",
+          employeeLeave(),
+          Icons.leave_bags_at_home_rounded
+        ],
+        "submenu3": [
+          "Student Leave",
+          studentLeave(),
+          Icons.leave_bags_at_home_rounded
+        ],
+      },
+      {
+        "size": widget.size!,
+        "value": "Inventory & Assets",
+        "iconData": Icons.inventory_rounded,
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": [
+          "Store Category",
+          storeCategory(),
+          Icons.inventory_rounded
+        ],
+        "submenu2": [
+          "Store Type",
+          storeType(),
+          Icons.inventory_rounded,
+        ],
+        "submenu3": ["Store", store(), Icons.inventory_rounded],
+        "submenu4": ["Item Category", itemCategory(), Icons.inventory_rounded],
+        "submenu5": ["Store Item", storeItem(), Icons.inventory_rounded],
+        "submenu6": ["Supplier Type", supplierType(), Icons.inventory_rounded],
+        "submenu7": ["Supplier", supplier(), Icons.inventory_rounded],
+        "submenu8": [
+          "Purchase Order",
+          purchaseOrder(),
+          Icons.inventory_rounded
+        ],
+        "submenu9": ["Request Order", requestOrder(), Icons.inventory_rounded],
+        "submenu10": ["Billing", billing(), Icons.inventory_rounded],
+        "submenu3ex": "Inventory Reports",
+        "submenu3.1": [
+          "Item Reports",
+          itemReport(),
+          Icons.text_snippet_outlined
+        ],
+        "submenu3.2": [
+          "Invoice Reports",
+          invoiceReport(),
+          Icons.text_snippet_outlined
+        ],
       },
       {
         "size": widget.size!,
@@ -314,15 +533,39 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "size": widget.size!,
         "value": "Settings",
         "iconData": Icons.settings,
-        "selected": [false]
+        "iconData2": Icons.keyboard_arrow_down_rounded,
+        "selected": [false],
+        "submenu1": [
+          "Institution Details",
+          institutionDetails(),
+          Icons.settings_suggest_rounded
+        ],
+        "submenu2": [
+          "Institution Settings",
+          institutionSettings(),
+          Icons.settings_suggest_rounded
+        ],
+        "submenu3": [
+          "Institution Admin",
+          institutionAdmin(),
+          Icons.settings_suggest_rounded
+        ],
       }
     ];
     var size = MediaQuery.of(context).size;
     return Drawer(
-      elevation: 1,
+      elevation: 0,
       child: Container(
         width: widget.size,
-        color: Palette().primaryColor,
+        decoration: BoxDecoration(
+            color: Palette().primaryColor,
+            borderRadius: BorderRadius.only(
+                topRight: Responsive.isDesktop(context)
+                    ? Radius.circular(15)
+                    : Radius.circular(0),
+                bottomRight: Responsive.isDesktop(context)
+                    ? Radius.circular(15)
+                    : Radius.circular(0))),
         padding: EdgeInsets.only(
             top: Insets().appPadding / 2, bottom: Insets().appPadding / 2),
         child: Expanded(
@@ -330,8 +573,10 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
             children: [
               Center(
                 child: CircleAvatar(
-                  radius: 35,
+                  radius: 40,
                   backgroundColor: Palette().textColor,
+                  child:
+                      ClipOval(child: Image.asset("assets/img/schoolLogo.jpg")),
                 ),
               ),
               SizedBox(
@@ -352,6 +597,12 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
                             submenu4: items[index]["submenu4"],
                             submenu5: items[index]["submenu5"],
                             submenu6: items[index]["submenu6"],
+                            submenu7: items[index]["submenu7"],
+                            submenu8: items[index]["submenu8"],
+                            submenu9: items[index]["submenu9"],
+                            submenu10: items[index]["submenu10"],
+                            submenu011: items[index]["submenu011"],
+                            submenu012: items[index]["submenu012"],
                             submenu11: items[index]["submenu1.1"],
                             submenu12: items[index]["submenu1.2"],
                             submenu13: items[index]["submenu1.3"],
