@@ -15,6 +15,11 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputBigText.comp.dart';
+import 'package:skyconnect_starter/components/inputDate.comp.dart';
+import 'package:skyconnect_starter/components/inputFile.comp.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/components/officialDetails.dart';
 import 'package:skyconnect_starter/components/otherFacilities.dart';
 import 'package:skyconnect_starter/components/parentsDetails.dart';
@@ -48,8 +53,8 @@ class _addEventState extends State<addEvent>
 
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 700));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+    scaleAnimation = CurvedAnimation(
+        parent: controller, curve: Curves.fastLinearToSlowEaseIn);
 
     controller.addListener(() {
       setState(() {});
@@ -136,340 +141,33 @@ class _addEventState extends State<addEvent>
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Title"),
-                                  SizedBox(
-                                    width: 500,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Title of the News",
-                                          )),
-                                    ),
-                                  ),
-                                ],
+                              inputTextField(
+                                  title: "Title",
+                                  hintText: "Title of the News"),
+                              SizedBox(
+                                height: Responsive.isDesktop(context) ? 10 : 15,
+                              ),
+                              inputDate(heading: "Date", subheading: "Date"),
+                              SizedBox(
+                                height: Responsive.isDesktop(context) ? 10 : 15,
+                              ),
+                              inputOptions(
+                                title: "News For",
+                                opt1: "All",
+                                opt2: "Students",
+                                opt3: "Teachers",
+                                opt4: "Supporting Teachers",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Date"),
-                                  SizedBox(
-                                    width: 500,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          controller: _date,
-                                          readOnly: true,
-                                          onTap: () async {
-                                            final date = await Funcs()
-                                                .selectDate(context: context);
-                                            final formattedDate =
-                                                DateFormat('yyyy-MM-dd')
-                                                    .format(date!);
-                                            setState(() {
-                                              _date.text = formattedDate;
-                                            });
-                                          },
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: InputDecoration(
-                                            suffixIcon: Icon(
-                                              Icons.calendar_month_rounded,
-                                            ),
-                                            border: InputBorder.none,
-                                            hintText: "Select Date",
-                                          )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Responsive.isDesktop(context) ? 10 : 15,
-                              ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "News For"),
-                                  SizedBox(
-                                    width: 500,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "All",
-                                              ),
-                                              value: "All"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Students",
-                                              ),
-                                              value: "Students"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Teachers",
-                                              ),
-                                              value: "Teachers"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Supporting Staff",
-                                              ),
-                                              value: "Supporting Staff"),
-                                        ],
-                                        value: _madefor,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Made For",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is String) {
-                                            setState(() {
-                                              _madefor = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Responsive.isDesktop(context) ? 10 : 15,
-                              ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Attachment"),
-                                  SizedBox(
-                                    width: 500,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          HeadingText(
-                                              size:
-                                                  Responsive.isDesktop(context)
-                                                      ? 15
-                                                      : 13,
-                                              value: picked != null
-                                                  ? picked.files.first.name
-                                                      .toString()
-                                                  : "No File Choosen"),
-                                          ElevatedButton(
-                                            onPressed: () async {
-                                              setState(() async {
-                                                picked = await FilePicker
-                                                    .platform
-                                                    .pickFiles(
-                                                        allowMultiple: false);
-                                              });
-                                              if (picked != null) {
-                                                print(picked.files.first.name);
-                                              }
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                                backgroundColor:
-                                                    Palette().primaryColor,
-                                                padding: EdgeInsets.only(
-                                                  bottom: Responsive.isDesktop(
-                                                          context)
-                                                      ? 17
-                                                      : 14,
-                                                  left: Insets().appPadding / 2,
-                                                  right:
-                                                      Insets().appPadding / 2,
-                                                  top: Responsive.isDesktop(
-                                                          context)
-                                                      ? 17
-                                                      : 14,
-                                                ),
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10))),
-                                            child: HeadingText(
-                                                size: Responsive.isDesktop(
-                                                        context)
-                                                    ? 15
-                                                    : 13,
-                                                value: "Upload File"),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              inputFile(heading: "Attachment"),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 15 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.start
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "News Description"),
-                                  SizedBox(
-                                    width: 500,
-                                    height: Responsive.isDesktop(context)
-                                        ? 300
-                                        : 200,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: Expanded(
-                                        child: TextFormField(
-                                            textAlignVertical:
-                                                TextAlignVertical.top,
-                                            maxLines: double.maxFinite.floor(),
-                                            keyboardType:
-                                                TextInputType.multiline,
-                                            decoration: const InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: "News Description",
-                                            )),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              inputBigText(
+                                  title: "News Description",
+                                  hintText: "News Description"),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),

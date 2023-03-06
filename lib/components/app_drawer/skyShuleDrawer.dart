@@ -576,7 +576,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
                   radius: 40,
                   backgroundColor: Palette().textColor,
                   child:
-                      ClipOval(child: Image.asset("assets/img/schoolLogo.jpg")),
+                      ClipOval(child: Image.asset("assets/img/skylogo2.png")),
                 ),
               ),
               SizedBox(

@@ -14,6 +14,9 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputBigText.comp.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/components/officialDetails.dart';
 import 'package:skyconnect_starter/components/otherFacilities.dart';
 import 'package:skyconnect_starter/components/parentsDetails.dart';
@@ -47,8 +50,8 @@ class _addLeaveCategoryState extends State<addLeaveCategory>
 
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 700));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+    scaleAnimation = CurvedAnimation(
+        parent: controller, curve: Curves.fastLinearToSlowEaseIn);
 
     controller.addListener(() {
       setState(() {});
@@ -129,224 +132,27 @@ class _addLeaveCategoryState extends State<addLeaveCategory>
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Leave Category Name"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Leave Category Name",
-                                          )),
-                                    ),
-                                  ),
-                                ],
+                              inputTextField(
+                                  title: "Leave Category Name",
+                                  hintText: "Leave Category Name"),
+                              SizedBox(
+                                height: Responsive.isDesktop(context) ? 10 : 15,
+                              ),
+                              inputTextField(
+                                  title: "Maximum No. of Days",
+                                  hintText: "Max Days"),
+                              SizedBox(
+                                height: Responsive.isDesktop(context) ? 10 : 15,
+                              ),
+                              inputOptions(
+                                title: "Carry Foward",
+                                opt1: "Yes",
+                                opt2: "No",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Maximum No. of Days"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Max Days",
-                                          )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Responsive.isDesktop(context) ? 10 : 15,
-                              ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Carry Foward"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Yes",
-                                              ),
-                                              value: "Yes"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "No",
-                                              ),
-                                              value: "No"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Carry Foward",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Responsive.isDesktop(context) ? 10 : 15,
-                              ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Note"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Note",
-                                          )),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              inputBigText(title: "Note", hintText: "Note"),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),

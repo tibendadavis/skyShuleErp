@@ -6,6 +6,9 @@ import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
+import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/main.dart';
+
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class DrawerItem extends StatefulWidget {
@@ -96,6 +99,7 @@ class _DrawerItemState extends State<DrawerItem> {
     super.initState();
   }
 
+  late GlobalKey<NavigatorState> navigatorKey;
   bool expanded = false;
   var isSelected = false;
   late bool open;
@@ -189,9 +193,30 @@ class _DrawerItemState extends State<DrawerItem> {
                         ? const Offstage()
                         : InkWell(
                             onTap: () {
-                              if (widget.link! != "")
+                              if (widget.link! != "") {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => widget.link!));
+                                  builder: (context) => MyHomePage(
+                                    page: widget.link!,
+                                  ),
+                                ));
+                              }
+                              // Navigator.of(push(
+                              //Navigator.of(context).context,
+                              // MaterialPageRoute(
+                              //     builder: (_) => MyHomePage(
+                              //           page: widget.link!,
+                              //         )));
+                              // LayoutBuilder(builder: (context, constraints) {
+                              //   if (Responsive.isDesktop(context)) {
+                              //     return desktopScaffold(
+                              //       page: widget.link!,
+                              //     );
+                              //   } else if (Responsive.isTablet(context)) {
+                              //     return tabletScaffold(page: widget.link!);
+                              //   } else {
+                              //     return mobileScaffold(page: widget.link!);
+                              //   }
+                              // });
                             },
                             child: Heading5(
                               value: widget.value,
@@ -210,10 +235,12 @@ class _DrawerItemState extends State<DrawerItem> {
                                 minLeadingWidth: 22,
                                 onTap: () {
                                   if (widget.submenu1![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu1![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu1![1],
+                                      ),
+                                    ));
                                 },
                                 dense: true,
                                 contentPadding: EdgeInsets.all(0),
@@ -259,11 +286,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu11![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu11![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu11![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -290,11 +319,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu12![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu12![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu12![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -321,11 +352,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu13![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu13![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu13![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -352,11 +385,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu14![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu14![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu14![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -387,10 +422,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu2![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu2![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu2![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -419,10 +456,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu3![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu3![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu3![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -469,11 +508,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu31![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu31![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu31![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -500,11 +541,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu32![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu32![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu32![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -531,11 +574,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu33![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu33![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu33![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -562,11 +607,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu34![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu34![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu34![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -597,10 +644,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu4![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu4![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu4![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -647,11 +696,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu41![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu41![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu42![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -678,11 +729,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu42![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu42![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu42![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -709,11 +762,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu43![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu43![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu43![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -740,11 +795,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu44![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu44![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu44![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -771,11 +828,13 @@ class _DrawerItemState extends State<DrawerItem> {
                                         child: ListTile(
                                           onTap: () {
                                             if (widget.submenu45![1] != null)
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          widget
-                                                              .submenu45![1]));
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyHomePage(
+                                                  page: widget.submenu45![1],
+                                                ),
+                                              ));
                                           },
                                           minLeadingWidth: 22,
                                           dense: true,
@@ -806,10 +865,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu5![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu5![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu5![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -838,10 +899,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu6![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu6![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu6![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -870,10 +933,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu7![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu7![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu7![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -902,10 +967,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu8![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu8![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu8![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -934,10 +1001,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu9![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu9![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu9![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -966,10 +1035,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu10![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu10![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu10![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,
@@ -998,10 +1069,12 @@ class _DrawerItemState extends State<DrawerItem> {
                               child: ListTile(
                                 onTap: () {
                                   if (widget.submenu011![1] != null)
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                widget.submenu011![1]));
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        page: widget.submenu011![1],
+                                      ),
+                                    ));
                                 },
                                 minLeadingWidth: 22,
                                 dense: true,

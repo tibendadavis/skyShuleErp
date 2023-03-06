@@ -22,9 +22,11 @@ class Palette {
   var appColorDark = const Color(0xFF263238);
   var appColorLight = Colors.white;
   var appDark = const Color.fromRGBO(72, 102, 237, 1);
-  var primaryColor = const Color.fromRGBO(72, 102, 237, 1);
-  var primaryColorLight = const Color.fromRGBO(227, 232, 250, 1.0);
-  var primaryColorExtraLight = const Color.fromRGBO(227, 232, 250, 1.0);
+
+  var primaryColor = const Color.fromRGBO(59, 102, 207, 1);
+  //var primaryColor = const Color.fromRGBO(72, 102, 237, 1);
+  var primaryColorLight = const Color.fromRGBO(233, 235, 241, 1.0);
+  var primaryColorExtraLight = const Color.fromRGBO(233, 235, 241, 1.0);
   var textColor = const Color.fromRGBO(227, 232, 250, 1);
   var appInfo = const Color.fromRGBO(10, 57, 119, 1.0);
   var appSucc = const Color.fromRGBO(21, 94, 24, 1.0);

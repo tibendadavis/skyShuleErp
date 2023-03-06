@@ -4,6 +4,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputBigText.comp.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -65,419 +68,43 @@ class _contactsDetailsState extends State<contactsDetails> {
                     SizedBox(
                       height: 20,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Present Address"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 80 : 60,
-                          child: Container(
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                maxLines: double.maxFinite.floor(),
-                                keyboardType: TextInputType.multiline,
-                                textAlignVertical: TextAlignVertical.top,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Present Address",
-                                )),
-                          ),
-                        ),
-                      ],
+                    inputBigText(
+                        title: "Present Address", hintText: "Present Address"),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    inputOptions(
+                      title: "Country",
+                      opt1: "",
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Country"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.grey, width: 1.5),
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.circular(Insets().appGap + 4)),
-                            child: DropdownButton(
-                              items: const [
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2019",
-                                    ),
-                                    value: 2019),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2020",
-                                    ),
-                                    value: 2020),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2021",
-                                    ),
-                                    value: 2021),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2022",
-                                    ),
-                                    value: 2022),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2023",
-                                    ),
-                                    value: 2023)
-                              ],
-                              value: _academicYear,
-                              isExpanded: true,
-                              iconSize: 35,
-                              icon: Icon(Icons.keyboard_arrow_down_outlined),
-                              underline: SizedBox(),
-                              dropdownColor: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4),
-                              hint: Heading5(
-                                value: "Select Country",
-                              ),
-                              onChanged: ((value) {
-                                if (value is int) {
-                                  setState(() {
-                                    _academicYear = value;
-                                  });
-                                }
-                              }),
-                            ),
-                          ),
-                        ),
-                      ],
+                    inputOptions(
+                      title: "State",
+                      opt1: "",
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "State"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.grey, width: 1.5),
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.circular(Insets().appGap + 4)),
-                            child: DropdownButton(
-                              items: const [
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2019",
-                                    ),
-                                    value: 2019),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2020",
-                                    ),
-                                    value: 2020),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2021",
-                                    ),
-                                    value: 2021),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2022",
-                                    ),
-                                    value: 2022),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2023",
-                                    ),
-                                    value: 2023)
-                              ],
-                              value: _academicYear,
-                              isExpanded: true,
-                              iconSize: 35,
-                              icon: Icon(Icons.keyboard_arrow_down_outlined),
-                              underline: SizedBox(),
-                              dropdownColor: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4),
-                              hint: Heading5(
-                                value: "Select State",
-                              ),
-                              onChanged: ((value) {
-                                if (value is int) {
-                                  setState(() {
-                                    _academicYear = value;
-                                  });
-                                }
-                              }),
-                            ),
-                          ),
-                        ),
-                      ],
+                    inputOptions(
+                      title: "City",
+                      opt1: "",
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "City"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.grey, width: 1.5),
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.circular(Insets().appGap + 4)),
-                            child: DropdownButton(
-                              items: const [
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2019",
-                                    ),
-                                    value: 2019),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2020",
-                                    ),
-                                    value: 2020),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2021",
-                                    ),
-                                    value: 2021),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2022",
-                                    ),
-                                    value: 2022),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2023",
-                                    ),
-                                    value: 2023)
-                              ],
-                              value: _academicYear,
-                              isExpanded: true,
-                              iconSize: 35,
-                              icon: Icon(Icons.keyboard_arrow_down_outlined),
-                              underline: SizedBox(),
-                              dropdownColor: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4),
-                              hint: Heading5(
-                                value: "Select City",
-                              ),
-                              onChanged: ((value) {
-                                if (value is int) {
-                                  setState(() {
-                                    _academicYear = value;
-                                  });
-                                }
-                              }),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    inputTextField(
+                        title: "PinCode/Zip", hintText: "PinCode/Zip"),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Pincode/Zip"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Pincode/Zip",
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
+                    inputTextField(title: "Phone No.", hintText: "Phone No."),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Phone No."),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Phone No.",
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Registered Mobile No."),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "TZ +255",
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
+                    inputTextField(
+                        title: "Registered\nMobile No..", hintText: "TZ +255"),
                   ]),
             ),
           ),
@@ -528,419 +155,44 @@ class _contactsDetailsState extends State<contactsDetails> {
                     SizedBox(
                       height: 20,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Permanent Address"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 80 : 60,
-                          child: Container(
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                maxLines: double.maxFinite.floor(),
-                                keyboardType: TextInputType.multiline,
-                                textAlignVertical: TextAlignVertical.top,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Permanent Address",
-                                )),
-                          ),
-                        ),
-                      ],
+                    inputBigText(
+                        title: "Permanent\nAddress",
+                        hintText: "Permanent Address"),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    inputOptions(
+                      title: "Country",
+                      opt1: "",
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Country"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.grey, width: 1.5),
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.circular(Insets().appGap + 4)),
-                            child: DropdownButton(
-                              items: const [
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2019",
-                                    ),
-                                    value: 2019),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2020",
-                                    ),
-                                    value: 2020),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2021",
-                                    ),
-                                    value: 2021),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2022",
-                                    ),
-                                    value: 2022),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2023",
-                                    ),
-                                    value: 2023)
-                              ],
-                              value: _academicYear,
-                              isExpanded: true,
-                              iconSize: 35,
-                              icon: Icon(Icons.keyboard_arrow_down_outlined),
-                              underline: SizedBox(),
-                              dropdownColor: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4),
-                              hint: Heading5(
-                                value: "Select Country",
-                              ),
-                              onChanged: ((value) {
-                                if (value is int) {
-                                  setState(() {
-                                    _academicYear = value;
-                                  });
-                                }
-                              }),
-                            ),
-                          ),
-                        ),
-                      ],
+                    inputOptions(
+                      title: "State",
+                      opt1: "",
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "State"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.grey, width: 1.5),
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.circular(Insets().appGap + 4)),
-                            child: DropdownButton(
-                              items: const [
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2019",
-                                    ),
-                                    value: 2019),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2020",
-                                    ),
-                                    value: 2020),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2021",
-                                    ),
-                                    value: 2021),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2022",
-                                    ),
-                                    value: 2022),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2023",
-                                    ),
-                                    value: 2023)
-                              ],
-                              value: _academicYear,
-                              isExpanded: true,
-                              iconSize: 35,
-                              icon: Icon(Icons.keyboard_arrow_down_outlined),
-                              underline: SizedBox(),
-                              dropdownColor: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4),
-                              hint: Heading5(
-                                value: "Select State",
-                              ),
-                              onChanged: ((value) {
-                                if (value is int) {
-                                  setState(() {
-                                    _academicYear = value;
-                                  });
-                                }
-                              }),
-                            ),
-                          ),
-                        ),
-                      ],
+                    inputOptions(
+                      title: "City",
+                      opt1: "",
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "City"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.grey, width: 1.5),
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.circular(Insets().appGap + 4)),
-                            child: DropdownButton(
-                              items: const [
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2019",
-                                    ),
-                                    value: 2019),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2020",
-                                    ),
-                                    value: 2020),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2021",
-                                    ),
-                                    value: 2021),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2022",
-                                    ),
-                                    value: 2022),
-                                DropdownMenuItem(
-                                    child: Heading5(
-                                      value: "2023",
-                                    ),
-                                    value: 2023)
-                              ],
-                              value: _academicYear,
-                              isExpanded: true,
-                              iconSize: 35,
-                              icon: Icon(Icons.keyboard_arrow_down_outlined),
-                              underline: SizedBox(),
-                              dropdownColor: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                  Insets().appRadiusMin + 4),
-                              hint: Heading5(
-                                value: "Select City",
-                              ),
-                              onChanged: ((value) {
-                                if (value is int) {
-                                  setState(() {
-                                    _academicYear = value;
-                                  });
-                                }
-                              }),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    inputTextField(
+                        title: "PinCode/Zip", hintText: "PinCode/Zip"),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Pincode/Zip"),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Pincode/Zip",
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
+                    inputTextField(title: "Phone No.", hintText: "Phone No."),
                     SizedBox(
                       height: 10,
                     ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Phone No."),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Phone No.",
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Flex(
-                      direction: Responsive.isDesktop(context)
-                          ? Axis.horizontal
-                          : Axis.vertical,
-                      mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: Responsive.isDesktop(context)
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
-                      children: [
-                        HeadingText(
-                            size: Responsive.isDesktop(context) ? 18 : 14,
-                            value: "Registered Mobile No."),
-                        SizedBox(
-                          width: 350,
-                          height: Responsive.isDesktop(context) ? 50 : 40,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "TZ +255 ",
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
+                    inputTextField(
+                        title: "Registered\nMobile No..", hintText: "TZ +255"),
                   ]),
             ),
           ),

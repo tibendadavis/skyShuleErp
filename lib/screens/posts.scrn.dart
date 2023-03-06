@@ -34,7 +34,8 @@ class _PostsScreenState extends State<PostsScreen> {
         stream: db.collection("users").snapshots(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
-            return const LoadingScreen();
+            return Container();
+            //  return const LoadingScreen();
           } else {
             final users = snapshot.data!.docs;
             final user = users.firstWhere(
@@ -44,7 +45,8 @@ class _PostsScreenState extends State<PostsScreen> {
                 stream: db.collection("collections").snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.data == null) {
-                    return const LoadingScreen();
+                    return Container();
+                    //  return const LoadingScreen();
                   } else {
                     final allCollections = snapshot.data!.docs;
                     final collections = allCollections

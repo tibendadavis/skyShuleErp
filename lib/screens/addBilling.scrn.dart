@@ -16,6 +16,8 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputDate.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/components/officialDetails.dart';
 import 'package:skyconnect_starter/components/otherFacilities.dart';
 import 'package:skyconnect_starter/components/parentsDetails.dart';
@@ -50,8 +52,8 @@ class _addBillingState extends State<addBilling>
     _bookDueDate.text = "";
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 700));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+    scaleAnimation = CurvedAnimation(
+        parent: controller, curve: Curves.fastLinearToSlowEaseIn);
 
     controller.addListener(() {
       setState(() {});
@@ -132,311 +134,40 @@ class _addBillingState extends State<addBilling>
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Invoice No."),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Invoice No.",
-                                          )),
-                                    ),
-                                  ),
-                                ],
+                              inputTextField(
+                                  title: "Invoice No.",
+                                  hintText: "Invoice No."),
+                              SizedBox(
+                                height: Responsive.isDesktop(context) ? 10 : 15,
+                              ),
+                              inputDate(heading: "Date", subheading: "Date"),
+                              SizedBox(
+                                height: Responsive.isDesktop(context) ? 10 : 15,
+                              ),
+                              inputTextField(
+                                title: "Tax",
+                                hintText: "Tax",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Date"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          controller: _date,
-                                          readOnly: true,
-                                          onTap: () async {
-                                            final date = await Funcs()
-                                                .selectDate(context: context);
-                                            final formattedDate =
-                                                DateFormat('yyyy-MM-dd')
-                                                    .format(date!);
-                                            setState(() {
-                                              _date.text = formattedDate;
-                                            });
-                                          },
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: InputDecoration(
-                                            suffixIcon: Icon(
-                                              Icons.calendar_month_rounded,
-                                            ),
-                                            border: InputBorder.none,
-                                            hintText: "Date",
-                                          )),
-                                    ),
-                                  ),
-                                ],
+                              inputTextField(
+                                title: "Additional Charges",
+                                hintText: "Additional Charges",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Tax"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Tax",
-                                          )),
-                                    ),
-                                  ),
-                                ],
+                              inputTextField(
+                                title: "Discount",
+                                hintText: "Discount",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Additional Charges"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Additional Charges",
-                                          )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Responsive.isDesktop(context) ? 10 : 15,
-                              ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Discount"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Discount",
-                                          )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Responsive.isDesktop(context) ? 10 : 15,
-                              ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Total"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.center,
-                                          decoration: InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Total",
-                                          )),
-                                    ),
-                                  ),
-                                ],
+                              inputTextField(
+                                title: "Total",
+                                hintText: "Total",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,

@@ -38,7 +38,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
         stream: db.collection("users").snapshots(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
-            return const LoadingScreen();
+            return Container();
+            //  return const LoadingScreen();
           } else {
             final users = snapshot.data!.docs;
             final user = users.firstWhere(
@@ -48,7 +49,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                 stream: db.collection("collections").snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.data == null) {
-                    return const LoadingScreen();
+                    return Container();
+                    //   return const LoadingScreen();
                   } else {
                     final allCollections = snapshot.data!.docs;
                     final collection = allCollections
@@ -58,7 +60,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         stream: db.collection("comments").snapshots(),
                         builder: (context, snapshot) {
                           if (snapshot.data == null) {
-                            return const LoadingScreen();
+                            return Container();
+                            //    return const LoadingScreen();
                           } else {
                             final allComments = snapshot.data!.docs;
                             final comments = allComments
@@ -131,7 +134,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                               .snapshots(),
                                           builder: (context, snapshot) {
                                             if (snapshot.data == null) {
-                                              return const LoadingScreen();
+                                              return Container();
+                                              //    return const LoadingScreen();
                                             } else {
                                               final allComments =
                                                   snapshot.data!.docs;

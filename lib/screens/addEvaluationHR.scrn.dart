@@ -14,6 +14,10 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputBigText.comp.dart';
+import 'package:skyconnect_starter/components/inputDate.comp.dart';
+import 'package:skyconnect_starter/components/inputDatePeriod.comp.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
 import 'package:skyconnect_starter/components/officialDetails.dart';
 import 'package:skyconnect_starter/components/otherFacilities.dart';
 import 'package:skyconnect_starter/components/parentsDetails.dart';
@@ -47,8 +51,8 @@ class _addEvaluateState extends State<addEvaluation>
 
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 700));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+    scaleAnimation = CurvedAnimation(
+        parent: controller, curve: Curves.fastLinearToSlowEaseIn);
 
     controller.addListener(() {
       setState(() {});
@@ -86,8 +90,8 @@ class _addEvaluateState extends State<addEvaluation>
                         right: Insets().appGap),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Heading2(
+                      children: const [
+                        Heading2(
                           value: "EVALUATION",
                           fontWeight: FontWeight.w700,
                           color: Colors.black,
@@ -95,7 +99,7 @@ class _addEvaluateState extends State<addEvaluation>
                         SizedBox(
                           height: 10,
                         ),
-                        const Heading3(
+                        Heading3(
                           value: "Evaluation Information",
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
@@ -129,1140 +133,129 @@ class _addEvaluateState extends State<addEvaluation>
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Department"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: " ",
-                                              ),
-                                              value: " "),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: " ",
-                                              ),
-                                              value: " "),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: " ",
-                                              ),
-                                              value: " "),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Department",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Department",
+                                opt1: "",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Employee"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: " ",
-                                              ),
-                                              value: " "),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: " ",
-                                              ),
-                                              value: " "),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: " ",
-                                              ),
-                                              value: " "),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Search Employee",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Employee",
+                                opt1: "",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Evaluation Period"),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: 400,
-                                        height: Responsive.isDesktop(context)
-                                            ? 50
-                                            : 40,
-                                        child: Container(
-                                          alignment: Alignment.centerLeft,
-                                          padding: EdgeInsets.only(
-                                            left: Insets().appPadding / 2,
-                                            right: Insets().appPadding / 2,
-                                          ),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  width: 1.5,
-                                                  color: Colors.grey),
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appPadding /
-                                                          1.5)),
-                                          child: TextFormField(
-                                              controller: _enrollmentDate,
-                                              readOnly: true,
-                                              onTap: () async {
-                                                final date = await Funcs()
-                                                    .selectDate(
-                                                        context: context);
-                                                final formattedDate =
-                                                    DateFormat('yyyy-MM-dd')
-                                                        .format(date!);
-                                                setState(() {
-                                                  _enrollmentDate.text =
-                                                      formattedDate;
-                                                });
-                                              },
-                                              textAlignVertical:
-                                                  TextAlignVertical.center,
-                                              decoration: InputDecoration(
-                                                suffixIcon: Icon(
-                                                  Icons.calendar_month_rounded,
-                                                ),
-                                                border: InputBorder.none,
-                                                hintText: "From",
-                                              )),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      SizedBox(
-                                        width: 400,
-                                        height: Responsive.isDesktop(context)
-                                            ? 50
-                                            : 40,
-                                        child: Container(
-                                          alignment: Alignment.centerLeft,
-                                          padding: EdgeInsets.only(
-                                            left: Insets().appPadding / 2,
-                                            right: Insets().appPadding / 2,
-                                          ),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  width: 1.5,
-                                                  color: Colors.grey),
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appPadding /
-                                                          1.5)),
-                                          child: TextFormField(
-                                              controller: _enrollmentDate,
-                                              readOnly: true,
-                                              onTap: () async {
-                                                final date = await Funcs()
-                                                    .selectDate(
-                                                        context: context);
-                                                final formattedDate =
-                                                    DateFormat('yyyy-MM-dd')
-                                                        .format(date!);
-                                                setState(() {
-                                                  _enrollmentDate.text =
-                                                      formattedDate;
-                                                });
-                                              },
-                                              textAlignVertical:
-                                                  TextAlignVertical.center,
-                                              decoration: InputDecoration(
-                                                suffixIcon: Icon(
-                                                  Icons.calendar_month_rounded,
-                                                ),
-                                                border: InputBorder.none,
-                                                hintText: "To",
-                                              )),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              inputDatePeriod(
+                                  heading: "Evaluation Period2",
+                                  subheading1: "From",
+                                  subheading2: "To"),
+                              SizedBox(
+                                height: Responsive.isDesktop(context) ? 10 : 15,
+                              ),
+                              inputOptions(
+                                title: "Lesson Planning & Preparations",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Lesson Planning &\nPreparations"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value:
-                                              "Lesson Planning & Preparations",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Classroom Management",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Classroom\nManagement"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Classroom Management",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Instructional Delivery",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Instructional Delivery"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Instructional Delivery",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Professionalism & Work Ethic",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Professionalism &\nWork Ethic"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Professionalism & Work Ethic",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Collaboration &  Communication",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Collaboration &\nCommunication"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value:
-                                              "Collaboration & Communication",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Technology Integration",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Technology Integration"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Technology Integration",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Student Engagement &\nMotivation",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value:
-                                          "Student Engagement and\nMotivation"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value:
-                                              "Student Engagement and Motivation",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Assessment and Evaluation",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Assessment and\nEvaluation"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Assessment and Evaluation",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "Overall Performance Rating",
+                                opt1: "Poor",
+                                opt2: "Satisfactory",
+                                opt3: "Good",
+                                opt4: "Very Good",
+                                opt5: "Excellent",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Overall Performance\nRating"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Poor",
-                                              ),
-                                              value: "Poor"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Satisfactory",
-                                              ),
-                                              value: "Satisfactory"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Good",
-                                              ),
-                                              value: "Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Very  Good",
-                                              ),
-                                              value: "Very Good"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Excellent",
-                                              ),
-                                              value: "Excellent"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        hint: Heading5(
-                                          value: "Overall Performance Rating",
-                                        ),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Responsive.isDesktop(context) ? 10 : 15,
-                              ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "Comments and\nFeedback"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 400
-                                        : size.width,
-                                    height: Responsive.isDesktop(context)
-                                        ? 130
-                                        : 100,
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.5, color: Colors.grey),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appPadding / 1.5)),
-                                      child: TextFormField(
-                                          textAlignVertical:
-                                              TextAlignVertical.top,
-                                          maxLines: double.maxFinite.floor(),
-                                          keyboardType: TextInputType.multiline,
-                                          decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "Comments and Feedback",
-                                          )),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              inputBigText(
+                                  title: "Comments and Feedback",
+                                  hintText: "Comments and Feedback"),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),

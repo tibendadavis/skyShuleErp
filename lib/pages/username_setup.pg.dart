@@ -93,7 +93,8 @@ class _UsernameSetupPageState extends State<UsernameSetupPage> {
         builder: (context, snapshot) {
           if (snapshot.data == null) {
             print("notification: null");
-            return const LoadingScreen();
+            return Container();
+            //  return const LoadingScreen();
           } else {
             final classifiedDatas = snapshot.data!.docs;
             final credits = classifiedDatas
@@ -106,7 +107,8 @@ class _UsernameSetupPageState extends State<UsernameSetupPage> {
                 stream: db.collection("users").snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.data == null) {
-                    return const LoadingScreen();
+                    return Container();
+                    //   return const LoadingScreen();
                   } else {
                     final users = snapshot.data!.docs;
 

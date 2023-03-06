@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -26,163 +27,19 @@ class _bankDetailsState extends State<bankDetails> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Flex(
-            direction:
-                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
-            mainAxisAlignment: Responsive.isDesktop(context)
-                ? MainAxisAlignment.spaceBetween
-                : MainAxisAlignment.start,
-            crossAxisAlignment: Responsive.isDesktop(context)
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
-            children: [
-              HeadingText(
-                  size: Responsive.isDesktop(context) ? 18 : 14,
-                  value: "Bank Name"),
-              SizedBox(
-                width: 350,
-                height: Responsive.isDesktop(context) ? 50 : 40,
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(
-                    left: Insets().appPadding / 2,
-                    right: Insets().appPadding / 2,
-                  ),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 1.5, color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.circular(Insets().appPadding / 1.5)),
-                  child: TextFormField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Bank Name",
-                      )),
-                ),
-              ),
-            ],
-          ),
+          inputTextField(title: "Bank Name", hintText: "Bank Name"),
           SizedBox(
             height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Flex(
-            direction:
-                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
-            mainAxisAlignment: Responsive.isDesktop(context)
-                ? MainAxisAlignment.spaceBetween
-                : MainAxisAlignment.start,
-            crossAxisAlignment: Responsive.isDesktop(context)
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
-            children: [
-              HeadingText(
-                  size: Responsive.isDesktop(context) ? 18 : 14,
-                  value: "Bank Branch"),
-              SizedBox(
-                width: 350,
-                height: Responsive.isDesktop(context) ? 50 : 40,
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(
-                    left: Insets().appPadding / 2,
-                    right: Insets().appPadding / 2,
-                  ),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 1.5, color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.circular(Insets().appPadding / 1.5)),
-                  child: TextFormField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Bank Branch",
-                      )),
-                ),
-              ),
-            ],
-          ),
+          inputTextField(title: "Bank Branch", hintText: "Bank Branch"),
           SizedBox(
             height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Flex(
-            direction:
-                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
-            mainAxisAlignment: Responsive.isDesktop(context)
-                ? MainAxisAlignment.spaceBetween
-                : MainAxisAlignment.start,
-            crossAxisAlignment: Responsive.isDesktop(context)
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
-            children: [
-              HeadingText(
-                  size: Responsive.isDesktop(context) ? 18 : 14,
-                  value: "Account No."),
-              SizedBox(
-                width: 350,
-                height: Responsive.isDesktop(context) ? 50 : 40,
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(
-                    left: Insets().appPadding / 2,
-                    right: Insets().appPadding / 2,
-                  ),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 1.5, color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.circular(Insets().appPadding / 1.5)),
-                  child: TextFormField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Account No.",
-                      )),
-                ),
-              ),
-            ],
-          ),
+          inputTextField(title: "Account No.", hintText: "Account No."),
           SizedBox(
             height: Responsive.isDesktop(context) ? 10 : 15,
           ),
-          Flex(
-            direction:
-                Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
-            mainAxisAlignment: Responsive.isDesktop(context)
-                ? MainAxisAlignment.spaceBetween
-                : MainAxisAlignment.start,
-            crossAxisAlignment: Responsive.isDesktop(context)
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
-            children: [
-              HeadingText(
-                  size: Responsive.isDesktop(context) ? 18 : 14,
-                  value: "IFSC Code"),
-              SizedBox(
-                width: 350,
-                height: Responsive.isDesktop(context) ? 50 : 40,
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(
-                    left: Insets().appPadding / 2,
-                    right: Insets().appPadding / 2,
-                  ),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 1.5, color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.circular(Insets().appPadding / 1.5)),
-                  child: TextFormField(
-                      textAlignVertical: TextAlignVertical.top,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "IFSC Code",
-                      )),
-                ),
-              ),
-            ],
-          ),
+          inputTextField(title: "IFSC Code", hintText: "IFSC Code"),
         ],
       ),
     );

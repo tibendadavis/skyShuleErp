@@ -33,7 +33,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
         stream: db.collection("notifications").snapshots(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
-            return const LoadingScreen();
+            return Container();
+            //     return const LoadingScreen();
           } else {
             final allNotifications = snapshot.data!.docs;
             final notifications = allNotifications
@@ -52,7 +53,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 stream: db.collection("users").snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.data == null) {
-                    return const LoadingScreen();
+                    return Container();
+                    //    return const LoadingScreen();
                   } else {
                     final users = snapshot.data!.docs;
                     final user = users.firstWhere(

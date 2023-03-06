@@ -1,83 +1,164 @@
-import 'package:camera/camera.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:overlay_support/overlay_support.dart';
-import 'package:skyconnect_starter/components/certificate.comp.dart';
-import 'package:skyconnect_starter/components/idCard.comp.dart';
-import 'package:skyconnect_starter/components/receipt.comp.dart';
-import 'package:skyconnect_starter/components/studentPerfomanceReport.comp.dart';
-import 'package:skyconnect_starter/database/boxes.dart';
+import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
+import 'package:skyconnect_starter/components/desktopScaffold.comp.dart';
+import 'package:skyconnect_starter/components/header.dart';
+import 'package:skyconnect_starter/components/heading5.dart';
+import 'package:skyconnect_starter/components/mobileScaffold.comp.dart';
+import 'package:skyconnect_starter/controllers/funcs_main.dart';
+import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/pages/home/home.pg.dart';
-import 'package:skyconnect_starter/screens/addClassNotes.scrn.dart';
-import 'package:skyconnect_starter/screens/addClassRoutine.scrn.dart';
-import 'package:skyconnect_starter/screens/addExamGroup.scrn.dart';
-import 'package:skyconnect_starter/screens/addGrading.scrn.dart';
-import 'package:skyconnect_starter/screens/addLiveSettings.scrn.dart';
-import 'package:skyconnect_starter/screens/addSchoolExam.scrn.dart';
-import 'package:skyconnect_starter/screens/addStaff.scrn.dart';
-import 'package:skyconnect_starter/screens/addStream.scrn.dart';
-import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/addTeacher.scrn.dart';
-import 'package:skyconnect_starter/screens/addTeacherOnDuty.scrn.dart';
-import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
-import 'package:skyconnect_starter/screens/attendanceReport.scrn.dart';
-import 'package:skyconnect_starter/screens/billing.scrn.dart';
-import 'package:skyconnect_starter/screens/books.scrn.dart';
-import 'package:skyconnect_starter/screens/classAllocation.scrn.dart';
-import 'package:skyconnect_starter/screens/classNotes.scrn.dart';
-import 'package:skyconnect_starter/screens/classRoutine.scrn.dart';
-import 'package:skyconnect_starter/screens/classSubjects.scrn.dart';
-import 'package:skyconnect_starter/screens/classes.scrn.dart';
-import 'package:skyconnect_starter/screens/compose.scrn.dart';
-import 'package:skyconnect_starter/screens/defaultGrading.scrn.dart';
-import 'package:skyconnect_starter/screens/employeeAttendance.scrn.dart';
-import 'package:skyconnect_starter/screens/examAttendance.scrn.dart';
-import 'package:skyconnect_starter/screens/examGroup.scrn.dart';
-import 'package:skyconnect_starter/screens/generateCertficate.scrn.dart';
-import 'package:skyconnect_starter/screens/hostels.scrn.dart';
-import 'package:skyconnect_starter/screens/idCards.scrn.dart';
-import 'package:skyconnect_starter/screens/inbox.scrn.dart';
-import 'package:skyconnect_starter/screens/listsubjects.scrn.dart';
-import 'package:skyconnect_starter/screens/liveStudies.scrn.dart';
-import 'package:skyconnect_starter/screens/manage_students.scrn.dart';
-import 'package:skyconnect_starter/screens/mark.scrn.dart';
-import 'package:skyconnect_starter/screens/members.scrn.dart';
-import 'package:skyconnect_starter/screens/membersHostel.scrn.dart';
-import 'package:skyconnect_starter/screens/minorSchoolExams.scrn.dart';
-import 'package:skyconnect_starter/screens/newsBoard.scrn.dart';
-import 'package:skyconnect_starter/screens/onlineDiscussion.scrn.dart';
-import 'package:skyconnect_starter/screens/parents.scrn.dart';
-import 'package:skyconnect_starter/screens/promotion.scrn.dart';
-import 'package:skyconnect_starter/screens/purchaseOrder.scrn.dart';
-import 'package:skyconnect_starter/screens/requestOrder.scrn.dart';
-import 'package:skyconnect_starter/screens/schoolExam.scrn.dart';
-import 'package:skyconnect_starter/screens/sent.scrn.dart';
-import 'package:skyconnect_starter/screens/signature.scrn.dart';
-import 'package:skyconnect_starter/screens/singleReports.scrn.dart';
-import 'package:skyconnect_starter/screens/specialGrading.scrn.dart';
-import 'package:skyconnect_starter/screens/storeCategory.scrn.dart';
-import 'package:skyconnect_starter/screens/storeItem.scrn.dart';
-import 'package:skyconnect_starter/screens/storeType.scrn.dart';
-import 'package:skyconnect_starter/screens/streamSubjectTeacher.scrn.dart';
-import 'package:skyconnect_starter/screens/streams.scrn.dart';
-import 'package:skyconnect_starter/screens/studentAttendance.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
-import 'package:skyconnect_starter/screens/supplier.scrn.dart';
-import 'package:skyconnect_starter/screens/supplierType.scrn.dart';
-import 'package:skyconnect_starter/screens/supportingStaff.scrn.dart';
-import 'package:skyconnect_starter/screens/teacher.scrn.dart';
-import 'package:skyconnect_starter/screens/teacherOnDuty.scrn.dart';
-import 'package:skyconnect_starter/screens/terms.scrn.dart';
-import 'package:skyconnect_starter/screens/trash.scrn.dart';
-import 'package:skyconnect_starter/screens/userAttendanceView.scrn.dart';
-import 'package:skyconnect_starter/screens/user_profile.scrn.dart';
-import 'package:skyconnect_starter/screens/viewAddMark.scrn.dart';
-import 'package:skyconnect_starter/services/locale_string.dart';
-import 'package:provider/provider.dart';
+import 'package:skyconnect_starter/components/tabletScaffold.comp.dart';
+import 'package:skyconnect_starter/screens/login.scrn.dart';
+import 'package:skyconnect_starter/theme/design.theme.dart';
+import 'package:skyconnect_starter/components/heading2.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        navigatorKey: navigatorKey,
+        home: login());
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  final Widget page;
+  const MyHomePage({super.key, required this.page});
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  bool _menu = false;
+  double _drawersize = 250;
+  @override
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: !Responsive.isDesktop(context)
+          ? AppBar(
+              centerTitle: true,
+              elevation: 0,
+              title: Title(
+                  color: Palette().textColor,
+                  child: const Heading2(
+                    value: "SkyShule",
+                  )),
+              backgroundColor: Palette().primaryColor,
+            )
+          : null,
+      drawer: skyShuleDrawer(
+        size: 305,
+        onTap: () {},
+        menu: false,
+      ),
+      body: Container(
+          width: size.width,
+          height: size.height,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (Responsive.isDesktop(context))
+                AnimatedContainer(
+                    duration: const Duration(milliseconds: 1000),
+                    curve: Curves.fastLinearToSlowEaseIn,
+                    width: _drawersize,
+                    child: skyShuleDrawer(
+                      size: _drawersize,
+                      onTap: (val) {
+                        setState(() {
+                          _drawersize = val;
+                        });
+                      },
+                      menu: _menu,
+                    )),
+              Expanded(
+                  child: Column(
+                children: [
+                  Container(
+                      padding: EdgeInsets.only(bottom: 3),
+                      decoration: BoxDecoration(
+                          color: Palette().primaryColorExtraLight),
+                      child: header(
+                        onTap: (val) {
+                          setState(() {
+                            _drawersize = val[0];
+                            _menu = val[1];
+                          });
+                        },
+                      )),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: Responsive.isDesktop(context)
+                              ? size.height - 86
+                              : size.height - 142,
+                          child: LayoutBuilder(builder: (context, constraints) {
+                            if (Responsive.isDesktop(context)) {
+                              return desktopScaffold(
+                                page: widget.page,
+                              );
+                            } else if (Responsive.isTablet(context)) {
+                              return tabletScaffold(
+                                page: widget.page,
+                              );
+                            } else {
+                              return mobileScaffold(
+                                page: widget.page,
+                              );
+                            }
+                          }),
+                        ),
+                        SizedBox(
+                            height: 26,
+                            width: size.width,
+                            child: Container(
+                                padding: EdgeInsets.only(
+                                    right: 3, top: 3, left: 25, bottom: 3),
+                                color: Colors.white,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Heading5(
+                                        color: Colors.grey.shade700,
+                                        value:
+                                            "Copyright © ${DateTime.now().year}"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    InkWell(
+                                        onTap: () {
+                                          Funcs().openLink(
+                                              url: "www.skyconnect.co.tz");
+                                        },
+                                        child: Heading5(
+                                          value: "SkyConnect",
+                                          color: Palette().primaryColor,
+                                          fontWeight: FontWeight.w600,
+                                        )),
+                                    Heading5(
+                                        color: Colors.grey.shade700,
+                                        value: ", All rights reserved.")
+                                  ],
+                                )))
+                      ],
+                    ),
+                  )
+                ],
+              )),
+            ],
+          )),
+    );
+  }
 }

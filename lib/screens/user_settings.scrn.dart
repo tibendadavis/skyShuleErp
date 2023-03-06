@@ -55,7 +55,8 @@ class _UserSettingsScreenState extends State<UserSettingsScreen> {
         stream: db.collection("users").snapshots(),
         builder: (context, snapshot) {
           if (snapshot.data == null) {
-            return const LoadingScreen();
+            return Container();
+            //   return const LoadingScreen();
           } else {
             final users = snapshot.data!.docs;
             final user =

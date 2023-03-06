@@ -12,6 +12,12 @@ import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
 import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputBigText.comp.dart';
+import 'package:skyconnect_starter/components/inputDate.comp.dart';
+import 'package:skyconnect_starter/components/inputFile.comp.dart';
+import 'package:skyconnect_starter/components/inputGender.comp.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
@@ -52,8 +58,8 @@ class _addStaffState extends State<addStaff>
 
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 700));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+    scaleAnimation = CurvedAnimation(
+        parent: controller, curve: Curves.fastLinearToSlowEaseIn);
 
     controller.addListener(() {
       setState(() {});
@@ -251,828 +257,87 @@ class _addStaffState extends State<addStaff>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Name "),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: TextFormField(
-                                                textAlignVertical:
-                                                    TextAlignVertical.center,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText: "Both Names",
-                                                )),
-                                          ),
-                                        ),
-                                      ],
+                                    inputTextField(
+                                        title: "Full Name",
+                                        hintText: "Full Name"),
+                                    SizedBox(
+                                      height: Responsive.isDesktop(context)
+                                          ? 10
+                                          : 15,
+                                    ),
+                                    inputDate(
+                                        heading: "Date of Birth",
+                                        subheading: "Date of Birth"),
+                                    SizedBox(
+                                      height: Responsive.isDesktop(context)
+                                          ? 10
+                                          : 15,
+                                    ),
+                                    inputGender(),
+                                    SizedBox(
+                                      height: Responsive.isDesktop(context)
+                                          ? 10
+                                          : 15,
+                                    ),
+                                    inputOptions(
+                                      title: "Nationality",
+                                      opt1: "Tanzania (United Republic of)",
+                                      opt2: "Kenya ",
+                                      opt3: "Uganda",
                                     ),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Date of Birth"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: TextFormField(
-                                                controller: _dateBirth,
-                                                readOnly: true,
-                                                onTap: () async {
-                                                  final date = await Funcs()
-                                                      .selectDate(
-                                                          context: context);
-                                                  final formattedDate =
-                                                      DateFormat('yyyy-MM-dd')
-                                                          .format(date!);
-                                                  setState(() {
-                                                    _dateBirth.text =
-                                                        formattedDate;
-                                                  });
-                                                },
-                                                textAlignVertical:
-                                                    TextAlignVertical.center,
-                                                decoration: InputDecoration(
-                                                  suffixIcon: Icon(
-                                                    Icons
-                                                        .calendar_month_rounded,
-                                                  ),
-                                                  border: InputBorder.none,
-                                                  hintText: "Date Of Birth",
-                                                )),
-                                          ),
-                                        ),
-                                      ],
+                                    inputTextField(
+                                      title: "National ID No.",
+                                      hintText: "NIDA",
                                     ),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Gender"),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Radio(
-                                              value: false,
-                                              onChanged: (value) {},
-                                              groupValue: null,
-                                            ),
-                                            Heading5(value: "Male"),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Radio(
-                                              value: false,
-                                              onChanged: (value) {},
-                                              groupValue: null,
-                                            ),
-                                            Heading5(value: "Female"),
-                                          ],
-                                        ),
-                                      ],
+                                    inputTextField(
+                                      title: "ID number/\nPF-number",
+                                      hintText: "ID number/PF-number",
                                     ),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Nationality"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1.5),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appGap + 4)),
-                                            child: DropdownButton(
-                                              items: const [
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value:
-                                                          "Tanzania (United Republic of)",
-                                                    ),
-                                                    value: "TZ"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Kenya ",
-                                                    ),
-                                                    value: "KE"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Uganda",
-                                                    ),
-                                                    value: "UG"),
-                                              ],
-                                              value: _classlevel,
-                                              isExpanded: true,
-                                              iconSize: 35,
-                                              icon: Icon(Icons
-                                                  .keyboard_arrow_down_outlined),
-                                              underline: SizedBox(),
-                                              dropdownColor: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appRadiusMin +
-                                                          4),
-                                              hint: Heading5(
-                                                value: "Select Nationality",
-                                              ),
-                                              onChanged: ((value) {
-                                                if (value is int) {
-                                                  setState(() {
-                                                    _classlevel = value;
-                                                  });
-                                                }
-                                              }),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                    inputOptions(
+                                      title: "Designation",
+                                      opt1: "",
                                     ),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "National ID No "),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: TextFormField(
-                                                textAlignVertical:
-                                                    TextAlignVertical.center,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText: "NIDA",
-                                                )),
-                                          ),
-                                        ),
-                                      ],
+                                    inputTextField(
+                                        title: "Education Level",
+                                        hintText: "Education"),
+                                    SizedBox(
+                                      height: Responsive.isDesktop(context)
+                                          ? 10
+                                          : 15,
+                                    ),
+                                    inputOptions(
+                                      title: "Physical Condition",
+                                      opt1: "",
                                     ),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "ID number/PF-number"),
-                                        SizedBox(
-                                          width: 200,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: TextFormField(
-                                                textAlignVertical:
-                                                    TextAlignVertical.center,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText: "",
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: Responsive.isDesktop(context)
-                                          ? 10
-                                          : 15,
-                                    ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Designation"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1.5),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appGap + 4)),
-                                            child: DropdownButton(
-                                              items: const [
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Admin",
-                                                    ),
-                                                    value: "Admin"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Parent",
-                                                    ),
-                                                    value: "Parent"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Accountant",
-                                                    ),
-                                                    value: "Accountant"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Teacher",
-                                                    ),
-                                                    value: "Teacher"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value:
-                                                          "Assistant Head teacher",
-                                                    ),
-                                                    value:
-                                                        "Assistant Head teacher"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Head Teacher",
-                                                    ),
-                                                    value: "Head Teacher"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value:
-                                                          "Assistant of academic master",
-                                                    ),
-                                                    value:
-                                                        "Assistant of academic master"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Burser",
-                                                    ),
-                                                    value: "Burser"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Cleaner",
-                                                    ),
-                                                    value: "Cleaner"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Cook",
-                                                    ),
-                                                    value: "Cook"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Driver",
-                                                    ),
-                                                    value: "Driver"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value:
-                                                          "Transport Officer",
-                                                    ),
-                                                    value: "Transport Officer"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Matron",
-                                                    ),
-                                                    value: "Matron"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Nurse",
-                                                    ),
-                                                    value: "Nurse"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value:
-                                                          "Quality Assurance Officer",
-                                                    ),
-                                                    value:
-                                                        "Quality Assurance Officer"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Secretary",
-                                                    ),
-                                                    value: "Secretary"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Store-Keeper",
-                                                    ),
-                                                    value: "Store-Keeper"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Tailor",
-                                                    ),
-                                                    value: "Tailor"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Patron",
-                                                    ),
-                                                    value: "Patron"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value:
-                                                          "HR & Admin Manager",
-                                                    ),
-                                                    value:
-                                                        "HR & Admin Manager"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Academic Master",
-                                                    ),
-                                                    value: "Academic Master"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value:
-                                                          "Discipline Master",
-                                                    ),
-                                                    value: "Discipline Master"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Normal",
-                                                    ),
-                                                    value: "Normal"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Class Teacher",
-                                                    ),
-                                                    value: "Class Teacher"),
-                                              ],
-                                              value: _designation,
-                                              isExpanded: true,
-                                              iconSize: 35,
-                                              icon: Icon(Icons
-                                                  .keyboard_arrow_down_outlined),
-                                              underline: SizedBox(),
-                                              dropdownColor: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appRadiusMin +
-                                                          4),
-                                              hint: Heading5(
-                                                value: "Select Designation",
-                                              ),
-                                              onChanged: ((value) {
-                                                if (value is String) {
-                                                  setState(() {
-                                                    _designation = value;
-                                                  });
-                                                }
-                                              }),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: Responsive.isDesktop(context)
-                                          ? 10
-                                          : 15,
-                                    ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Education"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1.5),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appGap + 4)),
-                                            child: DropdownButton(
-                                              items: const [
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Education",
-                                                    ),
-                                                    value: "Education"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Education2",
-                                                    ),
-                                                    value: "Education2"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Education3",
-                                                    ),
-                                                    value: "Education3"),
-                                              ],
-                                              value: _classlevel,
-                                              isExpanded: true,
-                                              iconSize: 35,
-                                              icon: Icon(Icons
-                                                  .keyboard_arrow_down_outlined),
-                                              underline: SizedBox(),
-                                              dropdownColor: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appRadiusMin +
-                                                          4),
-                                              hint: Heading5(
-                                                value: "Select Education",
-                                              ),
-                                              onChanged: ((value) {
-                                                if (value is int) {
-                                                  setState(() {
-                                                    _classlevel = value;
-                                                  });
-                                                }
-                                              }),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: Responsive.isDesktop(context)
-                                          ? 10
-                                          : 15,
-                                    ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Physical condition"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1.5),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appGap + 4)),
-                                            child: DropdownButton(
-                                              items: const [
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Designation",
-                                                    ),
-                                                    value: "Designation"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Designation2",
-                                                    ),
-                                                    value: "Designation2"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Designation3",
-                                                    ),
-                                                    value: "Designation3"),
-                                              ],
-                                              value: _classlevel,
-                                              isExpanded: true,
-                                              iconSize: 35,
-                                              icon: Icon(Icons
-                                                  .keyboard_arrow_down_outlined),
-                                              underline: SizedBox(),
-                                              dropdownColor: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appRadiusMin +
-                                                          4),
-                                              onChanged: ((value) {
-                                                if (value is int) {
-                                                  setState(() {
-                                                    _classlevel = value;
-                                                  });
-                                                }
-                                              }),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: Responsive.isDesktop(context)
-                                          ? 10
-                                          : 15,
-                                    ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Health Status"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1.5),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appGap + 4)),
-                                            child: DropdownButton(
-                                              items: const [
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Health Status",
-                                                    ),
-                                                    value: "Health Status"),
-                                              ],
-                                              value: _classlevel,
-                                              isExpanded: true,
-                                              hint: Heading5(
-                                                value: "Status",
-                                              ),
-                                              iconSize: 35,
-                                              icon: Icon(Icons
-                                                  .keyboard_arrow_down_outlined),
-                                              underline: SizedBox(),
-                                              dropdownColor: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appRadiusMin +
-                                                          4),
-                                              onChanged: ((value) {
-                                                if (value is int) {
-                                                  setState(() {
-                                                    _classlevel = value;
-                                                  });
-                                                }
-                                              }),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    inputOptions(
+                                        title: "Health Status",
+                                        opt1: "",
+                                        opt2: ""),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
@@ -1105,533 +370,59 @@ class _addStaffState extends State<addStaff>
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Health Insuarance"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1.5),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appGap + 4)),
-                                            child: DropdownButton(
-                                              items: const [
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value:
-                                                          "Health Insuarance",
-                                                    ),
-                                                    value: "Health Insuarance"),
-                                              ],
-                                              value: _classlevel,
-                                              isExpanded: true,
-                                              hint: Heading5(
-                                                value: "Health Insuarance",
-                                              ),
-                                              iconSize: 35,
-                                              icon: Icon(Icons
-                                                  .keyboard_arrow_down_outlined),
-                                              underline: SizedBox(),
-                                              dropdownColor: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appRadiusMin +
-                                                          4),
-                                              onChanged: ((value) {
-                                                if (value is int) {
-                                                  setState(() {
-                                                    _classlevel = value;
-                                                  });
-                                                }
-                                              }),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                    inputOptions(
+                                        title: "Health Insuarance",
+                                        opt1: "",
+                                        opt2: ""),
+                                    SizedBox(
+                                      height: Responsive.isDesktop(context)
+                                          ? 10
+                                          : 15,
+                                    ),
+                                    inputOptions(
+                                      title: "Religion",
+                                      opt1: "Christianity",
+                                      opt2: "Islam",
+                                      opt3: "Paganism",
                                     ),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Religion"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1.5),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appGap + 4)),
-                                            child: DropdownButton(
-                                              items: const [
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Christianity",
-                                                    ),
-                                                    value: "Christian"),
-                                                DropdownMenuItem(
-                                                    child: Heading5(
-                                                      value: "Islam",
-                                                    ),
-                                                    value: "Religion"),
-                                                DropdownMenuItem(
-                                                  child: Heading5(
-                                                    value: "Religion",
-                                                  ),
-                                                )
-                                              ],
-                                              value: _classlevel,
-                                              isExpanded: true,
-                                              hint: Heading5(
-                                                value: "Religion",
-                                              ),
-                                              iconSize: 35,
-                                              icon: Icon(Icons
-                                                  .keyboard_arrow_down_outlined),
-                                              underline: SizedBox(),
-                                              dropdownColor: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Insets().appRadiusMin +
-                                                          4),
-                                              onChanged: ((value) {
-                                                if (value is int) {
-                                                  setState(() {
-                                                    _classlevel = value;
-                                                  });
-                                                }
-                                              }),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    inputTextField(
+                                        title: "Email",
+                                        hintText:
+                                            "Valid email eg. samson@gmail.com"),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Email"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: TextFormField(
-                                                textAlignVertical:
-                                                    TextAlignVertical.center,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText:
-                                                      "Valid email eg. samson@gmail.com",
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    inputTextField(
+                                        title: "Phone",
+                                        hintText: "eg 0693123456"),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Phone "),
-                                        SizedBox(
-                                          width: 200,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: TextFormField(
-                                                textAlignVertical:
-                                                    TextAlignVertical.center,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText: "eg 693123456",
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    inputBigText(
+                                        title: "Address", hintText: "Address"),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Address"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 70
-                                              : 60,
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: TextFormField(
-                                                maxLines:
-                                                    double.maxFinite.floor(),
-                                                keyboardType:
-                                                    TextInputType.multiline,
-                                                textAlignVertical:
-                                                    TextAlignVertical.top,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText: "Town",
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    inputDate(
+                                        heading: "Joining Date",
+                                        subheading: "Joining Date"),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 10
                                           : 15,
                                     ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Joining Date"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right: Insets().appPadding / 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: TextFormField(
-                                                controller: _joiningDate,
-                                                readOnly: true,
-                                                onTap: () async {
-                                                  final date = await Funcs()
-                                                      .selectDate(
-                                                          context: context);
-                                                  final formattedDate =
-                                                      DateFormat('yyyy-MM-dd')
-                                                          .format(date!);
-                                                  setState(() {
-                                                    _joiningDate.text =
-                                                        formattedDate;
-                                                  });
-                                                },
-                                                textAlignVertical:
-                                                    TextAlignVertical.center,
-                                                decoration: InputDecoration(
-                                                  suffixIcon: Icon(
-                                                    Icons
-                                                        .calendar_month_rounded,
-                                                  ),
-                                                  border: InputBorder.none,
-                                                  hintText: "Joining Date",
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: Responsive.isDesktop(context)
-                                          ? 10
-                                          : 15,
-                                    ),
-                                    Flex(
-                                      direction: Responsive.isDesktop(context)
-                                          ? Axis.horizontal
-                                          : Axis.vertical,
-                                      mainAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? MainAxisAlignment.spaceBetween
-                                              : MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          Responsive.isDesktop(context)
-                                              ? CrossAxisAlignment.center
-                                              : CrossAxisAlignment.start,
-                                      children: [
-                                        HeadingText(
-                                            size: Responsive.isDesktop(context)
-                                                ? 18
-                                                : 14,
-                                            value: "Photo"),
-                                        SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 300
-                                              : 400,
-                                          height: Responsive.isDesktop(context)
-                                              ? 50
-                                              : 40,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.only(
-                                              left: Insets().appPadding / 2,
-                                              right:
-                                                  Responsive.isDesktop(context)
-                                                      ? 5
-                                                      : 4,
-                                            ),
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                border: Border.all(
-                                                    width: 1.5,
-                                                    color: Colors.grey),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Insets().appPadding /
-                                                            1.5)),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                HeadingText(
-                                                    size: Responsive.isDesktop(
-                                                            context)
-                                                        ? 15
-                                                        : 13,
-                                                    value: picked != null
-                                                        ? picked
-                                                            .files.first.name
-                                                            .toString()
-                                                        : "No File Choosen"),
-                                                ElevatedButton(
-                                                  onPressed: () async {
-                                                    setState(() async {
-                                                      picked = await FilePicker
-                                                          .platform
-                                                          .pickFiles(
-                                                              allowMultiple:
-                                                                  false);
-                                                    });
-                                                    if (picked != null) {
-                                                      print(picked
-                                                          .files.first.name);
-                                                    }
-                                                  },
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          backgroundColor:
-                                                              Palette()
-                                                                  .primaryColor,
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                            bottom: Responsive
-                                                                    .isDesktop(
-                                                                        context)
-                                                                ? 17
-                                                                : 14,
-                                                            left: Insets()
-                                                                    .appPadding /
-                                                                2,
-                                                            right: Insets()
-                                                                    .appPadding /
-                                                                2,
-                                                            top: Responsive
-                                                                    .isDesktop(
-                                                                        context)
-                                                                ? 17
-                                                                : 14,
-                                                          ),
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10))),
-                                                  child: HeadingText(
-                                                      size:
-                                                          Responsive.isDesktop(
-                                                                  context)
-                                                              ? 15
-                                                              : 13,
-                                                      value: "Upload File"),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    inputFile(heading: "Photo"),
                                     SizedBox(
                                       height: Responsive.isDesktop(context)
                                           ? 110

@@ -14,6 +14,8 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/components/officialDetails.dart';
 import 'package:skyconnect_starter/components/otherFacilities.dart';
 import 'package:skyconnect_starter/components/parentsDetails.dart';
@@ -48,8 +50,8 @@ class _addSubjectState extends State<addSubject>
 
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 700));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+    scaleAnimation = CurvedAnimation(
+        parent: controller, curve: Curves.fastLinearToSlowEaseIn);
 
     controller.addListener(() {
       setState(() {});
@@ -283,282 +285,35 @@ class _addSubjectState extends State<addSubject>
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Flex(
-                                  direction: Responsive.isDesktop(context)
-                                      ? Axis.horizontal
-                                      : Axis.vertical,
-                                  mainAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? MainAxisAlignment.spaceBetween
-                                          : MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? CrossAxisAlignment.center
-                                          : CrossAxisAlignment.start,
-                                  children: [
-                                    HeadingText(
-                                        size: Responsive.isDesktop(context)
-                                            ? 18
-                                            : 14,
-                                        value: "Class Level"),
-                                    SizedBox(
-                                      width: 400,
-                                      height: Responsive.isDesktop(context)
-                                          ? 50
-                                          : 40,
-                                      child: Container(
-                                        padding: EdgeInsets.only(
-                                          left: Insets().appPadding / 2,
-                                          right: Insets().appPadding / 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.grey, width: 1.5),
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                                Insets().appGap + 4)),
-                                        child: DropdownButton(
-                                          items: const [
-                                            DropdownMenuItem(
-                                                child: Heading5(
-                                                  value: "Nursery",
-                                                ),
-                                                value: "Nursery"),
-                                            DropdownMenuItem(
-                                                child: Heading5(
-                                                  value: "Primary",
-                                                ),
-                                                value: "Primary"),
-                                            DropdownMenuItem(
-                                                child: Heading5(
-                                                  value: "Secondary",
-                                                ),
-                                                value: "Secondary"),
-                                          ],
-                                          value: _classlevel,
-                                          isExpanded: true,
-                                          iconSize: 35,
-                                          icon: Icon(Icons
-                                              .keyboard_arrow_down_outlined),
-                                          underline: SizedBox(),
-                                          dropdownColor: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appRadiusMin + 4),
-                                          hint: Heading5(
-                                            value: "Select Class Level",
-                                          ),
-                                          onChanged: ((value) {
-                                            if (value is int) {
-                                              setState(() {
-                                                _classlevel = value;
-                                              });
-                                            }
-                                          }),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                inputOptions(
+                                  title: "Class Level",
+                                  opt1: "",
                                 ),
                                 SizedBox(
                                   height:
                                       Responsive.isDesktop(context) ? 10 : 15,
                                 ),
-                                Flex(
-                                  direction: Responsive.isDesktop(context)
-                                      ? Axis.horizontal
-                                      : Axis.vertical,
-                                  mainAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? MainAxisAlignment.spaceBetween
-                                          : MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? CrossAxisAlignment.center
-                                          : CrossAxisAlignment.start,
-                                  children: [
-                                    HeadingText(
-                                        size: Responsive.isDesktop(context)
-                                            ? 18
-                                            : 14,
-                                        value: "Subject Name"),
-                                    SizedBox(
-                                      width: 400,
-                                      height: Responsive.isDesktop(context)
-                                          ? 50
-                                          : 40,
-                                      child: Container(
-                                        alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.only(
-                                          left: Insets().appPadding / 2,
-                                          right: Insets().appPadding / 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                width: 1.5, color: Colors.grey),
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                                Insets().appPadding / 1.5)),
-                                        child: TextFormField(
-                                            textAlignVertical:
-                                                TextAlignVertical.center,
-                                            decoration: const InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: "Subject Name",
-                                            )),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                inputTextField(
+                                    title: "Subject Name", hintText: "Subject"),
                                 SizedBox(
                                   height:
                                       Responsive.isDesktop(context) ? 10 : 15,
                                 ),
-                                Flex(
-                                  direction: Responsive.isDesktop(context)
-                                      ? Axis.horizontal
-                                      : Axis.vertical,
-                                  mainAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? MainAxisAlignment.spaceBetween
-                                          : MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? CrossAxisAlignment.center
-                                          : CrossAxisAlignment.start,
-                                  children: [
-                                    HeadingText(
-                                        size: Responsive.isDesktop(context)
-                                            ? 18
-                                            : 14,
-                                        value: "Subject Code"),
-                                    SizedBox(
-                                      width: 400,
-                                      height: Responsive.isDesktop(context)
-                                          ? 50
-                                          : 40,
-                                      child: Container(
-                                        alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.only(
-                                          left: Insets().appPadding / 2,
-                                          right: Insets().appPadding / 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                width: 1.5, color: Colors.grey),
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                                Insets().appPadding / 1.5)),
-                                        child: TextFormField(
-                                            textAlignVertical:
-                                                TextAlignVertical.center,
-                                            decoration: const InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: "Subject Code",
-                                            )),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                inputTextField(
+                                    title: "Subject Code", hintText: "Code"),
                                 SizedBox(
                                   height:
                                       Responsive.isDesktop(context) ? 10 : 15,
                                 ),
-                                Flex(
-                                  direction: Responsive.isDesktop(context)
-                                      ? Axis.horizontal
-                                      : Axis.vertical,
-                                  mainAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? MainAxisAlignment.spaceBetween
-                                          : MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? CrossAxisAlignment.center
-                                          : CrossAxisAlignment.start,
-                                  children: [
-                                    HeadingText(
-                                        size: Responsive.isDesktop(context)
-                                            ? 18
-                                            : 14,
-                                        value: "Subject Type"),
-                                    SizedBox(
-                                      width: 400,
-                                      height: Responsive.isDesktop(context)
-                                          ? 50
-                                          : 40,
-                                      child: Container(
-                                        alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.only(
-                                          left: Insets().appPadding / 2,
-                                          right: Insets().appPadding / 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                width: 1.5, color: Colors.grey),
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                                Insets().appPadding / 1.5)),
-                                        child: TextFormField(
-                                            textAlignVertical:
-                                                TextAlignVertical.center,
-                                            decoration: const InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: "Subject Type",
-                                            )),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                inputTextField(
+                                    title: "Subject Type", hintText: "Type"),
                                 SizedBox(
                                   height:
                                       Responsive.isDesktop(context) ? 10 : 15,
                                 ),
-                                Flex(
-                                  direction: Responsive.isDesktop(context)
-                                      ? Axis.horizontal
-                                      : Axis.vertical,
-                                  mainAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? MainAxisAlignment.spaceBetween
-                                          : MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                      Responsive.isDesktop(context)
-                                          ? CrossAxisAlignment.center
-                                          : CrossAxisAlignment.start,
-                                  children: [
-                                    HeadingText(
-                                        size: Responsive.isDesktop(context)
-                                            ? 18
-                                            : 14,
-                                        value: "Arrangement"),
-                                    SizedBox(
-                                      width: 400,
-                                      height: Responsive.isDesktop(context)
-                                          ? 50
-                                          : 40,
-                                      child: Container(
-                                        alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.only(
-                                          left: Insets().appPadding / 2,
-                                          right: Insets().appPadding / 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                width: 1.5, color: Colors.grey),
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                                Insets().appPadding / 1.5)),
-                                        child: TextFormField(
-                                            textAlignVertical:
-                                                TextAlignVertical.center,
-                                            decoration: const InputDecoration(
-                                              border: InputBorder.none,
-                                              hintText: "Arrangement",
-                                            )),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                inputTextField(
+                                    title: "Arrangement",
+                                    hintText: "Arrangement"),
                                 SizedBox(
                                   height:
                                       Responsive.isDesktop(context) ? 10 : 15,

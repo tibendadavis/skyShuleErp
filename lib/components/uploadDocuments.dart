@@ -5,6 +5,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputFile.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -20,9 +22,6 @@ class _uploadDocumentsState extends State<uploadDocuments> {
   Widget build(BuildContext context) {
     var picked;
     return Container(
-      // width: !Responsive.isDesktop(context)
-      //     ? MediaQuery.of(context).size.width
-      //     : MediaQuery.of(context).size.width / 1.8,
       padding: EdgeInsets.only(
         top: Insets().appPadding,
       ),
