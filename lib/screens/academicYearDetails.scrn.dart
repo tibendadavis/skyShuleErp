@@ -62,8 +62,6 @@ class _academicYearDetailState extends State<academicYearDetails> {
           children: [
             Container(
               width: Responsive.isDesktop(context) ? 400 : size.width,
-              margin: EdgeInsets.only(
-                  right: Responsive.isDesktop(context) ? 0 : 10),
               child: tile3(
                 icon: Icons.calendar_month_rounded,
                 link: addAcademicYearDetails(),
