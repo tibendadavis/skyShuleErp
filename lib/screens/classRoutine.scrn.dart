@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
+import 'package:skyconnect_starter/components/downloadBar.comp.dart';
 import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading1.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
@@ -11,6 +12,9 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/searchBar.comp.dart';
+import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
+import 'package:skyconnect_starter/components/tile3.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/addClassRoutine.scrn.dart';
 import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
@@ -44,9 +48,9 @@ class _classRoutineState extends State<classRoutine> {
               right: Insets().appGap),
           child: HeadingText(
             size: Responsive.isDesktop(context) ? 35 : 30,
-            value: "CLASS ROUTINE",
+            value: "Class Routine",
             fontWeight: FontWeight.w700,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
         Flex(
@@ -57,272 +61,19 @@ class _classRoutineState extends State<classRoutine> {
               width: Responsive.isDesktop(context)
                   ? 410
                   : MediaQuery.of(context).size.width,
-              child: Container(
-                margin: EdgeInsets.only(
-                    left: Responsive.isDesktop(context)
-                        ? Insets().appPadding * 2
-                        : Insets().appPadding,
-                    right:
-                        Responsive.isDesktop(context) ? 0 : Insets().appPadding,
-                    top: Responsive.isDesktop(context)
-                        ? Insets().appPadding
-                        : 13,
-                    bottom: Responsive.isDesktop(context)
-                        ? Insets().appPadding
-                        : 10),
-                padding: EdgeInsets.only(
-                    left: Insets().appPadding,
-                    right: Insets().appPadding,
-                    top: Insets().appGap + 2,
-                    bottom: Insets().appPadding),
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Palette().borderColor,
-                        blurRadius: 15.0, // soften the shadow
-                        spreadRadius: 2.0, //extend the shadow
-                        offset: Offset(
-                          1.0, // Move to right 5  horizontally
-                          2.0, // Move to bottom 5 Vertically
-                        ),
-                      )
-                    ],
-                    color: Palette().primaryColor,
-                    borderRadius:
-                        BorderRadius.circular(Insets().appRadiusMin + 4)),
-                child: SizedBox(
-                  height: 70,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: 50,
-                        color: Colors.white,
-                      ),
-                      Spacer(),
-                      ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (_) => addClassRoutine(),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4)),
-                              padding: EdgeInsets.all(Insets().appPadding)),
-                          child: Heading5(
-                            value: "Add Class Routine",
-                            color: Colors.black,
-                          ))
-                    ],
-                  ),
-                ),
+              child: tile3(
+                icon: Icons.route_outlined,
+                link: addClassRoutine(),
+                linkTitle: "Add Class Routine",
               ),
             ),
           ],
         ),
-        Container(
-          margin: EdgeInsets.only(
-              left: Responsive.isDesktop(context)
-                  ? Insets().appPadding * 2
-                  : Insets().appPadding,
-              right: Responsive.isDesktop(context)
-                  ? Insets().appPadding * 2
-                  : Insets().appPadding,
-              top: Insets().appPadding / 2,
-              bottom: Insets().appPadding / 2),
-          padding: EdgeInsets.only(
-              left: Insets().appPadding,
-              right: Insets().appGap / 2,
-              top: Insets().appGap / 3,
-              bottom: Insets().appGap / 3),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 2),
-              color: Palette().primaryColorLight,
-              borderRadius: BorderRadius.circular(Insets().appGap + 4)),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Container(
-                child: HeadingText(
-              size: Responsive.isDesktop(context) ? 18 : 16,
-              value: " Class Level: ",
-              fontWeight: FontWeight.w600,
-            )),
-            SizedBox(
-              width: Responsive.isDesktop(context) ? 10 : 5,
-            ),
-            Container(
-              width: Responsive.isDesktop(context) ? 300 : 150,
-              margin: EdgeInsets.only(
-                left: Insets().appGap,
-                right: Insets().appGap,
-              ),
-              padding: EdgeInsets.only(
-                left: Insets().appGap,
-              ),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Palette().borderColor, width: 1),
-                  color: Palette().primaryColor,
-                  borderRadius: BorderRadius.circular(Insets().appGap + 4)),
-              child: DropdownButton(
-                items: const [
-                  DropdownMenuItem(
-                      child: Heading6(
-                        value: "Nursery",
-                        color: Colors.white,
-                      ),
-                      value: "Nursery"),
-                  DropdownMenuItem(
-                      child: Heading6(value: "Primary", color: Colors.white),
-                      value: "Primary"),
-                  DropdownMenuItem(
-                      child: Heading6(value: "Secondary", color: Colors.white),
-                      value: "Secondary")
-                ],
-                hint: Heading6(
-                  value: "Class Level",
-                  color: Colors.white,
-                ),
-                value: _classlevel,
-                iconEnabledColor: Colors.white,
-                iconDisabledColor: Colors.white,
-                isExpanded: true,
-                underline: SizedBox(),
-                dropdownColor: Palette().primaryColor,
-                borderRadius: BorderRadius.circular(Insets().appRadiusMin + 4),
-                onChanged: ((value) {
-                  if (value is String) {
-                    setState(() {
-                      _classlevel = value;
-                    });
-                  }
-                }),
-              ),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-          ]),
+        searchBar(
+          title: "Search for Class Level",
+          opt1: searchInputOptions(title: "Class Level", opt1: ""),
         ),
-        Container(
-          margin: EdgeInsets.only(
-            left: Responsive.isDesktop(context) ? Insets().appPadding * 4 : 13,
-            right: Responsive.isDesktop(context) ? Insets().appPadding * 4 : 13,
-          ),
-          padding: EdgeInsets.only(
-              left: Insets().appGap / 2,
-              right: Insets().appGap / 2,
-              top: Insets().appGap / 3,
-              bottom: Insets().appGap / 3),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                width: Responsive.isDesktop(context) ? 140 : 130,
-                height: Responsive.isDesktop(context) ? 40 : 30,
-                margin: EdgeInsets.only(
-                  left: Insets().appGap,
-                  right: Insets().appGap,
-                ),
-                padding: EdgeInsets.only(
-                  left: Insets().appGap,
-                ),
-                decoration: BoxDecoration(
-                    border:
-                        Border.all(color: Palette().primaryColor, width: 1.5),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(Insets().appGap + 6)),
-                child: DropdownButton(
-                  items: [
-                    DropdownMenuItem(
-                        child: ListTile(
-                          dense: true,
-                          minVerticalPadding: 0,
-                          minLeadingWidth: 10,
-                          contentPadding: EdgeInsets.only(left: 10),
-                          onTap: () {},
-                          leading: Icon(
-                            Icons.picture_as_pdf,
-                            color: Palette().primaryColor,
-                            size: 20,
-                          ),
-                          title: Heading6(
-                            value: "PDF",
-                            color: Palette().primaryColor,
-                          ),
-                        ),
-                        value: "PDF"),
-                    DropdownMenuItem(
-                        child: ListTile(
-                          dense: true,
-                          minVerticalPadding: 0,
-                          minLeadingWidth: 10,
-                          contentPadding: EdgeInsets.only(left: 10),
-                          onTap: () {},
-                          leading: Icon(
-                            Icons.format_align_justify,
-                            color: Palette().primaryColor,
-                            size: 20,
-                          ),
-                          title: Heading6(
-                              value: "Excel", color: Palette().primaryColor),
-                        ),
-                        value: "Excel"),
-                    DropdownMenuItem(
-                        child: ListTile(
-                            dense: true,
-                            minVerticalPadding: 0,
-                            minLeadingWidth: 10,
-                            contentPadding: EdgeInsets.only(left: 10),
-                            onTap: () {},
-                            leading: Icon(
-                              Icons.description,
-                              color: Palette().primaryColor,
-                              size: 20,
-                            ),
-                            title: Heading6(
-                                value: "CSV", color: Palette().primaryColor)),
-                        value: "CSV")
-                  ],
-                  hint: Row(
-                    children: [
-                      Icon(
-                        Icons.cloud_download_outlined,
-                        color: Palette().primaryColor,
-                        size: Responsive.isDesktop(context) ? 25 : 20,
-                      ),
-                      SizedBox(
-                        width: Responsive.isDesktop(context) ? 7 : 5,
-                      ),
-                      Heading6(
-                        value: "Download",
-                        color: Palette().primaryColor,
-                      ),
-                    ],
-                  ),
-                  value: null,
-                  iconEnabledColor: Palette().primaryColor,
-                  iconDisabledColor: Palette().primaryColor,
-                  isExpanded: true,
-                  elevation: 1,
-                  underline: SizedBox(),
-                  dropdownColor: Colors.white,
-                  borderRadius:
-                      BorderRadius.circular(Insets().appRadiusMin + 4),
-                  onChanged: ((value) {
-                    if (true) {
-                      setState(() {
-                        _classlevel = value;
-                      });
-                    }
-                  }),
-                ),
-              ),
-            ],
-          ),
-        ),
+        downloadBar(results: ""),
         Expanded(
           child: ListView(children: [
             Container(
@@ -340,7 +91,7 @@ class _classRoutineState extends State<classRoutine> {
                   top: Insets().appPadding,
                   bottom: Insets().appPadding),
               decoration: BoxDecoration(
-                  color: Palette().primaryColorLight,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -409,7 +160,7 @@ class _classRoutineState extends State<classRoutine> {
                   top: Insets().appPadding,
                   bottom: Insets().appPadding),
               decoration: BoxDecoration(
-                  color: Palette().primaryColorLight,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -478,7 +229,7 @@ class _classRoutineState extends State<classRoutine> {
                   top: Insets().appPadding,
                   bottom: Insets().appPadding),
               decoration: BoxDecoration(
-                  color: Palette().primaryColorLight,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -547,7 +298,7 @@ class _classRoutineState extends State<classRoutine> {
                   top: Insets().appPadding,
                   bottom: Insets().appPadding),
               decoration: BoxDecoration(
-                  color: Palette().primaryColorLight,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
