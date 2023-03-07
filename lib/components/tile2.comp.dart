@@ -57,6 +57,8 @@ class _tile2State extends State<tile2> with TickerProviderStateMixin {
                     left: Responsive.isDesktop(context)
                         ? Insets().appPadding * 2
                         : Insets().appPadding,
+                    right:
+                        Responsive.isDesktop(context) ? 0 : Insets().appPadding,
                     top: Insets().appPadding,
                     bottom: Responsive.isDesktop(context)
                         ? Insets().appPadding
