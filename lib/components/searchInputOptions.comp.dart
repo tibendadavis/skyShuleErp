@@ -118,7 +118,7 @@ class _searchInputOptionsState extends State<searchInputOptions> {
                 value: widget.opt10!),
         ],
         hint: Heading6(
-          value: "Select ${widget.title}",
+          value: "${widget.title}",
           color: Colors.white,
         ),
         value: _value,
