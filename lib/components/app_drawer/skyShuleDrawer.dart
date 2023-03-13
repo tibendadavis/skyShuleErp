@@ -135,7 +135,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "link": HomePage(),
         "value": "Dashboard",
         "iconData": Icons.dashboard_rounded,
-        "selected": [false]
+        "selected": [false],
       },
       {
         "size": widget.size!,
@@ -200,7 +200,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
         "value": "Class",
         "link": classes(),
         "iconData": Icons.class_outlined,
-        "selected": [false]
+        "selected": [false],
       },
       {
         "size": widget.size!,
@@ -637,10 +637,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer> {
                               widget.onTap!(_drawerSize);
                             },
                             onTap: (val) {
-                              setState(() {
-                                items[index]["selected"][0] = val;
-                                print(items[index]["selected"][0]);
-                              });
+                              setState(() {});
                             }),
                       ))
             ],
