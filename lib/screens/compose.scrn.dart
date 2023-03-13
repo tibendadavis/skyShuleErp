@@ -59,9 +59,9 @@ class _composeState extends State<compose> {
               children: [
                 HeadingText(
                   size: Responsive.isDesktop(context) ? 35 : 20,
-                  value: "MESSAGES",
+                  value: "Messages",
                   fontWeight: FontWeight.w700,
-                  color: Colors.black,
+                  color: Colors.grey.shade800,
                 ),
                 SizedBox(
                   height: 10,
