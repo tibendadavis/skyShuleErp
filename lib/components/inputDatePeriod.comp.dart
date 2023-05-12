@@ -1,6 +1,6 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:file_picker/file_picker.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -19,6 +19,7 @@ class inputDatePeriod extends StatefulWidget {
   final String heading;
   final String subheading1;
   final String subheading2;
+  String? type;
   String? from;
   String? to;
   inputDatePeriod(
@@ -27,6 +28,7 @@ class inputDatePeriod extends StatefulWidget {
       required this.subheading1,
       required this.subheading2,
       this.from,
+      this.type,
       this.to});
 
   @override
@@ -58,14 +60,14 @@ class _inputDateState extends State<inputDatePeriod> {
             : CrossAxisAlignment.start,
         children: [
           HeadingText(
-              size: Responsive.isDesktop(context) ? 18 : 14,
+              size: Responsive.isDesktop(context) ? 15 : 14,
               value: widget.heading),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
                 width: Responsive.isDesktop(context) ? 400 : size.width,
-                height: Responsive.isDesktop(context) ? 50 : 40,
+                height: Responsive.isDesktop(context) ? 40 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -76,8 +78,25 @@ class _inputDateState extends State<inputDatePeriod> {
                       border: Border.all(width: 1.5, color: Colors.grey),
                       color: Colors.white,
                       borderRadius:
-                          BorderRadius.circular(Insets().appPadding / 1.5)),
+                          BorderRadius.circular(Insets().appPadding / 2)),
                   child: TextFormField(
+                      keyboardType: widget.type == "number"
+                          ? TextInputType.number
+                          : widget.type == "phone"
+                              ? TextInputType.phone
+                              : widget.type == "email"
+                                  ? TextInputType.emailAddress
+                                  : widget.type == "url"
+                                      ? TextInputType.url
+                                      : widget.type == "datetime"
+                                          ? TextInputType.datetime
+                                          : widget.type == "address"
+                                              ? TextInputType.streetAddress
+                                              : widget.type == "multline"
+                                                  ? TextInputType.multiline
+                                                  : widget.type == "name"
+                                                      ? TextInputType.name
+                                                      : null,
                       style: GoogleFonts.openSans(
                         fontSize: Responsive.isDesktop(context) ? 16 : 14,
                       ),
@@ -86,7 +105,7 @@ class _inputDateState extends State<inputDatePeriod> {
                       onTap: () async {
                         final date = await Funcs().selectDate(context: context);
                         final formattedDate =
-                            DateFormat('yyyy-MM-dd').format(date!);
+                            Funcs().getDateString(date: date!);
                         setState(() {
                           _from.text = formattedDate;
                         });
@@ -127,7 +146,7 @@ class _inputDateState extends State<inputDatePeriod> {
                       onTap: () async {
                         final date = await Funcs().selectDate(context: context);
                         final formattedDate =
-                            DateFormat('yyyy-MM-dd').format(date!);
+                            Funcs().getDateString(date: date!);
                         setState(() {
                           _to.text = formattedDate;
                         });
