@@ -1,17 +1,6 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/tile.comp.dart';
-import 'package:skyconnect_starter/controllers/funcs_main.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
@@ -95,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                             tileData4: "3")),
                     Expanded(
                         child: tile(
-                            tileHeading: "Teaching Staff Summary",
+                            tileHeading: "Teaching Summary",
                             tileLine1: "Total  Teachers",
                             tileLine2: "Teachers Present",
                             tileLine3: "Teachers Absent",
@@ -135,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       margin: EdgeInsets.only(top: Insets().appPadding / 2),
                       child: tile(
-                          tileHeading: "Teaching Staff Summary",
+                          tileHeading: "Teaching Summary",
                           tileLine1: "Total  Teachers",
                           tileLine2: "Teachers Present",
                           tileLine3: "Teachers Absent",
@@ -161,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       margin: EdgeInsets.only(top: Insets().appPadding / 2),
                       child: tile(
-                          tileHeading: "Non-Teaching Staff Summary",
+                          tileHeading: "Non-Teaching Summary",
                           tileLine1: "Total Non-Teacheing Staff",
                           tileLine2: "Non-Teaching Staff Present",
                           tileLine3: "Non-Teaching Staff Absent",
@@ -212,7 +201,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                         flex: 1,
                         child: tile(
-                            tileHeading: "Non-Teaching Staff Summary",
+                            tileHeading: "Non-Teaching Summary",
                             tileLine1: "Total Non-Teacheing Staff",
                             tileLine2: "Non-Teaching Staff Present",
                             tileLine3: "Non-Teaching Staff Absent",
