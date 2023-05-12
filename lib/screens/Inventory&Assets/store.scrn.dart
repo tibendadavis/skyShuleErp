@@ -12,10 +12,11 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addStore.scrn.dart';
-import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/Inventory&Assets/addStore.scrn.dart';
+
+import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
+import 'package:skyconnect_starter/screens/Terms/addTerm.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class store extends StatefulWidget {
