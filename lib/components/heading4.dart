@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Heading4 extends StatefulWidget {
   final String value;
+  final Paint? fpaint;
+  final Paint? bpaint;
   final Color? color;
   final TextAlign? align;
   final String? textFormat;
@@ -13,6 +15,8 @@ class Heading4 extends StatefulWidget {
       required this.value,
       this.color,
       this.align,
+      this.fpaint,
+      this.bpaint,
       this.textFormat,
       this.fontWeight})
       : super(key: key);
@@ -35,11 +39,11 @@ class _Heading4State extends State<Heading4> {
           .tr,
       textAlign: widget.align,
       style: GoogleFonts.openSans(
-        fontSize: 18,
-        fontWeight: widget.fontWeight ?? FontWeight.w500,
-        color: widget.color,
-        height: 1.2,
-      ),
+          fontSize: 18,
+          fontWeight: widget.fontWeight ?? FontWeight.w500,
+          color: widget.color,
+          height: 1.2,
+          foreground: widget.fpaint != null ? widget.fpaint : null),
     );
   }
 }
