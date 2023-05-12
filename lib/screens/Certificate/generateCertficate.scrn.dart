@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/certificate.comp.dart';
+import 'package:skyconnect_starter/components/downloadBar.comp.dart';
 import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading1.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
@@ -14,6 +14,9 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputDate.comp.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
@@ -57,9 +60,9 @@ class _generateCertificateState extends State<generateCertificate> {
                     right: Insets().appGap),
                 child: HeadingText(
                   size: Responsive.isDesktop(context) ? 35 : 30,
-                  value: "GENERATE CERTIFICATE",
+                  value: "Generate Certificate",
                   fontWeight: FontWeight.w700,
-                  color: Colors.black,
+                  color: Colors.grey.shade800,
                 ),
               ),
               Container(
@@ -103,407 +106,40 @@ class _generateCertificateState extends State<generateCertificate> {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Flex(
-                              direction: Responsive.isDesktop(context)
-                                  ? Axis.horizontal
-                                  : Axis.vertical,
-                              mainAxisAlignment: Responsive.isDesktop(context)
-                                  ? MainAxisAlignment.spaceBetween
-                                  : MainAxisAlignment.start,
-                              crossAxisAlignment: Responsive.isDesktop(context)
-                                  ? CrossAxisAlignment.center
-                                  : CrossAxisAlignment.start,
-                              children: [
-                                HeadingText(
-                                    size:
-                                        Responsive.isDesktop(context) ? 18 : 14,
-                                    value: "Certificate Type"),
-                                SizedBox(
-                                  width: 400,
-                                  height:
-                                      Responsive.isDesktop(context) ? 50 : 40,
-                                  child: Container(
-                                    padding: EdgeInsets.only(
-                                      left: Insets().appPadding / 2,
-                                      right: Insets().appPadding / 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.grey, width: 1.5),
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appGap + 4)),
-                                    child: DropdownButton(
-                                      items: const [
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                      ],
-                                      value: _classlevel,
-                                      isExpanded: true,
-                                      iconSize: 35,
-                                      icon: Icon(
-                                          Icons.keyboard_arrow_down_outlined),
-                                      underline: SizedBox(),
-                                      dropdownColor: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appRadiusMin + 4),
-                                      hint: Heading5(
-                                        value: "Certificate Type",
-                                      ),
-                                      onChanged: ((value) {
-                                        if (value is int) {
-                                          setState(() {
-                                            _classlevel = value;
-                                          });
-                                        }
-                                      }),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            inputOptions(
+                              title: "Certificate Type",
+                              opt1: "",
                             ),
                             SizedBox(
                               height: Responsive.isDesktop(context) ? 10 : 15,
                             ),
-                            Flex(
-                              direction: Responsive.isDesktop(context)
-                                  ? Axis.horizontal
-                                  : Axis.vertical,
-                              mainAxisAlignment: Responsive.isDesktop(context)
-                                  ? MainAxisAlignment.spaceBetween
-                                  : MainAxisAlignment.start,
-                              crossAxisAlignment: Responsive.isDesktop(context)
-                                  ? CrossAxisAlignment.center
-                                  : CrossAxisAlignment.start,
-                              children: [
-                                HeadingText(
-                                    size:
-                                        Responsive.isDesktop(context) ? 18 : 14,
-                                    value: "Prefix"),
-                                SizedBox(
-                                  width: 400,
-                                  height:
-                                      Responsive.isDesktop(context) ? 50 : 40,
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    padding: EdgeInsets.only(
-                                      left: Insets().appPadding / 2,
-                                      right: Insets().appPadding / 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 1.5, color: Colors.grey),
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appPadding / 1.5)),
-                                    child: TextFormField(
-                                        textAlignVertical:
-                                            TextAlignVertical.center,
-                                        decoration: const InputDecoration(
-                                          border: InputBorder.none,
-                                          hintText: "Prefix",
-                                        )),
-                                  ),
-                                ),
-                              ],
+                            inputTextField(title: "Prefix", hintText: "Prefix"),
+                            SizedBox(
+                              height: Responsive.isDesktop(context) ? 10 : 15,
+                            ),
+                            inputOptions(
+                              title: "Certificate For",
+                              opt1: "",
                             ),
                             SizedBox(
                               height: Responsive.isDesktop(context) ? 10 : 15,
                             ),
-                            Flex(
-                              direction: Responsive.isDesktop(context)
-                                  ? Axis.horizontal
-                                  : Axis.vertical,
-                              mainAxisAlignment: Responsive.isDesktop(context)
-                                  ? MainAxisAlignment.spaceBetween
-                                  : MainAxisAlignment.start,
-                              crossAxisAlignment: Responsive.isDesktop(context)
-                                  ? CrossAxisAlignment.center
-                                  : CrossAxisAlignment.start,
-                              children: [
-                                HeadingText(
-                                    size:
-                                        Responsive.isDesktop(context) ? 18 : 14,
-                                    value: "Certificate For"),
-                                SizedBox(
-                                  width: 400,
-                                  height:
-                                      Responsive.isDesktop(context) ? 50 : 40,
-                                  child: Container(
-                                    padding: EdgeInsets.only(
-                                      left: Insets().appPadding / 2,
-                                      right: Insets().appPadding / 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.grey, width: 1.5),
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appGap + 4)),
-                                    child: DropdownButton(
-                                      items: const [
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                      ],
-                                      value: _classlevel,
-                                      isExpanded: true,
-                                      iconSize: 35,
-                                      icon: Icon(
-                                          Icons.keyboard_arrow_down_outlined),
-                                      underline: SizedBox(),
-                                      dropdownColor: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appRadiusMin + 4),
-                                      hint: Heading5(
-                                        value: "Certificate For",
-                                      ),
-                                      onChanged: ((value) {
-                                        if (value is int) {
-                                          setState(() {
-                                            _classlevel = value;
-                                          });
-                                        }
-                                      }),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            inputDate(
+                                heading: "Certificate Issue Date",
+                                subheading: "Certificate Issue Date"),
+                            SizedBox(
+                              height: Responsive.isDesktop(context) ? 10 : 15,
+                            ),
+                            inputOptions(
+                              title: "Class",
+                              opt1: "",
                             ),
                             SizedBox(
                               height: Responsive.isDesktop(context) ? 10 : 15,
                             ),
-                            Flex(
-                              direction: Responsive.isDesktop(context)
-                                  ? Axis.horizontal
-                                  : Axis.vertical,
-                              mainAxisAlignment: Responsive.isDesktop(context)
-                                  ? MainAxisAlignment.spaceBetween
-                                  : MainAxisAlignment.start,
-                              crossAxisAlignment: Responsive.isDesktop(context)
-                                  ? CrossAxisAlignment.center
-                                  : CrossAxisAlignment.start,
-                              children: [
-                                HeadingText(
-                                    size:
-                                        Responsive.isDesktop(context) ? 18 : 14,
-                                    value: "Certificate Issue Date"),
-                                SizedBox(
-                                  width: 400,
-                                  height:
-                                      Responsive.isDesktop(context) ? 50 : 40,
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    padding: EdgeInsets.only(
-                                      left: Insets().appPadding / 2,
-                                      right: Insets().appPadding / 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 1.5, color: Colors.grey),
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appPadding / 1.5)),
-                                    child: TextFormField(
-                                        controller: _issueDate,
-                                        readOnly: true,
-                                        onTap: () async {
-                                          final date = await Funcs()
-                                              .selectDate(context: context);
-                                          final formattedDate =
-                                              DateFormat('yyyy-MM-dd')
-                                                  .format(date!);
-                                          setState(() {
-                                            _issueDate.text = formattedDate;
-                                          });
-                                        },
-                                        textAlignVertical:
-                                            TextAlignVertical.center,
-                                        decoration: InputDecoration(
-                                          suffixIcon: Icon(
-                                            Icons.calendar_month_rounded,
-                                          ),
-                                          border: InputBorder.none,
-                                          hintText: "Certificate Issue Date",
-                                        )),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: Responsive.isDesktop(context) ? 10 : 15,
-                            ),
-                            Flex(
-                              direction: Responsive.isDesktop(context)
-                                  ? Axis.horizontal
-                                  : Axis.vertical,
-                              mainAxisAlignment: Responsive.isDesktop(context)
-                                  ? MainAxisAlignment.spaceBetween
-                                  : MainAxisAlignment.start,
-                              crossAxisAlignment: Responsive.isDesktop(context)
-                                  ? CrossAxisAlignment.center
-                                  : CrossAxisAlignment.start,
-                              children: [
-                                HeadingText(
-                                    size:
-                                        Responsive.isDesktop(context) ? 18 : 14,
-                                    value: "Class"),
-                                SizedBox(
-                                  width: 400,
-                                  height:
-                                      Responsive.isDesktop(context) ? 50 : 40,
-                                  child: Container(
-                                    padding: EdgeInsets.only(
-                                      left: Insets().appPadding / 2,
-                                      right: Insets().appPadding / 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.grey, width: 1.5),
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appGap + 4)),
-                                    child: DropdownButton(
-                                      items: const [
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                      ],
-                                      value: _classlevel,
-                                      isExpanded: true,
-                                      iconSize: 35,
-                                      icon: Icon(
-                                          Icons.keyboard_arrow_down_outlined),
-                                      underline: SizedBox(),
-                                      dropdownColor: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appRadiusMin + 4),
-                                      hint: Heading5(
-                                        value: "Select Class",
-                                      ),
-                                      onChanged: ((value) {
-                                        if (value is int) {
-                                          setState(() {
-                                            _classlevel = value;
-                                          });
-                                        }
-                                      }),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: Responsive.isDesktop(context) ? 10 : 15,
-                            ),
-                            Flex(
-                              direction: Responsive.isDesktop(context)
-                                  ? Axis.horizontal
-                                  : Axis.vertical,
-                              mainAxisAlignment: Responsive.isDesktop(context)
-                                  ? MainAxisAlignment.spaceBetween
-                                  : MainAxisAlignment.start,
-                              crossAxisAlignment: Responsive.isDesktop(context)
-                                  ? CrossAxisAlignment.center
-                                  : CrossAxisAlignment.start,
-                              children: [
-                                HeadingText(
-                                    size:
-                                        Responsive.isDesktop(context) ? 18 : 14,
-                                    value: "Stream"),
-                                SizedBox(
-                                  width: 400,
-                                  height:
-                                      Responsive.isDesktop(context) ? 50 : 40,
-                                  child: Container(
-                                    padding: EdgeInsets.only(
-                                      left: Insets().appPadding / 2,
-                                      right: Insets().appPadding / 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.grey, width: 1.5),
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appGap + 4)),
-                                    child: DropdownButton(
-                                      items: const [
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                        DropdownMenuItem(
-                                            child: Heading5(
-                                              value: "",
-                                            ),
-                                            value: ""),
-                                      ],
-                                      value: _classlevel,
-                                      isExpanded: true,
-                                      iconSize: 35,
-                                      icon: Icon(
-                                          Icons.keyboard_arrow_down_outlined),
-                                      underline: SizedBox(),
-                                      dropdownColor: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appRadiusMin + 4),
-                                      hint: Heading5(
-                                        value: "Select Stream",
-                                      ),
-                                      onChanged: ((value) {
-                                        if (value is int) {
-                                          setState(() {
-                                            _classlevel = value;
-                                          });
-                                        }
-                                      }),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            inputOptions(
+                              title: "Stream",
+                              opt1: "",
                             ),
                             SizedBox(
                               height: Responsive.isDesktop(context) ? 10 : 15,
@@ -546,150 +182,29 @@ class _generateCertificateState extends State<generateCertificate> {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: Responsive.isDesktop(context) ? 10 : 15,
-                            ),
                           ]),
                     ),
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: Responsive.isDesktop(context)
-                      ? Insets().appPadding * 4
-                      : 12,
-                  right: Responsive.isDesktop(context)
-                      ? Insets().appPadding * 4
-                      : 12,
-                ),
-                padding: EdgeInsets.only(
-                    left: Insets().appGap / 2,
-                    right: Insets().appGap / 2,
-                    top: Insets().appGap / 3,
-                    bottom: Insets().appGap / 3),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      width: Responsive.isDesktop(context) ? 140 : 130,
-                      height: Responsive.isDesktop(context) ? 40 : 30,
-                      margin: EdgeInsets.only(
-                        left: Insets().appGap,
-                        right: Insets().appGap,
-                      ),
-                      padding: EdgeInsets.only(
-                        left: Insets().appGap,
-                      ),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Palette().primaryColor, width: 1.5),
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appGap + 6)),
-                      child: DropdownButton(
-                        items: [
-                          DropdownMenuItem(
-                              child: ListTile(
-                                dense: true,
-                                minVerticalPadding: 0,
-                                minLeadingWidth: 10,
-                                contentPadding: EdgeInsets.only(left: 10),
-                                onTap: () {},
-                                leading: Icon(
-                                  Icons.picture_as_pdf,
-                                  color: Palette().primaryColor,
-                                  size: 20,
-                                ),
-                                title: Heading6(
-                                  value: "PDF",
-                                  color: Palette().primaryColor,
-                                ),
-                              ),
-                              value: "PDF"),
-                          DropdownMenuItem(
-                              child: ListTile(
-                                dense: true,
-                                minVerticalPadding: 0,
-                                minLeadingWidth: 10,
-                                contentPadding: EdgeInsets.only(left: 10),
-                                onTap: () {},
-                                leading: Icon(
-                                  Icons.format_align_justify,
-                                  color: Palette().primaryColor,
-                                  size: 20,
-                                ),
-                                title: Heading6(
-                                    value: "Excel",
-                                    color: Palette().primaryColor),
-                              ),
-                              value: "Excel"),
-                          DropdownMenuItem(
-                              child: ListTile(
-                                  dense: true,
-                                  minVerticalPadding: 0,
-                                  minLeadingWidth: 10,
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  onTap: () {},
-                                  leading: Icon(
-                                    Icons.description,
-                                    color: Palette().primaryColor,
-                                    size: 20,
-                                  ),
-                                  title: Heading6(
-                                      value: "CSV",
-                                      color: Palette().primaryColor)),
-                              value: "CSV")
-                        ],
-                        hint: Row(
-                          children: [
-                            Icon(
-                              Icons.cloud_download_outlined,
-                              color: Palette().primaryColor,
-                              size: Responsive.isDesktop(context) ? 25 : 20,
-                            ),
-                            SizedBox(
-                              width: Responsive.isDesktop(context) ? 7 : 5,
-                            ),
-                            Heading6(
-                              value: "Download",
-                              color: Palette().primaryColor,
-                            ),
-                          ],
-                        ),
-                        value: null,
-                        iconEnabledColor: Palette().primaryColor,
-                        iconDisabledColor: Palette().primaryColor,
-                        isExpanded: true,
-                        elevation: 1,
-                        underline: SizedBox(),
-                        dropdownColor: Colors.white,
-                        borderRadius:
-                            BorderRadius.circular(Insets().appRadiusMin + 4),
-                        onChanged: ((value) {
-                          if (true) {
-                            setState(() {
-                              _classlevel = value;
-                            });
-                          }
-                        }),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              downloadBar(results: "7"),
               Expanded(
                 child: ListView(children: [
                   Container(
                     margin: EdgeInsets.only(
                       left: Responsive.isDesktop(context)
-                          ? Insets().appPadding * 2
+                          ? Insets().appPadding
                           : 13,
                       right: Responsive.isDesktop(context)
-                          ? Insets().appPadding * 2
+                          ? Insets().appPadding
                           : 13,
                     ),
-                    padding: EdgeInsets.only(bottom: Insets().appPadding),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.circular(Insets().appGap + 4)),
+                    padding: EdgeInsets.only(
+                        left: 15, right: 15, bottom: Insets().appPadding),
                     child: Center(
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
