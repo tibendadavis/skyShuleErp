@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:image/image.dart';
+
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
