@@ -59,7 +59,7 @@ class _inputOptionsState extends State<inputOptions> {
         children: [
           if (widget.title != null)
             HeadingText(
-                size: Responsive.isDesktop(context) ? 18 : 14,
+                size: Responsive.isDesktop(context) ? 15 : 14,
                 value: widget.title!),
           if (widget.opt1 != null)
             SizedBox(
@@ -70,16 +70,17 @@ class _inputOptionsState extends State<inputOptions> {
                       : widget.title == null
                           ? size.width / 2.8
                           : size.width,
-              height: Responsive.isDesktop(context) ? 50 : 40,
+              height: Responsive.isDesktop(context) ? 40 : 40,
               child: Container(
                 padding: EdgeInsets.only(
                   left: Insets().appPadding / 2,
                   right: Insets().appPadding / 2,
                 ),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 1.5),
+                    border: Border.all(color: Colors.grey, width: 1),
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(Insets().appGap + 4)),
+                    borderRadius:
+                        BorderRadius.circular(Insets().appPadding / 2)),
                 child: DropdownButton(
                   items: [
                     if (widget.opt1 != null)
