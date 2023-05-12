@@ -17,9 +17,9 @@ import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
 import 'package:skyconnect_starter/components/tile3.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addAssignment.scrn.dart';
-import 'package:skyconnect_starter/screens/addStream.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/Subjects/Teaching%20Tools/addAssignment.scrn.dart';
+import 'package:skyconnect_starter/screens/Streams/addStream.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class assignment extends StatefulWidget {
