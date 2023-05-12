@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
@@ -328,6 +328,43 @@ class Funcs {
     }
   }
 
+  final initialDateRange = DateTimeRange(
+    start: DateTime.now(),
+    end: DateTime.now().add(Duration(days: 7)),
+  );
+
+  Future<DateTimeRange?> selectDateRange(
+      {required BuildContext context, DateTime? initialDate}) async {
+    final DateTimeRange? pickedRange = await showDateRangePicker(
+      context: context,
+      firstDate: DateTime(2022, 1, 1), // the earliest allowable
+      lastDate: DateTime(2030, 12, 31), // the latest allowable
+      currentDate: DateTime.now(),
+      // initialDateRange: initialDateRange,
+
+      // firstDate: DateTime.now(),
+      // lastDate: DateTime.now().add(Duration(days: 365)),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.fromSwatch(
+              primarySwatch: Colors.green,
+              primaryColorDark: Palette().primaryColor,
+              accentColor: Palette().primaryColor,
+            ),
+            dialogBackgroundColor: Colors.white,
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (pickedRange != null && pickedRange != initialDateRange) {
+      return pickedRange;
+    } else {
+      return pickedRange;
+    }
+  }
+
   Future<TimeOfDay?> selectTime(
       {required BuildContext context, TimeOfDay? initialTime}) async {
     final TimeOfDay? picked = await showTimePicker(
@@ -376,12 +413,12 @@ class Funcs {
     return imgBytes;
   }
 
-  getFirebaseImageReference({required String title, required String username}) {
-    final imageRef = FirebaseStorage.instance
-        .ref()
-        .child("collections/$username/$title.png");
-    return imageRef;
-  }
+  // getFirebaseImageReference({required String title, required String username}) {
+  //   final imageRef = FirebaseStorage.instance
+  //       .ref()
+  //       .child("collections/$username/$title.png");
+  //   return imageRef;
+  // }
 
   // uploadToFirebaseAndGetURL({required String title, required String path, required String username}) async {
   //   final imageRef = await getFirebaseImageReference(title, username);
