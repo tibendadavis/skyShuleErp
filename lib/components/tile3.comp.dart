@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:hive/hive.dart';
+
 import 'package:skyconnect_starter/components/heading1.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
@@ -49,8 +49,6 @@ class _tile3State extends State<tile3> with TickerProviderStateMixin {
                     left: Responsive.isDesktop(context)
                         ? Insets().appPadding * 2
                         : Insets().appPadding,
-                    right:
-                        Responsive.isDesktop(context) ? 0 : Insets().appPadding,
                     top: Insets().appPadding,
                     bottom: Responsive.isDesktop(context)
                         ? Insets().appPadding
@@ -63,14 +61,17 @@ class _tile3State extends State<tile3> with TickerProviderStateMixin {
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topLeft,
-                        end: Alignment.topRight,
-                        colors: [Palette().primaryColor, Colors.white],
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.white,
+                          Palette().primaryColor.withOpacity(0.9)
+                        ],
                         stops: [0.6, 0.9],
                         tileMode: TileMode.clamp),
                     boxShadow: [
                       BoxShadow(
                         color: Palette().borderColor,
-                        blurRadius: 15.0, // soften the shadow
+                        blurRadius: Insets().appPadding, // soften the shadow
                         spreadRadius: 2.0, //extend the shadow
                         offset: Offset(
                           1.0, // Move to right 5  horizontally
@@ -88,7 +89,7 @@ class _tile3State extends State<tile3> with TickerProviderStateMixin {
                       Icon(
                         widget.icon,
                         size: 50,
-                        color: Colors.white,
+                        color: Palette().primaryColor,
                       ),
                       Spacer(),
                       ElevatedButton(
@@ -97,15 +98,16 @@ class _tile3State extends State<tile3> with TickerProviderStateMixin {
                                 context: context, builder: (_) => widget.link!);
                           },
                           style: ElevatedButton.styleFrom(
-                              elevation: 7,
+                              elevation: 12,
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4)),
-                              padding: EdgeInsets.all(Insets().appPadding)),
+                                      Insets().appRadiusMin)),
+                              padding: EdgeInsets.all(Insets().appPadding - 5)),
                           child: Heading5(
                             value: widget.linkTitle!,
-                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            color: Palette().primaryColor,
                           ))
                     ],
                   ),
