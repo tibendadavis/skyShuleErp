@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,11 +17,11 @@ import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
 import 'package:skyconnect_starter/components/tile3.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addBook.scrn.dart';
-import 'package:skyconnect_starter/screens/addBookReturn.scrn.dart';
-import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/Library/addBookReturn.scrn.dart';
+
+import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
+import 'package:skyconnect_starter/screens/Terms/addTerm.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class bookReturn extends StatefulWidget {
