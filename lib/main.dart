@@ -5,10 +5,13 @@ import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/mobileScaffold.comp.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
+import 'package:skyconnect_starter/controllers/globalVariables.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/pages/home/home.pg.dart';
+import 'package:skyconnect_starter/screens/Home/home.pg.dart';
 import 'package:skyconnect_starter/components/tabletScaffold.comp.dart';
-import 'package:skyconnect_starter/screens/login.scrn.dart';
+import 'package:skyconnect_starter/routes/routes.dart';
+import 'package:skyconnect_starter/screens/Login/login.scrn.dart';
+
 import 'package:skyconnect_starter/theme/design.theme.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
 
@@ -22,9 +25,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        navigatorKey: navigatorKey,
-        home: login());
+        routes: routes().route,
+        initialRoute: "/",
+        debugShowCheckedModeBanner: false);
   }
 }
 
@@ -58,7 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: skyShuleDrawer(
         size: 305,
         onTap: () {},
-        menu: false,
       ),
       body: Container(
           width: size.width,
@@ -78,7 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           _drawersize = val;
                         });
                       },
-                      menu: _menu,
                     )),
               Expanded(
                   child: Column(
@@ -91,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: (val) {
                           setState(() {
                             _drawersize = val[0];
-                            _menu = val[1];
+                            globalData.menu = val[1];
                           });
                         },
                       )),
