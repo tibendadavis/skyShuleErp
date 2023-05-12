@@ -8,6 +8,7 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/inputDatePeriod.comp.dart';
+import 'package:skyconnect_starter/components/searchInputDate.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
@@ -21,19 +22,22 @@ class searchBar extends StatefulWidget {
   searchInputOptions? opt5;
   searchInputOptions? opt6;
   searchInputOptions? opt7;
-  inputDatePeriod? opt8Dates;
+  searchInputDate? opt8;
+  searchInputDate? opt9;
 
-  searchBar(
-      {super.key,
-      required this.title,
-      this.opt1,
-      this.opt2,
-      this.opt3,
-      this.opt4,
-      this.opt5,
-      this.opt6,
-      this.opt7,
-      this.opt8Dates});
+  searchBar({
+    super.key,
+    required this.title,
+    this.opt1,
+    this.opt2,
+    this.opt3,
+    this.opt4,
+    this.opt5,
+    this.opt6,
+    this.opt7,
+    this.opt8,
+    this.opt9,
+  });
 
   @override
   State<searchBar> createState() => _searchBarState();
@@ -131,8 +135,8 @@ class _searchBarState extends State<searchBar> with TickerProviderStateMixin {
                         if (widget.opt5 != null) Expanded(child: widget.opt5!),
                         if (widget.opt6 != null) Expanded(child: widget.opt6!),
                         if (widget.opt7 != null) Expanded(child: widget.opt7!),
-                        if (widget.opt8Dates != null)
-                          Expanded(child: widget.opt8Dates!),
+                        if (widget.opt8 != null) Expanded(child: widget.opt8!),
+                        if (widget.opt9 != null) Expanded(child: widget.opt9!),
                         SizedBox(
                           width: 10,
                         ),
