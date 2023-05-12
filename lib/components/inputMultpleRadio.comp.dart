@@ -5,11 +5,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class inputMultipleRadio extends StatefulWidget {
   final String heading;
-  String? opt1;
-  String? opt2;
+  String opt1;
+  String opt2;
   String? opt3;
   String? opt4;
   String? opt5;
@@ -21,11 +22,12 @@ class inputMultipleRadio extends StatefulWidget {
   String? hint;
   bool? onlyTwo;
   bool? value;
+  Function? onSelect;
   inputMultipleRadio({
     super.key,
     required this.heading,
-    this.opt1,
-    this.opt2,
+    required this.opt1,
+    required this.opt2,
     this.opt3,
     this.opt4,
     this.opt5,
@@ -37,6 +39,7 @@ class inputMultipleRadio extends StatefulWidget {
     this.hint,
     this.value,
     this.onlyTwo,
+    this.onSelect,
   });
 
   @override
@@ -44,6 +47,8 @@ class inputMultipleRadio extends StatefulWidget {
 }
 
 class _inputMultipleRadioState extends State<inputMultipleRadio> {
+  var radio;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,8 +63,8 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
             : CrossAxisAlignment.start,
         children: [
           HeadingText(
-              size: Responsive.isDesktop(context) ? 18 : 14,
-              value: "Select ${widget.heading}"),
+              size: Responsive.isDesktop(context) ? 16 : 14,
+              value: "${widget.heading}"),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -70,32 +75,40 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                     Row(
                       children: [
                         Radio(
-                          value: false,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt1,
                           onChanged: (value) {
-                            value = true;
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
                           },
-                          groupValue: null,
+                          groupValue: radio,
                         ),
-                        Heading5(value: widget.opt1!),
+                        Heading5(value: widget.opt1),
                       ],
                     ),
                   SizedBox(
                     width:
                         Responsive.isDesktop(context) && widget.onlyTwo == true
-                            ? 100
-                            : 20,
+                            ? 50
+                            : 5,
                   ),
                   if (widget.opt2 != null)
                     Row(
                       children: [
                         Radio(
-                          value: widget.value,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt2,
                           onChanged: (value) {
-                            widget.value = true;
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
                           },
-                          groupValue: null,
+                          groupValue: radio,
                         ),
-                        Heading5(value: widget.opt2!),
+                        Heading5(value: widget.opt2),
                       ],
                     ),
                   SizedBox(
@@ -105,9 +118,15 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                     Row(
                       children: [
                         Radio(
-                          value: widget.value,
-                          onChanged: (value) {},
-                          groupValue: null,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt3!,
+                          onChanged: (value) {
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
+                          },
+                          groupValue: radio,
                         ),
                         Heading5(value: widget.opt3!),
                       ],
@@ -124,9 +143,15 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                     Row(
                       children: [
                         Radio(
-                          value: widget.value,
-                          onChanged: (value) {},
-                          groupValue: null,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt4!,
+                          onChanged: (value) {
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
+                          },
+                          groupValue: radio,
                         ),
                         Heading5(value: widget.opt4!),
                       ],
@@ -138,9 +163,15 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                     Row(
                       children: [
                         Radio(
-                          value: widget.value,
-                          onChanged: (value) {},
-                          groupValue: null,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt5!,
+                          onChanged: (value) {
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
+                          },
+                          groupValue: radio,
                         ),
                         Heading5(value: widget.opt5!),
                       ],
@@ -152,9 +183,15 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                     Row(
                       children: [
                         Radio(
-                          value: widget.value,
-                          onChanged: (value) {},
-                          groupValue: null,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt6!,
+                          onChanged: (value) {
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
+                          },
+                          groupValue: radio,
                         ),
                         Heading5(value: widget.opt6!),
                       ],
@@ -171,9 +208,15 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                     Row(
                       children: [
                         Radio(
-                          value: widget.value,
-                          onChanged: (value) {},
-                          groupValue: null,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt7!,
+                          onChanged: (value) {
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
+                          },
+                          groupValue: radio,
                         ),
                         Heading5(value: widget.opt7!),
                       ],
@@ -185,9 +228,15 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                     Row(
                       children: [
                         Radio(
-                          value: widget.value,
-                          onChanged: (value) {},
-                          groupValue: null,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt8!,
+                          onChanged: (value) {
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
+                          },
+                          groupValue: radio,
                         ),
                         Heading5(value: widget.opt8!),
                       ],
@@ -199,9 +248,15 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                     Row(
                       children: [
                         Radio(
-                          value: widget.value,
-                          onChanged: (value) {},
-                          groupValue: null,
+                          activeColor: Palette().primaryColor,
+                          value: widget.opt9!,
+                          onChanged: (value) {
+                            setState(() {
+                              radio = value;
+                              widget.onSelect!(value);
+                            });
+                          },
+                          groupValue: radio,
                         ),
                         Heading5(value: widget.opt9!),
                       ],
