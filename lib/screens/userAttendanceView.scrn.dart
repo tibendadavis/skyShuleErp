@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:html_editor_enhanced/html_editor.dart';
+
 import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading1.dart';
 import 'package:skyconnect_starter/components/heading3.dart';

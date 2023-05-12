@@ -3,16 +3,13 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:graphic/graphic.dart';
+
 import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
+import 'package:skyconnect_starter/controllers/globalVariables.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/main.dart';
-import 'package:skyconnect_starter/pages/home/home.pg.dart';
-import 'package:skyconnect_starter/screens/inbox.scrn.dart';
-import 'package:skyconnect_starter/screens/login.scrn.dart';
-import 'package:skyconnect_starter/screens/user_profile.scrn.dart';
+
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class header extends StatefulWidget {
@@ -29,18 +26,16 @@ class header extends StatefulWidget {
 class _headerState extends State<header> {
   double _drawersize = 250;
   var _userProfile;
-  bool _menu = false;
+  // bool _menu = false;
   @override
   Widget build(BuildContext context) {
     return Material(
       elevation: 1.5,
-      borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
       child: Container(
         padding: EdgeInsets.only(
           top: Insets().appPadding / 2,
           bottom: Insets().appPadding / 4,
-          right: 10,
+          right: Responsive.isDesktop(context) ? 10 : 5,
           left: Responsive.isDesktop(context) ? 15 : 5,
         ),
         child: Row(
@@ -60,14 +55,14 @@ class _headerState extends State<header> {
                         onPressed: () {
                           setState(() {
                             if (_drawersize == 250) {
-                              _drawersize = 90;
-                              _menu = true;
+                              _drawersize = 60;
+                              globalData.menu = true;
                             } else {
                               _drawersize = 250;
-                              _menu = false;
+                              globalData.menu = false;
                             }
                           });
-                          widget.onTap!([_drawersize, _menu]);
+                          widget.onTap!([_drawersize, globalData.menu]);
                         },
                         child: Icon(
                           Icons.menu,
@@ -112,19 +107,14 @@ class _headerState extends State<header> {
                 ),
               ),
             ),
+            SizedBox(
+              width: Insets().appGap,
+            ),
             Icon(Icons.notifications_outlined),
             SizedBox(
               width: Insets().appGap,
             ),
-            InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => MyHomePage(
-                      page: inbox(),
-                    ),
-                  ));
-                },
-                child: Icon(Icons.message_outlined)),
+            InkWell(onTap: () {}, child: Icon(Icons.message_outlined)),
             SizedBox(
               width: Insets().appGap,
             ),
@@ -158,13 +148,13 @@ class _headerState extends State<header> {
                     value: 1,
                     child: Row(
                       children: [
-                        Icon(Icons.grid_view_rounded,
+                        Icon(Icons.screen_lock_landscape_rounded,
                             color: Palette().primaryColor, size: 20),
                         SizedBox(
                           width: 10,
                         ),
                         Heading5(
-                          value: "View Profile",
+                          value: "Lock Screen",
                         ),
                       ],
                     )),
@@ -185,20 +175,6 @@ class _headerState extends State<header> {
                 PopupMenuItem(
                     value: 3,
                     child: Row(
-                      children: [
-                        Icon(Icons.model_training_rounded,
-                            color: Palette().primaryColor, size: 20),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Heading5(
-                          value: "Training",
-                        ),
-                      ],
-                    )),
-                PopupMenuItem(
-                    value: 4,
-                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Heading5(
@@ -217,16 +193,9 @@ class _headerState extends State<header> {
               elevation: 1.5,
               onSelected: (value) {
                 if (value == 1) {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => MyHomePage(
-                      page: userProfile(),
-                    ),
-                  ));
                 } else if (value == 2) {
                 } else if (value == 3) {
-                } else if (value == 4) {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => login()));
+                  Navigator.pushReplacementNamed(context, "/");
                 }
               },
             )
