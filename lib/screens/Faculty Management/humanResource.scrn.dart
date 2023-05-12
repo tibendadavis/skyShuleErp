@@ -14,15 +14,15 @@ import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addEmployeeSalary.scrn.dart';
-import 'package:skyconnect_starter/screens/addEnrollment.scrn.dart';
-import 'package:skyconnect_starter/screens/addEvaluationHR.scrn.dart';
-import 'package:skyconnect_starter/screens/addFaculty.scrn.dart';
-import 'package:skyconnect_starter/screens/addFeePayment.scrn.dart';
-import 'package:skyconnect_starter/screens/addPayroll.scrn.dart';
-import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/Payroll%20Management/addEmployeeSalary.scrn.dart';
+import 'package:skyconnect_starter/screens/Faculty%20Management/addEnrollment.scrn.dart';
+import 'package:skyconnect_starter/screens/Faculty%20Management/addEvaluationHR.scrn.dart';
+import 'package:skyconnect_starter/screens/Faculty%20Management/addFaculty.scrn.dart';
+import 'package:skyconnect_starter/screens/Finance%20Management/addFeePayment.scrn.dart';
+import 'package:skyconnect_starter/screens/Payroll%20Management/addPayroll.scrn.dart';
+import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
+import 'package:skyconnect_starter/screens/Terms/addTerm.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class humanResource extends StatefulWidget {
@@ -57,7 +57,7 @@ class _humanResourceState extends State<humanResource> {
               right: Insets().appGap),
           child: HeadingText(
             size: Responsive.isDesktop(context) ? 35 : 30,
-            value: "HUMAN RESOURCE",
+            value: "EVALUATIONS",
             fontWeight: FontWeight.w700,
             color: Colors.black,
           ),
