@@ -40,11 +40,11 @@ class _inputBigTextState extends State<inputBigText> {
             : CrossAxisAlignment.start,
         children: [
           HeadingText(
-              size: Responsive.isDesktop(context) ? 18 : 14,
+              size: Responsive.isDesktop(context) ? 15 : 14,
               value: widget.title),
           SizedBox(
             width: Responsive.isDesktop(context) ? 400 : size.width,
-            height: Responsive.isDesktop(context) ? 90 : 80,
+            height: Responsive.isDesktop(context) ? 120 : 80,
             child: Container(
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(
@@ -52,10 +52,9 @@ class _inputBigTextState extends State<inputBigText> {
                 right: Insets().appPadding / 2,
               ),
               decoration: BoxDecoration(
-                  border: Border.all(width: 1.5, color: Colors.grey),
+                  border: Border.all(width: 1, color: Colors.grey),
                   color: Colors.white,
-                  borderRadius:
-                      BorderRadius.circular(Insets().appPadding / 1.5)),
+                  borderRadius: BorderRadius.circular(Insets().appPadding / 2)),
               child: TextFormField(
                   style: GoogleFonts.openSans(
                     fontSize: Responsive.isDesktop(context) ? 16 : 14,
