@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,9 +13,9 @@ import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/main.dart';
-import 'package:skyconnect_starter/screens/addEnrollment.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
-import 'package:skyconnect_starter/screens/user_profile.scrn.dart';
+import 'package:skyconnect_starter/screens/Faculty%20Management/addEnrollment.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/components/user_profile.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class manageStudents extends StatefulWidget {
