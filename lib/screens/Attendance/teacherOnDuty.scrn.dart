@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,9 +12,9 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/addTeacherOnDuty.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
+import 'package:skyconnect_starter/screens/Attendance/addTeacherOnDuty.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class teacherOnDuty extends StatefulWidget {
