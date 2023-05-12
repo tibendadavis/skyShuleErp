@@ -14,10 +14,10 @@ import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addClass.scrn.dart';
-import 'package:skyconnect_starter/screens/addExamAttendance.scrn.dart';
+import 'package:skyconnect_starter/screens/Class/addClass.scrn.dart';
+import 'package:skyconnect_starter/screens/Attendance/addExamAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/Attendance/attendanceReport.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class examAttendance extends StatefulWidget {
