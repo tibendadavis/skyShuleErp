@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputDatePeriod.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
@@ -20,6 +21,7 @@ class searchBar extends StatefulWidget {
   searchInputOptions? opt5;
   searchInputOptions? opt6;
   searchInputOptions? opt7;
+  inputDatePeriod? opt8Dates;
 
   searchBar(
       {super.key,
@@ -30,7 +32,8 @@ class searchBar extends StatefulWidget {
       this.opt4,
       this.opt5,
       this.opt6,
-      this.opt7});
+      this.opt7,
+      this.opt8Dates});
 
   @override
   State<searchBar> createState() => _searchBarState();
@@ -108,7 +111,7 @@ class _searchBarState extends State<searchBar> with TickerProviderStateMixin {
                     children: [
                       if (Responsive.isDesktop(context)) ...[
                         Expanded(
-                            flex: 3,
+                            flex: 2,
                             child: TextFormField(
                                 style: GoogleFonts.openSans(
                                     fontSize: 20, fontWeight: FontWeight.w600),
@@ -121,20 +124,15 @@ class _searchBarState extends State<searchBar> with TickerProviderStateMixin {
                         SizedBox(
                           width: 10,
                         ),
-                        if (widget.opt1 != null)
-                          Expanded(flex: 1, child: widget.opt1!),
-                        if (widget.opt2 != null)
-                          Expanded(flex: 1, child: widget.opt2!),
-                        if (widget.opt3 != null)
-                          Expanded(flex: 1, child: widget.opt3!),
-                        if (widget.opt4 != null)
-                          Expanded(flex: 1, child: widget.opt4!),
-                        if (widget.opt5 != null)
-                          Expanded(flex: 1, child: widget.opt5!),
-                        if (widget.opt6 != null)
-                          Expanded(flex: 1, child: widget.opt6!),
-                        if (widget.opt7 != null)
-                          Expanded(flex: 1, child: widget.opt7!),
+                        if (widget.opt1 != null) Expanded(child: widget.opt1!),
+                        if (widget.opt2 != null) Expanded(child: widget.opt2!),
+                        if (widget.opt3 != null) Expanded(child: widget.opt3!),
+                        if (widget.opt4 != null) Expanded(child: widget.opt4!),
+                        if (widget.opt5 != null) Expanded(child: widget.opt5!),
+                        if (widget.opt6 != null) Expanded(child: widget.opt6!),
+                        if (widget.opt7 != null) Expanded(child: widget.opt7!),
+                        if (widget.opt8Dates != null)
+                          Expanded(child: widget.opt8Dates!),
                         SizedBox(
                           width: 10,
                         ),
