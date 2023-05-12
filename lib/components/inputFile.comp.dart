@@ -34,11 +34,11 @@ class _inputFileState extends State<inputFile> {
             : CrossAxisAlignment.start,
         children: [
           HeadingText(
-              size: Responsive.isDesktop(context) ? 18 : 14,
+              size: Responsive.isDesktop(context) ? 15 : 14,
               value: widget.heading),
           SizedBox(
             width: Responsive.isDesktop(context) ? 400 : size.width,
-            height: Responsive.isDesktop(context) ? 50 : 40,
+            height: Responsive.isDesktop(context) ? 45 : 40,
             child: Container(
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(
@@ -47,14 +47,13 @@ class _inputFileState extends State<inputFile> {
               ),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(width: 1.5, color: Colors.grey),
-                  borderRadius:
-                      BorderRadius.circular(Insets().appPadding / 1.5)),
+                  border: Border.all(width: 1, color: Colors.grey),
+                  borderRadius: BorderRadius.circular(Insets().appPadding / 2)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   HeadingText(
-                      size: Responsive.isDesktop(context) ? 15 : 13,
+                      size: Responsive.isDesktop(context) ? 14 : 13,
                       value: picked != null
                           ? picked.files.first.name.toString()
                           : "No File Choosen"),
@@ -77,9 +76,9 @@ class _inputFileState extends State<inputFile> {
                           top: Responsive.isDesktop(context) ? 17 : 14,
                         ),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                            borderRadius: BorderRadius.circular(7))),
                     child: HeadingText(
-                        size: Responsive.isDesktop(context) ? 15 : 13,
+                        size: Responsive.isDesktop(context) ? 14 : 13,
                         value: "Upload File"),
                   )
                 ],
