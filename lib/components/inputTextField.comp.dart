@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,12 +11,14 @@ class inputTextField extends StatefulWidget {
   final String title;
   String? value;
   bool? hide;
+  String? type;
   final String hintText;
   inputTextField(
       {super.key,
       required this.title,
       required this.hintText,
       this.value,
+      this.type,
       this.hide});
 
   @override
@@ -47,11 +50,11 @@ class _inputTextFieldState extends State<inputTextField> {
             : CrossAxisAlignment.start,
         children: [
           HeadingText(
-              size: Responsive.isDesktop(context) ? 18 : 14,
+              size: Responsive.isDesktop(context) ? 15 : 14,
               value: widget.title),
           SizedBox(
             width: Responsive.isDesktop(context) ? 400 : size.width,
-            height: Responsive.isDesktop(context) ? 50 : 40,
+            height: Responsive.isDesktop(context) ? 40 : 40,
             child: Container(
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(
@@ -59,11 +62,27 @@ class _inputTextFieldState extends State<inputTextField> {
                 right: Insets().appPadding / 2,
               ),
               decoration: BoxDecoration(
-                  border: Border.all(width: 1.5, color: Colors.grey),
+                  border: Border.all(width: 1, color: Colors.grey),
                   color: Colors.white,
-                  borderRadius:
-                      BorderRadius.circular(Insets().appPadding / 1.5)),
+                  borderRadius: BorderRadius.circular(Insets().appPadding / 2)),
               child: TextFormField(
+                  keyboardType: widget.type == "number"
+                      ? TextInputType.number
+                      : widget.type == "phone"
+                          ? TextInputType.phone
+                          : widget.type == "email"
+                              ? TextInputType.emailAddress
+                              : widget.type == "url"
+                                  ? TextInputType.url
+                                  : widget.type == "datetime"
+                                      ? TextInputType.datetime
+                                      : widget.type == "address"
+                                          ? TextInputType.streetAddress
+                                          : widget.type == "multline"
+                                              ? TextInputType.multiline
+                                              : widget.type == "name"
+                                                  ? TextInputType.name
+                                                  : null,
                   style: GoogleFonts.openSans(
                     fontSize: Responsive.isDesktop(context) ? 16 : 14,
                   ),
