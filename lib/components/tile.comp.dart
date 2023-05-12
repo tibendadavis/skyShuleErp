@@ -11,12 +11,12 @@ class tile extends StatefulWidget {
   final String tileLine1;
   final String tileLine2;
   final String tileLine3;
-  String? tileLine4;
+  final String tileLine4;
 
   final String tileData1;
   final String tileData2;
   final String tileData3;
-  String? tileData4;
+  final String tileData4;
   tile(
       {super.key,
       required this.tileHeading,
@@ -26,8 +26,8 @@ class tile extends StatefulWidget {
       required this.tileData1,
       required this.tileData2,
       required this.tileData3,
-      this.tileLine4,
-      this.tileData4});
+      required this.tileLine4,
+      required this.tileData4});
 
   @override
   State<tile> createState() => _tileState();
@@ -78,9 +78,18 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                       : Insets().appPadding / 2,
                 ),
                 decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.white,
+                          Palette().primaryColor.withOpacity(0.7)
+                        ],
+                        stops: [0.4, 0.7],
+                        tileMode: TileMode.clamp),
                     boxShadow: [
                       BoxShadow(
-                        color: Palette().borderColor,
+                        color: Palette().borderColor.withOpacity(0.6),
                         blurRadius:
                             Insets().appRadiusMin + 4, // soften the shadow
                         spreadRadius: 2.0, //extend the shadow
@@ -98,29 +107,29 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                     children: [
                       Icon(
                         Icons.local_hospital_rounded,
-                        color: Colors.white,
+                        color: Palette().primaryColor,
                       ),
                       SizedBox(
-                        width: 7,
+                        width: 3,
                       ),
                       Expanded(
                         child: Heading4(
                           value: widget.tileHeading,
-                          color: Colors.white,
+                          color: Palette().primaryColor,
                           fontWeight: FontWeight.w700,
                         ),
                       )
                     ],
                   ),
                   SizedBox(
-                    height: Responsive.isDesktop(context) ? 20 : 10,
+                    height: Responsive.isDesktop(context) ? 2 : 2,
                   ),
                   Row(
                     children: [
                       SizedBox(width: 7),
                       Icon(
                         Icons.circle,
-                        color: Colors.white,
+                        color: Palette().primaryColor,
                         size: 8,
                       ),
                       SizedBox(
@@ -128,21 +137,24 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                       ),
                       Heading5(
                         value: widget.tileLine1,
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       ),
                       Spacer(),
-                      Heading5(value: widget.tileData1, color: Colors.white)
+                      Heading4(
+                          value: widget.tileData1,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white)
                     ],
                   ),
                   SizedBox(
-                    height: 2,
+                    height: 1,
                   ),
                   Row(
                     children: [
                       SizedBox(width: 7),
                       Icon(
                         Icons.circle,
-                        color: Colors.white,
+                        color: Palette().primaryColor,
                         size: 8,
                       ),
                       SizedBox(
@@ -150,21 +162,24 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                       ),
                       Heading5(
                         value: widget.tileLine2,
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       ),
                       Spacer(),
-                      Heading5(value: widget.tileData2, color: Colors.white)
+                      Heading4(
+                          value: widget.tileData2,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white)
                     ],
                   ),
                   SizedBox(
-                    height: 2,
+                    height: 1,
                   ),
                   Row(
                     children: [
                       SizedBox(width: 7),
                       Icon(
                         Icons.circle,
-                        color: Colors.white,
+                        color: Palette().primaryColor,
                         size: 8,
                       ),
                       SizedBox(
@@ -172,32 +187,39 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                       ),
                       Heading5(
                         value: widget.tileLine3,
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       ),
                       Spacer(),
-                      Heading5(value: widget.tileData3, color: Colors.white)
+                      Heading4(
+                          value: widget.tileData3,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white)
                     ],
                   ),
                   SizedBox(
-                    height: 2,
+                    height: 1,
                   ),
                   Row(
                     children: [
                       SizedBox(width: 7),
                       Icon(
                         Icons.circle,
-                        color: Colors.white,
+                        color: Palette().primaryColor,
                         size: 8,
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Heading5(
-                        value: widget.tileLine4!,
-                        color: Colors.white,
+                        value: widget.tileLine4,
+                        color: Colors.grey.shade700,
                       ),
                       Spacer(),
-                      Heading5(value: widget.tileData4!, color: Colors.white)
+                      Heading4(
+                        value: widget.tileData4,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      )
                     ],
                   )
                 ]),
