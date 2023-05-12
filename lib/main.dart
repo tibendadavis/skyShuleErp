@@ -7,11 +7,8 @@ import 'package:skyconnect_starter/components/mobileScaffold.comp.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/globalVariables.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/Home/home.pg.dart';
 import 'package:skyconnect_starter/components/tabletScaffold.comp.dart';
 import 'package:skyconnect_starter/routes/routes.dart';
-import 'package:skyconnect_starter/screens/Login/login.scrn.dart';
-
 import 'package:skyconnect_starter/theme/design.theme.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
 
