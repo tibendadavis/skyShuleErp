@@ -71,7 +71,7 @@ import 'package:skyconnect_starter/screens/Subjects/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/eResources/liveStudies.scrn.dart';
 import 'package:skyconnect_starter/screens/Users/manage_students.scrn.dart';
 import 'package:skyconnect_starter/screens/Mark/mark.scrn.dart';
-import 'package:skyconnect_starter/screens/members.scrn.dart';
+
 import 'package:skyconnect_starter/screens/Hostel%20Management/membersHostel.scrn.dart';
 import 'package:skyconnect_starter/screens/Exams/minorSchoolExams.scrn.dart';
 import 'package:skyconnect_starter/screens/News&Announcements/newsBoard.scrn.dart';
