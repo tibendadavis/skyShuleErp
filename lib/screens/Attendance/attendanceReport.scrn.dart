@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
+import 'package:skyconnect_starter/components/downloadBar.comp.dart';
 import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading1.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
@@ -12,6 +13,8 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/searchBar.comp.dart';
+import 'package:skyconnect_starter/components/searchInputDate.comp.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
@@ -50,338 +53,17 @@ class _attendaceReportState extends State<attendanceReport> {
               right: Insets().appGap),
           child: HeadingText(
             size: Responsive.isDesktop(context) ? 35 : 30,
-            value: "ATTENDANCE REPORT",
+            value: "Attendance Report",
             fontWeight: FontWeight.w700,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(
-              left: Responsive.isDesktop(context)
-                  ? Insets().appPadding * 2
-                  : Insets().appPadding,
-              right: Responsive.isDesktop(context)
-                  ? Insets().appPadding * 2
-                  : Insets().appPadding,
-              top: Responsive.isDesktop(context) ? Insets().appPadding / 2 : 12,
-              bottom:
-                  Responsive.isDesktop(context) ? Insets().appPadding / 2 : 12),
-          padding: EdgeInsets.only(
-              left: Responsive.isDesktop(context) ? Insets().appPadding : 10,
-              right: Responsive.isDesktop(context) ? Insets().appPadding : 10,
-              top: Responsive.isDesktop(context) ? Insets().appPadding / 2 : 5,
-              bottom:
-                  Responsive.isDesktop(context) ? Insets().appPadding / 2 : 10),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 2),
-              color: Palette().primaryColorLight,
-              borderRadius: BorderRadius.circular(Insets().appGap + 4)),
-          child: Flex(
-              direction: Responsive.isDesktop(context)
-                  ? Axis.horizontal
-                  : Axis.vertical,
-              crossAxisAlignment: Responsive.isDesktop(context)
-                  ? CrossAxisAlignment.center
-                  : CrossAxisAlignment.start,
-              children: [
-                if (Responsive.isDesktop(context)) ...[
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(
-                        left: Insets().appPadding / 2,
-                        right: Insets().appPadding / 2,
-                      ),
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 1.5, color: Colors.grey),
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appPadding / 1.5)),
-                      child: TextFormField(
-                          controller: _startDate,
-                          readOnly: true,
-                          onTap: () async {
-                            final date =
-                                await Funcs().selectDate(context: context);
-                            final formattedDate =
-                                DateFormat('yyyy-MM-dd').format(date!);
-                            setState(() {
-                              _startDate.text = formattedDate;
-                            });
-                          },
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            suffixIcon: Icon(
-                              Icons.calendar_month_rounded,
-                              color: Palette().primaryColor,
-                            ),
-                            border: InputBorder.none,
-                            hintText: "Start Date",
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(
-                        left: Insets().appPadding / 2,
-                        right: Insets().appPadding / 2,
-                      ),
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 1.5, color: Colors.grey),
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(Insets().appPadding / 1.5)),
-                      child: TextFormField(
-                          controller: _endDate,
-                          readOnly: true,
-                          onTap: () async {
-                            final date =
-                                await Funcs().selectDate(context: context);
-                            final formattedDate =
-                                DateFormat('yyyy-MM-dd').format(date!);
-                            setState(() {
-                              _endDate.text = formattedDate;
-                            });
-                          },
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            suffixIcon: Icon(
-                              Icons.calendar_month_rounded,
-                              color: Palette().primaryColor,
-                            ),
-                            border: InputBorder.none,
-                            hintText: "End Date",
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Palette().primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4)),
-                              padding:
-                                  EdgeInsets.all(Insets().appPadding / 1.5)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.check,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Heading6(
-                                value: "View Attendance",
-                                color: Colors.white,
-                              ),
-                            ],
-                          ))),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Palette().primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appRadiusMin + 4)),
-                              padding:
-                                  EdgeInsets.all(Insets().appPadding / 1.5)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.restart_alt_rounded,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Heading6(
-                                value: "Clear",
-                                color: Colors.white,
-                              ),
-                            ],
-                          )))
-                ],
-                if (!Responsive.isDesktop(context)) ...[
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: SizedBox(
-                        width: MediaQuery.of(context).size.width - 63,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: size.width / 2.6,
-                              height: 37,
-                              margin: EdgeInsets.only(
-                                right: Insets().appGap,
-                              ),
-                              padding: EdgeInsets.only(
-                                left: Insets().appGap,
-                              ),
-                              decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.grey, width: 1),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: TextFormField(
-                                  controller: _startDate,
-                                  readOnly: true,
-                                  onTap: () async {
-                                    final date = await Funcs()
-                                        .selectDate(context: context);
-                                    final formattedDate =
-                                        DateFormat('yyyy-MM-dd').format(date!);
-                                    setState(() {
-                                      _startDate.text = formattedDate;
-                                    });
-                                  },
-                                  textAlignVertical: TextAlignVertical.center,
-                                  decoration: InputDecoration(
-                                    suffixIcon: Icon(
-                                      Icons.calendar_month_rounded,
-                                      color: Palette().primaryColor,
-                                    ),
-                                    border: InputBorder.none,
-                                    hintText: "Start Date",
-                                  )),
-                            ),
-                            Spacer(),
-                            Container(
-                              width: size.width / 2.6,
-                              height: 37,
-                              margin: EdgeInsets.only(
-                                right: Insets().appGap,
-                              ),
-                              padding: EdgeInsets.only(
-                                left: Insets().appGap,
-                              ),
-                              decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.grey, width: 1),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: TextFormField(
-                                  controller: _endDate,
-                                  readOnly: true,
-                                  onTap: () async {
-                                    final date = await Funcs()
-                                        .selectDate(context: context);
-                                    final formattedDate =
-                                        DateFormat('yyyy-MM-dd').format(date!);
-                                    setState(() {
-                                      _endDate.text = formattedDate;
-                                    });
-                                  },
-                                  textAlignVertical: TextAlignVertical.center,
-                                  decoration: InputDecoration(
-                                    suffixIcon: Icon(
-                                      Icons.calendar_month_rounded,
-                                      color: Palette().primaryColor,
-                                    ),
-                                    border: InputBorder.none,
-                                    hintText: "End Date",
-                                  )),
-                            ),
-                          ],
-                        )),
-                  ),
-                  SizedBox(
-                    width: Responsive.isDesktop(context) ? 10 : 0,
-                    height: Responsive.isDesktop(context) ? 0 : 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width / 2.5,
-                          child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Palette().primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appRadiusMin + 4)),
-                                  padding: EdgeInsets.all(
-                                      Insets().appPadding / 1.5)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.check,
-                                    color: Colors.white,
-                                    size: 25,
-                                  ),
-                                  SizedBox(
-                                    width: 3,
-                                  ),
-                                  HeadingText(
-                                    size: 10,
-                                    value: "View Attendance",
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ))),
-                      SizedBox(
-                        width: Responsive.isDesktop(context) ? 10 : 0,
-                      ),
-                      Container(
-                          width: MediaQuery.of(context).size.width / 2.5,
-                          child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Palette().primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          Insets().appRadiusMin + 4)),
-                                  padding: EdgeInsets.all(
-                                      Insets().appPadding / 1.5)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.restart_alt_rounded,
-                                    color: Colors.white,
-                                    size: 25,
-                                  ),
-                                  SizedBox(
-                                    width: 3,
-                                  ),
-                                  HeadingText(
-                                    size: 10,
-                                    value: "Clear",
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              )))
-                    ],
-                  ),
-                ]
-              ]),
-        ),
+        searchBar(
+            title: "Search ",
+            opt8: searchInputDate(title: "Start Date"),
+            opt9: searchInputDate(
+              title: "End Date",
+            )),
         Flex(
           direction:
               Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
@@ -541,141 +223,19 @@ class _attendaceReportState extends State<attendanceReport> {
                       : Insets().appPadding),
               child: Divider(color: Colors.grey, thickness: 2)),
         ),
-        Container(
-          margin: EdgeInsets.only(
-            left: Responsive.isDesktop(context) ? Insets().appPadding * 4 : 12,
-            right: Responsive.isDesktop(context) ? Insets().appPadding * 4 : 12,
-          ),
-          padding: EdgeInsets.only(
-              left: Insets().appGap / 2,
-              right: Insets().appGap / 2,
-              top: Insets().appGap / 3,
-              bottom: Insets().appGap / 3),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              HeadingText(
-                size: Responsive.isDesktop(context) ? 14 : 13,
-                value: "RESULTS (23)",
-                color: Palette().primaryColor,
-                fontWeight: FontWeight.w700,
-              ),
-              Container(
-                width: Responsive.isDesktop(context) ? 140 : 130,
-                height: Responsive.isDesktop(context) ? 40 : 30,
-                margin: EdgeInsets.only(
-                  left: Insets().appGap,
-                  right: Insets().appGap,
-                ),
-                padding: EdgeInsets.only(
-                  left: Insets().appGap,
-                ),
-                decoration: BoxDecoration(
-                    border:
-                        Border.all(color: Palette().primaryColor, width: 1.5),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(Insets().appGap + 6)),
-                child: DropdownButton(
-                  items: [
-                    DropdownMenuItem(
-                        child: ListTile(
-                          dense: true,
-                          minVerticalPadding: 0,
-                          minLeadingWidth: 10,
-                          contentPadding: EdgeInsets.only(left: 10),
-                          onTap: () {},
-                          leading: Icon(
-                            Icons.picture_as_pdf,
-                            color: Palette().primaryColor,
-                            size: 20,
-                          ),
-                          title: Heading6(
-                            value: "PDF",
-                            color: Palette().primaryColor,
-                          ),
-                        ),
-                        value: "PDF"),
-                    DropdownMenuItem(
-                        child: ListTile(
-                          dense: true,
-                          minVerticalPadding: 0,
-                          minLeadingWidth: 10,
-                          contentPadding: EdgeInsets.only(left: 10),
-                          onTap: () {},
-                          leading: Icon(
-                            Icons.format_align_justify,
-                            color: Palette().primaryColor,
-                            size: 20,
-                          ),
-                          title: Heading6(
-                              value: "Excel", color: Palette().primaryColor),
-                        ),
-                        value: "Excel"),
-                    DropdownMenuItem(
-                        child: ListTile(
-                            dense: true,
-                            minVerticalPadding: 0,
-                            minLeadingWidth: 10,
-                            contentPadding: EdgeInsets.only(left: 10),
-                            onTap: () {},
-                            leading: Icon(
-                              Icons.description,
-                              color: Palette().primaryColor,
-                              size: 20,
-                            ),
-                            title: Heading6(
-                                value: "CSV", color: Palette().primaryColor)),
-                        value: "CSV")
-                  ],
-                  hint: Row(
-                    children: [
-                      Icon(
-                        Icons.cloud_download_outlined,
-                        color: Palette().primaryColor,
-                        size: Responsive.isDesktop(context) ? 25 : 20,
-                      ),
-                      SizedBox(
-                        width: Responsive.isDesktop(context) ? 7 : 5,
-                      ),
-                      Heading6(
-                        value: "Download",
-                        color: Palette().primaryColor,
-                      ),
-                    ],
-                  ),
-                  value: null,
-                  iconEnabledColor: Palette().primaryColor,
-                  iconDisabledColor: Palette().primaryColor,
-                  isExpanded: true,
-                  elevation: 1,
-                  underline: SizedBox(),
-                  dropdownColor: Colors.white,
-                  borderRadius:
-                      BorderRadius.circular(Insets().appRadiusMin + 4),
-                  onChanged: ((value) {
-                    if (true) {
-                      setState(() {
-                        _download = value;
-                      });
-                    }
-                  }),
-                ),
-              ),
-            ],
-          ),
-        ),
+        downloadBar(results: "7"),
         Expanded(
           child: ListView(children: [
             Container(
               margin: EdgeInsets.only(
-                left: Responsive.isDesktop(context)
-                    ? Insets().appPadding * 2
-                    : 13,
-                right: Responsive.isDesktop(context)
-                    ? Insets().appPadding * 2
-                    : 13,
+                left: Responsive.isDesktop(context) ? Insets().appPadding : 13,
+                right: Responsive.isDesktop(context) ? Insets().appPadding : 13,
               ),
-              padding: EdgeInsets.only(bottom: Insets().appPadding),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(Insets().appGap + 4)),
+              padding: EdgeInsets.only(
+                  left: 15, right: 15, bottom: Insets().appPadding),
               child: Center(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
