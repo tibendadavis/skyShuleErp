@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,12 +12,12 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/addEmployeeSalary.scrn.dart';
-import 'package:skyconnect_starter/screens/addFeePayment.scrn.dart';
-import 'package:skyconnect_starter/screens/addPayroll.scrn.dart';
-import 'package:skyconnect_starter/screens/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/addTerm.scrn.dart';
-import 'package:skyconnect_starter/screens/student_admission.scrn.dart';
+import 'package:skyconnect_starter/screens/Payroll%20Management/addEmployeeSalary.scrn.dart';
+import 'package:skyconnect_starter/screens/Finance%20Management/addFeePayment.scrn.dart';
+import 'package:skyconnect_starter/screens/Payroll%20Management/addPayroll.scrn.dart';
+import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
+import 'package:skyconnect_starter/screens/Terms/addTerm.scrn.dart';
+import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class feePayment extends StatefulWidget {
