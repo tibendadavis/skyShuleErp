@@ -14,6 +14,9 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputBigText.comp.dart';
+import 'package:skyconnect_starter/components/inputFile.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/components/officialDetails.dart';
 import 'package:skyconnect_starter/components/otherFacilities.dart';
 import 'package:skyconnect_starter/components/parentsDetails.dart';
@@ -57,14 +60,18 @@ class _composeState extends State<compose> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                HeadingText(
-                  size: Responsive.isDesktop(context) ? 35 : 20,
-                  value: "Messages",
-                  fontWeight: FontWeight.w700,
-                  color: Colors.grey.shade800,
+                Container(
+                  alignment: Alignment.bottomLeft,
+                  padding: EdgeInsets.only(right: Insets().appGap),
+                  child: HeadingText(
+                    size: Responsive.isDesktop(context) ? 35 : 30,
+                    value: "Messages",
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey.shade800,
+                  ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,7 +133,7 @@ class _composeState extends State<compose> {
                 right: Insets().appPadding,
                 bottom: Insets().appPadding),
             decoration: BoxDecoration(
-                color: Palette().primaryColorLight,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(Insets().appRadius)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,216 +141,26 @@ class _composeState extends State<compose> {
                 Container(
                   width: !Responsive.isDesktop(context)
                       ? MediaQuery.of(context).size.width
-                      : MediaQuery.of(context).size.width / 1.8,
+                      : MediaQuery.of(context).size.width / 2.3,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "To"),
-                          SizedBox(
-                            width: 600,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.5, color: Colors.grey),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appPadding / 1.5)),
-                              child: TextFormField(
-                                  textAlignVertical: TextAlignVertical.center,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                  )),
-                            ),
-                          ),
-                        ],
-                      ),
+                      inputTextField(title: "To", hintText: ""),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Subject"),
-                          SizedBox(
-                            width: 600,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.5, color: Colors.grey),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appPadding / 1.5)),
-                              child: TextFormField(
-                                  textAlignVertical: TextAlignVertical.center,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                  )),
-                            ),
-                          ),
-                        ],
-                      ),
+                      inputTextField(title: "Subject", hintText: ""),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.start
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Compose"),
-                          SizedBox(
-                            width: 600,
-                            height: Responsive.isDesktop(context) ? 300 : 200,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.5, color: Colors.grey),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appPadding / 1.5)),
-                              child: Expanded(
-                                child: TextFormField(
-                                    textAlignVertical: TextAlignVertical.top,
-                                    maxLines: double.maxFinite.floor(),
-                                    keyboardType: TextInputType.multiline,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: "Compose Message",
-                                    )),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      inputBigText(
+                          title: "Compose", hintText: "Compose Message"),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Attachment"),
-                          SizedBox(
-                            width: 600,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.5, color: Colors.grey),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appPadding / 1.5)),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 15
-                                          : 13,
-                                      value: picked != null
-                                          ? picked.files.first.name.toString()
-                                          : "No Files Choosen"),
-                                  ElevatedButton(
-                                    onPressed: () async {
-                                      setState(() async {
-                                        picked = await FilePicker.platform
-                                            .pickFiles(allowMultiple: false);
-                                      });
-                                      if (picked != null) {
-                                        print(picked.files.first.name);
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Palette().primaryColor,
-                                        padding: EdgeInsets.only(
-                                          bottom: Responsive.isDesktop(context)
-                                              ? 17
-                                              : 14,
-                                          left: Insets().appPadding / 2,
-                                          right: Insets().appPadding / 2,
-                                          top: Responsive.isDesktop(context)
-                                              ? 17
-                                              : 14,
-                                        ),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10))),
-                                    child: HeadingText(
-                                        size: Responsive.isDesktop(context)
-                                            ? 15
-                                            : 13,
-                                        value: "Upload File(s)"),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      inputFile(heading: "Attachment"),
                       SizedBox(
-                        height: Responsive.isDesktop(context) ? 15 : 15,
+                        height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
                       Flex(
                         direction: Responsive.isDesktop(context)
@@ -357,7 +174,7 @@ class _composeState extends State<compose> {
                             : CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: 600,
+                            width: 400,
                             height: Responsive.isDesktop(context) ? 50 : 40,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -379,9 +196,6 @@ class _composeState extends State<compose> {
                             ),
                           ),
                         ],
-                      ),
-                      SizedBox(
-                        height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
                     ],
                   ),
