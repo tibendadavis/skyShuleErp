@@ -13,6 +13,8 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/screens/ID%20Cards/components/idCard.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
@@ -51,9 +53,9 @@ class _idCardsState extends State<idCards> {
               right: Insets().appGap),
           child: HeadingText(
             size: Responsive.isDesktop(context) ? 35 : 30,
-            value: "ID CARDS",
+            value: "ID Cards",
             fontWeight: FontWeight.w700,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
         Container(
@@ -74,7 +76,7 @@ class _idCardsState extends State<idCards> {
               bottom:
                   Responsive.isDesktop(context) ? Insets().appPadding / 2 : 10),
           decoration: BoxDecoration(
-              color: Palette().primaryColorLight,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(Insets().appGap + 4)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,331 +84,33 @@ class _idCardsState extends State<idCards> {
               Container(
                 width: !Responsive.isDesktop(context)
                     ? MediaQuery.of(context).size.width
-                    : MediaQuery.of(context).size.width / 2,
+                    : MediaQuery.of(context).size.width / 2.3,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Card Type Format"),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.grey, width: 1.5),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: DropdownButton(
-                                items: const [
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "Default",
-                                      ),
-                                      value: "Default"),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "Custom",
-                                      ),
-                                      value: "Custom"),
-                                ],
-                                value: _classlevel,
-                                isExpanded: true,
-                                iconSize: 35,
-                                icon: Icon(Icons.keyboard_arrow_down_outlined),
-                                underline: SizedBox(),
-                                dropdownColor: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appRadiusMin + 4),
-                                hint: Heading5(
-                                  value: "Card Type Format",
-                                ),
-                                onChanged: ((value) {
-                                  if (value is int) {
-                                    setState(() {
-                                      _classlevel = value;
-                                    });
-                                  }
-                                }),
-                              ),
-                            ),
-                          ),
-                        ],
+                      inputOptions(
+                        title: "ID Card For",
+                        opt1: "Student",
+                        opt2: "Teaching Staff",
+                        opt3: "Non Teaching Staff",
                       ),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "ID Card For"),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.grey, width: 1.5),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: DropdownButton(
-                                items: const [
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "Teacher",
-                                      ),
-                                      value: "Teacher"),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "Student",
-                                      ),
-                                      value: "Student"),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "Non Teaching",
-                                      ),
-                                      value: "Non Teaching"),
-                                ],
-                                value: _classlevel,
-                                isExpanded: true,
-                                iconSize: 35,
-                                icon: Icon(Icons.keyboard_arrow_down_outlined),
-                                underline: SizedBox(),
-                                dropdownColor: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appRadiusMin + 4),
-                                hint: Heading5(
-                                  value: "ID Card For",
-                                ),
-                                onChanged: ((value) {
-                                  if (value is int) {
-                                    setState(() {
-                                      _classlevel = value;
-                                    });
-                                  }
-                                }),
-                              ),
-                            ),
-                          ),
-                        ],
+                      inputOptions(
+                        title: "Department",
+                        opt1: "",
                       ),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Department"),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.grey, width: 1.5),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: DropdownButton(
-                                items: const [
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: " ",
-                                      ),
-                                      value: " "),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                ],
-                                value: _classlevel,
-                                isExpanded: true,
-                                iconSize: 35,
-                                icon: Icon(Icons.keyboard_arrow_down_outlined),
-                                underline: SizedBox(),
-                                dropdownColor: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appRadiusMin + 4),
-                                hint: Heading5(
-                                  value: "Department",
-                                ),
-                                onChanged: ((value) {
-                                  if (value is int) {
-                                    setState(() {
-                                      _classlevel = value;
-                                    });
-                                  }
-                                }),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      inputTextField(title: "Search", hintText: "Search"),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Search"),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.5, color: Colors.grey),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appPadding / 1.5)),
-                              child: TextFormField(
-                                  textAlignVertical: TextAlignVertical.center,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Search",
-                                  )),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: Responsive.isDesktop(context) ? 10 : 15,
-                      ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "ID Card Type"),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.grey, width: 1.5),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: DropdownButton(
-                                items: const [
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                ],
-                                value: _classlevel,
-                                isExpanded: true,
-                                iconSize: 35,
-                                icon: Icon(Icons.keyboard_arrow_down_outlined),
-                                underline: SizedBox(),
-                                dropdownColor: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appRadiusMin + 4),
-                                hint: Heading5(
-                                  value: "ID Card Type",
-                                ),
-                                onChanged: ((value) {
-                                  if (value is int) {
-                                    setState(() {
-                                      _classlevel = value;
-                                    });
-                                  }
-                                }),
-                              ),
-                            ),
-                          ),
-                        ],
+                      inputOptions(
+                        title: "ID Card Type",
+                        opt1: "",
                       ),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
@@ -443,15 +147,12 @@ class _idCardsState extends State<idCards> {
                               },
                               child: Center(
                                   child: HeadingText(
-                                size: Responsive.isDesktop(context) ? 18 : 14,
+                                size: Responsive.isDesktop(context) ? 16 : 14,
                                 value: "Generate ID Card",
                               )),
                             ),
                           ),
                         ],
-                      ),
-                      SizedBox(
-                        height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
                     ]),
               ),
@@ -498,8 +199,6 @@ class _idCardsState extends State<idCards> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        // margin: const EdgeInsets.only(
-                        //     left: 20.0, right: 12.0),
                         child: IDCardFront(
                             name: "name",
                             idNumber: "idNumber",
@@ -514,8 +213,6 @@ class _idCardsState extends State<idCards> {
                         height: Responsive.isDesktop(context) ? 0 : 15,
                       ),
                       Container(
-                        // margin: const EdgeInsets.only(
-                        //     left: 12.0, right: 20.0),
                         child: IDCardBack(),
                       )
                     ],
