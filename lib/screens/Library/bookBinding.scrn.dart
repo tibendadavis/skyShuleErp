@@ -65,7 +65,7 @@ class _bookBindingState extends State<bookBinding> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.book,
@@ -74,7 +74,7 @@ class _bookBindingState extends State<bookBinding> {
                 )),
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child:
                     tile2(tileHeading: "Total Book Bindings", tileData: "7")),
