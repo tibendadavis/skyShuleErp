@@ -64,7 +64,7 @@ class _bookReturnSettingState extends State<bookReturnSetting> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.book,
@@ -73,7 +73,7 @@ class _bookReturnSettingState extends State<bookReturnSetting> {
                 )),
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile2(
                     tileHeading: "Total Book Return Setting", tileData: "7")),
