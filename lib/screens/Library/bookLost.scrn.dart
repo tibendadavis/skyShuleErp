@@ -65,7 +65,7 @@ class _bookLostState extends State<bookLost> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.book,
@@ -74,7 +74,7 @@ class _bookLostState extends State<bookLost> {
                 )),
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile2(tileHeading: "Total Books Lost", tileData: "7")),
           ],
