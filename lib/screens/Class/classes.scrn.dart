@@ -62,7 +62,7 @@ class _classesState extends State<classes> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.class_rounded,
@@ -71,7 +71,7 @@ class _classesState extends State<classes> {
                 )),
             SizedBox(
               width: Responsive.isDesktop(context)
-                  ? 410
+                  ? 360
                   : MediaQuery.of(context).size.width,
               child: tile2(tileHeading: "Total Classes", tileData: "7"),
             ),
