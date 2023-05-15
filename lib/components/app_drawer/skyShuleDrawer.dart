@@ -358,7 +358,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer>
         "submenu2": [
           "Exam Schedule",
           examSchedule(),
-          Icons.extension,
+          Icons.schedule,
           "/exams/examSchedule"
         ],
         "submenu3ex": "Reports",
@@ -644,25 +644,25 @@ class _skyShuleDrawerState extends State<skyShuleDrawer>
       {
         "size": widget.size!,
         "value": "Leave Management",
-        "iconData": Icons.leave_bags_at_home_rounded,
+        "iconData": Icons.flight_takeoff_rounded,
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": globalData.selected[22],
         "submenu1": [
           "Leave category",
           leaveCategory(),
-          Icons.leave_bags_at_home_rounded,
+          Icons.flight_takeoff_rounded,
           "/leaveManagement/category"
         ],
         "submenu2": [
           "Employee Leave",
           employeeLeave(),
-          Icons.leave_bags_at_home_rounded,
+          Icons.flight_takeoff_rounded,
           "/leaveManagement/employee"
         ],
         "submenu3": [
           "Student Leave",
           studentLeave(),
-          Icons.leave_bags_at_home_rounded,
+          Icons.flight_takeoff_rounded,
           "/leaveManagement/student"
         ],
       },
@@ -752,7 +752,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer>
         "iconData": Icons.message_rounded,
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": globalData.selected[24],
-        "submenu1": ["Compose", compose(), Icons.create, "/messages/compose"],
+        // "submenu1": ["Compose", compose(), Icons.create, "/messages/compose"],
         "submenu2": ["Inbox", inbox(), Icons.inbox_rounded, "/messages/inbox"],
         "submenu3": ["Sent", sent(), Icons.email_outlined, "/messages/sent"],
         "submenu4": [

@@ -64,7 +64,7 @@ class _searchInputOptionsState extends State<searchInputOptions> {
         left: Insets().appGap,
       ),
       decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.7),
+          color: Colors.transparent,
           borderRadius: BorderRadius.circular(Insets().appPadding / 2)),
       child: DropdownButton(
         items: [
