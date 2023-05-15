@@ -13,6 +13,8 @@ import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
+import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/screens/ID%20Cards/components/idCard.comp.dart';
 import 'package:skyconnect_starter/screens/Finance%20Management/components/receipt.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
@@ -52,9 +54,9 @@ class _feeReceiptsState extends State<feeReceipts> {
               right: Insets().appGap),
           child: HeadingText(
             size: Responsive.isDesktop(context) ? 35 : 30,
-            value: "FEE RECEIPTS",
+            value: "Fee Receipts",
             fontWeight: FontWeight.w700,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
         Container(
@@ -75,7 +77,7 @@ class _feeReceiptsState extends State<feeReceipts> {
               bottom:
                   Responsive.isDesktop(context) ? Insets().appPadding / 2 : 10),
           decoration: BoxDecoration(
-              color: Palette().primaryColorLight,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(Insets().appGap + 4)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,342 +85,31 @@ class _feeReceiptsState extends State<feeReceipts> {
               Container(
                 width: !Responsive.isDesktop(context)
                     ? MediaQuery.of(context).size.width
-                    : MediaQuery.of(context).size.width / 2,
+                    : MediaQuery.of(context).size.width / 2.3,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Flex(
-                      //   direction: Responsive.isDesktop(context)
-                      //       ? Axis.horizontal
-                      //       : Axis.vertical,
-                      //   mainAxisAlignment: Responsive.isDesktop(context)
-                      //       ? MainAxisAlignment.spaceBetween
-                      //       : MainAxisAlignment.start,
-                      //   crossAxisAlignment:
-                      //       Responsive.isDesktop(context)
-                      //           ? CrossAxisAlignment.center
-                      //           : CrossAxisAlignment.start,
-                      //   children: [
-                      //     HeadingText(
-                      //         size: Responsive.isDesktop(context)
-                      //             ? 18
-                      //             : 14,
-                      //         value: "Card Type Format"),
-                      //     SizedBox(
-                      //       width: 400,
-                      //       height:
-                      //           Responsive.isDesktop(context) ? 50 : 40,
-                      //       child: Container(
-                      //         padding: EdgeInsets.only(
-                      //           left: Insets().appPadding / 2,
-                      //           right: Insets().appPadding / 2,
-                      //         ),
-                      //         decoration: BoxDecoration(
-                      //             border: Border.all(
-                      //                 color: Colors.grey, width: 1.5),
-                      //             color: Colors.white,
-                      //             borderRadius: BorderRadius.circular(
-                      //                 Insets().appGap + 4)),
-                      //         child: DropdownButton(
-                      //           items: const [
-                      //             DropdownMenuItem(
-                      //                 child: Heading5(
-                      //                   value: "Default",
-                      //                 ),
-                      //                 value: "Default"),
-                      //             DropdownMenuItem(
-                      //                 child: Heading5(
-                      //                   value: "Custom",
-                      //                 ),
-                      //                 value: "Custom"),
-                      //           ],
-                      //           value: _classlevel,
-                      //           isExpanded: true,
-                      //           iconSize: 35,
-                      //           icon: Icon(
-                      //               Icons.keyboard_arrow_down_outlined),
-                      //           underline: SizedBox(),
-                      //           dropdownColor: Colors.white,
-                      //           borderRadius: BorderRadius.circular(
-                      //               Insets().appRadiusMin + 4),
-                      //           hint: Heading5(
-                      //             value: "Card Type Format",
-                      //           ),
-                      //           onChanged: ((value) {
-                      //             if (value is int) {
-                      //               setState(() {
-                      //                 _classlevel = value;
-                      //               });
-                      //             }
-                      //           }),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // SizedBox(
-                      //   height: Responsive.isDesktop(context) ? 10 : 15,
-                      // ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Receipt For"),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.grey, width: 1.5),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: DropdownButton(
-                                items: const [
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "Student",
-                                      ),
-                                      value: "Student"),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "Teacher Staff",
-                                      ),
-                                      value: "Teacher Staff"),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "Non Teaching Staff",
-                                      ),
-                                      value: "Non Teaching Staff"),
-                                ],
-                                value: _classlevel,
-                                isExpanded: true,
-                                iconSize: 35,
-                                icon: Icon(Icons.keyboard_arrow_down_outlined),
-                                underline: SizedBox(),
-                                dropdownColor: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appRadiusMin + 4),
-                                hint: Heading5(
-                                  value: "Receipt For",
-                                ),
-                                onChanged: ((value) {
-                                  if (value is int) {
-                                    setState(() {
-                                      _classlevel = value;
-                                    });
-                                  }
-                                }),
-                              ),
-                            ),
-                          ),
-                        ],
+                      inputOptions(
+                        title: "Receipt For",
+                        opt1: "Student",
+                        opt2: "Teaching Staff",
+                        opt3: "Non Teaching Staff",
                       ),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Search"),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.5, color: Colors.grey),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appPadding / 1.5)),
-                              child: TextFormField(
-                                  textAlignVertical: TextAlignVertical.center,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Search",
-                                  )),
-                            ),
-                          ),
-                        ],
-                      ),
+                      inputTextField(title: "Search", hintText: "Search"),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Account No."),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.grey, width: 1.5),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: DropdownButton(
-                                items: const [
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: " ",
-                                      ),
-                                      value: " "),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                ],
-                                value: _classlevel,
-                                isExpanded: true,
-                                iconSize: 35,
-                                icon: Icon(Icons.keyboard_arrow_down_outlined),
-                                underline: SizedBox(),
-                                dropdownColor: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appRadiusMin + 4),
-                                hint: Heading5(
-                                  value: "Account No.",
-                                ),
-                                onChanged: ((value) {
-                                  if (value is int) {
-                                    setState(() {
-                                      _classlevel = value;
-                                    });
-                                  }
-                                }),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      inputOptions(title: "Account No.", opt1: ""),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-
-                      Flex(
-                        direction: Responsive.isDesktop(context)
-                            ? Axis.horizontal
-                            : Axis.vertical,
-                        mainAxisAlignment: Responsive.isDesktop(context)
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.start,
-                        crossAxisAlignment: Responsive.isDesktop(context)
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
-                        children: [
-                          HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 14,
-                              value: "Fee Payment"),
-                          SizedBox(
-                            width: 400,
-                            height: Responsive.isDesktop(context) ? 50 : 40,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: Insets().appPadding / 2,
-                                right: Insets().appPadding / 2,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.grey, width: 1.5),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      Insets().appGap + 4)),
-                              child: DropdownButton(
-                                items: const [
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: " ",
-                                      ),
-                                      value: " "),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                  DropdownMenuItem(
-                                      child: Heading5(
-                                        value: "",
-                                      ),
-                                      value: ""),
-                                ],
-                                value: _classlevel,
-                                isExpanded: true,
-                                iconSize: 35,
-                                icon: Icon(Icons.keyboard_arrow_down_outlined),
-                                underline: SizedBox(),
-                                dropdownColor: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appRadiusMin + 4),
-                                hint: Heading5(
-                                  value: "Fee Payment",
-                                ),
-                                onChanged: ((value) {
-                                  if (value is int) {
-                                    setState(() {
-                                      _classlevel = value;
-                                    });
-                                  }
-                                }),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      inputOptions(title: "Fee Payment", opt1: ""),
                       SizedBox(
                         height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
-
                       Flex(
                         direction: Responsive.isDesktop(context)
                             ? Axis.horizontal
@@ -457,9 +148,6 @@ class _feeReceiptsState extends State<feeReceipts> {
                             ),
                           ),
                         ],
-                      ),
-                      SizedBox(
-                        height: Responsive.isDesktop(context) ? 10 : 15,
                       ),
                     ]),
               ),
