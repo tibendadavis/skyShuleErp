@@ -62,12 +62,12 @@ class _defaultGradingState extends State<defaultGrading> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 400
                     : MediaQuery.of(context).size.width,
                 child: tile3(
-                  icon: Icons.grade_rounded,
+                  icon: Icons.grading_outlined,
                   link: addGrading(),
-                  linkTitle: "Add Grade",
+                  linkTitle: "New Grade",
                 )),
           ],
         ),
