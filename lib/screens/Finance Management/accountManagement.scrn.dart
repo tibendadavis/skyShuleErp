@@ -73,7 +73,7 @@ class _accountManagementState extends State<accountManagement> {
                     ? 410
                     : MediaQuery.of(context).size.width,
                 child: tile3(
-                  icon: Icons.manage_accounts_rounded,
+                  icon: Icons.balance_rounded,
                   link: addAccount(),
                   linkTitle: "Add Account",
                 )),
