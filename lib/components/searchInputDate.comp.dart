@@ -30,8 +30,8 @@ class _searchInputDateState extends State<searchInputDate> {
         right: Insets().appPadding / 2,
       ),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(Insets().appPadding / 1.5)),
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(Insets().appPadding / 2)),
       child: TextFormField(
           style: TextStyle(color: Palette().primaryColor),
           controller: _date,
