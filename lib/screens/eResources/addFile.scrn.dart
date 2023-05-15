@@ -160,18 +160,21 @@ class _addFileState extends State<addFile> with SingleTickerProviderStateMixin {
                               ),
                               inputOptions(
                                 title: "Class Level",
+                                opt1: "",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
                               inputOptions(
                                 title: "Class",
+                                opt1: "",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
                               inputOptions(
                                 title: "Subject",
+                                opt1: "",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,

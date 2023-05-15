@@ -65,16 +65,16 @@ class _classNotesState extends State<classNotes> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
-                  icon: Icons.note_add_rounded,
+                  icon: Icons.note_alt_sharp,
                   link: addClassNotes(),
                   linkTitle: "Add Class Notes",
                 )),
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile2(tileHeading: "Class Notes", tileData: "7")),
           ],
