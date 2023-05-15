@@ -1,4 +1,3 @@
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -185,7 +184,7 @@ class _addEventState extends State<addEvent>
                                         : CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    width: 500,
+                                    width: 400,
                                     height:
                                         Responsive.isDesktop(context) ? 50 : 40,
                                     child: ElevatedButton(
