@@ -1,30 +1,10 @@
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:path/path.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
-import 'package:skyconnect_starter/components/bankDetails.dart';
-import 'package:skyconnect_starter/components/contactsDetails.dart';
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/components/officialDetails.dart';
-import 'package:skyconnect_starter/components/otherFacilities.dart';
-import 'package:skyconnect_starter/components/parentsDetails.dart';
-import 'package:skyconnect_starter/components/personalDetails.dart';
-import 'package:skyconnect_starter/components/uploadDocuments.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/components/academicDetails.dart';
 import 'package:skyconnect_starter/main.dart';
-import 'package:skyconnect_starter/screens/Messages/inbox.scrn.dart';
 import 'package:skyconnect_starter/screens/Settings/institutionSettings.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -52,7 +32,6 @@ class _institutionDetailsState extends State<institutionDetails> {
           Container(
             alignment: Alignment.bottomLeft,
             padding: EdgeInsets.only(
-                top: Insets().appPadding,
                 left: Responsive.isDesktop(context)
                     ? Insets().appPadding * 2
                     : Insets().appPadding,
@@ -62,9 +41,9 @@ class _institutionDetailsState extends State<institutionDetails> {
               children: [
                 HeadingText(
                   size: Responsive.isDesktop(context) ? 25 : 20,
-                  value: "INSTITUTION DETAILS",
+                  value: "Institution Details",
                   fontWeight: FontWeight.w700,
-                  color: Colors.black,
+                  color: Colors.grey.shade800,
                 ),
                 SizedBox(
                   height: 10,
@@ -75,8 +54,8 @@ class _institutionDetailsState extends State<institutionDetails> {
                     Row(
                       children: [
                         Container(
-                          width: Responsive.isDesktop(context) ? 160 : 100,
-                          height: Responsive.isDesktop(context) ? 160 : 100,
+                          width: Responsive.isDesktop(context) ? 120 : 100,
+                          height: Responsive.isDesktop(context) ? 120 : 100,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -95,7 +74,7 @@ class _institutionDetailsState extends State<institutionDetails> {
                               fontWeight: Responsive.isDesktop(context)
                                   ? FontWeight.w800
                                   : FontWeight.w700,
-                              color: Colors.black,
+                              color: Colors.grey.shade900,
                             ),
                           ),
                         ),
@@ -160,7 +139,7 @@ class _institutionDetailsState extends State<institutionDetails> {
                   right: Insets().appPadding,
                   bottom: Insets().appPadding),
               decoration: BoxDecoration(
-                  color: Palette().primaryColorLight,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(Insets().appRadius)),
               child: Container(
                 child: Column(
@@ -177,8 +156,10 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Institution Name"),
                           SizedBox(
                             width: 20,
@@ -189,7 +170,7 @@ class _institutionDetailsState extends State<institutionDetails> {
                                 : size.width,
                             child: Expanded(
                               child: HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 16,
+                                  size: Responsive.isDesktop(context) ? 16 : 16,
                                   value:
                                       "Kolandoto College Of Health Sciences"),
                             ),
@@ -209,14 +190,16 @@ class _institutionDetailsState extends State<institutionDetails> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Institution Address"),
                           SizedBox(
                             width: 20,
                           ),
                           HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 16,
+                              size: Responsive.isDesktop(context) ? 16 : 16,
                               value: "P.O.Box 16, Shinyanga"),
                         ],
                       ),
@@ -233,14 +216,16 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Institution Phone"),
                           SizedBox(
                             width: 20,
                           ),
                           HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 16,
+                              size: Responsive.isDesktop(context) ? 16 : 16,
                               value: "+255625974142\n+255742155623"),
                         ],
                       ),
@@ -257,14 +242,16 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Institution Email"),
                           SizedBox(
                             width: 20,
                           ),
                           HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 16,
+                              size: Responsive.isDesktop(context) ? 16 : 16,
                               value: "kolandoto@gmail.com"),
                         ],
                       ),
@@ -281,8 +268,10 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Institution Website"),
                           SizedBox(
                             width: 20,
@@ -292,7 +281,7 @@ class _institutionDetailsState extends State<institutionDetails> {
                               Funcs().openLink(url: "http://kchs.ac.tz/");
                             },
                             child: HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 16,
+                              size: Responsive.isDesktop(context) ? 16 : 16,
                               value: "http://kchs.ac.tz/",
                               color: Palette().primaryColor,
                             ),
@@ -312,8 +301,10 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Institution Motto"),
                           SizedBox(
                             width: 20,
@@ -322,7 +313,7 @@ class _institutionDetailsState extends State<institutionDetails> {
                             width: 800,
                             child: Expanded(
                               child: HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 16,
+                                  size: Responsive.isDesktop(context) ? 16 : 16,
                                   value:
                                       "A Center of Excellence in health Training. We Serve the Lord Jesus Christ"),
                             ),
@@ -342,8 +333,10 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Institution Vision"),
                           SizedBox(
                             width: 20,
@@ -352,7 +345,7 @@ class _institutionDetailsState extends State<institutionDetails> {
                             width: 800,
                             child: Expanded(
                               child: HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 16,
+                                  size: Responsive.isDesktop(context) ? 16 : 16,
                                   value:
                                       "We envision to be, Reputable college in health and Allied Sciences. To meet National and International Needs"),
                             ),
@@ -372,8 +365,10 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Institution Mission"),
                           SizedBox(
                             width: 20,
@@ -382,7 +377,7 @@ class _institutionDetailsState extends State<institutionDetails> {
                             width: 800,
                             child: Expanded(
                               child: HeadingText(
-                                  size: Responsive.isDesktop(context) ? 18 : 16,
+                                  size: Responsive.isDesktop(context) ? 16 : 16,
                                   value:
                                       "Our Mission is, to provide High Quality Training, Research And Consultancy Services in Health and Allied sciences Though Efficient Use Of Available Resources To Meet National and International Needs"),
                             ),
@@ -402,14 +397,16 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Academic Year Start"),
                           SizedBox(
                             width: 20,
                           ),
                           HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 16,
+                              size: Responsive.isDesktop(context) ? 16 : 16,
                               value: "AcademicYearStart"),
                         ],
                       ),
@@ -426,14 +423,16 @@ class _institutionDetailsState extends State<institutionDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Heading4(
-                              fontWeight: FontWeight.w700,
+                          HeadingText(
+                              size: Responsive.isDesktop(context) ? 16 : 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey.shade600,
                               value: "Academic Year End"),
                           SizedBox(
                             width: 20,
                           ),
                           HeadingText(
-                              size: Responsive.isDesktop(context) ? 18 : 16,
+                              size: Responsive.isDesktop(context) ? 16 : 16,
                               value: "AcademicYearEnd"),
                         ],
                       ),
