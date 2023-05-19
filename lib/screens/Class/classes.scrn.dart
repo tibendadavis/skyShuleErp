@@ -44,7 +44,6 @@ class _classesState extends State<classes> {
         Container(
           alignment: Alignment.bottomLeft,
           padding: EdgeInsets.only(
-              top: Insets().appPadding,
               left: Responsive.isDesktop(context)
                   ? Insets().appPadding * 2
                   : Insets().appPadding,
