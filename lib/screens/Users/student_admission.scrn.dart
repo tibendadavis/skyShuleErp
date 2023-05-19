@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -50,7 +49,6 @@ class _studentAdmissionState extends State<studentAdmission> {
           Container(
             alignment: Alignment.bottomLeft,
             padding: EdgeInsets.only(
-                top: Insets().appPadding,
                 left: Responsive.isDesktop(context)
                     ? Insets().appPadding * 2
                     : Insets().appPadding,
@@ -59,10 +57,10 @@ class _studentAdmissionState extends State<studentAdmission> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HeadingText(
-                  size: Responsive.isDesktop(context) ? 25 : 19,
+                  size: Responsive.isDesktop(context) ? 30 : 20,
                   value: "STUDENT ENROLLMENT & ADMISSION",
                   fontWeight: FontWeight.w700,
-                  color: Colors.black,
+                  color: Colors.grey.shade800,
                 ),
                 HeadingText(
                   size: Responsive.isDesktop(context) ? 14 : 14,
