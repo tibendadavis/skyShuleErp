@@ -16,6 +16,7 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputOptions.comp.dart';
 import 'package:skyconnect_starter/components/officialDetails.dart';
 import 'package:skyconnect_starter/components/otherFacilities.dart';
 import 'package:skyconnect_starter/components/parentsDetails.dart';
@@ -57,126 +58,21 @@ class _promotionState extends State<promotion> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Heading2(
-                  value: "PROMOTION",
+                HeadingText(
+                  size: Responsive.isDesktop(context) ? 35 : 30,
+                  value: "Promotion",
                   fontWeight: FontWeight.w700,
-                  color: Colors.black,
+                  color: Colors.grey.shade800,
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                const Heading4(
+                HeadingText(
+                  size: Responsive.isDesktop(context) ? 18 : 15,
                   value: "Promote Student to Next Class",
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.grey.shade800,
                 ),
               ],
             ),
           ),
-          // Container(
-          //   alignment: Alignment.centerLeft,
-          //   padding: EdgeInsets.only(
-          //       top: Insets().appPadding,
-          //       bottom: Insets().appPadding,
-          //       left: Insets().appPadding,
-          //       right: Insets().appPadding),
-          //   margin: EdgeInsets.only(
-          //       bottom: Insets().appPadding / 2,
-          //       top: Insets().appPadding / 2,
-          //       right: Insets().appPadding,
-          //       left: Insets().appPadding),
-          //   decoration: BoxDecoration(
-          //       color: Palette().primaryColorLight,
-          //       borderRadius: BorderRadius.circular(Insets().appRadius)),
-          //   child: Flex(
-          //     direction: Responsive.isDesktop(context)
-          //         ? Axis.horizontal
-          //         : Axis.horizontal,
-          //     mainAxisAlignment: Responsive.isDesktop(context)
-          //         ? MainAxisAlignment.start
-          //         : MainAxisAlignment.start,
-          //     crossAxisAlignment: Responsive.isDesktop(context)
-          //         ? CrossAxisAlignment.start
-          //         : CrossAxisAlignment.start,
-          //     children: [
-          //       SizedBox(
-          //         width: Responsive.isDesktop(context) ? 220 : 150,
-          //         height: Responsive.isDesktop(context) ? 50 : 40,
-          //         child: ElevatedButton(
-          //             onPressed: () {
-          //               setState(() {
-          //                 perClass = true;
-          //                 schoolstmp = false;
-          //               });
-          //             },
-          //             style: ElevatedButton.styleFrom(
-          //                 elevation: 0,
-          //                 backgroundColor: !perClass
-          //                     ? Colors.white
-          //                     : Palette().primaryColor,
-          //                 side: BorderSide(
-          //                   width: 1,
-          //                   color: !perClass
-          //                       ? Colors.black
-          //                       : Colors.transparent,
-          //                 ),
-          //                 shape: RoundedRectangleBorder(
-          //                     borderRadius: BorderRadius.circular(
-          //                         Insets().appRadiusMin + 4)),
-          //                 padding: EdgeInsets.only(
-          //                     left: Insets().appPadding / 1.5,
-          //                     right: Insets().appPadding / 1.5,
-          //                     top: Insets().appPadding,
-          //                     bottom: Insets().appPadding)),
-          //             child: HeadingText(
-          //               size: Responsive.isDesktop(context) ? 14 : 12,
-          //               value: "Promote Per Class",
-          //               color: !perClass ? Colors.black : Colors.white,
-          //             )),
-          //       ),
-          //       //   SizedBox(
-          //       //     width: Responsive.isDesktop(context) ? 10 : 10,
-          //       //     height: Responsive.isDesktop(context) ? 0 : 10,
-          //       //   ),
-          //       //   SizedBox(
-          //       //     width: Responsive.isDesktop(context) ? 220 : 120,
-          //       //     height: Responsive.isDesktop(context) ? 50 : 40,
-          //       //     child: ElevatedButton(
-          //       //         onPressed: () {
-          //       //           setState(() {
-          //       //             perClass = false;
-          //       //             schoolstmp = true;
-          //       //           });
-          //       //         },
-          //       //         style: ElevatedButton.styleFrom(
-          //       //             elevation: 0,
-          //       //             backgroundColor: !schoolstmp
-          //       //                 ? Colors.white
-          //       //                 : Palette().primaryColor,
-          //       //             side: BorderSide(
-          //       //               width: 1,
-          //       //               color: !schoolstmp
-          //       //                   ? Colors.black
-          //       //                   : Colors.transparent,
-          //       //             ),
-          //       //             shape: RoundedRectangleBorder(
-          //       //                 borderRadius: BorderRadius.circular(
-          //       //                     Insets().appRadiusMin + 4)),
-          //       //             padding: EdgeInsets.only(
-          //       //                 left: Insets().appPadding / 1.5,
-          //       //                 right: Insets().appPadding / 1.5,
-          //       //                 top: Insets().appPadding,
-          //       //                 bottom: Insets().appPadding)),
-          //       //         child: HeadingText(
-          //       //           size: Responsive.isDesktop(context) ? 14 : 12,
-          //       //           value: "Pr",
-          //       //           color: !schoolstmp ? Colors.black : Colors.white,
-          //       //         )),
-          //       //   ),
-          //     ],
-          //   ),
-          // ),
-
           Container(
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.topLeft,
@@ -191,7 +87,7 @@ class _promotionState extends State<promotion> {
                 right: Insets().appPadding,
                 bottom: Insets().appPadding),
             decoration: BoxDecoration(
-                color: Palette().primaryColorLight,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(Insets().appRadius)),
             child: Column(
               children: [
@@ -244,161 +140,22 @@ class _promotionState extends State<promotion> {
                             left: Insets().appPadding,
                             right: Insets().appPadding),
                         decoration: BoxDecoration(
-                            color: Palette().primaryColorLight,
                             borderRadius:
                                 BorderRadius.circular(Insets().appRadius)),
                         child: SizedBox(
-                          width: 450,
+                          width: 500,
                           child: Column(
                             children: [
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "From Class"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 300
-                                        : 400,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Class One",
-                                              ),
-                                              value: "Class One"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Class Two",
-                                              ),
-                                              value: "Class Two"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Class Three",
-                                              ),
-                                              value: "Class Three"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "From Class",
+                                opt1: "",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 10 : 15,
                               ),
-                              Flex(
-                                direction: Responsive.isDesktop(context)
-                                    ? Axis.horizontal
-                                    : Axis.vertical,
-                                mainAxisAlignment: Responsive.isDesktop(context)
-                                    ? MainAxisAlignment.spaceBetween
-                                    : MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    Responsive.isDesktop(context)
-                                        ? CrossAxisAlignment.center
-                                        : CrossAxisAlignment.start,
-                                children: [
-                                  HeadingText(
-                                      size: Responsive.isDesktop(context)
-                                          ? 18
-                                          : 14,
-                                      value: "To Class"),
-                                  SizedBox(
-                                    width: Responsive.isDesktop(context)
-                                        ? 300
-                                        : 400,
-                                    height:
-                                        Responsive.isDesktop(context) ? 50 : 40,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        left: Insets().appPadding / 2,
-                                        right: Insets().appPadding / 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.grey, width: 1.5),
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              Insets().appGap + 4)),
-                                      child: DropdownButton(
-                                        items: const [
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Class One",
-                                              ),
-                                              value: "Class One"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Class Two",
-                                              ),
-                                              value: "Class Two"),
-                                          DropdownMenuItem(
-                                              child: Heading5(
-                                                value: "Class Three",
-                                              ),
-                                              value: "Class Three"),
-                                        ],
-                                        value: _classlevel,
-                                        isExpanded: true,
-                                        iconSize: 35,
-                                        icon: Icon(
-                                            Icons.keyboard_arrow_down_outlined),
-                                        underline: SizedBox(),
-                                        dropdownColor: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Insets().appRadiusMin + 4),
-                                        onChanged: ((value) {
-                                          if (value is int) {
-                                            setState(() {
-                                              _classlevel = value;
-                                            });
-                                          }
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              inputOptions(
+                                title: "To Class",
+                                opt1: "",
                               ),
                               SizedBox(
                                 height: Responsive.isDesktop(context) ? 30 : 35,
@@ -417,7 +174,7 @@ class _promotionState extends State<promotion> {
                                 children: [
                                   SizedBox(
                                     width: Responsive.isDesktop(context)
-                                        ? 450
+                                        ? 500
                                         : 450,
                                     height:
                                         Responsive.isDesktop(context) ? 50 : 40,
@@ -439,7 +196,7 @@ class _promotionState extends State<promotion> {
                                       child: Center(
                                           child: HeadingText(
                                         size: Responsive.isDesktop(context)
-                                            ? 18
+                                            ? 16
                                             : 14,
                                         value: "Promote",
                                       )),
