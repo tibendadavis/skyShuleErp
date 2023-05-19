@@ -55,7 +55,7 @@ class _userProfileState extends State<userProfile> {
                 size: Responsive.isDesktop(context) ? 30 : 20,
                 value: "USER PROFILE",
                 fontWeight: FontWeight.w700,
-                color: Colors.black,
+                color: Colors.grey.shade800,
               ),
             ),
             Row(
@@ -81,10 +81,7 @@ class _userProfileState extends State<userProfile> {
                         top: Insets().appGap / 4,
                         bottom: Insets().appGap / 4),
                     decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1.3,
-                          color: Colors.grey.shade400,
-                        ),
+                        color: Colors.white,
                         borderRadius:
                             BorderRadius.circular(Insets().appRadiusMin + 4)),
                     child: Column(
@@ -283,7 +280,7 @@ class _userProfileState extends State<userProfile> {
                                       top: Insets().appGap + 2,
                                       bottom: Insets().appPadding),
                                   decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: Palette().primaryColorExtraLight,
                                       borderRadius: BorderRadius.circular(
                                           Insets().appRadiusMin + 4)),
                                   child: Center(
@@ -318,7 +315,8 @@ class _userProfileState extends State<userProfile> {
                                                   top: Insets().appGap,
                                                   bottom: Insets().appGap),
                                               decoration: BoxDecoration(
-                                                  color: Colors.white,
+                                                  color: Palette()
+                                                      .primaryColorExtraLight,
                                                   borderRadius: BorderRadius
                                                       .circular(Insets()
                                                               .appRadiusMin +
@@ -376,7 +374,8 @@ class _userProfileState extends State<userProfile> {
                                                   top: Insets().appGap,
                                                   bottom: Insets().appGap),
                                               decoration: BoxDecoration(
-                                                  color: Colors.white,
+                                                  color: Palette()
+                                                      .primaryColorExtraLight,
                                                   borderRadius: BorderRadius
                                                       .circular(Insets()
                                                               .appRadiusMin +
@@ -434,7 +433,8 @@ class _userProfileState extends State<userProfile> {
                                                   top: Insets().appGap,
                                                   bottom: Insets().appGap),
                                               decoration: BoxDecoration(
-                                                  color: Colors.white,
+                                                  color: Palette()
+                                                      .primaryColorExtraLight,
                                                   borderRadius: BorderRadius
                                                       .circular(Insets()
                                                               .appRadiusMin +
@@ -492,7 +492,8 @@ class _userProfileState extends State<userProfile> {
                                               top: Insets().appGap + 10,
                                               bottom: Insets().appGap + 10),
                                           decoration: BoxDecoration(
-                                              color: Colors.white,
+                                              color: Palette()
+                                                  .primaryColorExtraLight,
                                               borderRadius:
                                                   BorderRadius.circular(
                                                       Insets().appRadiusMin +
@@ -826,7 +827,7 @@ class _userProfileState extends State<userProfile> {
                                 padding: EdgeInsets.only(
                                     left: 12, right: 12, top: 12, bottom: 12),
                                 decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Palette().primaryColorExtraLight,
                                     borderRadius: BorderRadius.circular(
                                         Insets().appRadiusMin + 4)),
                                 child: Center(
@@ -859,7 +860,8 @@ class _userProfileState extends State<userProfile> {
                                                 top: Insets().appGap,
                                                 bottom: Insets().appGap),
                                             decoration: BoxDecoration(
-                                                color: Colors.white,
+                                                color: Palette()
+                                                    .primaryColorExtraLight,
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         Insets().appRadiusMin +
@@ -916,7 +918,8 @@ class _userProfileState extends State<userProfile> {
                                                 top: Insets().appGap,
                                                 bottom: Insets().appGap),
                                             decoration: BoxDecoration(
-                                                color: Colors.white,
+                                                color: Palette()
+                                                    .primaryColorExtraLight,
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         Insets().appRadiusMin +
@@ -974,7 +977,8 @@ class _userProfileState extends State<userProfile> {
                                                 top: Insets().appGap,
                                                 bottom: Insets().appGap),
                                             decoration: BoxDecoration(
-                                                color: Colors.white,
+                                                color: Palette()
+                                                    .primaryColorExtraLight,
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         Insets().appRadiusMin +
@@ -1032,7 +1036,8 @@ class _userProfileState extends State<userProfile> {
                                             top: 12,
                                             bottom: 12),
                                         decoration: BoxDecoration(
-                                            color: Colors.white,
+                                            color: Palette()
+                                                .primaryColorExtraLight,
                                             borderRadius: BorderRadius.circular(
                                                 Insets().appRadiusMin + 4)),
                                         child: ListView(
@@ -1194,7 +1199,7 @@ class _userProfileState extends State<userProfile> {
                         ? Insets().appPadding * 2
                         : Insets().appPadding),
                 decoration: BoxDecoration(
-                    border: Border.all(width: 1.3, color: Colors.grey.shade400),
+                    color: Colors.white,
                     borderRadius:
                         BorderRadius.circular(Insets().appRadiusMin + 4)),
                 child: Column(
