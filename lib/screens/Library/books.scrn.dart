@@ -14,6 +14,7 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/searchBar.comp.dart';
+import 'package:skyconnect_starter/components/searchInputDate.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
 import 'package:skyconnect_starter/components/tile3.comp.dart';
@@ -95,13 +96,11 @@ class _booksState extends State<books> {
             title: "Class",
             opt1: " ",
           ),
-          opt3: searchInputOptions(
+          opt8: searchInputDate(
             title: "From",
-            opt1: " ",
           ),
-          opt4: searchInputOptions(
+          opt9: searchInputDate(
             title: "To",
-            opt1: " ",
           ),
         ),
         downloadBar(results: "7"),
