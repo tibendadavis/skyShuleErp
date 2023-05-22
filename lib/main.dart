@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           : null,
       drawer: skyShuleDrawer(
-        size: 305,
+        size: 304,
         onTap: () {},
       ),
       body: Container(
