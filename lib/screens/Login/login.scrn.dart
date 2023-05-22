@@ -321,9 +321,10 @@ class _loginState extends State<login> {
                                 children: [
                                   HeadingText(
                                       size: Responsive.isDesktop(context)
-                                          ? 14
+                                          ? 12
                                           : 12,
-                                      color: Colors.grey.shade700,
+                                      color:
+                                          Colors.grey.shade700.withOpacity(0.7),
                                       value:
                                           "Copyright © ${DateTime.now().year}"),
                                   SizedBox(
@@ -336,17 +337,20 @@ class _loginState extends State<login> {
                                       },
                                       child: HeadingText(
                                         size: Responsive.isDesktop(context)
-                                            ? 14
+                                            ? 12
                                             : 12,
                                         value: "SkyConnect",
-                                        color: Palette().primaryColor,
+                                        color: Palette()
+                                            .primaryColor
+                                            .withOpacity(0.7),
                                         fontWeight: FontWeight.w600,
                                       )),
                                   HeadingText(
                                       size: Responsive.isDesktop(context)
-                                          ? 14
+                                          ? 12
                                           : 12,
-                                      color: Colors.grey.shade700,
+                                      color:
+                                          Colors.grey.shade700.withOpacity(0.7),
                                       value: ", All rights reserved.")
                                 ],
                               ),
