@@ -94,8 +94,11 @@ class _tile3State extends State<tile3> with TickerProviderStateMixin {
                       Spacer(),
                       ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                                context: context, builder: (_) => widget.link!);
+                            widget.link != null
+                                ? showDialog(
+                                    context: context,
+                                    builder: (_) => widget.link!)
+                                : null;
                           },
                           style: ElevatedButton.styleFrom(
                               elevation: 12,
