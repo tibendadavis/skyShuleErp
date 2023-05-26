@@ -17,6 +17,7 @@ import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
 import 'package:skyconnect_starter/components/tile3.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
+import 'package:skyconnect_starter/screens/Exams/Settings/addSchoolExam.scrn.dart';
 import 'package:skyconnect_starter/screens/Users/addStaff.scrn.dart';
 import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
@@ -67,6 +68,7 @@ class _supportingStaffState extends State<classAllocations> {
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.create,
+                  link: addSchoolExam(),
                   linkTitle: "Define Exam",
                 )),
             SizedBox(
