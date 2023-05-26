@@ -210,14 +210,14 @@ class _skyShuleDrawerState extends State<skyShuleDrawer>
           Icons.group,
           "/facultyManagement/faculty"
         ],
-        "submenu2": [
-          "Enrollment",
-          enrollment(),
-          Icons.add_circle_outline_rounded,
-          "/facultyManagement/enrollment"
-        ],
+        // "submenu2": [
+        //   "Enrollment",
+        //   enrollment(),
+        //   Icons.add_circle_outline_rounded,
+        //   "/facultyManagement/enrollment"
+        // ],
         "submenu3": [
-          "Human Resource",
+          "Evaluations",
           humanResource(),
           Icons.handshake_rounded,
           "/facultyManagement/HR"
