@@ -236,852 +236,853 @@ class _attendaceReportState extends State<attendanceReport> {
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               padding: EdgeInsets.only(
                   left: 15, right: 15, bottom: Insets().appPadding),
-              child: Center(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                      headingTextStyle:
-                          TextStyle(color: Palette().primaryColor),
-                      horizontalMargin: 0,
-                      columnSpacing: Responsive.isDesktop(context) ? 20 : 15,
-                      columns: [
-                        DataColumn(
-                            label: SizedBox(
-                          child: Container(
-                            alignment: Alignment.bottomLeft,
-                            child: HeadingText(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                    dataRowHeight: 55,
+                    headingTextStyle: TextStyle(color: Palette().primaryColor),
+                    horizontalMargin: 0,
+                    columnSpacing:
+                        Responsive.isDesktop(context) && size.width < 1600
+                            ? size.width / 30
+                            : Responsive.isDesktop(context) && size.width > 1600
+                                ? size.width / 17
+                                : 25,
+                    showCheckboxColumn: false,
+                    checkboxHorizontalMargin: 10,
+                    showBottomBorder: true,
+                    columns: [
+                      DataColumn(
+                          label: Container(
+                        alignment: Alignment.bottomLeft,
+                        child: HeadingText(
+                          size: 14,
+                          value: "No.",
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )),
+                      DataColumn(
+                          label: Container(
+                        alignment: Alignment.bottomLeft,
+                        child: HeadingText(
+                          size: 14,
+                          value: "CLASSES",
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )),
+                      DataColumn(
+                          label: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
                               size: 14,
-                              value: "No.",
+                              value: "REGISTERED",
                               fontWeight: FontWeight.w700,
                             ),
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 200 : 100,
-                          child: Container(
-                            alignment: Alignment.bottomLeft,
-                            child: HeadingText(
+                            SizedBox(
+                              width: Responsive.isDesktop(context) ? 200 : 150,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  HeadingText(
+                                    size: 14,
+                                    value: "BOYS",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  HeadingText(
+                                    size: 14,
+                                    value: "GIRLS",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                      DataColumn(
+                          label: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
                               size: 14,
-                              value: "CLASSES",
+                              value: "PRESENTEES",
                               fontWeight: FontWeight.w700,
                             ),
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 200 : 150,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                HeadingText(
-                                  size: 14,
-                                  value: "REGISTERED",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    HeadingText(
-                                      size: 14,
-                                      value: "BOYS",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    HeadingText(
-                                      size: 14,
-                                      value: "GIRLS",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
-                                )
-                              ],
+                            SizedBox(
+                              width: Responsive.isDesktop(context) ? 200 : 150,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  HeadingText(
+                                    size: 14,
+                                    value: "BOYS",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  HeadingText(
+                                    size: 14,
+                                    value: "GIRLS",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                      DataColumn(
+                          label: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "ABSENTEES",
+                              fontWeight: FontWeight.w700,
                             ),
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 200 : 150,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                HeadingText(
-                                  size: 14,
-                                  value: "PRESENTEES",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    HeadingText(
-                                      size: 14,
-                                      value: "BOYS",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    HeadingText(
-                                      size: 14,
-                                      value: "GIRLS",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
-                                )
-                              ],
+                            SizedBox(
+                              width: Responsive.isDesktop(context) ? 200 : 150,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  HeadingText(
+                                    size: 14,
+                                    value: "BOYS",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  HeadingText(
+                                    size: 14,
+                                    value: "GIRLS",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                      DataColumn(
+                          label: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "PERMISSION",
+                              fontWeight: FontWeight.w700,
                             ),
-                          ),
+                            SizedBox(
+                              width: Responsive.isDesktop(context) ? 200 : 150,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  HeadingText(
+                                    size: 14,
+                                    value: "BOYS",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  HeadingText(
+                                    size: 14,
+                                    value: "GIRLS",
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                    ],
+                    rows: [
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "1",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 200 : 150,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                HeadingText(
-                                  size: 14,
-                                  value: "ABSENTEES",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    HeadingText(
-                                      size: 14,
-                                      value: "BOYS",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    HeadingText(
-                                      size: 14,
-                                      value: "GIRLS",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
-                                )
-                              ],
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "DAY CARE",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
                             ),
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 200 : 150,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                HeadingText(
-                                  size: 14,
-                                  value: "PERMISSION",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    HeadingText(
-                                      size: 14,
-                                      value: "BOYS",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    HeadingText(
-                                      size: 14,
-                                      value: "GIRLS",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
-                                )
-                              ],
+                            HeadingText(
+                              size: 14,
+                              value: "9",
                             ),
-                          ),
+                          ],
                         )),
-                      ],
-                      rows: [
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "1",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "DAY CARE",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "2",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "BEGINNERS",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "3",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "INTERMEDIATE",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "4",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "PRE-UNIT",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "5",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "CLASS ONE",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "6",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "CLASS TWO",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "7",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "CLASS THREE",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "8",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "CLASS FOUR",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "9",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "CLASS FIVE",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "10",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "CLASS SIX",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "11",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "CLASS SEVEN",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "9",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                              HeadingText(
-                                size: 14,
-                                value: "0(0.0%)",
-                              ),
-                            ],
-                          )),
-                        ])
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
                       ]),
-                ),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "2",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "BEGINNERS",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "3",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "INTERMEDIATE",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "4",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "PRE-UNIT",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "5",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "CLASS ONE",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "6",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "CLASS TWO",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "7",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "CLASS THREE",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "8",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "CLASS FOUR",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "9",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "CLASS FIVE",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "10",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "CLASS SIX",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "11",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "CLASS SEVEN",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "9",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                            HeadingText(
+                              size: 14,
+                              value: "0(0.0%)",
+                            ),
+                          ],
+                        )),
+                      ])
+                    ]),
               ),
             ),
           ]),
