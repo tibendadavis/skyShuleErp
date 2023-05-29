@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:intl/intl.dart';
-import 'package:path/path.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/certificate.comp.dart';
 import 'package:skyconnect_starter/components/downloadBar.comp.dart';
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/inputDate.comp.dart';
 import 'package:skyconnect_starter/components/inputOptions.comp.dart';
 import 'package:skyconnect_starter/components/inputTextField.comp.dart';
-import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/Terms/addTerm.scrn.dart';
-import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class generateCertificate extends StatefulWidget {
@@ -53,7 +38,6 @@ class _generateCertificateState extends State<generateCertificate> {
               Container(
                 alignment: Alignment.bottomLeft,
                 padding: EdgeInsets.only(
-                    top: Insets().appPadding,
                     left: Responsive.isDesktop(context)
                         ? Insets().appPadding * 2
                         : Insets().appPadding,
@@ -75,7 +59,7 @@ class _generateCertificateState extends State<generateCertificate> {
                         ? Insets().appPadding * 2
                         : Insets().appPadding,
                     top: Responsive.isDesktop(context)
-                        ? Insets().appPadding
+                        ? Insets().appPadding / 2
                         : 12,
                     bottom: Responsive.isDesktop(context)
                         ? Insets().appPadding
@@ -94,7 +78,7 @@ class _generateCertificateState extends State<generateCertificate> {
                         ? Insets().appPadding / 2
                         : 10),
                 decoration: BoxDecoration(
-                    color: Palette().primaryColorLight,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(Insets().appGap + 4)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,121 +189,101 @@ class _generateCertificateState extends State<generateCertificate> {
                             BorderRadius.circular(Insets().appGap + 4)),
                     padding: EdgeInsets.only(
                         left: 15, right: 15, bottom: Insets().appPadding),
-                    child: Center(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: DataTable(
-                            headingTextStyle:
-                                TextStyle(color: Palette().primaryColor),
-                            horizontalMargin: 0,
-                            columnSpacing:
-                                Responsive.isDesktop(context) ? 20 : 10,
-                            columns: [
-                              DataColumn(
-                                  label: Checkbox(
-                                value: false,
-                                onChanged: (value) {
-                                  setState(() {});
-                                },
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: DataTable(
+                          dataRowHeight: 55,
+                          headingTextStyle:
+                              TextStyle(color: Palette().primaryColor),
+                          horizontalMargin: 0,
+                          columnSpacing:
+                              Responsive.isDesktop(context) && size.width < 1600
+                                  ? size.width / 10
+                                  : Responsive.isDesktop(context) &&
+                                          size.width > 1600
+                                      ? size.width / 8
+                                      : 25,
+                          showCheckboxColumn: true,
+                          checkboxHorizontalMargin: 10,
+                          showBottomBorder: true,
+                          columns: [
+                            DataColumn(
+                                label: Expanded(
+                              child: HeadingText(
+                                size: 14,
+                                value: "No.",
+                                fontWeight: FontWeight.w700,
+                              ),
+                            )),
+                            DataColumn(
+                                label: HeadingText(
+                              size: 14,
+                              value: "Student Registration No.",
+                              fontWeight: FontWeight.w700,
+                            )),
+                            DataColumn(
+                                label: HeadingText(
+                              size: 14,
+                              value: "Student Name",
+                              fontWeight: FontWeight.w700,
+                            )),
+                            DataColumn(
+                                label: HeadingText(
+                              size: 14,
+                              value: "View Certificate",
+                              fontWeight: FontWeight.w700,
+                            )),
+                            DataColumn(
+                                label: HeadingText(
+                              size: 14,
+                              value: "Issue Certificate",
+                              fontWeight: FontWeight.w700,
+                            )),
+                          ],
+                          rows: [
+                            DataRow(cells: [
+                              DataCell(HeadingText(
+                                size: 14,
+                                value: "1",
                               )),
-                              DataColumn(
-                                  label: Expanded(
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "No.",
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              DataCell(HeadingText(
+                                size: 14,
+                                value: "SH 707 / 01",
                               )),
-                              DataColumn(
-                                  label: SizedBox(
-                                width:
-                                    Responsive.isDesktop(context) ? 250 : 150,
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Student Registration No.",
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              DataCell(HeadingText(
+                                size: 14,
+                                value: "Jane John Doe",
                               )),
-                              DataColumn(
-                                  label: SizedBox(
-                                width:
-                                    Responsive.isDesktop(context) ? 250 : 150,
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Student Name",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )),
-                              DataColumn(
-                                  label: SizedBox(
-                                width:
-                                    Responsive.isDesktop(context) ? 250 : 150,
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "View Certificate",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )),
-                              DataColumn(
-                                  label: SizedBox(
-                                width:
-                                    Responsive.isDesktop(context) ? 250 : 150,
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Issue Certificate",
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )),
-                            ],
-                            rows: [
-                              DataRow(cells: [
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "1",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "SH 707 / 01",
-                                )),
-                                DataCell(HeadingText(
-                                  size: 14,
-                                  value: "Jane John Doe",
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          generate = !generate;
-                                        });
-                                      },
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "View Certificate",
-                                        color: Colors.blue,
-                                      ),
+                              DataCell(Row(
+                                children: [
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        generate = !generate;
+                                      });
+                                    },
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "View Certificate",
+                                      color: Colors.blue,
                                     ),
-                                  ],
-                                )),
-                                DataCell(Row(
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: HeadingText(
-                                        size: 14,
-                                        value: "Issue Certificate",
-                                        color: Colors.green,
-                                      ),
+                                  ),
+                                ],
+                              )),
+                              DataCell(Row(
+                                children: [
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: HeadingText(
+                                      size: 14,
+                                      value: "Issue Certificate",
+                                      color: Colors.green,
                                     ),
-                                  ],
-                                ))
-                              ])
-                            ]),
-                      ),
+                                  ),
+                                ],
+                              ))
+                            ])
+                          ]),
                     ),
                   ),
                 ]),
