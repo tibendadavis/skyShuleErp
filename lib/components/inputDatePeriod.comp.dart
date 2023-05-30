@@ -1,16 +1,6 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/components/inputTextField.comp.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
@@ -125,7 +115,7 @@ class _inputDateState extends State<inputDatePeriod> {
               ),
               SizedBox(
                 width: Responsive.isDesktop(context) ? 400 : size.width,
-                height: Responsive.isDesktop(context) ? 50 : 40,
+                height: Responsive.isDesktop(context) ? 40 : 40,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(
@@ -136,7 +126,7 @@ class _inputDateState extends State<inputDatePeriod> {
                       border: Border.all(width: 1.5, color: Colors.grey),
                       color: Colors.white,
                       borderRadius:
-                          BorderRadius.circular(Insets().appPadding / 1.5)),
+                          BorderRadius.circular(Insets().appPadding / 2)),
                   child: TextFormField(
                       style: GoogleFonts.openSans(
                         fontSize: Responsive.isDesktop(context) ? 16 : 14,
