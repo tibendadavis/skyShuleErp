@@ -1,28 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:path/path.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/downloadBar.comp.dart';
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/searchBar.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/Payroll%20Management/addEmployeeSalary.scrn.dart';
-import 'package:skyconnect_starter/screens/Faculty%20Management/addFaculty.scrn.dart';
-import 'package:skyconnect_starter/screens/Finance%20Management/addFeePayment.scrn.dart';
-import 'package:skyconnect_starter/screens/Payroll%20Management/addPayroll.scrn.dart';
-import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/Terms/addTerm.scrn.dart';
-import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class exFaculty extends StatefulWidget {
@@ -88,97 +70,72 @@ class _exFacultyState extends State<exFaculty> {
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               padding: EdgeInsets.only(
                   left: 15, right: 15, bottom: Insets().appPadding),
-              child: Center(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                      headingTextStyle:
-                          TextStyle(color: Palette().primaryColor),
-                      horizontalMargin: 0,
-                      columnSpacing: Responsive.isDesktop(context) ? 20 : 10,
-                      columns: [
-                        DataColumn(
-                            label: Checkbox(
-                          value: false,
-                          onChanged: (value) {
-                            setState(() {});
-                          },
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? null : 100,
-                          child: HeadingText(
-                            size: 14,
-                            value: "No.",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 150 : 100,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Department",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 220 : 100,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Faculty Name",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 120 : 100,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Subjects",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 120 : 100,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Employees",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 120 : 100,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Students",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 150 : 100,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Note",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : 100,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Action",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                      ],
-                      rows: []),
-                ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                    dataRowHeight: 55,
+                    headingTextStyle: TextStyle(color: Palette().primaryColor),
+                    horizontalMargin: 0,
+                    columnSpacing:
+                        Responsive.isDesktop(context) && size.width < 1600
+                            ? size.width / 20
+                            : Responsive.isDesktop(context) && size.width > 1600
+                                ? size.width / 15
+                                : 25,
+                    showCheckboxColumn: true,
+                    checkboxHorizontalMargin: 10,
+                    showBottomBorder: true,
+                    columns: [
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "No.",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Department",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Faculty Name",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Subjects",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Employees",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Students",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Note",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Action",
+                        fontWeight: FontWeight.w700,
+                      )),
+                    ],
+                    rows: []),
               ),
             ),
           ]),
