@@ -1,16 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:path/path.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/downloadBar.comp.dart';
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/searchBar.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
@@ -18,8 +7,6 @@ import 'package:skyconnect_starter/components/tile2.comp.dart';
 import 'package:skyconnect_starter/components/tile3.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/Exams/Settings/addSchoolExam.scrn.dart';
-import 'package:skyconnect_starter/screens/Users/addStaff.scrn.dart';
-import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class schoolExams extends StatefulWidget {
@@ -95,558 +82,488 @@ class _supportingStaffState extends State<schoolExams> {
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               padding: EdgeInsets.only(
                   left: 15, right: 15, bottom: Insets().appPadding),
-              child: Center(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                      headingTextStyle:
-                          TextStyle(color: Palette().primaryColor),
-                      horizontalMargin: 0,
-                      columnSpacing: Responsive.isDesktop(context) ? 20 : 10,
-                      columns: [
-                        DataColumn(
-                            label: Checkbox(
-                          value: false,
-                          onChanged: (value) {
-                            setState(() {});
-                          },
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 20 : null,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                    dataRowHeight: 55,
+                    headingTextStyle: TextStyle(color: Palette().primaryColor),
+                    horizontalMargin: 0,
+                    columnSpacing:
+                        Responsive.isDesktop(context) && size.width < 1600
+                            ? size.width / 45
+                            : Responsive.isDesktop(context) && size.width > 1600
+                                ? size.width / 20
+                                : 25,
+                    showCheckboxColumn: true,
+                    checkboxHorizontalMargin: 10,
+                    showBottomBorder: true,
+                    columns: [
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "No.",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Exam",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Class Level",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Exam Group",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 14,
+                        value: "Note",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: Expanded(
+                        child: Center(
                           child: HeadingText(
                             size: 14,
-                            value: "No.",
+                            value: "Action",
                             fontWeight: FontWeight.w700,
                           ),
+                        ),
+                      )),
+                    ],
+                    rows: [
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "1",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : null,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Exam",
-                            fontWeight: FontWeight.w700,
-                          ),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Top Mark 2 June",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : null,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Class Level",
-                            fontWeight: FontWeight.w700,
-                          ),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Primary",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : null,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Exam Group",
-                            fontWeight: FontWeight.w700,
-                          ),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : null,
-                          child: HeadingText(
-                            size: 14,
-                            value: "Note",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: Expanded(
-                          child: Center(
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 400 : 300,
                             child: HeadingText(
                               size: 14,
-                              value: "Action",
-                              fontWeight: FontWeight.w700,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
                             ),
-                          ),
-                        )),
-                      ],
-                      rows: [
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "1",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Top Mark 2 June",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Primary",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
                               child: HeadingText(
                                 size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
+                                value: "Delete",
+                                color: Colors.red,
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "2",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "End of July Exams",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Primary",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
-                              child: HeadingText(
-                                size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "3",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "End of Term One Exams",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Primary",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
-                              child: HeadingText(
-                                size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "4",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "End of July Exams",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Primary",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
-                              child: HeadingText(
-                                size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "5",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "END OF QUARTER THREE EXAMS",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Primary",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
-                              child: HeadingText(
-                                size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "6",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "END OF QUARTER THREE EXAMS",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Nursery",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
-                              child: HeadingText(
-                                size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "7",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "END OF OCTOBER EXAMS",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Primary",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
-                              child: HeadingText(
-                                size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "8",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "END OF YEAR EXAMS",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Primary",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
-                              child: HeadingText(
-                                size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "9",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "JANUARY END OF MONTH",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Primary",
-                          )),
-                          DataCell(HeadingText(
-                            size: 14,
-                            value: "Not Defined",
-                          )),
-                          DataCell(SizedBox(
-                              width: Responsive.isDesktop(context) ? 500 : 300,
-                              child: HeadingText(
-                                size: 14,
-                                value: " ",
-                              ))),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
+                            ),
+                          ],
+                        ))
                       ]),
-                ),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "2",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "End of July Exams",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Primary",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
+                        )),
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 500 : 300,
+                            child: HeadingText(
+                              size: 14,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "3",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "End of Term One Exams",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Primary",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
+                        )),
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 500 : 300,
+                            child: HeadingText(
+                              size: 14,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "4",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "End of July Exams",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Primary",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
+                        )),
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 500 : 300,
+                            child: HeadingText(
+                              size: 14,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "5",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "END OF QUARTER THREE EXAMS",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Primary",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
+                        )),
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 500 : 300,
+                            child: HeadingText(
+                              size: 14,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "6",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "END OF QUARTER THREE EXAMS",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Nursery",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
+                        )),
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 500 : 300,
+                            child: HeadingText(
+                              size: 14,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "7",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "END OF OCTOBER EXAMS",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Primary",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
+                        )),
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 500 : 300,
+                            child: HeadingText(
+                              size: 14,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "8",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "END OF YEAR EXAMS",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Primary",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
+                        )),
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 500 : 300,
+                            child: HeadingText(
+                              size: 14,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "9",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "JANUARY END OF MONTH",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Primary",
+                        )),
+                        DataCell(HeadingText(
+                          size: 14,
+                          value: "Not Defined",
+                        )),
+                        DataCell(SizedBox(
+                            width: Responsive.isDesktop(context) ? 500 : 300,
+                            child: HeadingText(
+                              size: 14,
+                              value: " ",
+                            ))),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                    ]),
               ),
             ),
           ]),
