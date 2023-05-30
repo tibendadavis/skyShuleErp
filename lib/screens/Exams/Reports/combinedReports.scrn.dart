@@ -1,33 +1,10 @@
-
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:path/path.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
-import 'package:skyconnect_starter/components/bankDetails.dart';
-import 'package:skyconnect_starter/components/contactsDetails.dart';
 import 'package:skyconnect_starter/components/downloadBar.comp.dart';
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/components/officialDetails.dart';
-import 'package:skyconnect_starter/components/otherFacilities.dart';
-import 'package:skyconnect_starter/components/parentsDetails.dart';
-import 'package:skyconnect_starter/components/personalDetails.dart';
 import 'package:skyconnect_starter/components/searchBar.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/components/studentPerfomanceReport.comp.dart';
-import 'package:skyconnect_starter/components/uploadDocuments.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/components/academicDetails.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class combinedReports extends StatefulWidget {
@@ -59,9 +36,7 @@ class _combinedReportsState extends State<combinedReports> {
           Container(
             alignment: Alignment.bottomLeft,
             padding: EdgeInsets.only(
-                top: Insets().appPadding,
-                left: Insets().appPadding,
-                right: Insets().appGap),
+                left: Insets().appPadding, right: Insets().appGap),
             child: HeadingText(
               size: Responsive.isDesktop(context) ? 35 : 30,
               value: "Combined Reports",
@@ -260,162 +235,106 @@ class _combinedReportsState extends State<combinedReports> {
                           padding: EdgeInsets.only(
                               left: 15, right: 15, bottom: Insets().appPadding),
                           child: Expanded(
-                            child: Center(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
                               child: SingleChildScrollView(
-                                scrollDirection: Axis.vertical,
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: DataTable(
-                                      headingTextStyle: TextStyle(
-                                          color: Palette().primaryColor),
-                                      horizontalMargin: 0,
-                                      columnSpacing:
-                                          Responsive.isDesktop(context)
-                                              ? 20
-                                              : 10,
-                                      columns: [
-                                        DataColumn(
-                                            label: Checkbox(
-                                          value: false,
-                                          onChanged: (value) {
-                                            setState(() {});
-                                          },
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 30
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "No.",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 120
-                                              : 120,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Class",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 120
-                                              : 120,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Subject",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 150
-                                              : 150,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Exam\nTitle",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 120
-                                              : 120,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "No. of\nStudents",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "No. of\nPasses",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Pass\nPercentage",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "No. of\nFailed Students",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Fail\nPercentage",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Topper's\nName",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Topper's\nAverage",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 150
-                                              : 100,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Action",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                      ],
-                                      rows: []),
-                                ),
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                    dataRowHeight: 55,
+                                    headingTextStyle: TextStyle(
+                                        color: Palette().primaryColor),
+                                    horizontalMargin: 0,
+                                    columnSpacing:
+                                        Responsive.isDesktop(context) &&
+                                                size.width < 1600
+                                            ? size.width / 42
+                                            : Responsive.isDesktop(context) &&
+                                                    size.width > 1600
+                                                ? size.width / 30
+                                                : 25,
+                                    showCheckboxColumn: true,
+                                    checkboxHorizontalMargin: 10,
+                                    showBottomBorder: true,
+                                    columns: [
+                                      DataColumn(
+                                          label: SizedBox(
+                                        width: Responsive.isDesktop(context)
+                                            ? 30
+                                            : null,
+                                        child: HeadingText(
+                                          size: 14,
+                                          value: "No.",
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Class",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Subject",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Exam\nTitle",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "No. of\nStudents",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "No. of\nPasses",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Pass\nPercentage",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "No. of\nFailed Students",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Fail\nPercentage",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Topper's\nName",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Topper's\nAverage",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Action",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                    ],
+                                    rows: []),
                               ),
                             ),
                           ),
@@ -458,162 +377,101 @@ class _combinedReportsState extends State<combinedReports> {
                           padding: EdgeInsets.only(
                               left: 15, right: 15, bottom: Insets().appPadding),
                           child: Expanded(
-                            child: Center(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
                               child: SingleChildScrollView(
-                                scrollDirection: Axis.vertical,
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: DataTable(
-                                      headingTextStyle: TextStyle(
-                                          color: Palette().primaryColor),
-                                      horizontalMargin: 0,
-                                      columnSpacing:
-                                          Responsive.isDesktop(context)
-                                              ? 20
-                                              : 10,
-                                      columns: [
-                                        DataColumn(
-                                            label: Checkbox(
-                                          value: false,
-                                          onChanged: (value) {
-                                            setState(() {});
-                                          },
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 30
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "No.",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 120
-                                              : 120,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Subject",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 120
-                                              : 120,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Class",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 150
-                                              : 150,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Exam\nTitle",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 120
-                                              : 120,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "No. of\nStudents",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "No. of\nPasses",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Pass\nPercentage",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "No. of\nFailed Students",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Fail\nPercentage",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Topper's\nName",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? null
-                                              : null,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Topper's\nAverage",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 150
-                                              : 100,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Action",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                      ],
-                                      rows: []),
-                                ),
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                    dataRowHeight: 55,
+                                    headingTextStyle: TextStyle(
+                                        color: Palette().primaryColor),
+                                    horizontalMargin: 0,
+                                    columnSpacing:
+                                        Responsive.isDesktop(context) &&
+                                                size.width < 1600
+                                            ? size.width / 45
+                                            : Responsive.isDesktop(context) &&
+                                                    size.width > 1600
+                                                ? size.width / 30
+                                                : 25,
+                                    showCheckboxColumn: true,
+                                    checkboxHorizontalMargin: 10,
+                                    showBottomBorder: true,
+                                    columns: [
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "No.",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Subject",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Class",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Exam\nTitle",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "No. of\nStudents",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "No. of\nPasses",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Pass\nPercentage",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "No. of\nFailed Students",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Fail\nPercentage",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Topper's\nName",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Topper's\nAverage",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Action",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                    ],
+                                    rows: []),
                               ),
                             ),
                           ),
@@ -664,190 +522,143 @@ class _combinedReportsState extends State<combinedReports> {
                           padding: EdgeInsets.only(
                               left: 15, right: 15, bottom: Insets().appPadding),
                           child: Expanded(
-                            child: Center(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
                               child: SingleChildScrollView(
-                                scrollDirection: Axis.vertical,
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: DataTable(
-                                      headingTextStyle: TextStyle(
-                                          color: Palette().primaryColor),
-                                      horizontalMargin: 0,
-                                      columnSpacing:
-                                          Responsive.isDesktop(context)
-                                              ? 20
-                                              : 10,
-                                      columns: [
-                                        DataColumn(
-                                            label: Checkbox(
-                                          value: false,
-                                          onChanged: (value) {
-                                            setState(() {});
-                                          },
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 30
-                                              : null,
-                                          child: HeadingText(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                    dataRowHeight: 55,
+                                    headingTextStyle: TextStyle(
+                                        color: Palette().primaryColor),
+                                    horizontalMargin: 0,
+                                    columnSpacing:
+                                        Responsive.isDesktop(context) &&
+                                                size.width < 1600
+                                            ? size.width / 18
+                                            : Responsive.isDesktop(context) &&
+                                                    size.width > 1600
+                                                ? size.width / 16
+                                                : 25,
+                                    showCheckboxColumn: true,
+                                    checkboxHorizontalMargin: 10,
+                                    showBottomBorder: true,
+                                    columns: [
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "No.",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Rank",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Student",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Reg No.",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Class",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Total Marks",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Average",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                      DataColumn(
+                                          label: HeadingText(
+                                        size: 14,
+                                        value: "Action",
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                    ],
+                                    rows: [
+                                      DataRow(cells: [
+                                        DataCell(
+                                          HeadingText(
                                             size: 14,
-                                            value: "No.",
-                                            fontWeight: FontWeight.w700,
+                                            value: "1",
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 120
-                                              : 120,
-                                          child: HeadingText(
+                                        ),
+                                        DataCell(
+                                          HeadingText(
                                             size: 14,
-                                            value: "Rank",
-                                            fontWeight: FontWeight.w700,
+                                            value: "1",
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 180
-                                              : 160,
-                                          child: HeadingText(
+                                        ),
+                                        DataCell(
+                                          HeadingText(
                                             size: 14,
-                                            value: "Student",
-                                            fontWeight: FontWeight.w700,
+                                            value: "Jane John Doe",
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 140
-                                              : 140,
-                                          child: HeadingText(
+                                        ),
+                                        DataCell(
+                                          HeadingText(
                                             size: 14,
-                                            value: "Reg No.",
-                                            fontWeight: FontWeight.w700,
+                                            value: "Reg  No",
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 140
-                                              : 140,
-                                          child: HeadingText(
+                                        ),
+                                        DataCell(
+                                          HeadingText(
                                             size: 14,
-                                            value: "Class",
-                                            fontWeight: FontWeight.w700,
+                                            value: "Class 6",
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 130
-                                              : 130,
-                                          child: HeadingText(
+                                        ),
+                                        DataCell(
+                                          HeadingText(
                                             size: 14,
-                                            value: "Total Marks",
-                                            fontWeight: FontWeight.w700,
+                                            value: "496",
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 130
-                                              : 130,
-                                          child: HeadingText(
+                                        ),
+                                        DataCell(
+                                          HeadingText(
                                             size: 14,
-                                            value: "Average",
-                                            fontWeight: FontWeight.w700,
+                                            value: "97",
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                        )),
-                                        DataColumn(
-                                            label: SizedBox(
-                                          width: Responsive.isDesktop(context)
-                                              ? 150
-                                              : 100,
-                                          child: HeadingText(
-                                            size: 14,
-                                            value: "Action",
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                      ],
-                                      rows: [
-                                        DataRow(cells: [
-                                          DataCell(Checkbox(
-                                            value: false,
-                                            onChanged: (value) {
-                                              setState(() {});
-                                            },
-                                          )),
-                                          DataCell(
-                                            HeadingText(
-                                              size: 14,
-                                              value: "1",
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          DataCell(
-                                            HeadingText(
-                                              size: 14,
-                                              value: "1",
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          DataCell(
-                                            HeadingText(
-                                              size: 14,
-                                              value: "Jane John Doe",
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          DataCell(
-                                            HeadingText(
-                                              size: 14,
-                                              value: "Reg  No",
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          DataCell(
-                                            HeadingText(
-                                              size: 14,
-                                              value: "Class 6",
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          DataCell(
-                                            HeadingText(
-                                              size: 14,
-                                              value: "496",
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          DataCell(
-                                            HeadingText(
-                                              size: 14,
-                                              value: "97",
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          DataCell(
-                                            TextButton(
-                                                onPressed: () {
-                                                  showDialog(
-                                                      context: (context),
-                                                      builder: (_) =>
-                                                          studentPerfomanceReport());
-                                                },
-                                                child: HeadingText(
-                                                  size: 13,
-                                                  value: "View Report",
-                                                  fontWeight: FontWeight.w500,
-                                                )),
-                                          )
-                                        ])
-                                      ]),
-                                ),
+                                        ),
+                                        DataCell(
+                                          TextButton(
+                                              onPressed: () {
+                                                showDialog(
+                                                    context: (context),
+                                                    builder: (_) =>
+                                                        studentPerfomanceReport());
+                                              },
+                                              child: HeadingText(
+                                                size: 13,
+                                                value: "View Report",
+                                                fontWeight: FontWeight.w500,
+                                              )),
+                                        )
+                                      ])
+                                    ]),
                               ),
                             ),
                           ),
