@@ -1,25 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:intl/intl.dart';
-import 'package:path/path.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/downloadBar.comp.dart';
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/searchBar.comp.dart';
 import 'package:skyconnect_starter/components/searchInputDate.comp.dart';
-import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/Subjects/addSubject.scrn.dart';
-import 'package:skyconnect_starter/screens/Terms/addTerm.scrn.dart';
-import 'package:skyconnect_starter/screens/Users/student_admission.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class attendanceReport extends StatefulWidget {
@@ -46,7 +32,6 @@ class _attendaceReportState extends State<attendanceReport> {
         Container(
           alignment: Alignment.bottomLeft,
           padding: EdgeInsets.only(
-              top: Insets().appPadding,
               left: Responsive.isDesktop(context)
                   ? Insets().appPadding * 2
                   : Insets().appPadding,
