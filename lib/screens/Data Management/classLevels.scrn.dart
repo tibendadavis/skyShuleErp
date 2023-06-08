@@ -48,7 +48,7 @@ class _classLevelState extends State<classLevels> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 370
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.class_rounded,
@@ -57,7 +57,7 @@ class _classLevelState extends State<classLevels> {
                 )),
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 370
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile2(
                   tileHeading: "Class Levels",
