@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:skyconnect_starter/components/downloadBar.comp.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/searchBar.comp.dart';
 import 'package:skyconnect_starter/components/searchInputDate.comp.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
-import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -79,123 +75,93 @@ class _invoiceReportState extends State<invoiceReport> {
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               padding: EdgeInsets.only(
                   left: 15, right: 15, bottom: Insets().appPadding),
-              child: Center(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                    headingTextStyle: TextStyle(color: Palette().primaryColor),
-                    horizontalMargin: 0,
-                    columnSpacing: Responsive.isDesktop(context) ? 20 : 10,
-                    columns: [
-                      DataColumn(
-                          label: Checkbox(
-                        value: false,
-                        onChanged: (value) {
-                          setState(() {});
-                        },
-                      )),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? null : null,
-                          child: HeadingText(
-                              size: 14,
-                              fontWeight: FontWeight.w700,
-                              value: 'Invoice No.'),
-                        ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                  dataRowHeight: 55,
+                  headingTextStyle: TextStyle(color: Palette().primaryColor),
+                  horizontalMargin: 0,
+                  columnSpacing:
+                      Responsive.isDesktop(context) && size.width < 1600
+                          ? size.width / 55
+                          : Responsive.isDesktop(context) && size.width > 1600
+                              ? size.width / 30
+                              : 25,
+                  columns: [
+                    DataColumn(
+                        label: Checkbox(
+                      value: false,
+                      onChanged: (value) {
+                        setState(() {});
+                      },
+                    )),
+                    DataColumn(
+                      label: SizedBox(
+                        width: Responsive.isDesktop(context) ? null : null,
+                        child: HeadingText(
+                            size: 14,
+                            fontWeight: FontWeight.w700,
+                            value: 'Invoice No.'),
                       ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 80 : 80,
-                          child: HeadingText(
-                              size: 14,
-                              fontWeight: FontWeight.w700,
-                              value: 'Date'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 140 : 140,
-                          child: HeadingText(
-                              size: 14,
-                              fontWeight: FontWeight.w700,
-                              value: 'Customer Name'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 120 : 120,
-                          child: HeadingText(
-                              size: 14,
-                              fontWeight: FontWeight.w700,
-                              value: 'Item Name'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? null : null,
-                          child: HeadingText(
-                              size: 14,
-                              fontWeight: FontWeight.w700,
-                              value: 'Quantity'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : 100,
-                          child: HeadingText(
-                              fontWeight: FontWeight.w700,
-                              size: 14,
-                              value: 'Price'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : 100,
-                          child: HeadingText(
-                              fontWeight: FontWeight.w700,
-                              size: 14,
-                              value: 'Total Amount'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : 100,
-                          child: HeadingText(
-                              size: 14,
-                              fontWeight: FontWeight.w700,
-                              value: 'Tax'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? null : null,
-                          child: HeadingText(
-                              fontWeight: FontWeight.w700,
-                              size: 14,
-                              value: 'Grand  Total'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? null : null,
-                          child: HeadingText(
-                              fontWeight: FontWeight.w700,
-                              size: 14,
-                              value: 'Payment \nStatus'),
-                        ),
-                      ),
-                      DataColumn(
-                        label: SizedBox(
-                          width: Responsive.isDesktop(context) ? 100 : 100,
-                          child: HeadingText(
-                              size: 14,
-                              fontWeight: FontWeight.w700,
-                              value: 'Action'),
-                        ),
-                      ),
-                    ],
-                    rows: [],
-                  ),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          size: 14, fontWeight: FontWeight.w700, value: 'Date'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          size: 14,
+                          fontWeight: FontWeight.w700,
+                          value: 'Customer Name'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          size: 14,
+                          fontWeight: FontWeight.w700,
+                          value: 'Item Name'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          size: 14,
+                          fontWeight: FontWeight.w700,
+                          value: 'Quantity'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          fontWeight: FontWeight.w700,
+                          size: 14,
+                          value: 'Price'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          fontWeight: FontWeight.w700,
+                          size: 14,
+                          value: 'Total Amount'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          size: 14, fontWeight: FontWeight.w700, value: 'Tax'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          fontWeight: FontWeight.w700,
+                          size: 14,
+                          value: 'Grand  Total'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          fontWeight: FontWeight.w700,
+                          size: 14,
+                          value: 'Payment \nStatus'),
+                    ),
+                    DataColumn(
+                      label: HeadingText(
+                          size: 14,
+                          fontWeight: FontWeight.w700,
+                          value: 'Action'),
+                    ),
+                  ],
+                  rows: [],
                 ),
               ),
             ),
