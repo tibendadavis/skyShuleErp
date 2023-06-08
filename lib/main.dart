@@ -3,6 +3,7 @@ import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/desktopScaffold.comp.dart';
 import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
+import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/mobileScaffold.comp.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/globalVariables.dart';
@@ -119,17 +120,17 @@ class _MyHomePageState extends State<MyHomePage> {
                           }),
                         ),
                         SizedBox(
-                            height: 26,
+                            height: 20,
                             width: size.width,
                             child: Container(
                                 padding: EdgeInsets.only(
-                                    right: 3, top: 3, left: 25, bottom: 3),
+                                    right: 3, top: 3, left: 25, bottom: 0),
                                 color: Colors.white,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Heading5(
-                                        color: Colors.grey.shade700,
+                                    Heading6(
+                                        color: Colors.grey.shade500,
                                         value:
                                             "Copyright © ${DateTime.now().year}"),
                                     SizedBox(
@@ -140,13 +141,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                           Funcs().openLink(
                                               url: "www.skyconnect.co.tz");
                                         },
-                                        child: Heading5(
+                                        child: Heading6(
                                           value: "SkyConnect",
-                                          color: Palette().primaryColor,
+                                          color: Palette()
+                                              .primaryColor
+                                              .withOpacity(0.9),
                                           fontWeight: FontWeight.w600,
                                         )),
-                                    Heading5(
-                                        color: Colors.grey.shade700,
+                                    Heading6(
+                                        color: Colors.grey.shade500,
                                         value: ", All rights reserved.")
                                   ],
                                 )))
