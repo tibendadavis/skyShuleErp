@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:skyconnect_starter/components/downloadBar.comp.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/searchBar.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
@@ -84,1048 +81,941 @@ class _parentsState extends State<parents> {
                   borderRadius: BorderRadius.circular(Insets().appGap + 4)),
               padding: EdgeInsets.only(
                   left: 15, right: 15, bottom: Insets().appPadding),
-              child: Center(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                      headingTextStyle:
-                          TextStyle(color: Palette().primaryColor),
-                      horizontalMargin: 0,
-                      columnSpacing: Responsive.isDesktop(context) ? 20 : 10,
-                      columns: [
-                        DataColumn(
-                            label: Checkbox(
-                          value: false,
-                          onChanged: (value) {
-                            setState(() {});
-                          },
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                    dataRowHeight: 55,
+                    headingTextStyle: TextStyle(color: Palette().primaryColor),
+                    horizontalMargin: 0,
+                    columnSpacing:
+                        Responsive.isDesktop(context) && size.width < 1600
+                            ? size.width / 35
+                            : Responsive.isDesktop(context) && size.width > 1600
+                                ? size.width / 20
+                                : 25,
+                    showCheckboxColumn: true,
+                    checkboxHorizontalMargin: 10,
+                    showBottomBorder: true,
+                    columns: [
+                      DataColumn(
+                          label: HeadingText(
+                        size: 15,
+                        value: "No.",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 15,
+                        value: "Photo",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 15,
+                        value: "Parent Name",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 15,
+                        value: "Relation",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 15,
+                        value: "Email Address",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 15,
+                        value: "Parents Phone",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 15,
+                        value: "Address",
+                        fontWeight: FontWeight.w700,
+                      )),
+                      DataColumn(
+                          label: HeadingText(
+                        size: 15,
+                        value: "Action",
+                        fontWeight: FontWeight.w700,
+                      )),
+                    ],
+                    rows: [
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          child: HeadingText(
-                            size: 15,
-                            value: "No.",
-                            fontWeight: FontWeight.w700,
-                          ),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          child: HeadingText(
-                            size: 15,
-                            value: "Photo",
-                            fontWeight: FontWeight.w700,
-                          ),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: 150,
-                          child: HeadingText(
-                            size: 15,
-                            value: "Parent Name",
-                            fontWeight: FontWeight.w700,
-                          ),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: 100,
-                          child: HeadingText(
-                            size: 15,
-                            value: "Relation",
-                            fontWeight: FontWeight.w700,
-                          ),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: 150,
-                          child: HeadingText(
-                            size: 15,
-                            value: "Email Address",
-                            fontWeight: FontWeight.w700,
-                          ),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
                         )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: 150,
-                          child: HeadingText(
-                            size: 15,
-                            value: "Parents Phone",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: 150,
-                          child: HeadingText(
-                            size: 15,
-                            value: "Address",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                        DataColumn(
-                            label: SizedBox(
-                          width: 150,
-                          child: HeadingText(
-                            size: 15,
-                            value: "Action",
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )),
-                      ],
-                      rows: [
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
-                        DataRow(cells: [
-                          DataCell(Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "1",
-                          )),
-                          DataCell(Icon(size: 20, Icons.face_rounded)),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Juma Omary Kaponta",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "Father",
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "parentsemail@gmail.com",
-                          )),
-                          DataCell(Row(
-                            children: [
-                              HeadingText(
-                                size: 15,
-                                value: "+255734848894",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.add_call,
-                                size: 16,
-                                color: Palette().primaryColor,
-                              )
-                            ],
-                          )),
-                          DataCell(HeadingText(
-                            size: 15,
-                            value: "TABAT, BIMA",
-                          )),
-                          DataCell(Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Edit",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: HeadingText(
-                                  size: 14,
-                                  value: "Delete",
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ))
-                        ]),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
                       ]),
-                ),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                      DataRow(cells: [
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "1",
+                        )),
+                        DataCell(Icon(size: 20, Icons.face_rounded)),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Juma Omary Kaponta",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "Father",
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "parentsemail@gmail.com",
+                        )),
+                        DataCell(Row(
+                          children: [
+                            HeadingText(
+                              size: 15,
+                              value: "+255734848894",
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.add_call,
+                              size: 16,
+                              color: Palette().primaryColor,
+                            )
+                          ],
+                        )),
+                        DataCell(HeadingText(
+                          size: 15,
+                          value: "TABAT, BIMA",
+                        )),
+                        DataCell(Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Edit",
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: HeadingText(
+                                size: 14,
+                                value: "Delete",
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        ))
+                      ]),
+                    ]),
               ),
             ),
           ]),
