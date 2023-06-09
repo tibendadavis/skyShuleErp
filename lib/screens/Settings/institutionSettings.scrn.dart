@@ -1,15 +1,10 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
 import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/inputBigText.comp.dart';
 import 'package:skyconnect_starter/components/inputDate.comp.dart';
 import 'package:skyconnect_starter/components/inputFile.comp.dart';
-import 'package:skyconnect_starter/components/inputOptions.comp.dart';
 import 'package:skyconnect_starter/components/inputTextField.comp.dart';
-import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/main.dart';
 import 'package:skyconnect_starter/screens/Settings/institutionDetails.scrn.dart';
