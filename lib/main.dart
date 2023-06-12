@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/desktopScaffold.comp.dart';
 import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/mobileScaffold.comp.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
