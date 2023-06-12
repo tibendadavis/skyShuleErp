@@ -752,16 +752,15 @@ class _skyShuleDrawerState extends State<skyShuleDrawer>
         "iconData": Icons.message_rounded,
         "iconData2": Icons.keyboard_arrow_down_rounded,
         "selected": globalData.selected[24],
-        // "submenu1": ["Compose", compose(), Icons.create, "/messages/compose"],
-        "submenu2": ["Inbox", inbox(), Icons.inbox_rounded, "/messages/inbox"],
-        "submenu3": ["Sent", sent(), Icons.email_outlined, "/messages/sent"],
-        "submenu4": [
+        "submenu1": ["Inbox", inbox(), Icons.inbox_rounded, "/messages/inbox"],
+        "submenu2": ["Sent", sent(), Icons.email_outlined, "/messages/sent"],
+        "submenu3": [
           "Favorite",
           favorite(),
           Icons.star_border_purple500_rounded,
           "/messages/favorite"
         ],
-        "submenu5": ["Trash", trash(), Icons.delete, "/messages/trash"],
+        "submenu4": ["Trash", trash(), Icons.delete, "/messages/trash"],
       },
       {
         "size": widget.size!,
@@ -819,7 +818,10 @@ class _skyShuleDrawerState extends State<skyShuleDrawer>
               child: CircleAvatar(
                 radius: widget.size! > 100 ? 40 : 24,
                 backgroundColor: Palette().textColor,
-                child: ClipOval(child: Image.asset("assets/img/skylogo2.png")),
+                child: Container(
+                    padding: EdgeInsets.all(7),
+                    child: ClipOval(
+                        child: Image.asset("assets/img/skylogo2.png"))),
               ),
             ),
             SizedBox(
