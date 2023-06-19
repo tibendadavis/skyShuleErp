@@ -5,7 +5,6 @@ import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/Certificate/certificateType.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class certificate extends StatefulWidget {
