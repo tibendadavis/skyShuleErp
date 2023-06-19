@@ -6,6 +6,7 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
+// ignore: must_be_immutable
 class inputOptions extends StatefulWidget {
   String? title;
   String? opt1;
