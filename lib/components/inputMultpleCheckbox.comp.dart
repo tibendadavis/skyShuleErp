@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
+// ignore: must_be_immutable
 class inputMultipleCheckbox extends StatefulWidget {
   String? heading;
   String? opt1;
