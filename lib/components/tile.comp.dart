@@ -52,7 +52,7 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return AnimatedSize(
         // ignore: deprecated_member_use
-        vsync: this,
+
         duration: Duration(milliseconds: 1200),
         curve: Curves.fastLinearToSlowEaseIn,
         child: _expanded
