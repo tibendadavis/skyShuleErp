@@ -16,13 +16,6 @@ class attendanceReport extends StatefulWidget {
 }
 
 class _attendaceReportState extends State<attendanceReport> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _download;
-  TextEditingController _startDate = TextEditingController();
-  TextEditingController _endDate = TextEditingController();
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
