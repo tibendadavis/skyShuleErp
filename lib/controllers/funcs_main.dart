@@ -13,8 +13,6 @@ import 'package:uuid/uuid.dart';
 import 'package:skyconnect_starter/services/data.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart' as path_provider;
 
 class Funcs {
   DateTime getDateToNextDays({required int days, required String from}) {
