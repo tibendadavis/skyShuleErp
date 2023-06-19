@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/inputBigText.comp.dart';
 import 'package:skyconnect_starter/components/inputOptions.comp.dart';
@@ -18,7 +14,6 @@ class contactsDetails extends StatefulWidget {
 }
 
 class _contactsDetailsState extends State<contactsDetails> {
-  var _academicYear;
   @override
   Widget build(BuildContext context) {
     return Container(
