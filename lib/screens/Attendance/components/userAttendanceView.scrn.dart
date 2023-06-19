@@ -3,16 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
 import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/controllers/funcs_main.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -44,8 +38,6 @@ class _userAttendanceViewState extends State<userAttendanceView>
     controller.forward();
   }
 
-  bool _menu = false;
-  double _drawersize = 250;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
