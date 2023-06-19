@@ -17,13 +17,7 @@ class generateCertificate extends StatefulWidget {
 }
 
 class _generateCertificateState extends State<generateCertificate> {
-  bool _menu = false;
   bool generate = false;
-  TextEditingController _issueDate = TextEditingController();
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
 
   @override
   Widget build(BuildContext context) {
