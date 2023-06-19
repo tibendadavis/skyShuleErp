@@ -16,14 +16,6 @@ class itemReport extends StatefulWidget {
 }
 
 class _itemReportState extends State<itemReport> {
-  bool _menu = false;
-  double _drawersize = 250;
-  TextEditingController _From = TextEditingController();
-  TextEditingController _To = TextEditingController();
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

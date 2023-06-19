@@ -16,14 +16,9 @@ class addInstitutionAdmin extends StatefulWidget {
 
 class _addInstitutionAdminState extends State<addInstitutionAdmin>
     with SingleTickerProviderStateMixin {
-  bool _menu = false;
   late AnimationController controller;
   late Animation<double> scaleAnimation;
-  TextEditingController _startDate = TextEditingController();
-  TextEditingController _endDate = TextEditingController();
-  var _specialGrade;
-  var _classlevel;
-  double _drawersize = 250;
+
   @override
   void initState() {
     super.initState();

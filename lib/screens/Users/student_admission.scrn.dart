@@ -28,11 +28,9 @@ class _studentAdmissionState extends State<studentAdmission> {
   bool bnkDtls = false;
   bool othrFacilities = false;
   bool upldDocs = false;
-  bool _menu = false;
-  double _drawersize = 250;
+
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Container(
       child: Expanded(
           child: Column(

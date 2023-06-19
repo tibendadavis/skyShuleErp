@@ -15,12 +15,6 @@ class newsBoard extends StatefulWidget {
 }
 
 class _newsBoardState extends State<newsBoard> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _madefor;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

@@ -15,14 +15,6 @@ class invoiceReport extends StatefulWidget {
 }
 
 class _invoiceReportState extends State<invoiceReport> {
-  bool _menu = false;
-  double _drawersize = 250;
-  TextEditingController _From = TextEditingController();
-  TextEditingController _To = TextEditingController();
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -49,7 +41,7 @@ class _invoiceReportState extends State<invoiceReport> {
               Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
           children: [
             Container(
-              width: Responsive.isDesktop(context) ? 400 : size.width,
+              width: Responsive.isDesktop(context) ? 370 : size.width,
               child: tile2(tileHeading: "Invoice Reports", tileData: "7"),
             ),
           ],
@@ -83,26 +75,19 @@ class _invoiceReportState extends State<invoiceReport> {
                   horizontalMargin: 0,
                   columnSpacing:
                       Responsive.isDesktop(context) && size.width < 1600
-                          ? size.width / 55
+                          ? size.width / 40
                           : Responsive.isDesktop(context) && size.width > 1600
-                              ? size.width / 30
+                              ? size.width / 32
                               : 25,
+                  showCheckboxColumn: true,
+                  checkboxHorizontalMargin: 10,
+                  showBottomBorder: true,
                   columns: [
                     DataColumn(
-                        label: Checkbox(
-                      value: false,
-                      onChanged: (value) {
-                        setState(() {});
-                      },
-                    )),
-                    DataColumn(
-                      label: SizedBox(
-                        width: Responsive.isDesktop(context) ? null : null,
-                        child: HeadingText(
-                            size: 14,
-                            fontWeight: FontWeight.w700,
-                            value: 'Invoice No.'),
-                      ),
+                      label: HeadingText(
+                          size: 14,
+                          fontWeight: FontWeight.w700,
+                          value: 'Invoice No.'),
                     ),
                     DataColumn(
                       label: HeadingText(

@@ -15,16 +15,10 @@ class idCards extends StatefulWidget {
 }
 
 class _idCardsState extends State<idCards> {
-  bool _menu = false;
   bool generate = false;
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Container(
       child: Expanded(
           child: Column(children: [

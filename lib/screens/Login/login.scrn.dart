@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:skyconnect_starter/components/heading2.dart';
-
 import 'package:skyconnect_starter/components/heading5.dart';
-
 import 'package:skyconnect_starter/components/heading_text.dart';
-
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/main.dart';
-import 'package:skyconnect_starter/screens/Home/home.pg.dart';
-
 import 'package:skyconnect_starter/screens/Login/loading.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 

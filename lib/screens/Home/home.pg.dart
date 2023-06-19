@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skyconnect_starter/components/divider.comp.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/tile.comp.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
 import 'package:skyconnect_starter/controllers/globalVariables.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
@@ -20,11 +18,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double _scrollPosition = 0;
   final ScrollController _scrollController = ScrollController();
   bool _atStart = true;
-  bool _isHovering = false;
-  bool _reverseScrolling = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -490,8 +486,8 @@ class _HomePageState extends State<HomePage> {
                                                 MajorGridLines(width: 0),
                                             minorGridLines:
                                                 MinorGridLines(width: 0)),
-                                        series: <
-                                            SplineSeries<ChartData, String>>[
+                                        series: <SplineSeries<ChartData,
+                                            String>>[
                                           SplineSeries<ChartData, String>(
                                             dataSource: chartData3,
                                             xValueMapper: (ChartData data, _) =>

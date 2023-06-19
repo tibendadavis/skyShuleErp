@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
@@ -17,11 +15,7 @@ class institutionDetails extends StatefulWidget {
 
 class _institutionDetailsState extends State<institutionDetails> {
   var picked;
-  bool _menu = false;
-  var _specialGrade;
-  var _date;
-  var _madefor;
-  double _drawersize = 250;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

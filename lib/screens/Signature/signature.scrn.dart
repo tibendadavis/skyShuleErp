@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skyconnect_starter/components/heading2.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
@@ -18,14 +17,9 @@ class _signatureState extends State<signature> {
   bool signtre = true;
   bool schoolstmp = false;
   var picked;
-  bool _menu = false;
-  var _specialGrade;
-  var _classlevel;
-  var _designation;
-  double _drawersize = 250;
+
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Container(
       child: Expanded(
           child: Column(

@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/allocations.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
 import 'package:skyconnect_starter/components/examReport.dart';
-import 'package:skyconnect_starter/components/header.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
 import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
@@ -26,8 +23,6 @@ class userProfile extends StatefulWidget {
 }
 
 class _userProfileState extends State<userProfile> {
-  bool _menu = false;
-  double _drawersize = 250;
   bool stdntsInfo = true;
   bool prntsInfo = false;
   bool paymntReport = false;

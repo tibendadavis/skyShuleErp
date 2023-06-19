@@ -17,12 +17,6 @@ class employeeSalary extends StatefulWidget {
 }
 
 class _employeeSalaryState extends State<employeeSalary> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

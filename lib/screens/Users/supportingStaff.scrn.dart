@@ -17,12 +17,6 @@ class supportingStaff extends StatefulWidget {
 }
 
 class _supportingStaffState extends State<supportingStaff> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _role;
-  var _download;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

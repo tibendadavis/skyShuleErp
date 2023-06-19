@@ -1,26 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:path/path.dart';
-import 'package:skyconnect_starter/components/app_drawer/skyShuleDrawer.dart';
-import 'package:skyconnect_starter/components/bankDetails.dart';
-import 'package:skyconnect_starter/components/contactsDetails.dart';
-import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
 import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/inputTextField.comp.dart';
-import 'package:skyconnect_starter/components/officialDetails.dart';
-import 'package:skyconnect_starter/components/otherFacilities.dart';
-import 'package:skyconnect_starter/components/parentsDetails.dart';
-import 'package:skyconnect_starter/components/personalDetails.dart';
-import 'package:skyconnect_starter/components/uploadDocuments.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/components/academicDetails.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class addSupplierType extends StatefulWidget {
@@ -32,12 +15,9 @@ class addSupplierType extends StatefulWidget {
 
 class _addSupplierTypeState extends State<addSupplierType>
     with SingleTickerProviderStateMixin {
-  bool _menu = false;
   late AnimationController controller;
   late Animation<double> scaleAnimation;
-  var _specialGrade;
-  var _classlevel;
-  double _drawersize = 250;
+
   @override
   void initState() {
     super.initState();

@@ -17,14 +17,6 @@ class humanResource extends StatefulWidget {
 }
 
 class _humanResourceState extends State<humanResource> {
-  bool _menu = false;
-  TextEditingController _From = TextEditingController();
-  TextEditingController _To = TextEditingController();
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

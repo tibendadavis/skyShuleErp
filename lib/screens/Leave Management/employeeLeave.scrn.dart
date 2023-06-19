@@ -18,14 +18,6 @@ class employeeLeave extends StatefulWidget {
 }
 
 class _employeeLeaveState extends State<employeeLeave> {
-  bool _menu = false;
-  double _drawersize = 250;
-  TextEditingController _From = TextEditingController();
-  TextEditingController _To = TextEditingController();
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

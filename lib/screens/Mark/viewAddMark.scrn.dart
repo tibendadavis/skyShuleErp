@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skyconnect_starter/components/downloadBar.comp.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
+import 'package:skyconnect_starter/components/inputTextOnly.comp.dart';
 import 'package:skyconnect_starter/components/searchBar.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
@@ -15,13 +16,6 @@ class viewAddMark extends StatefulWidget {
 }
 
 class _viewAddMarkState extends State<viewAddMark> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _subject;
-  var _class;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -95,7 +89,7 @@ class _viewAddMarkState extends State<viewAddMark> {
                         Responsive.isDesktop(context) && size.width < 1600
                             ? size.width / 60
                             : Responsive.isDesktop(context) && size.width > 1600
-                                ? size.width / 20
+                                ? size.width / 50
                                 : 25,
                     showCheckboxColumn: true,
                     checkboxHorizontalMargin: 10,
@@ -136,7 +130,7 @@ class _viewAddMarkState extends State<viewAddMark> {
                       )),
                       DataColumn(
                           label: SizedBox(
-                        width: Responsive.isDesktop(context) ? 150 : null,
+                        width: Responsive.isDesktop(context) ? 130 : null,
                         child: Center(
                           child: HeadingText(
                             size: 14,
@@ -147,7 +141,7 @@ class _viewAddMarkState extends State<viewAddMark> {
                       )),
                       DataColumn(
                           label: SizedBox(
-                        width: Responsive.isDesktop(context) ? 150 : 100,
+                        width: Responsive.isDesktop(context) ? 130 : 100,
                         child: Center(
                           child: HeadingText(
                             size: 14,
@@ -158,7 +152,7 @@ class _viewAddMarkState extends State<viewAddMark> {
                       )),
                       DataColumn(
                           label: SizedBox(
-                        width: Responsive.isDesktop(context) ? 150 : 100,
+                        width: Responsive.isDesktop(context) ? 130 : 100,
                         child: Center(
                           child: HeadingText(
                             size: 14,
@@ -169,7 +163,7 @@ class _viewAddMarkState extends State<viewAddMark> {
                       )),
                       DataColumn(
                           label: SizedBox(
-                        width: Responsive.isDesktop(context) ? 150 : 100,
+                        width: Responsive.isDesktop(context) ? 130 : 100,
                         child: Center(
                           child: HeadingText(
                             size: 14,
@@ -180,7 +174,7 @@ class _viewAddMarkState extends State<viewAddMark> {
                       )),
                       DataColumn(
                           label: SizedBox(
-                        width: Responsive.isDesktop(context) ? 150 : 100,
+                        width: Responsive.isDesktop(context) ? 130 : 100,
                         child: Center(
                           child: HeadingText(
                             size: 14,
@@ -214,110 +208,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                       DataRow(cells: [
@@ -343,110 +252,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                       DataRow(cells: [
@@ -472,110 +296,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                       DataRow(cells: [
@@ -601,110 +340,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                       DataRow(cells: [
@@ -730,110 +384,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                       DataRow(cells: [
@@ -859,110 +428,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                       DataRow(cells: [
@@ -988,110 +472,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                       DataRow(cells: [
@@ -1117,110 +516,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                       DataRow(cells: [
@@ -1246,110 +560,25 @@ class _viewAddMarkState extends State<viewAddMark> {
                           size: 14,
                           value: "ANTELOPE",
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
-                        DataCell(SizedBox(
-                          height: 40,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: Insets().appPadding / 2,
-                              right: Insets().appPadding / 2,
-                            ),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1.5, color: Colors.grey),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    Insets().appPadding / 1.5)),
-                            child: TextFormField(
-                                textAlign: TextAlign.center,
-                                textAlignVertical: TextAlignVertical.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                )),
-                          ),
+                        DataCell(inputTextOnly(
+                          hintText: '',
+                          size: 130,
                         )),
                       ]),
                     ]),

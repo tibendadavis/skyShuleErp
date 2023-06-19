@@ -18,13 +18,6 @@ class bookReturn extends StatefulWidget {
 }
 
 class _bookReturnState extends State<bookReturn> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _class;
-  var _category;
-  var _From;
-  var _To;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

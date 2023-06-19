@@ -18,15 +18,6 @@ class bookIssue extends StatefulWidget {
 }
 
 class _bookIssueState extends State<bookIssue> {
-  bool _menu = false;
-  double _drawersize = 250;
-  TextEditingController _issueDate = TextEditingController();
-  TextEditingController _dueDate = TextEditingController();
-  var _class;
-  var _category;
-  var _From;
-  var _To;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

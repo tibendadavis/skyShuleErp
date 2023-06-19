@@ -17,13 +17,6 @@ class mark extends StatefulWidget {
 }
 
 class _markState extends State<mark> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _classlevel;
-  var _class;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

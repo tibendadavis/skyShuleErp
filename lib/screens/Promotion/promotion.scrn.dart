@@ -16,11 +16,7 @@ class _promotionState extends State<promotion> {
   bool perClass = true;
   bool schoolstmp = false;
   var picked;
-  bool _menu = false;
-  var _specialGrade;
-  var _classlevel;
-  var _designation;
-  double _drawersize = 250;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

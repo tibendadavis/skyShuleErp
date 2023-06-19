@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
+
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class IDCardFront extends StatefulWidget {

@@ -16,12 +16,6 @@ class specialGrading extends StatefulWidget {
 }
 
 class _specialGradingState extends State<specialGrading> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
