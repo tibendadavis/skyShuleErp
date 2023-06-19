@@ -7,6 +7,7 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
+// ignore: must_be_immutable
 class inputMultipleRadio extends StatefulWidget {
   final String heading;
   String opt1;
@@ -71,6 +72,7 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // ignore: unnecessary_null_comparison
                   if (widget.opt1 != null)
                     Row(
                       children: [
@@ -94,6 +96,7 @@ class _inputMultipleRadioState extends State<inputMultipleRadio> {
                             ? 50
                             : 5,
                   ),
+                  // ignore: unnecessary_null_comparison
                   if (widget.opt2 != null)
                     Row(
                       children: [
