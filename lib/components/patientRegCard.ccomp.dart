@@ -1,33 +1,8 @@
-import 'dart:typed_data';
-import 'dart:ui' as ui;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
-import 'package:path/path.dart';
 
-import 'package:skyconnect_starter/components/header.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/components/inputBigText.comp.dart';
-import 'package:skyconnect_starter/components/inputDate.comp.dart';
-import 'package:skyconnect_starter/components/inputFile.comp.dart';
-import 'package:skyconnect_starter/components/inputMultpleRadio.comp.dart';
-import 'package:skyconnect_starter/components/inputOptions.comp.dart';
-import 'package:skyconnect_starter/components/inputTextField.comp.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'package:skyconnect_starter/controllers/responsive.dart';
-// import 'package:pdf/pdf.dart';
-// import 'package:pdf/widgets.dart' as pw;
 
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
@@ -40,12 +15,9 @@ class patientRegCard extends StatefulWidget {
 
 class patientRegCardState extends State<patientRegCard>
     with SingleTickerProviderStateMixin {
-  bool _menu = false;
   late AnimationController controller;
   late Animation<double> scaleAnimation;
-  var _specialGrade;
-  var _classlevel;
-  double _drawersize = 250;
+
   GlobalKey<patientRegCardState> myWidgetKey = GlobalKey<patientRegCardState>();
   @override
   void initState() {
@@ -83,7 +55,6 @@ class patientRegCardState extends State<patientRegCard>
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Center(
       child: Material(
         color: Colors.transparent,
@@ -267,13 +238,13 @@ class patientRegCardState extends State<patientRegCard>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            QrImage(
-                              data:
-                                  'John Snow\n007\n11/07/1992\nMale\n0123456789',
-                              version: QrVersions.auto,
-                              size: 80.0,
-                              gapless: false,
-                            ),
+                            // QrImage(
+                            //   data:
+                            //       'John Snow\n007\n11/07/1992\nMale\n0123456789',
+                            //   version: QrVersions.auto,
+                            //   size: 80.0,
+                            //   gapless: false,
+                            // ),
                             TextButton(
                               onPressed: () {},
                               child: Heading5(
