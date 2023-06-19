@@ -5,11 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/app_drawer/drawer_item.comp.dart';
-import 'package:skyconnect_starter/components/heading1.dart';
-import 'package:skyconnect_starter/components/heading3.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/controllers/globalVariables.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/screens/Home/home.pg.dart';
@@ -33,7 +28,6 @@ import 'package:skyconnect_starter/screens/Class%20Routine/classRoutine.scrn.dar
 import 'package:skyconnect_starter/screens/Subjects/classSubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/Class/classes.scrn.dart';
 import 'package:skyconnect_starter/screens/Exams/Reports/combinedReports.scrn.dart';
-import 'package:skyconnect_starter/screens/Messages/compose.scrn.dart';
 import 'package:skyconnect_starter/screens/Certificate/customCertificate.scrn.dart';
 import 'package:skyconnect_starter/screens/Grading/defaultGrading.scrn.dart';
 import 'package:skyconnect_starter/screens/Data%20Management/department.scrn.dart';
@@ -42,7 +36,6 @@ import 'package:skyconnect_starter/screens/Attendance/employeeAttendance.scrn.da
 import 'package:skyconnect_starter/screens/Payroll%20Management/employeeBonus.scrn.dart';
 import 'package:skyconnect_starter/screens/Leave%20Management/employeeLeave.scrn.dart';
 import 'package:skyconnect_starter/screens/Payroll%20Management/employeeSalary.scrn.dart';
-import 'package:skyconnect_starter/screens/Faculty%20Management/enrollment.scrn.dart';
 import 'package:skyconnect_starter/screens/Faculty%20Management/exFaculty.scrn.dart';
 import 'package:skyconnect_starter/screens/Attendance/examAttendance.scrn.dart';
 import 'package:skyconnect_starter/screens/Exams/Settings/examGroup.scrn.dart';
@@ -71,7 +64,6 @@ import 'package:skyconnect_starter/screens/Subjects/listsubjects.scrn.dart';
 import 'package:skyconnect_starter/screens/eResources/liveStudies.scrn.dart';
 import 'package:skyconnect_starter/screens/Users/manage_students.scrn.dart';
 import 'package:skyconnect_starter/screens/Mark/mark.scrn.dart';
-
 import 'package:skyconnect_starter/screens/Hostel%20Management/membersHostel.scrn.dart';
 import 'package:skyconnect_starter/screens/Exams/minorSchoolExams.scrn.dart';
 import 'package:skyconnect_starter/screens/News&Announcements/newsBoard.scrn.dart';
@@ -105,6 +97,7 @@ import 'package:skyconnect_starter/screens/Terms/terms.scrn.dart';
 import 'package:skyconnect_starter/screens/Messages/trash.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
+// ignore: must_be_immutable
 class skyShuleDrawer extends StatefulWidget {
   final double? size;
 
@@ -152,6 +145,7 @@ class _skyShuleDrawerState extends State<skyShuleDrawer>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     late List<Map> items = [
       {
         "size": widget.size!,
