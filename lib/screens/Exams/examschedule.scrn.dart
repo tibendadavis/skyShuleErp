@@ -18,15 +18,6 @@ class examSchedule extends StatefulWidget {
 }
 
 class _examScheduleState extends State<examSchedule> {
-  bool _menu = false;
-  double _drawersize = 250;
-  TextEditingController _From = TextEditingController();
-  TextEditingController _To = TextEditingController();
-  var _class;
-  var _category;
-  var _download;
-  var _classlevel;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
