@@ -1,12 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/inputDate.comp.dart';
 import 'package:skyconnect_starter/components/inputMultpleRadio.comp.dart';
 import 'package:skyconnect_starter/components/inputOptions.comp.dart';
@@ -22,7 +15,6 @@ class officialDetails extends StatefulWidget {
 }
 
 class _officialDetailsState extends State<officialDetails> {
-  var _academicYear;
   @override
   Widget build(BuildContext context) {
     return Container(
