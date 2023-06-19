@@ -19,13 +19,7 @@ class _combinedReportsState extends State<combinedReports> {
   bool subjectResult = false;
   bool meritList = false;
   var picked;
-  bool _menu = false;
-  var _specialGrade;
-  var _academicYear;
-  var _stream;
-  var _classlevel;
-  var _designation;
-  double _drawersize = 250;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
