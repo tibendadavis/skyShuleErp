@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:skyconnect_starter/components/heading4.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/inputDate.comp.dart';
 import 'package:skyconnect_starter/components/inputGender.comp.dart';
 import 'package:skyconnect_starter/components/inputOptions.comp.dart';
@@ -19,8 +16,6 @@ class personalDetails extends StatefulWidget {
 }
 
 class _personalDetailsState extends State<personalDetails> {
-  var _academicYear;
-
   @override
   Widget build(BuildContext context) {
     return Container(
