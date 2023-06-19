@@ -17,15 +17,13 @@ class addFinancialYear extends StatefulWidget {
 
 class _addFinancialYearState extends State<addFinancialYear>
     with SingleTickerProviderStateMixin {
-  bool _menu = false;
   late AnimationController controller;
   late Animation<double> scaleAnimation;
-  var _specialGrade;
-  var _classlevel;
+
   TextEditingController _academicYearStart = TextEditingController();
   TextEditingController _academicYearEnd = TextEditingController();
   TextEditingController _feeCalculatedFrom = TextEditingController();
-  double _drawersize = 250;
+
   @override
   void initState() {
     super.initState();
