@@ -5,7 +5,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:skyconnect_starter/components/heading2.dart';
 import 'package:skyconnect_starter/components/heading3.dart';
 import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/components/inputDate.comp.dart';
 import 'package:skyconnect_starter/components/inputOptions.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
@@ -20,14 +19,9 @@ class addEnrollment extends StatefulWidget {
 
 class _addEnrollmentState extends State<addEnrollment>
     with SingleTickerProviderStateMixin {
-  bool _menu = false;
   late AnimationController controller;
   late Animation<double> scaleAnimation;
-  TextEditingController _enrollmentDate = TextEditingController();
-  TextEditingController _endDate = TextEditingController();
-  var _specialGrade;
-  var _classlevel;
-  double _drawersize = 250;
+
   @override
   void initState() {
     super.initState();
