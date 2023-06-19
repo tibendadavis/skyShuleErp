@@ -17,15 +17,6 @@ class liveStudies extends StatefulWidget {
 }
 
 class _liveStudiesState extends State<liveStudies> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-  var _subject;
-  var _class;
-  var _startTime;
-  var _endTime;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
