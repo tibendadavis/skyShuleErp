@@ -4,6 +4,7 @@ import 'package:skyconnect_starter/controllers/funcs_main.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 import 'package:intl/intl.dart';
 
+// ignore: must_be_immutable
 class searchInputDate extends StatefulWidget {
   String? title;
   String? value;
