@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:path/path.dart';
 import 'package:skyconnect_starter/components/heading5.dart';
-import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/controllers/globalVariables.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 
@@ -25,7 +20,7 @@ class header extends StatefulWidget {
 
 class _headerState extends State<header> {
   double _drawersize = 250;
-  var _userProfile;
+
   // bool _menu = false;
   @override
   Widget build(BuildContext context) {
@@ -72,7 +67,7 @@ class _headerState extends State<header> {
             !Responsive.isDesktop(context) ? Offstage() : const Spacer(),
             Expanded(
               child: SizedBox(
-                height: Insets().smallInputSize + 5,
+                height: Insets().smallInputSize,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: Responsive.isDesktop(context)
@@ -83,12 +78,6 @@ class _headerState extends State<header> {
                         : 0,
                   ),
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        stops: [0.7, 0.9],
-                        colors: [Palette().primaryColorLight, Colors.white],
-                      ),
                       color: Palette().primaryColorLight,
                       borderRadius: BorderRadius.circular(Insets().appRadius)),
                   child: TextFormField(
