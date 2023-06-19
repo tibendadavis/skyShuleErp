@@ -17,15 +17,6 @@ class fileManagement extends StatefulWidget {
 }
 
 class _fileManagementState extends State<fileManagement> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-  var _subject;
-  var _class;
-  var _startTime;
-  var _endTime;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
