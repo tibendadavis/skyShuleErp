@@ -7,6 +7,7 @@ import 'package:skyconnect_starter/components/heading_text.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
+// ignore: must_be_immutable
 class downloadBar extends StatefulWidget {
   String? results;
   bool? icons;
@@ -18,7 +19,6 @@ class downloadBar extends StatefulWidget {
 
 class _downloadBarState extends State<downloadBar>
     with TickerProviderStateMixin {
-  var _classlevel;
   bool _expanded = false;
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _downloadBarState extends State<downloadBar>
     Size size = MediaQuery.of(context).size;
     return AnimatedSize(
         // ignore: deprecated_member_use
-        vsync: this,
+
         duration: Duration(milliseconds: 1200),
         curve: Curves.fastLinearToSlowEaseIn,
         child: _expanded
@@ -226,9 +226,7 @@ class _downloadBarState extends State<downloadBar>
                                 Insets().appRadiusMin + 4),
                             onChanged: ((value) {
                               if (true) {
-                                setState(() {
-                                  _classlevel = value;
-                                });
+                                setState(() {});
                               }
                             }),
                           ),
@@ -313,9 +311,7 @@ class _downloadBarState extends State<downloadBar>
                                 Insets().appRadiusMin + 4),
                             onChanged: ((value) {
                               if (true) {
-                                setState(() {
-                                  _classlevel = value;
-                                });
+                                setState(() {});
                               }
                             }),
                           ),
