@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skyconnect_starter/services/data.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class PostEdit extends StatefulWidget {
@@ -27,16 +26,8 @@ class PostEdit extends StatefulWidget {
 }
 
 class _PostEditState extends State<PostEdit> {
-  String? _prompt;
-  String _style = AppData().generationStyles.first;
-  String _imageSize = "256x256";
-
   @override
   void initState() {
-    _prompt = widget.prompt;
-    _style = widget.style;
-    _imageSize = widget.imageSize;
-
     super.initState();
   }
 
@@ -55,9 +46,7 @@ class _PostEditState extends State<PostEdit> {
                 )),
             validator: (val) => val!.isEmpty ? "Really :(".tr : null,
             onChanged: (val) {
-              setState(() {
-                _prompt = val;
-              });
+              setState(() {});
             },
           ),
         ),
