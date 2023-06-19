@@ -17,14 +17,6 @@ class classNotes extends StatefulWidget {
 }
 
 class _classNotesState extends State<classNotes> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-  var _subject;
-  var _class;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
