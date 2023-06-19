@@ -16,10 +16,6 @@ class classRoutine extends StatefulWidget {
 }
 
 class _classRoutineState extends State<classRoutine> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _classlevel;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
