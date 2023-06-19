@@ -3,6 +3,7 @@ import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
+// ignore: must_be_immutable
 class DrawerItem extends StatefulWidget {
   final double size;
   final String value;
@@ -91,7 +92,6 @@ class DrawerItem extends StatefulWidget {
 }
 
 class _DrawerItemState extends State<DrawerItem> with TickerProviderStateMixin {
-  bool _expanded = false;
   late bool isSelected;
   @override
   void initState() {
