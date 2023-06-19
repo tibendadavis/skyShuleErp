@@ -6,7 +6,6 @@ import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/components/tile2.comp.dart';
 import 'package:skyconnect_starter/components/tile3.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
-import 'package:skyconnect_starter/screens/Exams/Settings/addSchoolExam.scrn.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
 class classAllocations extends StatefulWidget {
@@ -17,13 +16,6 @@ class classAllocations extends StatefulWidget {
 }
 
 class _supportingStaffState extends State<classAllocations> {
-  bool _menu = false;
-  double _drawersize = 250;
-  var _classlevel;
-  var _academicYear;
-  var _stream;
-  var _class;
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
