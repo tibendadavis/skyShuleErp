@@ -18,16 +18,8 @@ class institutionSettings extends StatefulWidget {
 }
 
 class _institutionSettingsState extends State<institutionSettings> {
-  TextEditingController _startYear = TextEditingController();
-  TextEditingController _endYear = TextEditingController();
-  bool _menu = false;
-  var picked;
-  var _specialGrade;
-  var _classlevel;
-  double _drawersize = 250;
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return ListView(
       children: [
         Container(
