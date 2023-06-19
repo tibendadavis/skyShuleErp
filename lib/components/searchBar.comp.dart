@@ -1,18 +1,12 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skyconnect_starter/components/heading5.dart';
 import 'package:skyconnect_starter/components/heading6.dart';
-import 'package:skyconnect_starter/components/heading_text.dart';
-import 'package:skyconnect_starter/components/inputDatePeriod.comp.dart';
 import 'package:skyconnect_starter/components/searchInputDate.comp.dart';
 import 'package:skyconnect_starter/components/searchInputOptions.comp.dart';
 import 'package:skyconnect_starter/controllers/responsive.dart';
 import 'package:skyconnect_starter/theme/design.theme.dart';
 
+// ignore: must_be_immutable
 class searchBar extends StatefulWidget {
   final String title;
   searchInputOptions? opt1;
@@ -62,7 +56,7 @@ class _searchBarState extends State<searchBar> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return AnimatedSize(
         // ignore: deprecated_member_use
-        vsync: this,
+
         duration: Duration(milliseconds: 1200),
         curve: Curves.fastLinearToSlowEaseIn,
         child: _expanded
