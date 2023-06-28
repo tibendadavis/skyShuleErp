@@ -106,7 +106,7 @@ class _loginState extends State<login> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             HeadingText(
-                              size: Responsive.isDesktop(context) ? 30 : 27,
+                              size: Responsive.isDesktop(context) ? 30 : 24,
                               value: Funcs().getSalutation(),
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
