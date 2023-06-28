@@ -30,7 +30,7 @@ class _attendaceReportState extends State<attendanceReport> {
                   : Insets().appPadding,
               right: Insets().appGap),
           child: HeadingText(
-            size: Responsive.isDesktop(context) ? 35 : 30,
+            size: Responsive.isDesktop(context) ? 33 : 30,
             value: "Attendance Report",
             fontWeight: FontWeight.w700,
             color: Colors.grey.shade800,
@@ -172,22 +172,25 @@ class _attendaceReportState extends State<attendanceReport> {
             ),
           ],
         ),
-        Center(
-          child: Container(
-            padding: EdgeInsets.only(
-                bottom: Insets().appPadding / 5,
-                left: Responsive.isDesktop(context)
-                    ? Insets().appPadding * 2
-                    : Insets().appPadding,
-                right: Insets().appPadding),
-            child: HeadingText(
-              size: Responsive.isDesktop(context) ? 27 : 19.7,
-              value:
-                  "GENIUS KINGS NURSERY & PRIMARY SCHOOL - ATTENDANCE REPORT",
-              fontWeight: FontWeight.w700,
-              color: Colors.black,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.only(
+                  bottom: Insets().appPadding / 5,
+                  left: Responsive.isDesktop(context)
+                      ? Insets().appPadding * 2
+                      : Insets().appPadding,
+                  right: Insets().appPadding),
+              child: HeadingText(
+                size: Responsive.isDesktop(context) ? 25 : 19.7,
+                value:
+                    "GENIUS KINGS NURSERY & PRIMARY SCHOOL - ATTENDANCE REPORT",
+                fontWeight: FontWeight.w700,
+                color: Colors.grey.shade800,
+              ),
             ),
-          ),
+          ],
         ),
         SizedBox(
           width: size.width,
