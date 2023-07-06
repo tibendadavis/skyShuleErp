@@ -47,7 +47,7 @@ class _classesState extends State<employeeAttendance> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.badge_outlined,
@@ -56,7 +56,7 @@ class _classesState extends State<employeeAttendance> {
                 )),
             SizedBox(
               width: Responsive.isDesktop(context)
-                  ? 410
+                  ? 360
                   : MediaQuery.of(context).size.width,
               child: tile2(
                   tileHeading: "Total Employees",
