@@ -41,7 +41,7 @@ class _teacherOnDutyState extends State<teacherOnDuty> {
               Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
           children: [
             Container(
-              width: Responsive.isDesktop(context) ? 400 : size.width,
+              width: Responsive.isDesktop(context) ? 360 : size.width,
               child: tile3(
                 icon: Icons.notifications,
                 link: addTeacherOnDuty(),
