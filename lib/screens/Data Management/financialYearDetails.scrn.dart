@@ -40,7 +40,7 @@ class _financialYearDetailState extends State<financialYearDetails> {
               Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
           children: [
             Container(
-              width: Responsive.isDesktop(context) ? 370 : size.width,
+              width: Responsive.isDesktop(context) ? 360 : size.width,
               child: tile3(
                 icon: Icons.money_rounded,
                 link: addFinancialYear(),
