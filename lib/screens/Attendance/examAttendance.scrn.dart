@@ -48,7 +48,7 @@ class _classesState extends State<examAttendance> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.airline_seat_recline_normal,
@@ -57,7 +57,7 @@ class _classesState extends State<examAttendance> {
                 )),
             SizedBox(
               width: Responsive.isDesktop(context)
-                  ? 410
+                  ? 360
                   : MediaQuery.of(context).size.width,
               child: tile2(
                   tileHeading: "Total Exam",
