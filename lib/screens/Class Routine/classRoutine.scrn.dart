@@ -42,7 +42,7 @@ class _classRoutineState extends State<classRoutine> {
           children: [
             SizedBox(
               width: Responsive.isDesktop(context)
-                  ? 410
+                  ? 360
                   : MediaQuery.of(context).size.width,
               child: tile3(
                 icon: Icons.route_outlined,
