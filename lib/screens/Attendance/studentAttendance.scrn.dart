@@ -48,7 +48,7 @@ class _studentAttendanceState extends State<studentAttendance> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.groups,
@@ -57,7 +57,7 @@ class _studentAttendanceState extends State<studentAttendance> {
                 )),
             SizedBox(
               width: Responsive.isDesktop(context)
-                  ? 410
+                  ? 360
                   : MediaQuery.of(context).size.width,
               child: tile2(
                   tileHeading: "Total Student",
