@@ -42,7 +42,7 @@ class _designationState extends State<designation> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.supervisor_account_outlined,
@@ -51,7 +51,7 @@ class _designationState extends State<designation> {
                 )),
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile2(tileHeading: " Designations", tileData: "7")),
           ],
