@@ -42,7 +42,7 @@ class _customCertificateState extends State<customCertificate> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 370
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.dashboard_customize_rounded,
@@ -51,7 +51,7 @@ class _customCertificateState extends State<customCertificate> {
                 )),
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 370
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child:
                     tile2(tileHeading: "Custom Certificates", tileData: "6")),
