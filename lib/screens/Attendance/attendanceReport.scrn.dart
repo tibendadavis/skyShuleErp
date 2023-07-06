@@ -72,7 +72,7 @@ class _attendaceReportState extends State<attendanceReport> {
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Palette().borderColor,
+                        color: Palette().borderColor.withOpacity(0.6),
                         blurRadius: 15.0, // soften the shadow
                         spreadRadius: 2.0, //extend the shadow
                         offset: Offset(
@@ -81,7 +81,7 @@ class _attendaceReportState extends State<attendanceReport> {
                         ),
                       )
                     ],
-                    color: Palette().primaryColor,
+                    color: Colors.white,
                     borderRadius:
                         BorderRadius.circular(Insets().appRadiusMin + 4)),
                 child: SizedBox(
@@ -93,19 +93,19 @@ class _attendaceReportState extends State<attendanceReport> {
                       Heading5(
                         value: "GENIUS KINGS NURSERY & PRIMARY SCHOOL",
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Palette().primaryColor,
                       ),
                       Heading6(
                         value: "DSM - Segerea Kwa Bibi, DAR ES SALAAM",
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       ),
                       Heading6(
                         value: "Phone Number : 0612345670",
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       ),
                       Heading6(
                         value: "Email : info@geniuskings.ac.tz",
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       )
                     ],
                   ),
@@ -134,7 +134,7 @@ class _attendaceReportState extends State<attendanceReport> {
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Palette().borderColor,
+                        color: Palette().borderColor.withOpacity(0.6),
                         blurRadius: 15.0, // soften the shadow
                         spreadRadius: 2.0, //extend the shadow
                         offset: Offset(
@@ -143,7 +143,7 @@ class _attendaceReportState extends State<attendanceReport> {
                         ),
                       )
                     ],
-                    color: Palette().primaryColor,
+                    color: Colors.white,
                     borderRadius:
                         BorderRadius.circular(Insets().appRadiusMin + 4)),
                 child: SizedBox(
@@ -155,15 +155,15 @@ class _attendaceReportState extends State<attendanceReport> {
                       Heading5(
                         value: "ATTENDANCE REPORT",
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Palette().primaryColor,
                       ),
                       Heading6(
                         value: "From : 01 Jan 2023",
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       ),
                       Heading6(
                         value: "To : 08 Oct 2023",
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       ),
                     ],
                   ),
