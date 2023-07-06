@@ -83,7 +83,8 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                         end: Alignment.bottomRight,
                         colors: [
                           Colors.white,
-                          Palette().primaryColor.withOpacity(0.7)
+                          Colors.white,
+                          // Palette().primaryColor.withOpacity(0.7)
                         ],
                         stops: [0.4, 0.7],
                         tileMode: TileMode.clamp),
@@ -141,9 +142,10 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                       ),
                       Spacer(),
                       Heading4(
-                          value: widget.tileData1,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white)
+                        value: widget.tileData1,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey.shade700,
+                      )
                     ],
                   ),
                   SizedBox(
@@ -166,9 +168,10 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                       ),
                       Spacer(),
                       Heading4(
-                          value: widget.tileData2,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white)
+                        value: widget.tileData2,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey.shade700,
+                      )
                     ],
                   ),
                   SizedBox(
@@ -191,9 +194,10 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                       ),
                       Spacer(),
                       Heading4(
-                          value: widget.tileData3,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white)
+                        value: widget.tileData3,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey.shade700,
+                      )
                     ],
                   ),
                   SizedBox(
@@ -218,7 +222,7 @@ class _tileState extends State<tile> with TickerProviderStateMixin {
                       Heading4(
                         value: widget.tileData4,
                         fontWeight: FontWeight.w400,
-                        color: Colors.white,
+                        color: Colors.grey.shade700,
                       )
                     ],
                   )
