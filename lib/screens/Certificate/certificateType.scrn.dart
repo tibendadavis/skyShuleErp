@@ -42,7 +42,7 @@ class _certificateTypeState extends State<certificateType> {
           children: [
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile3(
                   icon: Icons.document_scanner_rounded,
@@ -51,7 +51,7 @@ class _certificateTypeState extends State<certificateType> {
                 )),
             SizedBox(
                 width: Responsive.isDesktop(context)
-                    ? 410
+                    ? 360
                     : MediaQuery.of(context).size.width,
                 child: tile2(tileHeading: "Certificate Types", tileData: "7")),
           ],
