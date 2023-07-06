@@ -58,13 +58,14 @@ class _tile3State extends State<tile3> with TickerProviderStateMixin {
                         end: Alignment.bottomRight,
                         colors: [
                           Colors.white,
-                          Palette().primaryColor.withOpacity(0.9)
+                          Colors.white,
+                          //   Palette().primaryColor.withOpacity(0.9)
                         ],
                         stops: [0.6, 0.9],
                         tileMode: TileMode.clamp),
                     boxShadow: [
                       BoxShadow(
-                        color: Palette().borderColor,
+                        color: Palette().borderColor.withOpacity(0.6),
                         blurRadius: Insets().appPadding, // soften the shadow
                         spreadRadius: 2.0, //extend the shadow
                         offset: Offset(
