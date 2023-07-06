@@ -41,7 +41,7 @@ class _exFacultyState extends State<exFaculty> {
               Responsive.isDesktop(context) ? Axis.horizontal : Axis.vertical,
           children: [
             Container(
-                width: Responsive.isDesktop(context) ? 400 : size.width,
+                width: Responsive.isDesktop(context) ? 360 : size.width,
                 child: tile2(tileHeading: "Ex-Faculties", tileData: "2")),
           ],
         ),
