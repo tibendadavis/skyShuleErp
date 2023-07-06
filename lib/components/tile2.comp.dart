@@ -68,7 +68,8 @@ class _tile2State extends State<tile2> with TickerProviderStateMixin {
                         end: Alignment.bottomRight,
                         colors: [
                           Colors.white,
-                          Palette().primaryColor.withOpacity(0.9)
+                          Colors.white,
+                          //   Palette().primaryColor.withOpacity(0.9)
                         ],
                         stops: [0.6, 0.9],
                         tileMode: TileMode.clamp),
@@ -135,7 +136,7 @@ class _tile2State extends State<tile2> with TickerProviderStateMixin {
                       if (widget.icon != null)
                         Icon(
                           widget.icon!,
-                          color: Colors.white,
+                          color: Palette().primaryColor.withOpacity(0.7),
                           size: 45,
                         )
                     ],
