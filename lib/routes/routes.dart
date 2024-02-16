@@ -93,128 +93,152 @@ import 'package:skyconnect_starter/screens/Messages/trash.scrn.dart';
 
 class routes {
   var route = {
-    "/": (context) => login(),
+    "/": (context) => const login(),
     "/home": (context) => MyHomePage(page: HomePage()),
-    "/dataManagement/department": (context) => MyHomePage(page: department()),
-    "/dataManagement/designation": (context) => MyHomePage(page: designation()),
-    "/dataManagement/classLevel": (context) => MyHomePage(page: classLevels()),
+    "/dataManagement/department": (context) =>
+        const MyHomePage(page: department()),
+    "/dataManagement/designation": (context) =>
+        const MyHomePage(page: designation()),
+    "/dataManagement/classLevel": (context) =>
+        const MyHomePage(page: classLevels()),
     "/dataManagement/academicYearDetails": (context) =>
-        MyHomePage(page: academicYearDetails()),
+        const MyHomePage(page: academicYearDetails()),
     "/dataManagement/financialYear": (context) =>
-        MyHomePage(page: financialYearDetails()),
-    "/facultyManagement/faculty": (context) => MyHomePage(page: faculty()),
+        const MyHomePage(page: financialYearDetails()),
+    "/facultyManagement/faculty": (context) =>
+        const MyHomePage(page: faculty()),
     "/facultyManagement/enrollment": (context) =>
-        MyHomePage(page: enrollment()),
-    "/facultyManagement/HR": (context) => MyHomePage(page: humanResource()),
-    "/facultyManagement/exFaculty": (context) => MyHomePage(page: exFaculty()),
-    "/users/students": (context) => MyHomePage(page: manageStudents()),
-    "/users/parents": (context) => MyHomePage(page: parents()),
-    "/users/teachers": (context) => MyHomePage(page: teachers()),
-    "/users/supportingStaff": (context) => MyHomePage(page: supportingStaff()),
-    "/class": (context) => MyHomePage(page: classes()),
-    "/stream": (context) => MyHomePage(page: streams()),
-    "/subject/listSubjects": (context) => MyHomePage(page: listSubjects()),
-    "/subject/classSubjects": (context) => MyHomePage(page: classSubjects()),
+        const MyHomePage(page: enrollment()),
+    "/facultyManagement/HR": (context) =>
+        const MyHomePage(page: humanResource()),
+    "/facultyManagement/exFaculty": (context) =>
+        const MyHomePage(page: exFaculty()),
+    "/users/students": (context) => const MyHomePage(page: manageStudents()),
+    "/users/parents": (context) => const MyHomePage(page: parents()),
+    "/users/teachers": (context) => const MyHomePage(page: teachers()),
+    "/users/supportingStaff": (context) =>
+        const MyHomePage(page: supportingStaff()),
+    "/class": (context) => const MyHomePage(page: classes()),
+    "/stream": (context) => const MyHomePage(page: streams()),
+    "/subject/listSubjects": (context) =>
+        const MyHomePage(page: listSubjects()),
+    "/subject/classSubjects": (context) =>
+        const MyHomePage(page: classSubjects()),
     "/subject/streamSubjectTeacher": (context) =>
-        MyHomePage(page: streamSubjectTeacher()),
+        const MyHomePage(page: streamSubjectTeacher()),
     "/subject/teachingTools/syllabus": (context) =>
-        MyHomePage(page: syllabus()),
+        const MyHomePage(page: syllabus()),
     "/subject/teachingTools/assignments": (context) =>
-        MyHomePage(page: assignment()),
+        const MyHomePage(page: assignment()),
     "/subject/teachingTools/lessonPlan": (context) =>
-        MyHomePage(page: lessonPlan()),
-    "/grading/defaultGrading": (context) => MyHomePage(page: defaultGrading()),
+        const MyHomePage(page: lessonPlan()),
+    "/grading/defaultGrading": (context) =>
+        const MyHomePage(page: defaultGrading()),
     "/grading/specialgradeCategory": (context) =>
-        MyHomePage(page: specialGradeCategory()),
-    "/grading/specialGrading": (context) => MyHomePage(page: specialGrading()),
-    "/terms": (context) => MyHomePage(page: terms()),
-    "/exams/examSchedule": (context) => MyHomePage(page: examSchedule()),
+        const MyHomePage(page: specialGradeCategory()),
+    "/grading/specialGrading": (context) =>
+        const MyHomePage(page: specialGrading()),
+    "/terms": (context) => const MyHomePage(page: terms()),
+    "/exams/examSchedule": (context) => const MyHomePage(page: examSchedule()),
     "/exams/minorSchoolExams": (context) =>
-        MyHomePage(page: minorSchoolExams()),
-    "/exams/settings/examGroups": (context) => MyHomePage(page: examGroup()),
-    "/exams/settings/schoolExams": (context) => MyHomePage(page: schoolExams()),
+        const MyHomePage(page: minorSchoolExams()),
+    "/exams/settings/examGroups": (context) =>
+        const MyHomePage(page: examGroup()),
+    "/exams/settings/schoolExams": (context) =>
+        const MyHomePage(page: schoolExams()),
     "/exams/settings/classAllocation": (context) =>
-        MyHomePage(page: classAllocations()),
+        const MyHomePage(page: classAllocations()),
     "/exams/reports/singleReports": (context) =>
-        MyHomePage(page: singleReports()),
+        const MyHomePage(page: singleReports()),
     "/exams/reports/combinedReports": (context) =>
-        MyHomePage(page: combinedReports()),
-    "/mark": (context) => MyHomePage(page: mark()),
-    "/certificate/type": (context) => MyHomePage(page: certificateType()),
+        const MyHomePage(page: combinedReports()),
+    "/mark": (context) => const MyHomePage(page: mark()),
+    "/certificate/type": (context) => const MyHomePage(page: certificateType()),
     "/certificate/viewTemplate": (context) =>
-        MyHomePage(page: customCertificate()),
+        const MyHomePage(page: customCertificate()),
     "/certificate/generate": (context) =>
-        MyHomePage(page: generateCertificate()),
-    "/idCards": (context) => MyHomePage(page: idCards()),
-    "/classRoutine": (context) => MyHomePage(page: classRoutine()),
-    "/attendance/student": (context) => MyHomePage(page: studentAttendance()),
-    "/attendance/employee": (context) => MyHomePage(page: employeeAttendance()),
-    "/attendance/exam": (context) => MyHomePage(page: examAttendance()),
-    "/attendance/teacherOnDuty": (context) => MyHomePage(page: teacherOnDuty()),
-    "/attendance/report": (context) => MyHomePage(page: attendanceReport()),
+        const MyHomePage(page: generateCertificate()),
+    "/idCards": (context) => const MyHomePage(page: idCards()),
+    "/classRoutine": (context) => const MyHomePage(page: classRoutine()),
+    "/attendance/student": (context) =>
+        const MyHomePage(page: studentAttendance()),
+    "/attendance/employee": (context) =>
+        const MyHomePage(page: employeeAttendance()),
+    "/attendance/exam": (context) => const MyHomePage(page: examAttendance()),
+    "/attendance/teacherOnDuty": (context) =>
+        const MyHomePage(page: teacherOnDuty()),
+    "/attendance/report": (context) =>
+        const MyHomePage(page: attendanceReport()),
     "/news&announcements": (context) => MyHomePage(page: newsBoard()),
-    "/hostelManagement/hostel": (context) => MyHomePage(page: hostels()),
-    "/hostelManagement/members": (context) => MyHomePage(page: membersHostel()),
-    "/library/category": (context) => MyHomePage(page: bookCategory()),
-    "/library/books": (context) => MyHomePage(page: books()),
-    "/library/issue": (context) => MyHomePage(page: bookIssue()),
+    "/hostelManagement/hostel": (context) => const MyHomePage(page: hostels()),
+    "/hostelManagement/members": (context) =>
+        const MyHomePage(page: membersHostel()),
+    "/library/category": (context) => const MyHomePage(page: bookCategory()),
+    "/library/books": (context) => const MyHomePage(page: books()),
+    "/library/issue": (context) => const MyHomePage(page: bookIssue()),
     "/library/returnSettings": (context) =>
-        MyHomePage(page: bookReturnSetting()),
-    "/library/return": (context) => MyHomePage(page: bookReturn()),
-    "/library/lost": (context) => MyHomePage(page: bookLost()),
-    "/library/binding": (context) => MyHomePage(page: bookBinding()),
-    "/promotion": (context) => MyHomePage(page: promotion()),
-    "/eResources/files": (context) => MyHomePage(page: fileManagement()),
-    "/eResources/liveStudies": (context) => MyHomePage(page: liveStudies()),
-    "/eResources/classNotes": (context) => MyHomePage(page: classNotes()),
+        const MyHomePage(page: bookReturnSetting()),
+    "/library/return": (context) => const MyHomePage(page: bookReturn()),
+    "/library/lost": (context) => const MyHomePage(page: bookLost()),
+    "/library/binding": (context) => const MyHomePage(page: bookBinding()),
+    "/promotion": (context) => const MyHomePage(page: promotion()),
+    "/eResources/files": (context) => const MyHomePage(page: fileManagement()),
+    "/eResources/liveStudies": (context) =>
+        const MyHomePage(page: liveStudies()),
+    "/eResources/classNotes": (context) => const MyHomePage(page: classNotes()),
     "/eResources/onlineDiscussion": (context) =>
-        MyHomePage(page: onlineDiscussion()),
+        const MyHomePage(page: onlineDiscussion()),
     "/financeManagement/account": (context) =>
-        MyHomePage(page: accountManagement()),
+        const MyHomePage(page: accountManagement()),
     "/financeManagement/feeCategory": (context) =>
-        MyHomePage(page: feeCategory()),
+        const MyHomePage(page: feeCategory()),
     "/financeManagement/feePayment": (context) =>
-        MyHomePage(page: feePayment()),
+        const MyHomePage(page: feePayment()),
     "/financeManagement/feeReceipts": (context) =>
-        MyHomePage(page: feeReceipts()),
+        const MyHomePage(page: feeReceipts()),
     "/payrollManagement/employeeSalary": (context) =>
-        MyHomePage(page: employeeSalary()),
+        const MyHomePage(page: employeeSalary()),
     "/payrollManagement/employeeBonus": (context) =>
-        MyHomePage(page: employeeBonus()),
-    "/payrollManagement/payroll": (context) => MyHomePage(page: payroll()),
-    "/leaveManagement/category": (context) => MyHomePage(page: leaveCategory()),
-    "/leaveManagement/employee": (context) => MyHomePage(page: employeeLeave()),
-    "/leaveManagement/student": (context) => MyHomePage(page: studentLeave()),
+        const MyHomePage(page: employeeBonus()),
+    "/payrollManagement/payroll": (context) =>
+        const MyHomePage(page: payroll()),
+    "/leaveManagement/category": (context) =>
+        const MyHomePage(page: leaveCategory()),
+    "/leaveManagement/employee": (context) =>
+        const MyHomePage(page: employeeLeave()),
+    "/leaveManagement/student": (context) =>
+        const MyHomePage(page: studentLeave()),
     "/inventory&Assets/category": (context) =>
-        MyHomePage(page: storeCategory()),
-    "/inventory&Assets/type": (context) => MyHomePage(page: storeType()),
-    "/inventory&Assets/store": (context) => MyHomePage(page: store()),
+        const MyHomePage(page: storeCategory()),
+    "/inventory&Assets/type": (context) => const MyHomePage(page: storeType()),
+    "/inventory&Assets/store": (context) => const MyHomePage(page: store()),
     "/inventory&Assets/itemCategory": (context) =>
-        MyHomePage(page: itemCategory()),
-    "/inventory&Assets/item": (context) => MyHomePage(page: storeItem()),
+        const MyHomePage(page: itemCategory()),
+    "/inventory&Assets/item": (context) => const MyHomePage(page: storeItem()),
     "/inventory&Assets/supplierType": (context) =>
-        MyHomePage(page: supplierType()),
-    "/inventory&Assets/supplier": (context) => MyHomePage(page: supplier()),
+        const MyHomePage(page: supplierType()),
+    "/inventory&Assets/supplier": (context) =>
+        const MyHomePage(page: supplier()),
     "/inventory&Assets/purchaseOrder": (context) =>
-        MyHomePage(page: purchaseOrder()),
+        const MyHomePage(page: purchaseOrder()),
     "/inventory&Assets/requestOrder": (context) =>
-        MyHomePage(page: requestOrder()),
-    "/inventory&Assets/billing": (context) => MyHomePage(page: billing()),
+        const MyHomePage(page: requestOrder()),
+    "/inventory&Assets/billing": (context) => const MyHomePage(page: billing()),
     "/inventory&Assets/reports/itemReport": (context) =>
-        MyHomePage(page: itemReport()),
+        const MyHomePage(page: itemReport()),
     "/inventory&Assets/reports/invoiceReport": (context) =>
-        MyHomePage(page: invoiceReport()),
-    "/messages/compose": (context) => MyHomePage(page: compose()),
-    "/messages/inbox": (context) => MyHomePage(page: inbox()),
-    "/messages/sent": (context) => MyHomePage(page: sent()),
-    "/messages/favorite": (context) => MyHomePage(page: favorite()),
-    "/messages/trash": (context) => MyHomePage(page: trash()),
-    "/signature": (context) => MyHomePage(page: signature()),
+        const MyHomePage(page: invoiceReport()),
+    "/messages/compose": (context) => const MyHomePage(page: compose()),
+    "/messages/inbox": (context) => const MyHomePage(page: inbox()),
+    "/messages/sent": (context) => const MyHomePage(page: sent()),
+    "/messages/favorite": (context) => const MyHomePage(page: favorite()),
+    "/messages/trash": (context) => const MyHomePage(page: trash()),
+    "/signature": (context) => const MyHomePage(page: signature()),
     "/settings/institutionDetails": (context) =>
-        MyHomePage(page: institutionDetails()),
+        const MyHomePage(page: institutionDetails()),
     "/settings/institutionSettings": (context) =>
-        MyHomePage(page: institutionSettings()),
+        const MyHomePage(page: institutionSettings()),
     "/settings/institutionAdmin": (context) =>
-        MyHomePage(page: institutionAdmin()),
+        const MyHomePage(page: institutionAdmin()),
   };
 }

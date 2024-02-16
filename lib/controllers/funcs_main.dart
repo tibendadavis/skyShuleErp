@@ -310,7 +310,6 @@ class Funcs {
           data: ThemeData.light().copyWith(
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.blue,
-              primaryColorDark: Palette().primaryColor,
               accentColor: Palette().primaryColor,
             ),
             dialogBackgroundColor: Colors.white,
@@ -347,7 +346,6 @@ class Funcs {
           data: ThemeData.light().copyWith(
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.green,
-              primaryColorDark: Palette().primaryColor,
               accentColor: Palette().primaryColor,
             ),
             dialogBackgroundColor: Colors.white,
@@ -373,7 +371,6 @@ class Funcs {
           data: ThemeData.light().copyWith(
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.blue,
-              primaryColorDark: Palette().primaryColor,
               accentColor: Palette().primaryColor,
             ),
             dialogBackgroundColor: Colors.white,
